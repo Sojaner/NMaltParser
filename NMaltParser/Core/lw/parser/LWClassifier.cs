@@ -2,18 +2,10 @@
 
 namespace org.maltparser.core.lw.parser
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.ml.lib;
-	using  org.maltparser.ml.lib;
-	using  org.maltparser.ml.lib;
-	using  org.maltparser.ml.lib;
-	using  org.maltparser.ml.lib;
-	using  org.maltparser.parser.history.action;
+    using  feature;
+	using  feature.value;
+    using  ml.lib;
+    using  org.maltparser.parser.history.action;
 
 	/// <summary>
 	/// A lightweight version of org.maltparser.ml.lib.{Lib,LibLinear,LibSvm} and can only predict the next transition.
@@ -28,9 +20,9 @@ namespace org.maltparser.core.lw.parser
 
 		public LWClassifier(McoModel mcoModel, string prefixFileName, bool _excludeNullValues)
 		{
-			this.model = (MaltLibModel)mcoModel.getMcoEntryObject(prefixFileName + ".moo");
-			this.featureMap = (FeatureMap)mcoModel.getMcoEntryObject(prefixFileName + ".map");
-			this.excludeNullValues = _excludeNullValues;
+			model = (MaltLibModel)mcoModel.getMcoEntryObject(prefixFileName + ".moo");
+			featureMap = (FeatureMap)mcoModel.getMcoEntryObject(prefixFileName + ".map");
+			excludeNullValues = _excludeNullValues;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:

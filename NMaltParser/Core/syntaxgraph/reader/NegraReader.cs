@@ -6,13 +6,11 @@ using System.IO;
 namespace org.maltparser.core.syntaxgraph.reader
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
+	using  exception;
+	using  io.dataformat;
+    using  symbol;
+	using  edge;
+	using  node;
 
 	/// 
 	/// 
@@ -67,7 +65,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 		private void reopen()
 		{
 			close();
-			if (!string.ReferenceEquals(fileName, null))
+			if (!ReferenceEquals(fileName, null))
 			{
 				open(fileName, charsetName);
 			}
@@ -171,7 +169,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 				while (true)
 				{
 					line = reader.ReadLine();
-					if (string.ReferenceEquals(line, null))
+					if (ReferenceEquals(line, null))
 					{
 						if (syntaxGraph.hasTokens())
 						{
@@ -484,7 +482,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.reader = value;
+				reader = value;
 			}
 		}
 
@@ -497,7 +495,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.sentenceCount = value;
+				sentenceCount = value;
 			}
 		}
 
@@ -510,7 +508,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.formatVersion = value;
+				formatVersion = value;
 			}
 		}
 
@@ -523,7 +521,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.dataFormatInstance = value;
+				dataFormatInstance = value;
 			}
 		}
 
@@ -536,7 +534,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.optionString = value;
+				optionString = value;
     
 				string[] argv;
 				try
@@ -564,7 +562,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 						{
 							START_ID_OF_NONTERMINALS = int.Parse(argv[i]);
 						}
-						catch (System.FormatException)
+						catch (FormatException)
 						{
 							throw new MaltChainedException("The TigerXML Reader option -s must be an integer value. ");
 						}
@@ -585,7 +583,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.fileName = value;
+				fileName = value;
 			}
 		}
 
@@ -598,7 +596,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.url = value;
+				url = value;
 			}
 		}
 
@@ -611,7 +609,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.charsetName = value;
+				charsetName = value;
 			}
 		}
 

@@ -5,21 +5,13 @@ namespace org.maltparser.core.lw.graph
 {
 
 	using  org.maltparser.concurrent.graph.dataformat;
-	using  org.maltparser.concurrent.graph.dataformat;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  org.maltparser.core.helper;
+	using  symbol;
+    using  syntaxgraph;
+    using  syntaxgraph.edge;
+	using  syntaxgraph.node;
 
-	/// <summary>
+    /// <summary>
 	/// A lightweight version of org.maltparser.core.syntaxgraph.DependencyGraph.
 	/// 
 	/// @author Johan Hall
@@ -38,12 +30,12 @@ namespace org.maltparser.core.lw.graph
 //ORIGINAL LINE: public LWDependencyGraph(org.maltparser.concurrent.graph.dataformat.DataFormat _dataFormat, org.maltparser.core.symbol.SymbolTableHandler _symbolTables) throws org.maltparser.core.exception.MaltChainedException
 		public LWDependencyGraph(DataFormat _dataFormat, SymbolTableHandler _symbolTables)
 		{
-			this.dataFormat = _dataFormat;
-			this.symbolTables = _symbolTables;
-			this.rootLabels = new RootLabels();
-			this.nodes = new List<LWNode>();
-			this.nodes.Add(new LWNode(this, 0)); // ROOT
-			this.comments = new HashMap<int, List<string>>();
+			dataFormat = _dataFormat;
+			symbolTables = _symbolTables;
+			rootLabels = new RootLabels();
+			nodes = new List<LWNode>();
+			nodes.Add(new LWNode(this, 0)); // ROOT
+			comments = new HashMap<int, List<string>>();
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -56,11 +48,11 @@ namespace org.maltparser.core.lw.graph
 //ORIGINAL LINE: public LWDependencyGraph(org.maltparser.concurrent.graph.dataformat.DataFormat _dataFormat, org.maltparser.core.symbol.SymbolTableHandler _symbolTables, String[] inputTokens, String defaultRootLabel, boolean addEdges) throws org.maltparser.core.exception.MaltChainedException
 		public LWDependencyGraph(DataFormat _dataFormat, SymbolTableHandler _symbolTables, string[] inputTokens, string defaultRootLabel, bool addEdges)
 		{
-			this.dataFormat = _dataFormat;
-			this.symbolTables = _symbolTables;
-			this.rootLabels = new RootLabels();
-			this.nodes = new List<LWNode>(inputTokens.Length + 1);
-			this.comments = new HashMap<int, List<string>>();
+			dataFormat = _dataFormat;
+			symbolTables = _symbolTables;
+			rootLabels = new RootLabels();
+			nodes = new List<LWNode>(inputTokens.Length + 1);
+			comments = new HashMap<int, List<string>>();
 			resetTokens(inputTokens, defaultRootLabel, addEdges);
 		}
 

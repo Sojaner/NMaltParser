@@ -1,11 +1,6 @@
 ﻿namespace org.maltparser.core.helper
 {
-	using  org.apache.log4j;
-	using  org.apache.log4j;
-	using  org.apache.log4j;
-	using  org.apache.log4j;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -65,7 +60,7 @@
 		/// <param name="verbosity">	a system verbosity level </param>
 		public virtual void setSystemVerbosityLevel(string verbosity)
 		{
-			this.systemVerbosityLevel = Level.toLevel(verbosity, Level.INFO);
+			systemVerbosityLevel = Level.toLevel(verbosity, Level.INFO);
 			consoleAppender.Threshold = systemVerbosityLevel;
 			systemLogger.Level = systemVerbosityLevel;
 		}

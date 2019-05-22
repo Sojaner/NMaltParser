@@ -3,7 +3,7 @@ using System.Text;
 
 namespace org.maltparser.core.feature.value
 {
-	using  org.maltparser.core.feature.function;
+	using  function;
 	/// 
 	/// 
 	/// <summary>
@@ -44,7 +44,7 @@ namespace org.maltparser.core.feature.value
 			}
 			set
 			{
-				this.address = value;
+				address = value;
 			}
 		}
 
@@ -59,7 +59,7 @@ namespace org.maltparser.core.feature.value
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

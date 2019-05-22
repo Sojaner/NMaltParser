@@ -4,7 +4,7 @@ using System.Text;
 namespace org.maltparser.core.options
 {
 
-	using  org.maltparser.core.options.option;
+	using  option;
 
 
 	/// <summary>
@@ -63,7 +63,7 @@ namespace org.maltparser.core.options
 //ORIGINAL LINE: public void addOption(org.maltparser.core.options.option.Option option) throws OptionException
 		public virtual void addOption(Option option)
 		{
-			if (string.ReferenceEquals(option.Name, null) || option.Name.Equals(""))
+			if (ReferenceEquals(option.Name, null) || option.Name.Equals(""))
 			{
 				throw new OptionException("The option name is null or contains the empty string. ");
 			}
@@ -119,7 +119,7 @@ namespace org.maltparser.core.options
 	//			sb.append("\");\n");
 	//		}
 
-			if (OptionGroup.toStringSetting == OptionGroup.WITHGROUPNAME)
+			if (toStringSetting == WITHGROUPNAME)
 			{
 				sb.Append("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 				sb.Append("+ " + name + "\n");

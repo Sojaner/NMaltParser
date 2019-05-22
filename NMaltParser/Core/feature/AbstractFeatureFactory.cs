@@ -1,7 +1,6 @@
 ﻿namespace org.maltparser.core.feature
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.function;
+    using  function;
 
 	public interface AbstractFeatureFactory
 	{

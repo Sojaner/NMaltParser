@@ -2,9 +2,7 @@
 
 namespace org.maltparser.core.pool
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
+    using  helper;
 
 
 	public abstract class ObjectPoolSet<T> : ObjectPool<T>

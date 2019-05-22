@@ -5,16 +5,11 @@ using System.IO;
 
 namespace org.maltparser.core.symbol.hash
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.symbol.nullvalue;
-	using  org.maltparser.core.symbol.nullvalue;
-	using  org.maltparser.core.symbol.nullvalue;
-	using  org.maltparser.core.symbol.nullvalue.NullValues;
+    using  helper;
+	using  nullvalue;
 
 
-	public sealed class HashSymbolTable : SymbolTable
+    public sealed class HashSymbolTable : SymbolTable
 	{
 		private readonly string name;
 		private readonly IDictionary<string, int> symbolCodeMap;
@@ -29,33 +24,33 @@ namespace org.maltparser.core.symbol.hash
 //ORIGINAL LINE: public HashSymbolTable(String _name, int _category, int _type, String nullValueStrategy) throws org.maltparser.core.exception.MaltChainedException
 		public HashSymbolTable(string _name, int _category, int _type, string nullValueStrategy)
 		{
-			this.name = _name;
-			this.category = _category;
-			this.type = _type;
-			this.symbolCodeMap = new HashMap<string, int>();
-			this.codeSymbolMap = new HashMap<int, string>();
-			this.symbolValueMap = new HashMap<string, double>();
-			if (this.category == org.maltparser.core.symbol.SymbolTable_Fields.OUTPUT)
+			name = _name;
+			category = _category;
+			type = _type;
+			symbolCodeMap = new HashMap<string, int>();
+			codeSymbolMap = new HashMap<int, string>();
+			symbolValueMap = new HashMap<string, double>();
+			if (category == SymbolTable_Fields.OUTPUT)
 			{
-				this.nullValues = new OutputNullValues(nullValueStrategy, this);
+				nullValues = new OutputNullValues(nullValueStrategy, this);
 			}
 			else
 			{
-				this.nullValues = new InputNullValues(nullValueStrategy, this);
+				nullValues = new InputNullValues(nullValueStrategy, this);
 			}
-			this.valueCounter = nullValues.NextCode;
+			valueCounter = nullValues.NextCode;
 		}
 
 		public HashSymbolTable(string _name)
 		{
-			this.name = _name;
-			this.category = org.maltparser.core.symbol.SymbolTable_Fields.NA;
-			this.type = org.maltparser.core.symbol.SymbolTable_Fields.STRING;
-			this.symbolCodeMap = new HashMap<string, int>();
-			this.codeSymbolMap = new HashMap<int, string>();
-			this.symbolValueMap = new HashMap<string, double>();
-			this.nullValues = new InputNullValues("one", this);
-			this.valueCounter = 1;
+			name = _name;
+			category = SymbolTable_Fields.NA;
+			type = SymbolTable_Fields.STRING;
+			symbolCodeMap = new HashMap<string, int>();
+			codeSymbolMap = new HashMap<int, string>();
+			symbolValueMap = new HashMap<string, double>();
+			nullValues = new InputNullValues("one", this);
+			valueCounter = 1;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -64,12 +59,12 @@ namespace org.maltparser.core.symbol.hash
 		{
 			if (nullValues == null || !nullValues.isNullValue(symbol))
 			{
-				if (string.ReferenceEquals(symbol, null) || symbol.Length == 0)
+				if (ReferenceEquals(symbol, null) || symbol.Length == 0)
 				{
 					throw new SymbolException("Symbol table error: empty string cannot be added to the symbol table");
 				}
 
-				if (this.type == org.maltparser.core.symbol.SymbolTable_Fields.REAL)
+				if (type == SymbolTable_Fields.REAL)
 				{
 					addSymbolValue(symbol);
 				}
@@ -133,7 +128,7 @@ namespace org.maltparser.core.symbol.hash
 //ORIGINAL LINE: public int getSymbolStringToCode(String symbol) throws org.maltparser.core.exception.MaltChainedException
 		public int getSymbolStringToCode(string symbol)
 		{
-			if (!string.ReferenceEquals(symbol, null))
+			if (!ReferenceEquals(symbol, null))
 			{
 				if (nullValues == null || !nullValues.isNullValue(symbol))
 				{
@@ -155,9 +150,9 @@ namespace org.maltparser.core.symbol.hash
 //ORIGINAL LINE: public double getSymbolStringToValue(String symbol) throws org.maltparser.core.exception.MaltChainedException
 		public double getSymbolStringToValue(string symbol)
 		{
-			if (!string.ReferenceEquals(symbol, null))
+			if (!ReferenceEquals(symbol, null))
 			{
-				if (type == org.maltparser.core.symbol.SymbolTable_Fields.REAL && nullValues == null || !nullValues.isNullValue(symbol))
+				if (type == SymbolTable_Fields.REAL && nullValues == null || !nullValues.isNullValue(symbol))
 				{
 					double? value = symbolValueMap[symbol];
 					return (value != null) ? value.Value : double.Parse(symbol);
@@ -236,7 +231,7 @@ namespace org.maltparser.core.symbol.hash
 			{
 				@out.Write(name);
 				@out.BaseStream.WriteByte('\n');
-				if (this.type != org.maltparser.core.symbol.SymbolTable_Fields.REAL)
+				if (type != SymbolTable_Fields.REAL)
 				{
 					// TODO sort codes before writing due to change from TreeMap to HashMap
 					foreach (int? code in codeSymbolMap.Keys)
@@ -273,7 +268,7 @@ namespace org.maltparser.core.symbol.hash
 			string fileLine;
 			try
 			{
-				while (!string.ReferenceEquals((fileLine = @in.ReadLine()), null))
+				while (!ReferenceEquals((fileLine = @in.ReadLine()), null))
 				{
 					int index;
 					if (fileLine.Length == 0 || (index = fileLine.IndexOf('\t')) == -1)
@@ -282,14 +277,14 @@ namespace org.maltparser.core.symbol.hash
 						break;
 					}
 
-					if (this.type != org.maltparser.core.symbol.SymbolTable_Fields.REAL)
+					if (type != SymbolTable_Fields.REAL)
 					{
 						int code;
 						try
 						{
 							code = int.Parse(fileLine.Substring(0,index));
 						}
-						catch (System.FormatException e)
+						catch (FormatException e)
 						{
 							throw new SymbolException("The symbol table file (.sym) contains a non-integer value in the first column. ", e);
 						}
@@ -399,14 +394,14 @@ namespace org.maltparser.core.symbol.hash
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final HashSymbolTable other = (HashSymbolTable)obj;
 			HashSymbolTable other = (HashSymbolTable)obj;
-			return ((string.ReferenceEquals(name, null)) ? string.ReferenceEquals(other.name, null) : name.Equals(other.name));
+			return ((ReferenceEquals(name, null)) ? ReferenceEquals(other.name, null) : name.Equals(other.name));
 		}
 
 		public override int GetHashCode()

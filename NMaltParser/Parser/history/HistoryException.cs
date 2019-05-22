@@ -2,7 +2,7 @@
 
 namespace org.maltparser.parser.history
 {
-	using  org.maltparser.core.exception;
+	using  core.exception;
 
 
 	/// <summary>

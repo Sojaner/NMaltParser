@@ -1,8 +1,7 @@
 ﻿namespace org.maltparser.parser.algorithm.covington
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.parser.guide;
-	using  org.maltparser.parser.history;
+    using  guide;
+	using  history;
 	/// <summary>
 	/// @author Johan Hall
 	/// 

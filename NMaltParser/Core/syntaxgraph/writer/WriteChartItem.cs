@@ -3,16 +3,13 @@ using System.Text;
 
 namespace org.maltparser.core.syntaxgraph.writer
 {
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.flow;
-	using  org.maltparser.core.flow.item;
-	using  org.maltparser.core.flow.spec;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.symbol;
+	using  config;
+    using  flow;
+	using  flow.item;
+	using  flow.spec;
+	using  io.dataformat;
+    using  options;
+	using  symbol;
 
 	/// 
 	/// 
@@ -62,15 +59,15 @@ namespace org.maltparser.core.syntaxgraph.writer
 				}
 			}
 
-			if (string.ReferenceEquals(idName, null))
+			if (ReferenceEquals(idName, null))
 			{
 				idName = getChartElement("write").Attributes.get("id").DefaultValue;
 			}
-			else if (string.ReferenceEquals(sourceName, null))
+			else if (ReferenceEquals(sourceName, null))
 			{
 				sourceName = getChartElement("write").Attributes.get("source").DefaultValue;
 			}
-			else if (string.ReferenceEquals(optiongroupName, null))
+			else if (ReferenceEquals(optiongroupName, null))
 			{
 				optiongroupName = getChartElement("write").Attributes.get("optiongroup").DefaultValue;
 			}
@@ -104,7 +101,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 				writer.writeProlog();
 			}
 			writer.writeSentence(cachedGraph);
-			if (signal == ChartItem.TERMINATE)
+			if (signal == TERMINATE)
 			{
 				writer.writeEpilog();
 			}
@@ -135,7 +132,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 		{
 			get
 			{
-				if (string.ReferenceEquals(outputFormatName, null))
+				if (ReferenceEquals(outputFormatName, null))
 				{
 					return "/appdata/dataformat/conllx.xml";
 				}
@@ -143,7 +140,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.outputFormatName = value;
+				outputFormatName = value;
 			}
 		}
 
@@ -152,7 +149,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 		{
 			get
 			{
-				if (string.ReferenceEquals(outputFileName, null))
+				if (ReferenceEquals(outputFileName, null))
 				{
 					return "/dev/stdout";
 				}
@@ -160,7 +157,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.outputFileName = value;
+				outputFileName = value;
 			}
 		}
 
@@ -169,7 +166,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 		{
 			get
 			{
-				if (string.ReferenceEquals(outputCharSet, null))
+				if (ReferenceEquals(outputCharSet, null))
 				{
 					return "UTF-8";
 				}
@@ -177,7 +174,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.outputCharSet = value;
+				outputCharSet = value;
 			}
 		}
 
@@ -186,7 +183,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 		{
 			get
 			{
-				if (string.ReferenceEquals(writerOptions, null))
+				if (ReferenceEquals(writerOptions, null))
 				{
 					return "";
 				}
@@ -194,7 +191,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.writerOptions = value;
+				writerOptions = value;
 			}
 		}
 
@@ -211,13 +208,13 @@ namespace org.maltparser.core.syntaxgraph.writer
 				{
 					if (value != null)
 					{
-						this.graphWriterClass = value.asSubclass(typeof(org.maltparser.core.syntaxgraph.writer.SyntaxGraphWriter));
+						graphWriterClass = value.asSubclass(typeof(SyntaxGraphWriter));
 					}
 				}
-				catch (System.InvalidCastException e)
+				catch (InvalidCastException e)
 				{
 	//JAVA TO C# CONVERTER WARNING: The .NET Type.FullName property will not always yield results identical to the Java Class.getName method:
-					throw new DataFormatException("The class '" + value.FullName + "' is not a subclass of '" + typeof(org.maltparser.core.syntaxgraph.writer.SyntaxGraphWriter).FullName + "'. ", e);
+					throw new DataFormatException("The class '" + value.FullName + "' is not a subclass of '" + typeof(SyntaxGraphWriter).FullName + "'. ", e);
 				}
 			}
 		}
@@ -227,7 +224,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 		{
 			get
 			{
-				if (string.ReferenceEquals(nullValueStrategy, null))
+				if (ReferenceEquals(nullValueStrategy, null))
 				{
 					return "one";
 				}
@@ -235,7 +232,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.nullValueStrategy = value;
+				nullValueStrategy = value;
 			}
 		}
 
@@ -265,8 +262,8 @@ namespace org.maltparser.core.syntaxgraph.writer
 		{
 			try
 			{
-				writer = System.Activator.CreateInstance(syntaxGraphWriterClass);
-				if (string.ReferenceEquals(outputFile, null) || outputFile.Length == 0 || outputFile.Equals("/dev/stdout"))
+				writer = Activator.CreateInstance(syntaxGraphWriterClass);
+				if (ReferenceEquals(outputFile, null) || outputFile.Length == 0 || outputFile.Equals("/dev/stdout"))
 				{
 					writer.open(System.out, outputCharSet);
 				}
@@ -331,11 +328,11 @@ namespace org.maltparser.core.syntaxgraph.writer
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
-			return obj.ToString().Equals(this.ToString());
+			return obj.ToString().Equals(ToString());
 		}
 
 		public override int GetHashCode()

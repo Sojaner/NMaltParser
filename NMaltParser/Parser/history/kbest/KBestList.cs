@@ -4,8 +4,8 @@ using System.Text;
 namespace org.maltparser.parser.history.kbest
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.parser.history.action;
+	using  core.exception;
+	using  action;
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -50,7 +50,7 @@ namespace org.maltparser.parser.history.kbest
 
 		protected internal virtual void initKBestList()
 		{
-			for (int i = 0; i < this.k; i++)
+			for (int i = 0; i < k; i++)
 			{
 				kBestList.Add(new Candidate());
 			}
@@ -61,8 +61,8 @@ namespace org.maltparser.parser.history.kbest
 		/// </summary>
 		public virtual void reset()
 		{
-			this.topCandidateIndex = 0;
-			this.addCandidateIndex = 0;
+			topCandidateIndex = 0;
+			addCandidateIndex = 0;
 		}
 
 		/// <summary>
@@ -117,7 +117,7 @@ namespace org.maltparser.parser.history.kbest
 	//		if (decision instanceof SingleDecision) {
 	//			this.add(((SingleDecision)decision).getDecisionCode(symbol));
 	//		}
-			this.add(decision.getDecisionCode(symbol));
+			add(decision.getDecisionCode(symbol));
 		}
 
 
@@ -179,15 +179,15 @@ namespace org.maltparser.parser.history.kbest
 			{
 				if (value == 0)
 				{
-					this.k = 1; // the value-best list must contain at least one candidate
+					k = 1; // the value-best list must contain at least one candidate
 				}
 				if (value < 0)
 				{
-					this.k = -1; // this means that the value-best list is unrestricted.
+					k = -1; // this means that the value-best list is unrestricted.
 				}
 				else
 				{
-					this.k = value;
+					k = value;
 				}
 			}
 		}

@@ -2,11 +2,10 @@
 
 namespace org.maltparser.parser
 {
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
+	using  core.feature;
+    using  core.helper;
+	using  core.io.dataformat;
+	using  core.symbol;
 
 	public class ParserRegistry : FeatureRegistry
 	{
@@ -18,7 +17,7 @@ namespace org.maltparser.parser
 
 		public ParserRegistry()
 		{
-			this.registry = new HashMap<Type, object>();
+			registry = new HashMap<Type, object>();
 		}
 
 		public virtual object get(Type key)
@@ -29,11 +28,11 @@ namespace org.maltparser.parser
 		public virtual void put(Type key, object value)
 		{
 			registry[key] = value;
-			if (key == typeof(org.maltparser.parser.AbstractParserFactory))
+			if (key == typeof(AbstractParserFactory))
 			{
 				abstractParserFactory = (AbstractParserFactory)value;
 			}
-			else if (key == typeof(org.maltparser.parser.AlgoritmInterface))
+			else if (key == typeof(AlgoritmInterface))
 			{
 				algorithm = (AlgoritmInterface)value;
 			}
@@ -52,8 +51,8 @@ namespace org.maltparser.parser
 			}
 			set
 			{
-				this.symbolTableHandler = value;
-				this.registry[typeof(SymbolTableHandler)] = value;
+				symbolTableHandler = value;
+				registry[typeof(SymbolTableHandler)] = value;
 			}
 		}
 
@@ -66,8 +65,8 @@ namespace org.maltparser.parser
 			}
 			set
 			{
-				this.dataFormatInstance = value;
-				this.registry[typeof(DataFormatInstance)] = value;
+				dataFormatInstance = value;
+				registry[typeof(DataFormatInstance)] = value;
 			}
 		}
 
@@ -79,8 +78,8 @@ namespace org.maltparser.parser
 
 		public virtual void setAbstractParserFeatureFactory(AbstractParserFactory _abstractParserFactory)
 		{
-			this.registry[typeof(org.maltparser.parser.AbstractParserFactory)] = _abstractParserFactory;
-			this.abstractParserFactory = _abstractParserFactory;
+			registry[typeof(AbstractParserFactory)] = _abstractParserFactory;
+			abstractParserFactory = _abstractParserFactory;
 		}
 
 		public virtual AlgoritmInterface Algorithm
@@ -91,8 +90,8 @@ namespace org.maltparser.parser
 			}
 			set
 			{
-				this.registry[typeof(org.maltparser.parser.AlgoritmInterface)] = value;
-				this.algorithm = value;
+				registry[typeof(AlgoritmInterface)] = value;
+				algorithm = value;
 			}
 		}
 

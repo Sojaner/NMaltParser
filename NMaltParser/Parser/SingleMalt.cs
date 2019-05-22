@@ -4,26 +4,18 @@ using System.IO;
 
 namespace org.maltparser.parser
 {
-
-	using  org.apache.log4j;
-	using  org.apache.log4j;
-	using  org.apache.log4j;
-	using  org.apache.log4j;
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature.system;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.plugin;
-	using  org.maltparser.core.propagation;
-	using  org.maltparser.core.propagation;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.guide;
+    using  core.config;
+    using  core.exception;
+	using  core.feature;
+	using  core.feature.system;
+	using  core.helper;
+    using  core.io.dataformat;
+	using  core.options;
+	using  core.plugin;
+	using  core.propagation;
+    using  core.symbol;
+	using  core.syntaxgraph;
+	using  guide;
 
 	/// <summary>
 	/// @author Johan Hall
@@ -31,7 +23,7 @@ namespace org.maltparser.parser
 	/// </summary>
 	public class SingleMalt : DependencyParserConfig
 	{
-		public static readonly Type[] paramTypes = new Type[] {typeof(org.maltparser.parser.DependencyParserConfig)};
+		public static readonly Type[] paramTypes = new Type[] {typeof(DependencyParserConfig)};
 		public const int LEARN = 0;
 		public const int PARSE = 1;
 		protected internal ConfigurationDir configDir;
@@ -55,15 +47,15 @@ namespace org.maltparser.parser
 //ORIGINAL LINE: public void initialize(int containerIndex, org.maltparser.core.io.dataformat.DataFormatInstance dataFormatInstance, org.maltparser.core.symbol.SymbolTableHandler symbolTableHandler, org.maltparser.core.config.ConfigurationDir configDir, int mode) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void initialize(int containerIndex, DataFormatInstance dataFormatInstance, SymbolTableHandler symbolTableHandler, ConfigurationDir configDir, int mode)
 		{
-			this.optionContainerIndex = containerIndex;
+			optionContainerIndex = containerIndex;
 			this.mode = mode;
 			ConfigurationDir = configDir;
 			startTime = DateTimeHelper.CurrentUnixTimeMillis();
 			configLogger = initConfigLogger(getOptionValue("config", "logfile").ToString(), getOptionValue("config", "logging").ToString());
 			this.dataFormatInstance = dataFormatInstance;
 			this.symbolTableHandler = symbolTableHandler;
-			this.parserFactory = makeParserFactory();
-			if (mode == SingleMalt.LEARN)
+			parserFactory = makeParserFactory();
+			if (mode == LEARN)
 			{
 				checkOptionDependency();
 			}
@@ -119,12 +111,12 @@ namespace org.maltparser.parser
 		private void initPropagation()
 		{
 			string propagationSpecFileName = getOptionValue("singlemalt", "propagation").ToString();
-			if (string.ReferenceEquals(propagationSpecFileName, null) || propagationSpecFileName.Length == 0)
+			if (ReferenceEquals(propagationSpecFileName, null) || propagationSpecFileName.Length == 0)
 			{
 				return;
 			}
 			propagationManager = new PropagationManager();
-			if (mode == SingleMalt.LEARN)
+			if (mode == LEARN)
 			{
 				propagationSpecFileName = configDir.copyToConfig(propagationSpecFileName);
 				OptionManager.instance().overloadOptionValue(optionContainerIndex, "singlemalt", "propagation", propagationSpecFileName);
@@ -361,7 +353,7 @@ namespace org.maltparser.parser
 //ORIGINAL LINE: public org.apache.log4j.Logger initConfigLogger(String logfile, String level) throws org.maltparser.core.exception.MaltChainedException
 		public virtual Logger initConfigLogger(string logfile, string level)
 		{
-			if (!string.ReferenceEquals(logfile, null) && logfile.Length > 0 && !logfile.Equals("stdout", StringComparison.OrdinalIgnoreCase) && configDir != null)
+			if (!ReferenceEquals(logfile, null) && logfile.Length > 0 && !logfile.Equals("stdout", StringComparison.OrdinalIgnoreCase) && configDir != null)
 			{
 				configLogger = Logger.getLogger(logfile);
 				FileAppender fileAppender = null;
@@ -453,7 +445,7 @@ namespace org.maltparser.parser
 			}
 			set
 			{
-				this.configDir = value;
+				configDir = value;
 			}
 		}
 
@@ -544,7 +536,7 @@ namespace org.maltparser.parser
 				StreamReader @in = new StreamReader(getInputStreamFromConfigFileEntry(fileName), Encoding.UTF8);
 				string line;
 
-				while (!string.ReferenceEquals((line = @in.ReadLine()), null))
+				while (!ReferenceEquals((line = @in.ReadLine()), null))
 				{
 					 sb.Append(line);
 					 sb.Append('\n');
@@ -707,7 +699,7 @@ namespace org.maltparser.parser
 				string coveredRoot = getOptionValue("pproj", "covered_root").ToString().Trim();
 				StringBuilder newDecisionSettings = new StringBuilder();
 
-				if (string.ReferenceEquals(decisionSettings, null) || decisionSettings.Length < 1 || decisionSettings.Equals("default"))
+				if (ReferenceEquals(decisionSettings, null) || decisionSettings.Length < 1 || decisionSettings.Equals("default"))
 				{
 					decisionSettings = "T.TRANS+A.DEPREL";
 				}

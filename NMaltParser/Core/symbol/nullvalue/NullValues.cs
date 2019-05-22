@@ -4,9 +4,7 @@ using System.Text;
 
 namespace org.maltparser.core.symbol.nullvalue
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
+    using  helper;
 
 	/// 
 	/// 
@@ -50,7 +48,7 @@ namespace org.maltparser.core.symbol.nullvalue
 		{
 			set
 			{
-				this.table = value;
+				table = value;
 			}
 			get
 			{
@@ -67,7 +65,7 @@ namespace org.maltparser.core.symbol.nullvalue
 			}
 			set
 			{
-				this.nullValueStrategy = value;
+				nullValueStrategy = value;
 			}
 		}
 
@@ -85,7 +83,7 @@ namespace org.maltparser.core.symbol.nullvalue
 			}
 			set
 			{
-				this.nextCode = value;
+				nextCode = value;
 			}
 		}
 
@@ -101,7 +99,7 @@ namespace org.maltparser.core.symbol.nullvalue
 
 		public virtual bool isNullValue(string symbol)
 		{
-			if (string.ReferenceEquals(symbol, null) || symbol.Length == 0 || symbol[0] != '#')
+			if (ReferenceEquals(symbol, null) || symbol.Length == 0 || symbol[0] != '#')
 			{
 				return false;
 			}
@@ -178,7 +176,7 @@ namespace org.maltparser.core.symbol.nullvalue
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

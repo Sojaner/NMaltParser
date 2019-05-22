@@ -2,9 +2,7 @@
 
 namespace org.maltparser.core.config
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
+    using  symbol;
 
 	/// 
 	/// 

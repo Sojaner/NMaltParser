@@ -5,16 +5,13 @@ using System.Text;
 namespace org.maltparser.core.lw.parser
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature.value;
+	using  exception;
+	using  feature;
+    using  feature.value;
 	using  org.maltparser.core.helper;
 	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.container.TableContainer;
 
-	/// <summary>
+    /// <summary>
 	/// A lightweight version of the decision models, the guide model and the instance models located in org.maltparser.parser.guide.{decision,instance} and
 	/// can only be used in parsing mode. It is also limited to predict at most two decisions.
 	/// 
@@ -27,8 +24,8 @@ namespace org.maltparser.core.lw.parser
 
 		public LWDecisionModel(McoModel mcoModel, bool _excludeNullValues, string _classifierName)
 		{
-			this.classifierName = _classifierName;
-			this.classifiers = new HashMap<string, LWClassifier>();
+			classifierName = _classifierName;
+			classifiers = new HashMap<string, LWClassifier>();
 			ISet<string> mcoEntryObjectKeys = mcoModel.McoEntryObjectKeys;
 			foreach (string key in mcoEntryObjectKeys)
 			{

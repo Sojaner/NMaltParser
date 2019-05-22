@@ -3,14 +3,12 @@ using System.Text;
 
 namespace org.maltparser.core.syntaxgraph
 {
+    using  helper;
+	using  pool;
+	using  symbol;
+	using  node;
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.pool;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -215,7 +213,7 @@ namespace org.maltparser.core.syntaxgraph
 			}
 			set
 			{
-				this.sentenceID = value;
+				sentenceID = value;
 			}
 		}
 

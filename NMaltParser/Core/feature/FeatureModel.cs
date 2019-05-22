@@ -4,19 +4,12 @@ using System.Text;
 
 namespace org.maltparser.core.feature
 {
+    using  function;
+    using  spec;
+    using  system;
 
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.spec;
-	using  org.maltparser.core.feature.spec;
-	using  org.maltparser.core.feature.system;
-	using  org.maltparser.core.helper;
-
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -39,11 +32,11 @@ namespace org.maltparser.core.feature
 //ORIGINAL LINE: public FeatureModel(org.maltparser.core.feature.spec.SpecificationModel _specModel, FeatureRegistry _registry, org.maltparser.core.feature.system.FeatureEngine _engine, String dataSplitColumn, String dataSplitStructure) throws org.maltparser.core.exception.MaltChainedException
 		public FeatureModel(SpecificationModel _specModel, FeatureRegistry _registry, FeatureEngine _engine, string dataSplitColumn, string dataSplitStructure)
 		{
-			this.specModel = _specModel;
-			this.registry = _registry;
-			this.featureEngine = _engine;
-			this.addressFunctionCache = new List<AddressFunction>();
-			this.featureFunctionCache = new List<FeatureFunction>();
+			specModel = _specModel;
+			registry = _registry;
+			featureEngine = _engine;
+			addressFunctionCache = new List<AddressFunction>();
+			featureFunctionCache = new List<FeatureFunction>();
 			FeatureVector tmpMainFeatureVector = null;
 			foreach (SpecificationSubModel subModel in specModel)
 			{
@@ -65,8 +58,8 @@ namespace org.maltparser.core.feature
 					put(subModel.SubModelName, fv);
 				}
 			}
-			this.mainFeatureVector = tmpMainFeatureVector;
-			if (!string.ReferenceEquals(dataSplitColumn, null) && dataSplitColumn.Length > 0 && !string.ReferenceEquals(dataSplitStructure, null) && dataSplitStructure.Length > 0)
+			mainFeatureVector = tmpMainFeatureVector;
+			if (!ReferenceEquals(dataSplitColumn, null) && dataSplitColumn.Length > 0 && !ReferenceEquals(dataSplitStructure, null) && dataSplitStructure.Length > 0)
 			{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final StringBuilder sb = new StringBuilder();
@@ -76,9 +69,9 @@ namespace org.maltparser.core.feature
 				sb.Append(", ");
 				sb.Append(dataSplitStructure);
 				sb.Append(')');
-				this.divideFeatureFunction = identifyFeature(sb.ToString());
+				divideFeatureFunction = identifyFeature(sb.ToString());
 	//			this.divideFeatureIndexVectorMap = new HashMap<String,ArrayList<Integer>>();
-				this.divideFeatureIndexVector = new List<int>();
+				divideFeatureIndexVector = new List<int>();
 
 				for (int i = 0; i < mainFeatureVector.Count; i++)
 				{
@@ -107,9 +100,9 @@ namespace org.maltparser.core.feature
 			}
 			else
 			{
-				this.divideFeatureFunction = null;
+				divideFeatureFunction = null;
 	//			this.divideFeatureIndexVectorMap = null;
-				this.divideFeatureIndexVector = null;
+				divideFeatureIndexVector = null;
 			}
 		}
 
@@ -302,7 +295,7 @@ namespace org.maltparser.core.feature
 						{
 							objects.Push(int.Parse(@object));
 						}
-						catch (System.FormatException e)
+						catch (FormatException e)
 						{
 							throw new FeatureException("The function '" + function.GetType() + "' cannot be initialized with argument '" + @object + "'" + ", expect an integer value. ", e);
 						}
@@ -321,7 +314,7 @@ namespace org.maltparser.core.feature
 						{
 							objects.Push(double.Parse(@object));
 						}
-						catch (System.FormatException e)
+						catch (FormatException e)
 						{
 							throw new FeatureException("The function '" + function.GetType() + "' cannot be initialized with argument '" + @object + "'" + ", expect a numeric value. ", e);
 						}

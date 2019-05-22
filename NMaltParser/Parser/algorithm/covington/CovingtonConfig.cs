@@ -3,10 +3,8 @@ using System.Text;
 
 namespace org.maltparser.parser.algorithm.covington
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  core.syntaxgraph;
+	using  core.syntaxgraph.node;
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -28,8 +26,8 @@ namespace org.maltparser.parser.algorithm.covington
 		public CovingtonConfig(bool cr, bool cs) : base()
 		{
 			input = new List<DependencyNode>();
-			this.allowRoot = cr;
-			this.allowShift = cs;
+			allowRoot = cr;
+			allowShift = cs;
 		}
 
 		public virtual DependencyStructure DependencyStructure
@@ -64,7 +62,7 @@ namespace org.maltparser.parser.algorithm.covington
 			}
 			set
 			{
-				this.right = value;
+				right = value;
 			}
 		}
 
@@ -77,7 +75,7 @@ namespace org.maltparser.parser.algorithm.covington
 			}
 			set
 			{
-				this.left = value;
+				left = value;
 			}
 		}
 
@@ -227,7 +225,7 @@ namespace org.maltparser.parser.algorithm.covington
 		{
 			set
 			{
-				this.dependencyGraph = value;
+				dependencyGraph = value;
 		//		dependencyGraph.clear();
 		//		for (int index : value.getTokenIndices()) {
 		//			DependencyNode gnode = value.getDependencyNode(index);
@@ -342,7 +340,7 @@ namespace org.maltparser.parser.algorithm.covington
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

@@ -3,12 +3,10 @@ using System.Collections.Generic;
 
 namespace org.maltparser.core.lw.graph
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  symbol;
+	using  syntaxgraph;
+	using  syntaxgraph.edge;
+	using  syntaxgraph.node;
 
 	/// <summary>
 	/// A lightweight version of pseudo projectivity and this class can only perform deprojectivizing. The class is based on 
@@ -34,29 +32,29 @@ namespace org.maltparser.core.lw.graph
 		{
 			if (markingStrategyString.Equals("none", StringComparison.OrdinalIgnoreCase))
 			{
-				return LWDeprojectivizer.NONE;
+				return NONE;
 			}
 			else if (markingStrategyString.Equals("baseline", StringComparison.OrdinalIgnoreCase))
 			{
-				return LWDeprojectivizer.BASELINE;
+				return BASELINE;
 			}
 			else if (markingStrategyString.Equals("head", StringComparison.OrdinalIgnoreCase))
 			{
-				return LWDeprojectivizer.HEAD;
+				return HEAD;
 			}
 			else if (markingStrategyString.Equals("path", StringComparison.OrdinalIgnoreCase))
 			{
-				return LWDeprojectivizer.PATH;
+				return PATH;
 			}
 			else if (markingStrategyString.Equals("head+path", StringComparison.OrdinalIgnoreCase))
 			{
-				return LWDeprojectivizer.HEADPATH;
+				return HEADPATH;
 			}
 			else if (markingStrategyString.Equals("trace", StringComparison.OrdinalIgnoreCase))
 			{
-				return LWDeprojectivizer.TRACE;
+				return TRACE;
 			}
-			return LWDeprojectivizer.NONE;
+			return NONE;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -95,15 +93,15 @@ namespace org.maltparser.core.lw.graph
 				}
 			}
 			deattachCoveredRootsForDeprojectivization(pdg, deprelSymbolTable);
-			if (markingStrategy == LWDeprojectivizer.HEAD && needsDeprojectivizeWithHead(pdg, nodeLifted, nodePath, synacticHeadDeprel, deprelSymbolTable))
+			if (markingStrategy == HEAD && needsDeprojectivizeWithHead(pdg, nodeLifted, nodePath, synacticHeadDeprel, deprelSymbolTable))
 			{
 				deprojectivizeWithHead(pdg, pdg.DependencyRoot, nodeLifted, nodePath, synacticHeadDeprel, deprelSymbolTable);
 			}
-			else if (markingStrategy == LWDeprojectivizer.PATH)
+			else if (markingStrategy == PATH)
 			{
 				deprojectivizeWithPath(pdg, pdg.DependencyRoot, nodeLifted, nodePath);
 			}
-			else if (markingStrategy == LWDeprojectivizer.HEADPATH)
+			else if (markingStrategy == HEADPATH)
 			{
 				deprojectivizeWithHeadAndPath(pdg, pdg.DependencyRoot, nodeLifted, nodePath, synacticHeadDeprel, deprelSymbolTable);
 			}

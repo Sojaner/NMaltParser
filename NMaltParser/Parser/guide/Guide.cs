@@ -1,7 +1,6 @@
 ﻿namespace org.maltparser.parser.guide
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph;
+    using  core.syntaxgraph;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

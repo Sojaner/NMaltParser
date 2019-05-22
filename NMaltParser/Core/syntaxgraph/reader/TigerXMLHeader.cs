@@ -5,8 +5,8 @@ using System.Text;
 namespace org.maltparser.core.syntaxgraph.reader
 {
 
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.symbol;
+	using  helper;
+	using  symbol;
 	/// 
 	/// 
 	/// <summary>
@@ -69,7 +69,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 		{
 			if (features.containsKey(featureName))
 			{
-				if (string.ReferenceEquals(desc, null) || desc.Length == 0)
+				if (ReferenceEquals(desc, null) || desc.Length == 0)
 				{
 					features.get(featureName).addValue(name, "\t");
 				}
@@ -91,7 +91,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			{
 				edgeLabels = new FeatureEdgeLabel(this, "edgelabel", Domain.EL);
 			}
-			if (string.ReferenceEquals(desc, null) || desc.Length == 0)
+			if (ReferenceEquals(desc, null) || desc.Length == 0)
 			{
 				edgeLabels.addValue(name, "\t");
 			}
@@ -112,7 +112,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			{
 				secEdgeLabels = new FeatureEdgeLabel(this, "secedgelabel", Domain.SEL);
 			}
-			if (string.ReferenceEquals(desc, null) || desc.Length == 0)
+			if (ReferenceEquals(desc, null) || desc.Length == 0)
 			{
 				secEdgeLabels.addValue(name, "\t");
 			}
@@ -130,7 +130,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.corpusID = value;
+				corpusID = value;
 			}
 		}
 
@@ -143,7 +143,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.corpusVersion = value;
+				corpusVersion = value;
 			}
 		}
 
@@ -152,7 +152,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 		{
 			set
 			{
-				this.external = value;
+				external = value;
 			}
 			get
 			{
@@ -197,7 +197,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.metaName = value;
+				metaName = value;
 			}
 		}
 
@@ -210,7 +210,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.metaAuthor = value;
+				metaAuthor = value;
 			}
 		}
 
@@ -223,7 +223,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.metaDescription = value;
+				metaDescription = value;
 			}
 		}
 
@@ -236,7 +236,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.metaInDate = value;
+				metaInDate = value;
 			}
 		}
 
@@ -262,7 +262,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.metaFormat = value;
+				metaFormat = value;
 			}
 		}
 
@@ -275,7 +275,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.metaHistory = value;
+				metaHistory = value;
 			}
 		}
 
@@ -294,16 +294,16 @@ namespace org.maltparser.core.syntaxgraph.reader
 //ORIGINAL LINE: final StringBuilder sb = new StringBuilder();
 			StringBuilder sb = new StringBuilder();
 
-			if (string.ReferenceEquals(CorpusVersion, null))
+			if (ReferenceEquals(CorpusVersion, null))
 			{
 				sb.Append("<corpus id=\"");
-				sb.Append(((string.ReferenceEquals(CorpusID, null))?"GeneratedByMaltParser":CorpusID));
+				sb.Append(((ReferenceEquals(CorpusID, null))?"GeneratedByMaltParser":CorpusID));
 				sb.Append("\">\n");
 			}
 			else
 			{
 				sb.Append("<corpus id=\"");
-				sb.Append(((string.ReferenceEquals(CorpusID, null))?"GeneratedByMaltParser":CorpusID));
+				sb.Append(((ReferenceEquals(CorpusID, null))?"GeneratedByMaltParser":CorpusID));
 				sb.Append("\" version=\"");
 				sb.Append(CorpusVersion);
 				sb.Append("\">\n");
@@ -311,7 +311,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			sb.Append("  <head>\n");
 			sb.Append("    <meta>\n");
 			sb.Append("      <name>");
-			sb.Append(((string.ReferenceEquals(MetaName, null))?"GeneratedByMaltParser":Util.xmlEscape(MetaName)));
+			sb.Append(((ReferenceEquals(MetaName, null))?"GeneratedByMaltParser":Util.xmlEscape(MetaName)));
 			sb.Append("</name>\n");
 			sb.Append("      <author>MaltParser</author>\n");
 			sb.Append("      <date>");
@@ -392,7 +392,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 				}
 				set
 				{
-					this.name = value;
+					name = value;
 				}
 			}
 
@@ -428,7 +428,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 				}
 				set
 				{
-					this.table = value;
+					table = value;
 				}
 			}
 

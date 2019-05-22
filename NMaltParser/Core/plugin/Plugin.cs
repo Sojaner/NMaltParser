@@ -3,7 +3,7 @@
 namespace org.maltparser.core.plugin
 {
 
-	using  org.maltparser.core.exception;
+	using  exception;
 
 	/// <summary>
 	/// The class Plugin contains information about a plug-in that comply to the the MaltParser Plugin Standard.
@@ -69,7 +69,7 @@ namespace org.maltparser.core.plugin
 			{
 				Attributes atts = archive.Manifest.MainAttributes;
 				pluginName = atts.getValue("Plugin-Name");
-				if (string.ReferenceEquals(pluginName, null))
+				if (ReferenceEquals(pluginName, null))
 				{
 					pluginName = archive.Name;
 				}
@@ -92,7 +92,7 @@ namespace org.maltparser.core.plugin
 			}
 			set
 			{
-				this.archive = value;
+				archive = value;
 			}
 		}
 		/// <summary>
@@ -107,7 +107,7 @@ namespace org.maltparser.core.plugin
 			}
 			set
 			{
-				this.pluginName = value;
+				pluginName = value;
 			}
 		}
 
@@ -123,7 +123,7 @@ namespace org.maltparser.core.plugin
 			}
 			set
 			{
-				this.url = value;
+				url = value;
 			}
 		}
 

@@ -1,7 +1,7 @@
 ﻿namespace org.maltparser.core.syntaxgraph
 {
 
-	using  org.maltparser.core.symbol;
+	using  symbol;
 	/// 
 	/// 
 	/// <summary>

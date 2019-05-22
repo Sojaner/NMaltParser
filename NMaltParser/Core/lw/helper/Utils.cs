@@ -5,13 +5,10 @@ using System.IO;
 
 namespace org.maltparser.core.lw.helper
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  io.dataformat;
+    using  symbol;
+	using  syntaxgraph;
+	using  syntaxgraph.node;
 
 	/// <summary>
 	/// @author Johan Hall
@@ -128,7 +125,7 @@ namespace org.maltparser.core.lw.helper
 					{
 						index = fileName.IndexOf('\\');
 					}
-					if (string.ReferenceEquals(internalParserModelName, null))
+					if (ReferenceEquals(internalParserModelName, null))
 					{
 						internalParserModelName = fileName.Substring(0, index);
 						break;

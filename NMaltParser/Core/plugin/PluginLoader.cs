@@ -4,7 +4,7 @@ using System.Text;
 
 namespace org.maltparser.core.plugin
 {
-	using  org.maltparser.core.exception;
+	using  exception;
 
 	/// <summary>
 	/// Loads MaltParser plug-ins and makes new instances of classes within these plug-ins. 
@@ -49,7 +49,7 @@ namespace org.maltparser.core.plugin
 //ORIGINAL LINE: public void loadPlugins(java.io.File pluginDirectory) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void loadPlugins(File pluginDirectory)
 		{
-			this.loadPlugins(new File[] {pluginDirectory});
+			loadPlugins(new File[] {pluginDirectory});
 		}
 
 		/// <summary>
@@ -173,7 +173,7 @@ namespace org.maltparser.core.plugin
 				}
 				else
 				{
-					o = System.Activator.CreateInstance(clazz);
+					o = Activator.CreateInstance(clazz);
 				}
 				return o;
 			}

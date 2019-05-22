@@ -4,22 +4,18 @@ using System.Text;
 namespace org.maltparser.parser
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.propagation;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.parser.history;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.container;
-	using  org.maltparser.parser.transition;
-	using  org.maltparser.parser.transition;
-	/// <summary>
+	using  core.exception;
+	using  core.helper;
+	using  core.propagation;
+	using  core.symbol;
+    using  core.syntaxgraph;
+    using  core.syntaxgraph.edge;
+	using  history;
+	using  history.action;
+	using  history.container;
+	using  transition;
+
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>
@@ -38,9 +34,9 @@ namespace org.maltparser.parser
 //ORIGINAL LINE: public TransitionSystem(org.maltparser.core.propagation.PropagationManager _propagationManager) throws org.maltparser.core.exception.MaltChainedException
 		public TransitionSystem(PropagationManager _propagationManager)
 		{
-			this.transitionTableHandler = new TransitionTableHandler();
-			this.tableHandlers = new HashMap<string, TableHandler>();
-			this.propagationManager = _propagationManager;
+			transitionTableHandler = new TransitionTableHandler();
+			tableHandlers = new HashMap<string, TableHandler>();
+			propagationManager = _propagationManager;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -144,7 +140,7 @@ namespace org.maltparser.parser
 //ORIGINAL LINE: public void initTransitionSystem(org.maltparser.parser.history.GuideUserHistory history) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void initTransitionSystem(GuideUserHistory history)
 		{
-			this.actionContainers = history.ActionContainerArray;
+			actionContainers = history.ActionContainerArray;
 			if (actionContainers.Length < 1)
 			{
 				throw new ParsingException("Problem when initialize the history (sequence of actions). There are no action containers. ");

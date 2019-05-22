@@ -7,13 +7,9 @@ using System.IO;
 namespace org.maltparser
 {
 
-	using  org.maltparser.concurrent;
-	using  org.maltparser.concurrent;
-	using  org.maltparser.concurrent;
-	using  org.maltparser.concurrent;
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.options;
+	using  concurrent;
+    using  core.config;
+    using  core.options;
 
 	public class ConcurrentEngine
 	{
@@ -82,7 +78,7 @@ namespace org.maltparser
 		public virtual File getWorkingDirectory(string path)
 		{
 			File workingDirectory;
-			if (string.ReferenceEquals(path, null) || path.Equals("user.dir", StringComparison.OrdinalIgnoreCase) || path.Equals(".", StringComparison.OrdinalIgnoreCase))
+			if (ReferenceEquals(path, null) || path.Equals("user.dir", StringComparison.OrdinalIgnoreCase) || path.Equals(".", StringComparison.OrdinalIgnoreCase))
 			{
 				workingDirectory = new File(System.getProperty("user.dir"));
 			}

@@ -5,10 +5,9 @@ using System.Text;
 namespace org.maltparser.concurrent.graph
 {
 
-	using  org.maltparser.concurrent.graph.dataformat;
-	using  org.maltparser.concurrent.graph.dataformat;
+	using  dataformat;
 
-	/// <summary>
+    /// <summary>
 	/// Immutable and tread-safe dependency node implementation.
 	/// 
 	/// @author Johan Hall
@@ -34,10 +33,10 @@ namespace org.maltparser.concurrent.graph
 			{
 				throw new ConcurrentGraphException("The graph node must belong to a dependency graph.");
 			}
-			this.graph = _graph;
-			this.index = node.index;
-			this.labels = new SortedDictionary<int, string>(node.labels);
-			this.headIndex = node.headIndex;
+			graph = _graph;
+			index = node.index;
+			labels = new SortedDictionary<int, string>(node.labels);
+			headIndex = node.headIndex;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -64,10 +63,10 @@ namespace org.maltparser.concurrent.graph
 			{
 				throw new ConcurrentGraphException("Not allowed to add head to itself");
 			}
-			this.graph = _graph;
-			this.index = _index;
-			this.labels = new SortedDictionary<int, string>(_labels);
-			this.headIndex = _headIndex;
+			graph = _graph;
+			index = _index;
+			labels = new SortedDictionary<int, string>(_labels);
+			headIndex = _headIndex;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -82,9 +81,9 @@ namespace org.maltparser.concurrent.graph
 			{
 				throw new ConcurrentGraphException("Not allowed to have negative node index");
 			}
-			this.graph = _graph;
-			this.index = _index;
-			this.labels = new SortedDictionary<int, string>();
+			graph = _graph;
+			index = _index;
+			labels = new SortedDictionary<int, string>();
 
 			int tmpHeadIndex = -1;
 			if (_labels != null)
@@ -98,20 +97,20 @@ namespace org.maltparser.concurrent.graph
 					}
 					else if (columnCategory == ColumnDescription.INPUT || columnCategory == ColumnDescription.DEPENDENCY_EDGE_LABEL)
 					{
-						this.labels[i] = _labels[i];
+						labels[i] = _labels[i];
 					}
 				}
 			}
-			this.headIndex = tmpHeadIndex;
-			if (this.headIndex < -1)
+			headIndex = tmpHeadIndex;
+			if (headIndex < -1)
 			{
 				throw new ConcurrentGraphException("Not allowed to have head index less than -1.");
 			}
-			if (this.index == 0 && this.headIndex != -1)
+			if (index == 0 && headIndex != -1)
 			{
 				throw new ConcurrentGraphException("Not allowed to add head to a root node.");
 			}
-			if (this.index == this.headIndex)
+			if (index == headIndex)
 			{
 				throw new ConcurrentGraphException("Not allowed to add head to itself");
 			}
@@ -125,7 +124,7 @@ namespace org.maltparser.concurrent.graph
 		{
 			get
 			{
-				return this.index;
+				return index;
 			}
 		}
 
@@ -750,7 +749,7 @@ namespace org.maltparser.concurrent.graph
 		{
 			get
 			{
-				if (!this.hasHead())
+				if (!hasHead())
 				{
 					return this;
 				}
@@ -768,7 +767,7 @@ namespace org.maltparser.concurrent.graph
 		{
 			get
 			{
-				if (!this.hasHead())
+				if (!hasHead())
 				{
 					return null;
 				}
@@ -1069,7 +1068,7 @@ namespace org.maltparser.concurrent.graph
 			get
 			{
 				ConcurrentDependencyNode node = LeftmostDescendant;
-				return (node != null)?node.Index:this.Index;
+				return (node != null)?node.Index:Index;
 			}
 		}
 
@@ -1082,7 +1081,7 @@ namespace org.maltparser.concurrent.graph
 			get
 			{
 				ConcurrentDependencyNode node = RightmostDescendant;
-				return (node != null)?node.Index:this.Index;
+				return (node != null)?node.Index:Index;
 			}
 		}
 
@@ -1158,11 +1157,11 @@ namespace org.maltparser.concurrent.graph
 			{
 				return EQUAL;
 			}
-			if (this.index < that.Index)
+			if (index < that.Index)
 			{
 				return BEFORE;
 			}
-			if (this.index > that.Index)
+			if (index > that.Index)
 			{
 				return AFTER;
 			}
@@ -1189,7 +1188,7 @@ namespace org.maltparser.concurrent.graph
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

@@ -2,9 +2,7 @@
 
 namespace org.maltparser.parser.history.action
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.parser.history.container;
+    using  container;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

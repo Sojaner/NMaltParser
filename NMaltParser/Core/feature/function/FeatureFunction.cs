@@ -1,8 +1,8 @@
 ﻿namespace org.maltparser.core.feature.function
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.symbol;
+	using  exception;
+	using  value;
+	using  symbol;
 	/// 
 	/// 
 	/// <summary>

@@ -45,7 +45,7 @@ namespace org.maltparser.parser.history.kbest
 		public override void reset()
 		{
 			base.reset();
-			this.score = Float.NaN;
+			score = Float.NaN;
 		}
 
 		/* (non-Javadoc)
@@ -61,7 +61,7 @@ namespace org.maltparser.parser.history.kbest
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

@@ -5,13 +5,12 @@ using System.IO;
 namespace org.maltparser.concurrent.graph
 {
 
-	using  org.maltparser.concurrent.graph.dataformat;
-	using  org.maltparser.concurrent.graph.dataformat;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol.hash;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
+	using  dataformat;
+    using  core.exception;
+	using  core.symbol.hash;
+	using  core.syntaxgraph;
+	using  core.syntaxgraph.edge;
+	using  core.syntaxgraph.node;
 
 	/// 
 	/// <summary>
@@ -24,7 +23,7 @@ namespace org.maltparser.concurrent.graph
 //ORIGINAL LINE: public static org.maltparser.core.syntaxgraph.DependencyStructure getOldDependencyGraph(org.maltparser.concurrent.graph.dataformat.DataFormat dataFormat, String[] tokens) throws org.maltparser.core.exception.MaltChainedException
 		public static DependencyStructure getOldDependencyGraph(DataFormat dataFormat, string[] tokens)
 		{
-			DependencyStructure oldGraph = new org.maltparser.core.syntaxgraph.DependencyGraph(new HashSymbolTableHandler());
+			DependencyStructure oldGraph = new DependencyGraph(new HashSymbolTableHandler());
 			for (int i = 0; i < tokens.Length; i++)
 			{
 				oldGraph.addDependencyNode(i + 1);

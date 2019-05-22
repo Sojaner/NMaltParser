@@ -2,10 +2,9 @@
 
 namespace org.maltparser.core.syntaxgraph.feature
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.function;
+    using  org.maltparser.core.feature.function;
 	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.syntaxgraph.node;
+	using  node;
 	/// 
 	/// 
 	/// <summary>
@@ -37,8 +36,8 @@ namespace org.maltparser.core.syntaxgraph.feature
 
 		public DGraphAddressFunction(string _subFunctionName) : base()
 		{
-			this.subFunctionName = _subFunctionName;
-			this.subFunction = Enum.Parse(typeof(DGraphSubFunction), subFunctionName.ToUpper());
+			subFunctionName = _subFunctionName;
+			subFunction = Enum.Parse(typeof(DGraphSubFunction), subFunctionName.ToUpper());
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -53,7 +52,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			{
 				throw new SyntaxGraphException("Could not initialize DGraphAddressFunction: the second argument is not an addres function. ");
 			}
-			this.addressFunction = (AddressFunction)arguments[0];
+			addressFunction = (AddressFunction)arguments[0];
 		}
 
 		public override Type[] ParameterTypes
@@ -198,7 +197,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

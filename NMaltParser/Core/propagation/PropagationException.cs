@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.propagation
 {
-	using  org.maltparser.core.exception;
+	using  exception;
 
 	/// <summary>
 	///  PropagationException extends the MaltChainedException class and is thrown by classes

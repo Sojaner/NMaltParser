@@ -6,12 +6,11 @@ namespace org.maltparser.parser.guide.instance
 {
 
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.history.action;
+	using  core.exception;
+	using  core.feature;
+    using  core.feature.value;
+	using  core.syntaxgraph;
+	using  history.action;
 
 	/// <summary>
 	/// The feature divide model is used for divide the training instances into several models according to
@@ -43,7 +42,7 @@ namespace org.maltparser.parser.guide.instance
 	//		this.masterFeatureVector = featureVector;
 
 			string data_split_threshold = Guide.Configuration.getOptionValue("guide", "data_split_threshold").ToString().Trim();
-			if (!string.ReferenceEquals(data_split_threshold, null))
+			if (!ReferenceEquals(data_split_threshold, null))
 			{
 				try
 				{
@@ -59,11 +58,11 @@ namespace org.maltparser.parser.guide.instance
 				divideThreshold = 0;
 			}
 			divideModels = new SortedDictionary<int, AtomicModel>();
-			if (Guide.GuideMode == org.maltparser.parser.guide.ClassifierGuide_GuideMode.BATCH)
+			if (Guide.GuideMode == ClassifierGuide_GuideMode.BATCH)
 			{
 				masterModel = new AtomicModel(-1, this);
 			}
-			else if (Guide.GuideMode == org.maltparser.parser.guide.ClassifierGuide_GuideMode.CLASSIFY)
+			else if (Guide.GuideMode == ClassifierGuide_GuideMode.CLASSIFY)
 			{
 				load();
 			}
@@ -348,7 +347,7 @@ namespace org.maltparser.parser.guide.instance
 			}
 			set
 			{
-				this.frequency = value;
+				frequency = value;
 			}
 		}
 

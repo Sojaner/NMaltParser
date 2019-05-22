@@ -1,11 +1,9 @@
 ﻿namespace org.maltparser.parser.transition
 {
+    using  core.helper;
+	using  core.symbol;
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// 

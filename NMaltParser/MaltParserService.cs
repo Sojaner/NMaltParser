@@ -4,20 +4,16 @@ using System.Text;
 namespace org.maltparser
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.flow;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol.hash;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.parser;
+	using  core.exception;
+	using  core.flow;
+	using  core.io.dataformat;
+    using  core.options;
+	using  core.symbol;
+    using  core.symbol.hash;
+	using  core.syntaxgraph;
+    using  core.syntaxgraph.edge;
+	using  core.syntaxgraph.node;
+	using  parser;
 
 	/// <summary>
 	/// The purpose of MaltParserService is to easily write third-party programs that uses MaltParser. 
@@ -80,12 +76,12 @@ namespace org.maltparser
 		{
 			if (optionFreeInitialization == false)
 			{
-				this.optionContainer = 0;
+				optionContainer = 0;
 				initialize();
 			}
 			else
 			{
-				this.optionContainer = -1;
+				optionContainer = -1;
 			}
 		}
 

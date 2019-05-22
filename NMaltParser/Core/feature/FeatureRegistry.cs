@@ -2,8 +2,8 @@
 
 namespace org.maltparser.core.feature
 {
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
+	using  io.dataformat;
+	using  symbol;
 
 	public interface FeatureRegistry
 	{

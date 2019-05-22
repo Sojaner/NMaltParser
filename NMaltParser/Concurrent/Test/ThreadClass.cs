@@ -5,7 +5,7 @@ using System.IO;
 namespace org.maltparser.concurrent.test
 {
 
-	using  org.maltparser.core.exception;
+	using  core.exception;
 
 	/// 
 	/// <summary>
@@ -22,18 +22,18 @@ namespace org.maltparser.concurrent.test
 //ORIGINAL LINE: public ThreadClass(String _charSet, String _inFile, String _outFile, org.maltparser.concurrent.ConcurrentMaltParserModel _model) throws java.net.MalformedURLException
 		public ThreadClass(string _charSet, string _inFile, string _outFile, ConcurrentMaltParserModel _model)
 		{
-			this.charSet = _charSet;
-			this.inURL = (new File(_inFile)).toURI().toURL();
-			this.outFile = new File(_outFile);
-			this.model = _model;
+			charSet = _charSet;
+			inURL = (new File(_inFile)).toURI().toURL();
+			outFile = new File(_outFile);
+			model = _model;
 		}
 
 		public ThreadClass(string _charSet, URL _inUrl, File _outFile, ConcurrentMaltParserModel _model)
 		{
-			this.charSet = _charSet;
-			this.inURL = _inUrl;
-			this.outFile = _outFile;
-			this.model = _model;
+			charSet = _charSet;
+			inURL = _inUrl;
+			outFile = _outFile;
+			model = _model;
 		}
 
 		public virtual void run()
@@ -59,7 +59,7 @@ namespace org.maltparser.concurrent.test
 					sentenceCount++;
 					ConcurrentUtils.writeSentence(outputTokens, writer);
 				}
-				Console.WriteLine("DiffCount: " + diffCount + "/" + sentenceCount + "(ThreadID:" + Thread.CurrentThread.Id + ")");
+				Console.WriteLine("DiffCount: " + diffCount + "/" + sentenceCount + "(ThreadID:" + CurrentThread.Id + ")");
 			}
 			catch (IOException e)
 			{

@@ -3,21 +3,14 @@
 namespace org.maltparser.parser.guide
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.guide.decision;
-	using  org.maltparser.parser.guide.decision;
-	using  org.maltparser.parser.guide.decision;
-	using  org.maltparser.parser.guide.decision;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.container.TableContainer;
+	using  core.exception;
+	using  core.feature;
+    using  core.syntaxgraph;
+	using  decision;
+    using  history.action;
 
 
-	/// <summary>
+    /// <summary>
 	/// The guide is used by a parsing algorithm to predict the next parser action during parsing and to
 	/// add a instance to the training instance set during learning.
 	/// 
@@ -35,7 +28,7 @@ namespace org.maltparser.parser.guide
 //ORIGINAL LINE: public SingleGuide(org.maltparser.parser.AlgoritmInterface algorithm, ClassifierGuide_GuideMode guideMode) throws org.maltparser.core.exception.MaltChainedException
 		public SingleGuide(AlgoritmInterface algorithm, ClassifierGuide_GuideMode guideMode)
 		{
-			this.configuration = algorithm.Manager;
+			configuration = algorithm.Manager;
 			this.guideMode = guideMode;
 
 			string featureModelFileName = Configuration.getOptionValue("guide", "features").ToString().Trim();
@@ -217,7 +210,7 @@ namespace org.maltparser.parser.guide
 			}
 			set
 			{
-				this.guideName = value;
+				guideName = value;
 			}
 		}
 

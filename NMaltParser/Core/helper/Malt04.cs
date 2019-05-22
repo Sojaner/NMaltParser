@@ -2,11 +2,9 @@
 
 namespace org.maltparser.core.helper
 {
-	using  org.apache.log4j;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.symbol;
+    using  io.dataformat;
+	using  options;
+	using  symbol;
 	/// 
 	/// 
 	/// <summary>

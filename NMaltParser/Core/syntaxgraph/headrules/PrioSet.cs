@@ -3,16 +3,11 @@ using System.Text;
 
 namespace org.maltparser.core.syntaxgraph.headrules
 {
+    using  io.dataformat;
+	using  symbol;
+    using  node;
 
-	using  org.apache.log4j;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.headrules.PrioSetMember;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -83,7 +78,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			{
 				throw new HeadRuleException("Could add a member to priority set because the symbol table could be found. ");
 			}
-			return this.addPrioSetMember(table, column, table.addSymbol(symbolString), relationToPrevMember);
+			return addPrioSetMember(table, column, table.addSymbol(symbolString), relationToPrevMember);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -92,10 +87,10 @@ namespace org.maltparser.core.syntaxgraph.headrules
 		{
 			cache.Table = table;
 			cache.SymbolCode = symbolCode;
-			if (!this.Contains(cache))
+			if (!Contains(cache))
 			{
 				PrioSetMember newItem = new PrioSetMember(this, table, column, symbolCode, relationToPrevMember);
-				this.Add(newItem);
+				Add(newItem);
 				return newItem;
 			}
 			return cache;
@@ -110,12 +105,12 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			{
 				foreach (PhraseStructureNode child in nt.Children)
 				{
-					for (int j = 0; j < this.Count; j++)
+					for (int j = 0; j < Count; j++)
 					{
 						match = matchHeadChild(child, this[j]);
 						if (match == true)
 						{
-							if (j + 1 >= this.Count)
+							if (j + 1 >= Count)
 							{
 								return child;
 							}
@@ -132,12 +127,12 @@ namespace org.maltparser.core.syntaxgraph.headrules
 				for (int i = nt.nChildren() - 1; i >= 0; i--)
 				{
 					PhraseStructureNode child = nt.getChild(i);
-					for (int j = 0; j < this.Count; j++)
+					for (int j = 0; j < Count; j++)
 					{
 						match = matchHeadChild(child, this[j]);
 						if (match == true)
 						{
-							if (j + 1 >= this.Count)
+							if (j + 1 >= Count)
 							{
 								return child;
 							}
@@ -187,7 +182,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			}
 			set
 			{
-				this.prioList = value;
+				prioList = value;
 			}
 		}
 
@@ -202,7 +197,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
@@ -221,7 +216,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final StringBuilder sb = new StringBuilder();
 			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < this.Count; i++)
+			for (int i = 0; i < Count; i++)
 			{
 				if (i != 0)
 				{

@@ -1,15 +1,14 @@
 ﻿namespace org.maltparser.parser
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
+	using  core.exception;
+	using  core.feature;
+	using  core.symbol;
+	using  core.syntaxgraph;
 
-	using  org.maltparser.parser.guide;
-	using  org.maltparser.parser.guide;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	/// <summary>
+	using  guide;
+    using  history.action;
+
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>
@@ -21,7 +20,7 @@
 		public DeterministicParser(DependencyParserConfig manager, SymbolTableHandler symbolTableHandler) : base(manager,symbolTableHandler)
 		{
 			registry.Algorithm = this;
-			Guide = new SingleGuide(this, org.maltparser.parser.guide.ClassifierGuide_GuideMode.CLASSIFY);
+			Guide = new SingleGuide(this, ClassifierGuide_GuideMode.CLASSIFY);
 			string featureModelFileName = manager.getOptionValue("guide", "features").ToString().Trim();
 			if (manager.LoggerInfoEnabled)
 			{

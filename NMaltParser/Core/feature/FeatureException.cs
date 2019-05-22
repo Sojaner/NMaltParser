@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.feature
 {
-	using  org.maltparser.core.exception;
+	using  exception;
 
 	/// <summary>
 	///  FeatureException extends the MaltChainedException class and is thrown by classes

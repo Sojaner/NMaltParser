@@ -1,6 +1,6 @@
 ﻿namespace org.maltparser.core.syntaxgraph
 {
-	using  org.maltparser.core.exception;
+	using  exception;
 	/// 
 	/// 
 	/// <summary>

@@ -5,17 +5,14 @@ using System.IO;
 namespace org.maltparser.core.syntaxgraph.reader
 {
 
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.flow;
-	using  org.maltparser.core.flow.item;
-	using  org.maltparser.core.flow.spec;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.symbol;
+	using  config;
+    using  flow;
+	using  flow.item;
+	using  flow.spec;
+	using  helper;
+	using  io.dataformat;
+    using  options;
+	using  symbol;
 
 	public class ReadChartItem : ChartItem
 	{
@@ -61,15 +58,15 @@ namespace org.maltparser.core.syntaxgraph.reader
 				}
 			}
 
-			if (string.ReferenceEquals(idName, null))
+			if (ReferenceEquals(idName, null))
 			{
 				idName = getChartElement("read").Attributes.get("id").DefaultValue;
 			}
-			else if (string.ReferenceEquals(targetName, null))
+			else if (ReferenceEquals(targetName, null))
 			{
 				targetName = getChartElement("read").Attributes.get("target").DefaultValue;
 			}
-			else if (string.ReferenceEquals(optiongroupName, null))
+			else if (ReferenceEquals(optiongroupName, null))
 			{
 				optiongroupName = getChartElement("read").Attributes.get("optiongroup").DefaultValue;
 			}
@@ -113,13 +110,13 @@ namespace org.maltparser.core.syntaxgraph.reader
 			bool moreInput = reader.readSentence(cachedGraph);
 			if (!moreInput)
 			{
-				return ChartItem.TERMINATE;
+				return TERMINATE;
 			}
 			else if (prevIterationCounter < reader.IterationCounter)
 			{
-				return ChartItem.NEWITERATION;
+				return NEWITERATION;
 			}
-			return ChartItem.CONTINUE;
+			return CONTINUE;
 	//		return continueNextSentence && moreInput;
 		}
 
@@ -147,7 +144,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 		{
 			get
 			{
-				if (string.ReferenceEquals(inputFormatName, null))
+				if (ReferenceEquals(inputFormatName, null))
 				{
 					return "/appdata/dataformat/conllx.xml";
 				}
@@ -155,7 +152,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.inputFormatName = value;
+				inputFormatName = value;
 			}
 		}
 
@@ -164,7 +161,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 		{
 			get
 			{
-				if (string.ReferenceEquals(inputFileName, null))
+				if (ReferenceEquals(inputFileName, null))
 				{
 					return "/dev/stdin";
 				}
@@ -172,7 +169,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.inputFileName = value;
+				inputFileName = value;
 			}
 		}
 
@@ -181,7 +178,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 		{
 			get
 			{
-				if (string.ReferenceEquals(inputCharSet, null))
+				if (ReferenceEquals(inputCharSet, null))
 				{
 					return "UTF-8";
 				}
@@ -189,7 +186,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.inputCharSet = value;
+				inputCharSet = value;
 			}
 		}
 
@@ -198,7 +195,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 		{
 			get
 			{
-				if (string.ReferenceEquals(readerOptions, null))
+				if (ReferenceEquals(readerOptions, null))
 				{
 					return "";
 				}
@@ -206,7 +203,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.readerOptions = value;
+				readerOptions = value;
 			}
 		}
 
@@ -220,7 +217,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.iterations = value;
+				iterations = value;
 			}
 		}
 
@@ -237,13 +234,13 @@ namespace org.maltparser.core.syntaxgraph.reader
 				{
 					if (value != null)
 					{
-						this.graphReaderClass = value.asSubclass(typeof(org.maltparser.core.syntaxgraph.reader.SyntaxGraphReader));
+						graphReaderClass = value.asSubclass(typeof(SyntaxGraphReader));
 					}
 				}
-				catch (System.InvalidCastException e)
+				catch (InvalidCastException e)
 				{
 	//JAVA TO C# CONVERTER WARNING: The .NET Type.FullName property will not always yield results identical to the Java Class.getName method:
-					throw new DataFormatException("The class '" + value.FullName + "' is not a subclass of '" + typeof(org.maltparser.core.syntaxgraph.reader.SyntaxGraphReader).FullName + "'. ", e);
+					throw new DataFormatException("The class '" + value.FullName + "' is not a subclass of '" + typeof(SyntaxGraphReader).FullName + "'. ", e);
 				}
 			}
 		}
@@ -253,7 +250,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 		{
 			get
 			{
-				if (string.ReferenceEquals(nullValueStrategy, null))
+				if (ReferenceEquals(nullValueStrategy, null))
 				{
 					return "one";
 				}
@@ -261,7 +258,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.nullValueStrategy = value;
+				nullValueStrategy = value;
 			}
 		}
 
@@ -274,7 +271,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.targetName = value;
+				targetName = value;
 			}
 		}
 
@@ -316,8 +313,8 @@ namespace org.maltparser.core.syntaxgraph.reader
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.helper.URLFinder f = new org.maltparser.core.helper.URLFinder();
 				URLFinder f = new URLFinder();
-				reader = System.Activator.CreateInstance(syntaxGraphReader);
-				if (string.ReferenceEquals(inputFile, null) || inputFile.Length == 0 || inputFile.Equals("/dev/stdin"))
+				reader = Activator.CreateInstance(syntaxGraphReader);
+				if (ReferenceEquals(inputFile, null) || inputFile.Length == 0 || inputFile.Equals("/dev/stdin"))
 				{
 					reader.open(System.in, inputCharSet);
 				}
@@ -356,11 +353,11 @@ namespace org.maltparser.core.syntaxgraph.reader
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
-			return obj.ToString().Equals(this.ToString());
+			return obj.ToString().Equals(ToString());
 		}
 
 		public override int GetHashCode()

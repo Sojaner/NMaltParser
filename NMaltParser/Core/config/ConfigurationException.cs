@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.config
 {
-	using  org.maltparser.core.exception;
+	using  exception;
 
 	/// <summary>
 	///  ConfigurationException extends the MaltChainedException class and is thrown by classes

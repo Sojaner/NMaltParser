@@ -4,10 +4,7 @@ using System.IO;
 
 namespace org.maltparser.core.helper
 {
-
-
-	using  org.apache.log4j;
-	using  org.maltparser.core.exception;
+    using  exception;
 
 	/// 
 	/// 
@@ -191,14 +188,14 @@ namespace org.maltparser.core.helper
 		/// <exception cref="NumberFormatException"> see <seealso cref="Double#parseDouble(String)"/> </exception>
 		public static double atof(string s)
 		{
-			if (string.ReferenceEquals(s, null) || s.Length < 1)
+			if (ReferenceEquals(s, null) || s.Length < 1)
 			{
-				throw new System.ArgumentException("Can't convert empty string to integer");
+				throw new ArgumentException("Can't convert empty string to integer");
 			}
 			double d = double.Parse(s);
 			if (double.IsNaN(d) || double.IsInfinity(d))
 			{
-				throw new System.ArgumentException("NaN or Infinity in input: " + s);
+				throw new ArgumentException("NaN or Infinity in input: " + s);
 			}
 			return (d);
 		}
@@ -210,9 +207,9 @@ namespace org.maltparser.core.helper
 //ORIGINAL LINE: public static int atoi(String s) throws NumberFormatException
 		public static int atoi(string s)
 		{
-			if (string.ReferenceEquals(s, null) || s.Length < 1)
+			if (ReferenceEquals(s, null) || s.Length < 1)
 			{
-				throw new System.ArgumentException("Can't convert empty string to integer");
+				throw new ArgumentException("Can't convert empty string to integer");
 			}
 			// Integer.parseInt doesn't accept '+' prefixed strings
 			if (s[0] == '+')
@@ -222,7 +219,7 @@ namespace org.maltparser.core.helper
 			return int.Parse(s);
 		}
 
-		public static void closeQuietly(System.IDisposable c)
+		public static void closeQuietly(IDisposable c)
 		{
 			if (c == null)
 			{

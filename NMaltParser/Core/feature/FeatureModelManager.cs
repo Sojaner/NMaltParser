@@ -1,10 +1,7 @@
 ﻿namespace org.maltparser.core.feature
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.spec;
-	using  org.maltparser.core.feature.spec;
-	using  org.maltparser.core.feature.system;
+    using  spec;
+    using  system;
 
 	/// 
 	/// 
@@ -22,7 +19,7 @@
 		public FeatureModelManager(FeatureEngine engine)
 		{
 			specModels = new SpecificationModels();
-			this.featureEngine = engine;
+			featureEngine = engine;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:

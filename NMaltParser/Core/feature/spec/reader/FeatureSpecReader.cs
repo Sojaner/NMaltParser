@@ -1,8 +1,6 @@
 ﻿namespace org.maltparser.core.feature.spec.reader
 {
-
-	using  org.maltparser.core.exception;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.options
 {
-	using  org.maltparser.core.exception;
+	using  exception;
 
 	/// <summary>
 	///  OptionException extends the MaltChainedException class and is thrown by classes

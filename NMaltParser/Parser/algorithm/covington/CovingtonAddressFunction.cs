@@ -3,9 +3,8 @@ using System.Text;
 
 namespace org.maltparser.parser.algorithm.covington
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
+    using  core.feature.function;
+	using  core.feature.value;
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -27,9 +26,9 @@ namespace org.maltparser.parser.algorithm.covington
 
 		public CovingtonAddressFunction(string _subFunctionName, AlgoritmInterface _parsingAlgorithm) : base()
 		{
-			this.subFunctionName = _subFunctionName;
-			this.subFunction = Enum.Parse(typeof(CovingtonSubFunction), subFunctionName.ToUpper());
-			this.parsingAlgorithm = _parsingAlgorithm;
+			subFunctionName = _subFunctionName;
+			subFunction = Enum.Parse(typeof(CovingtonSubFunction), subFunctionName.ToUpper());
+			parsingAlgorithm = _parsingAlgorithm;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -39,12 +38,12 @@ namespace org.maltparser.parser.algorithm.covington
 			if (arguments.Length != 1)
 			{
 //JAVA TO C# CONVERTER WARNING: The .NET Type.FullName property will not always yield results identical to the Java Class.getName method:
-				throw new ParsingException("Could not initialize " + this.GetType().FullName + ": number of arguments are not correct. ");
+				throw new ParsingException("Could not initialize " + GetType().FullName + ": number of arguments are not correct. ");
 			}
 			if (!(arguments[0] is int?))
 			{
 //JAVA TO C# CONVERTER WARNING: The .NET Type.FullName property will not always yield results identical to the Java Class.getName method:
-				throw new ParsingException("Could not initialize " + this.GetType().FullName + ": the first argument is not an integer. ");
+				throw new ParsingException("Could not initialize " + GetType().FullName + ": the first argument is not an integer. ");
 			}
 
 			Index = ((int?)arguments[0]).Value;
@@ -133,7 +132,7 @@ namespace org.maltparser.parser.algorithm.covington
 			}
 			set
 			{
-				this.index = value;
+				index = value;
 			}
 		}
 
@@ -148,7 +147,7 @@ namespace org.maltparser.parser.algorithm.covington
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

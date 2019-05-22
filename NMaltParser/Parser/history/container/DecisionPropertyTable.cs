@@ -1,7 +1,6 @@
 ﻿namespace org.maltparser.parser.history.container
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
+    using  core.symbol;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

@@ -2,9 +2,7 @@
 
 namespace org.maltparser.core.syntaxgraph
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
+    using  symbol;
 
 	/// 
 	/// 
@@ -29,11 +27,11 @@ namespace org.maltparser.core.syntaxgraph
 			{
 				return;
 			}
-			else if (string.ReferenceEquals(rootLabelOption, null) || rootLabelOption.Trim().Length == 0)
+			else if (ReferenceEquals(rootLabelOption, null) || rootLabelOption.Trim().Length == 0)
 			{
 				foreach (SymbolTable table in edgeSymbolTables.Values)
 				{
-					rootLabelCodes.put(table, table.addSymbol(RootLabels.DEFAULT_ROOTSYMBOL));
+					rootLabelCodes.put(table, table.addSymbol(DEFAULT_ROOTSYMBOL));
 				}
 			}
 			else if (rootLabelOption.Trim().IndexOf(',') == -1)
@@ -62,7 +60,7 @@ namespace org.maltparser.core.syntaxgraph
 							{
 								if (!table.Name.Equals(name))
 								{
-									rootLabelCodes.put(table, table.addSymbol(RootLabels.DEFAULT_ROOTSYMBOL));
+									rootLabelCodes.put(table, table.addSymbol(DEFAULT_ROOTSYMBOL));
 								}
 							}
 						}
@@ -96,7 +94,7 @@ namespace org.maltparser.core.syntaxgraph
 				{
 					if (!rootLabelCodes.containsKey(table))
 					{
-						rootLabelCodes.put(table, table.addSymbol(RootLabels.DEFAULT_ROOTSYMBOL));
+						rootLabelCodes.put(table, table.addSymbol(DEFAULT_ROOTSYMBOL));
 					}
 				}
 			}
@@ -116,7 +114,7 @@ namespace org.maltparser.core.syntaxgraph
 			int? res = rootLabelCodes.get(table);
 			if (res == null)
 			{
-				return table.addSymbol(RootLabels.DEFAULT_ROOTSYMBOL);
+				return table.addSymbol(DEFAULT_ROOTSYMBOL);
 			}
 			return res;
 		}

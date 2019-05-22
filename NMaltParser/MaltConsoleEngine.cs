@@ -3,13 +3,11 @@
 namespace org.maltparser
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.plugin;
+	using  core.exception;
+	using  core.helper;
+    using  core.options;
 
-	/// <summary>
+    /// <summary>
 	/// MaltConsoleEngine controls the MaltParser system using the console version. 
 	/// 
 	/// @author Johan Hall
@@ -73,7 +71,7 @@ namespace org.maltparser
 				{
 					verbosity = (string)OptionManager.instance().getOptionDefaultValue("system", "verbosity");
 				}
-				if (!string.ReferenceEquals(verbosity, null))
+				if (!ReferenceEquals(verbosity, null))
 				{
 					SystemLogger.instance().setSystemVerbosityLevel(verbosity.ToUpper());
 				}

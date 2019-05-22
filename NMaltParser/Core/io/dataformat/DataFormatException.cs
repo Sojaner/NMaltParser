@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.io.dataformat
 {
-	using  org.maltparser.core.exception;
+	using  exception;
 
 	/// <summary>
 	///  DataFormatException extends the MaltChainedException class and is thrown by classes

@@ -9,16 +9,14 @@ namespace org.maltparser.ml.lib
 
 
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser;
-	using  org.maltparser.parser.guide.instance;
-	using  org.maltparser.parser.history.action;
+	using  core.exception;
+	using  core.feature;
+	using  core.feature.function;
+	using  core.feature.value;
+    using  core.syntaxgraph;
+	using  parser;
+	using  parser.guide.instance;
+	using  parser.history.action;
 
 	public abstract class Lib : LearningMethod
 	{
@@ -50,14 +48,14 @@ namespace org.maltparser.ml.lib
 		{
 			this.owner = owner;
 			this.learnerMode = learnerMode.Value;
-			this.name = learningMethodName;
+			name = learningMethodName;
 			if (Configuration.getOptionValue("lib", "verbosity") != null)
 			{
-				this.verbosity = Enum.Parse(typeof(Verbostity), Configuration.getOptionValue("lib", "verbosity").ToString().ToUpper());
+				verbosity = Enum.Parse(typeof(Verbostity), Configuration.getOptionValue("lib", "verbosity").ToString().ToUpper());
 			}
 			else
 			{
-				this.verbosity = Verbostity.SILENT;
+				verbosity = Verbostity.SILENT;
 			}
 			NumberOfInstances = 0;
 			if (Configuration.getOptionValue("singlemalt", "null_value") != null && Configuration.getOptionValue("singlemalt", "null_value").ToString().Equals("none", StringComparison.OrdinalIgnoreCase))
@@ -69,12 +67,12 @@ namespace org.maltparser.ml.lib
 				excludeNullValues = false;
 			}
 
-			if (learnerMode.Value == org.maltparser.ml.LearningMethod_Fields.BATCH)
+			if (learnerMode.Value == LearningMethod_Fields.BATCH)
 			{
 				featureMap = new FeatureMap();
 				instanceOutput = new StreamWriter(getInstanceOutputStreamWriter(".ins"));
 			}
-			else if (learnerMode.Value == org.maltparser.ml.LearningMethod_Fields.CLASSIFY)
+			else if (learnerMode.Value == LearningMethod_Fields.CLASSIFY)
 			{
 				featureMap = (FeatureMap)getConfigFileEntryObject(".map");
 			}
@@ -231,7 +229,7 @@ namespace org.maltparser.ml.lib
 						@out.BaseStream.WriteByte('\n');
 						sb.Length = 0;
 						method.increaseNumberOfInstances();
-						this.decreaseNumberOfInstances();
+						decreaseNumberOfInstances();
 						j = 0;
 					}
 					else
@@ -247,7 +245,7 @@ namespace org.maltparser.ml.lib
 			{
 				throw new LibException("The learner cannot remove the instance file. ", e);
 			}
-			catch (System.NullReferenceException e)
+			catch (NullReferenceException e)
 			{
 				throw new LibException("The instance file cannot be found. ", e);
 			}
@@ -315,7 +313,7 @@ namespace org.maltparser.ml.lib
 			{
 				decision.KBestList.addList(model.predict(featureList.toArray()));
 			}
-			catch (System.OutOfMemoryException e)
+			catch (OutOfMemoryException e)
 			{
 				throw new LibException("Out of memory. Please increase the Java heap size (-Xmx<size>). ", e);
 			}
@@ -365,7 +363,7 @@ namespace org.maltparser.ml.lib
 	//		if (configLogger.isInfoEnabled()) {
 	//			configLogger.info("\nStart training\n");
 	//		}
-			if (!string.ReferenceEquals(pathExternalTrain, null))
+			if (!ReferenceEquals(pathExternalTrain, null))
 			{
 				trainExternal(pathExternalTrain, libOptions);
 			}
@@ -506,7 +504,7 @@ namespace org.maltparser.ml.lib
 			}
 			set
 			{
-				this.numberOfInstances = 0;
+				numberOfInstances = 0;
 			}
 		}
 
@@ -579,7 +577,7 @@ namespace org.maltparser.ml.lib
 //ORIGINAL LINE: public void parseParameters(String paramstring, java.util.LinkedHashMap<String, String> libOptions, String allowedLibOptionFlags) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void parseParameters(string paramstring, LinkedHashMap<string, string> libOptions, string allowedLibOptionFlags)
 		{
-			if (string.ReferenceEquals(paramstring, null))
+			if (ReferenceEquals(paramstring, null))
 			{
 				return;
 			}
@@ -616,15 +614,15 @@ namespace org.maltparser.ml.lib
 						throw new LibException("Unknown learner parameter: '" + argv[i - 1] + "' with value '" + argv[i] + "'. ");
 					}
 				}
-				catch (System.IndexOutOfRangeException e)
+				catch (IndexOutOfRangeException e)
 				{
 					throw new LibException("The learner parameter '" + argv[i - 1] + "' could not convert the string value '" + argv[i] + "' into a correct numeric value. ", e);
 				}
-				catch (System.FormatException e)
+				catch (FormatException e)
 				{
 					throw new LibException("The learner parameter '" + argv[i - 1] + "' could not convert the string value '" + argv[i] + "' into a correct numeric value. ", e);
 				}
-				catch (System.NullReferenceException e)
+				catch (NullReferenceException e)
 				{
 					throw new LibException("The learner parameter '" + argv[i - 1] + "' could not convert the string value '" + argv[i] + "' into a correct numeric value. ", e);
 				}
@@ -688,7 +686,7 @@ namespace org.maltparser.ml.lib
 				{
 					y = int.Parse(columns[0]);
 				}
-				catch (System.FormatException e)
+				catch (FormatException e)
 				{
 					throw new LibException("The instance file contain a non-integer value '" + columns[0] + "'", e);
 				}
@@ -728,14 +726,14 @@ namespace org.maltparser.ml.lib
 								featureList.add(index,value);
 							}
 						}
-						catch (System.FormatException e)
+						catch (FormatException e)
 						{
 							throw new LibException("The instance file contain a non-numeric value '" + items[k] + "'", e);
 						}
 					}
 				}
 			}
-			catch (System.IndexOutOfRangeException e)
+			catch (IndexOutOfRangeException e)
 			{
 				throw new LibException("Couln't read from the instance file. ", e);
 			}
@@ -760,7 +758,7 @@ namespace org.maltparser.ml.lib
 				while (true)
 				{
 					string line = @in.ReadLine();
-					if (string.ReferenceEquals(line, null))
+					if (ReferenceEquals(line, null))
 					{
 						break;
 					}
@@ -784,7 +782,7 @@ namespace org.maltparser.ml.lib
 				@in.Close();
 				@out.Close();
 			}
-			catch (System.FormatException e)
+			catch (FormatException e)
 			{
 				throw new LibException("The instance file contain a non-numeric value", e);
 			}

@@ -3,9 +3,7 @@ using System.Text;
 
 namespace org.maltparser.core.io.dataformat
 {
-	using  org.maltparser.core.exception;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -147,11 +145,11 @@ namespace org.maltparser.core.io.dataformat
 			{
 				return EQUAL;
 			}
-			if (this.position < that.position)
+			if (position < that.position)
 			{
 				return BEFORE;
 			}
-			if (this.position > that.position)
+			if (position > that.position)
 			{
 				return AFTER;
 			}
@@ -163,10 +161,10 @@ namespace org.maltparser.core.io.dataformat
 			const int prime = 31;
 			int result = 1;
 			result = prime * result + category;
-			result = prime * result + ((string.ReferenceEquals(defaultOutput, null)) ? 0 : defaultOutput.GetHashCode());
+			result = prime * result + ((ReferenceEquals(defaultOutput, null)) ? 0 : defaultOutput.GetHashCode());
 			result = prime * result + (@internal ? 1231 : 1237);
-			result = prime * result + ((string.ReferenceEquals(name, null)) ? 0 : name.GetHashCode());
-			result = prime * result + ((string.ReferenceEquals(nullValueStrategy, null)) ? 0 : nullValueStrategy.GetHashCode());
+			result = prime * result + ((ReferenceEquals(name, null)) ? 0 : name.GetHashCode());
+			result = prime * result + ((ReferenceEquals(nullValueStrategy, null)) ? 0 : nullValueStrategy.GetHashCode());
 			result = prime * result + position;
 			result = prime * result + type;
 			return result;
@@ -182,7 +180,7 @@ namespace org.maltparser.core.io.dataformat
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
@@ -191,9 +189,9 @@ namespace org.maltparser.core.io.dataformat
 			{
 				return false;
 			}
-			if (string.ReferenceEquals(defaultOutput, null))
+			if (ReferenceEquals(defaultOutput, null))
 			{
-				if (!string.ReferenceEquals(other.defaultOutput, null))
+				if (!ReferenceEquals(other.defaultOutput, null))
 				{
 					return false;
 				}
@@ -206,9 +204,9 @@ namespace org.maltparser.core.io.dataformat
 			{
 				return false;
 			}
-			if (string.ReferenceEquals(name, null))
+			if (ReferenceEquals(name, null))
 			{
-				if (!string.ReferenceEquals(other.name, null))
+				if (!ReferenceEquals(other.name, null))
 				{
 					return false;
 				}
@@ -217,9 +215,9 @@ namespace org.maltparser.core.io.dataformat
 			{
 				return false;
 			}
-			if (string.ReferenceEquals(nullValueStrategy, null))
+			if (ReferenceEquals(nullValueStrategy, null))
 			{
-				if (!string.ReferenceEquals(other.nullValueStrategy, null))
+				if (!ReferenceEquals(other.nullValueStrategy, null))
 				{
 					return false;
 				}
@@ -249,7 +247,7 @@ namespace org.maltparser.core.io.dataformat
 			sb.Append(category);
 			sb.Append('\t');
 			sb.Append(type);
-			if (!string.ReferenceEquals(defaultOutput, null))
+			if (!ReferenceEquals(defaultOutput, null))
 			{
 				sb.Append('\t');
 				sb.Append(defaultOutput);
@@ -261,35 +259,35 @@ namespace org.maltparser.core.io.dataformat
 		{
 			if (categoryName.Equals("INPUT"))
 			{
-				return ColumnDescription.INPUT;
+				return INPUT;
 			}
 			else if (categoryName.Equals("HEAD"))
 			{
-				return ColumnDescription.HEAD;
+				return HEAD;
 			}
 			else if (categoryName.Equals("OUTPUT"))
 			{
-				return ColumnDescription.DEPENDENCY_EDGE_LABEL;
+				return DEPENDENCY_EDGE_LABEL;
 			}
 			else if (categoryName.Equals("DEPENDENCY_EDGE_LABEL"))
 			{
-				return ColumnDescription.DEPENDENCY_EDGE_LABEL;
+				return DEPENDENCY_EDGE_LABEL;
 			}
 			else if (categoryName.Equals("PHRASE_STRUCTURE_EDGE_LABEL"))
 			{
-				return ColumnDescription.PHRASE_STRUCTURE_EDGE_LABEL;
+				return PHRASE_STRUCTURE_EDGE_LABEL;
 			}
 			else if (categoryName.Equals("PHRASE_STRUCTURE_NODE_LABEL"))
 			{
-				return ColumnDescription.PHRASE_STRUCTURE_NODE_LABEL;
+				return PHRASE_STRUCTURE_NODE_LABEL;
 			}
 			else if (categoryName.Equals("SECONDARY_EDGE_LABEL"))
 			{
-				return ColumnDescription.SECONDARY_EDGE_LABEL;
+				return SECONDARY_EDGE_LABEL;
 			}
 			else if (categoryName.Equals("IGNORE"))
 			{
-				return ColumnDescription.IGNORE;
+				return IGNORE;
 			}
 			return -1;
 		}
@@ -298,24 +296,24 @@ namespace org.maltparser.core.io.dataformat
 		{
 			if (typeName.Equals("STRING"))
 			{
-				return ColumnDescription.STRING;
+				return STRING;
 			}
 			else if (typeName.Equals("INTEGER"))
 			{
-				return ColumnDescription.INTEGER;
+				return INTEGER;
 			}
 			else if (typeName.Equals("BOOLEAN"))
 			{
-				return ColumnDescription.BOOLEAN;
+				return BOOLEAN;
 			}
 			else if (typeName.Equals("REAL"))
 			{
-				return ColumnDescription.REAL;
+				return REAL;
 			}
 			else if (typeName.Equals("ECHO"))
 			{
 				// ECHO is removed, but if it occurs in the data format file it will be interpreted as an integer instead.
-				return ColumnDescription.INTEGER;
+				return INTEGER;
 			}
 			return -1;
 		}

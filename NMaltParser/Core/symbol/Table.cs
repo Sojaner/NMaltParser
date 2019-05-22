@@ -1,8 +1,6 @@
 ﻿namespace org.maltparser.core.symbol
 {
-	using  org.maltparser.core.exception;
-
-	public interface Table
+    public interface Table
 	{
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public int addSymbol(String symbol) throws org.maltparser.core.exception.MaltChainedException;

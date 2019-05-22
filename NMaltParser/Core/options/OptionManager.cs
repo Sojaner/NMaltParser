@@ -8,19 +8,12 @@ namespace org.maltparser.core.options
 
 
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.options.option;
-	using  org.maltparser.core.options.option;
-	using  org.maltparser.core.options.option;
-	using  org.maltparser.core.options.option;
-	using  org.maltparser.core.options.option;
-	using  org.maltparser.core.plugin;
-	using  org.w3c.dom;
-	using  org.w3c.dom;
-	using  org.xml.sax;
+	using  exception;
+	using  option;
+    using  plugin;
 
 
-	/// <summary>
+    /// <summary>
 	///  Option Manager is the management class for all option handling. All queries and manipulations of an option or an option value
 	///   should go through this class. 
 	/// 
@@ -60,7 +53,7 @@ namespace org.maltparser.core.options
 //ORIGINAL LINE: public void loadOptionDescriptionFile() throws org.maltparser.core.exception.MaltChainedException
 		public virtual void loadOptionDescriptionFile()
 		{
-			optionDescriptions.parseOptionDescriptionXMLfile(this.GetType().getResource("/appdata/options.xml"));
+			optionDescriptions.parseOptionDescriptionXMLfile(GetType().getResource("/appdata/options.xml"));
 		}
 
 
@@ -109,7 +102,7 @@ namespace org.maltparser.core.options
 		{
 			Option option = optionDescriptions.getOption(optiongroup, optionname);
 
-			if (containerIndex == OptionManager.DEFAULTVALUE)
+			if (containerIndex == DEFAULTVALUE)
 			{
 				return option.DefaultValueObject;
 			}
@@ -135,7 +128,7 @@ namespace org.maltparser.core.options
 		{
 			Option option = optionDescriptions.getOption(optiongroup, optionname);
 
-			if (containerIndex == OptionManager.DEFAULTVALUE)
+			if (containerIndex == DEFAULTVALUE)
 			{
 				return option.DefaultValueObject;
 			}
@@ -157,7 +150,7 @@ namespace org.maltparser.core.options
 		{
 			Option option = optionDescriptions.getOption(optiongroup, optionname);
 			string value = optionValues.getOptionValueString(containerIndex, option);
-			if (string.ReferenceEquals(value, null))
+			if (ReferenceEquals(value, null))
 			{
 				value = option.DefaultValueString;
 			}
@@ -220,7 +213,7 @@ namespace org.maltparser.core.options
 		public virtual void overloadOptionValue(int containerIndex, int containerType, string optiongroup, string optionname, string value)
 		{
 			Option option = optionDescriptions.getOption(optiongroup, optionname);
-			if (string.ReferenceEquals(value, null))
+			if (ReferenceEquals(value, null))
 			{
 				throw new OptionException("The option value is missing. ");
 			}
@@ -289,7 +282,7 @@ namespace org.maltparser.core.options
 				string line = null;
 				Option option = null;
 				Pattern tabPattern = Pattern.compile("\t");
-				while (!string.ReferenceEquals((line = br.ReadLine()), null))
+				while (!ReferenceEquals((line = br.ReadLine()), null))
 				{
 					string[] items = tabPattern.split(line);
 					if (items.Length < 3 || items.Length > 4)
@@ -338,7 +331,7 @@ namespace org.maltparser.core.options
 			{
 				throw new OptionException("The class cannot be found. ", e);
 			}
-			catch (System.FormatException e)
+			catch (FormatException e)
 			{
 				throw new OptionException("Option container index isn't an integer value. ", e);
 			}
@@ -671,7 +664,7 @@ namespace org.maltparser.core.options
 			{
 				optiongroup = (Element)optiongroups.item(i);
 				string groupname = optiongroup.getAttribute("groupname").ToLower();
-				if (string.ReferenceEquals(groupname, null))
+				if (ReferenceEquals(groupname, null))
 				{
 					throw new OptionException("The option group name is missing. ");
 				}
@@ -684,7 +677,7 @@ namespace org.maltparser.core.options
 					string optionname = optionvalue.getAttribute("name").ToLower();
 					string value = optionvalue.getAttribute("value");
 
-					if (string.ReferenceEquals(optionname, null))
+					if (ReferenceEquals(optionname, null))
 					{
 						throw new OptionException("The option name is missing. ");
 					}
@@ -695,7 +688,7 @@ namespace org.maltparser.core.options
 					{
 						value = "used";
 					}
-					if (string.ReferenceEquals(value, null))
+					if (ReferenceEquals(value, null))
 					{
 						throw new OptionException("The option value is missing. ");
 					}
@@ -720,7 +713,7 @@ namespace org.maltparser.core.options
 			int reservedSpaceForOptionName = 30;
 			OptionGroup.toStringSetting = OptionGroup.WITHGROUPNAME;
 			StringBuilder sb = new StringBuilder();
-			if (containerIndex == OptionManager.DEFAULTVALUE)
+			if (containerIndex == DEFAULTVALUE)
 			{
 				foreach (string groupname in optionDescriptions.OptionGroupNameSet)
 				{
@@ -758,7 +751,7 @@ namespace org.maltparser.core.options
 							nSpaces = 1;
 						}
 
-						if (string.ReferenceEquals(value, null))
+						if (ReferenceEquals(value, null))
 						{
 							sb.Append((new Formatter()).format("  %s (%4s)%" + nSpaces + "s %s\n", option.Name, "-" + option.Flag, " ", option.DefaultValueString));
 						}

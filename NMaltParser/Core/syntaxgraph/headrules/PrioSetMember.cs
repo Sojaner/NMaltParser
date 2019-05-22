@@ -2,9 +2,9 @@
 
 namespace org.maltparser.core.syntaxgraph.headrules
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
+	using  exception;
+	using  io.dataformat;
+	using  symbol;
 	/// 
 	/// 
 	/// <summary>
@@ -59,7 +59,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			}
 			set
 			{
-				this.prioSet = value;
+				prioSet = value;
 			}
 		}
 
@@ -73,7 +73,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			}
 			set
 			{
-				this.column = value;
+				column = value;
 			}
 		}
 
@@ -86,7 +86,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			}
 			set
 			{
-				this.table = value;
+				table = value;
 			}
 		}
 
@@ -99,7 +99,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			}
 			set
 			{
-				this.symbolCode = value;
+				symbolCode = value;
 			}
 		}
 
@@ -151,7 +151,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

@@ -2,15 +2,12 @@
 
 namespace org.maltparser.parser.algorithm.stack
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.propagation;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.parser.history;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.transition;
+    using  core.propagation;
+	using  core.syntaxgraph.edge;
+	using  core.syntaxgraph.node;
+	using  history;
+	using  history.action;
+    using  transition;
 
 
 	/// <summary>

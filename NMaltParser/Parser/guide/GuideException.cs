@@ -2,7 +2,7 @@
 
 namespace org.maltparser.parser.guide
 {
-	using  org.maltparser.core.exception;
+	using  core.exception;
 
 	/// <summary>
 	///  GuideException extends the MaltChainedException class and is thrown by classes

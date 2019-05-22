@@ -2,18 +2,12 @@
 
 namespace org.maltparser.parser.guide.decision
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.guide.instance;
-	using  org.maltparser.parser.guide.instance;
-	using  org.maltparser.parser.guide.instance;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.container.TableContainer;
-	/// 
+    using  core.feature;
+    using  core.syntaxgraph;
+	using  instance;
+    using  history.action;
+
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// @since 1.1
@@ -34,32 +28,32 @@ namespace org.maltparser.parser.guide.decision
 //ORIGINAL LINE: public SeqDecisionModel(org.maltparser.parser.guide.ClassifierGuide _guide) throws org.maltparser.core.exception.MaltChainedException
 		public SeqDecisionModel(ClassifierGuide _guide)
 		{
-			this.guide = _guide;
-			this.branchedDecisionSymbols = "";
+			guide = _guide;
+			branchedDecisionSymbols = "";
 	//		this.featureModel = _featureModel;
-			this.decisionIndex = 0;
-			this.modelName = "sdm" + decisionIndex;
-			this.prevDecisionModel = null;
+			decisionIndex = 0;
+			modelName = "sdm" + decisionIndex;
+			prevDecisionModel = null;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public SeqDecisionModel(org.maltparser.parser.guide.ClassifierGuide _guide, DecisionModel _prevDecisionModel, String _branchedDecisionSymbol) throws org.maltparser.core.exception.MaltChainedException
 		public SeqDecisionModel(ClassifierGuide _guide, DecisionModel _prevDecisionModel, string _branchedDecisionSymbol)
 		{
-			this.guide = _guide;
-			this.decisionIndex = _prevDecisionModel.DecisionIndex + 1;
-			if (!string.ReferenceEquals(_branchedDecisionSymbol, null) && _branchedDecisionSymbol.Length > 0)
+			guide = _guide;
+			decisionIndex = _prevDecisionModel.DecisionIndex + 1;
+			if (!ReferenceEquals(_branchedDecisionSymbol, null) && _branchedDecisionSymbol.Length > 0)
 			{
-				this.branchedDecisionSymbols = _branchedDecisionSymbol;
-				this.modelName = "sdm" + decisionIndex + branchedDecisionSymbols;
+				branchedDecisionSymbols = _branchedDecisionSymbol;
+				modelName = "sdm" + decisionIndex + branchedDecisionSymbols;
 			}
 			else
 			{
-				this.branchedDecisionSymbols = "";
-				this.modelName = "sdm" + decisionIndex;
+				branchedDecisionSymbols = "";
+				modelName = "sdm" + decisionIndex;
 			}
 	//		this.featureModel = _prevDecisionModel.getFeatureModel();
-			this.prevDecisionModel = _prevDecisionModel;
+			prevDecisionModel = _prevDecisionModel;
 		}
 
 	//	public void updateFeatureModel() throws MaltChainedException {
@@ -98,7 +92,7 @@ namespace org.maltparser.parser.guide.decision
 //ORIGINAL LINE: public void noMoreInstances(org.maltparser.core.feature.FeatureModel featureModel) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void noMoreInstances(FeatureModel featureModel)
 		{
-			if (guide.GuideMode == org.maltparser.parser.guide.ClassifierGuide_GuideMode.CLASSIFY)
+			if (guide.GuideMode == ClassifierGuide_GuideMode.CLASSIFY)
 			{
 				throw new GuideException("The decision model could not create it's model. ");
 			}
@@ -306,15 +300,15 @@ namespace org.maltparser.parser.guide.decision
 		{
 			if (decision.RelationToNextDecision == RelationToNextDecision.SEQUANTIAL)
 			{
-				this.nextDecisionModel = new SeqDecisionModel(guide, this, branchedDecisionSymbol);
+				nextDecisionModel = new SeqDecisionModel(guide, this, branchedDecisionSymbol);
 			}
 			else if (decision.RelationToNextDecision == RelationToNextDecision.BRANCHED)
 			{
-				this.nextDecisionModel = new BranchedDecisionModel(guide, this, branchedDecisionSymbol);
+				nextDecisionModel = new BranchedDecisionModel(guide, this, branchedDecisionSymbol);
 			}
 			else if (decision.RelationToNextDecision == RelationToNextDecision.NONE)
 			{
-				this.nextDecisionModel = new OneDecisionModel(guide, this, branchedDecisionSymbol);
+				nextDecisionModel = new OneDecisionModel(guide, this, branchedDecisionSymbol);
 			}
 		}
 

@@ -1,7 +1,6 @@
 ﻿namespace org.maltparser.parser.history.kbest
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.parser.history.action;
+    using  action;
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -20,7 +19,7 @@
 
 		protected internal override void initKBestList()
 		{
-			for (int i = 0; i < this.k; i++)
+			for (int i = 0; i < k; i++)
 			{
 				kBestList.Add(new ScoredCandidate());
 			}
@@ -65,7 +64,7 @@
 		{
 			if (decision is SingleDecision)
 			{
-				this.add(((SingleDecision)decision).getDecisionCode(symbol), score);
+				add(((SingleDecision)decision).getDecisionCode(symbol), score);
 			}
 		}
 

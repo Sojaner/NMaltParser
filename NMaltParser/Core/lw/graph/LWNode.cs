@@ -6,19 +6,14 @@ namespace org.maltparser.core.lw.graph
 {
 
 	using  org.maltparser.concurrent.graph.dataformat;
-	using  org.maltparser.core.exception;
+	using  exception;
 	using  org.maltparser.core.helper;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
+	using  symbol;
+    using  syntaxgraph;
+    using  syntaxgraph.edge;
+	using  syntaxgraph.node;
 
-	/// <summary>
+    /// <summary>
 	/// A lightweight version of org.maltparser.core.syntaxgraph.node.{Token,Root}
 	/// 
 	/// @author Johan Hall
@@ -45,11 +40,11 @@ namespace org.maltparser.core.lw.graph
 			{
 				throw new LWGraphException("The graph node must belong to a dependency graph.");
 			}
-			this.graph = _graph;
-			this.index = node.index;
+			graph = _graph;
+			index = node.index;
 	//		this.labels = new TreeMap<Integer, String>(node.labels);
-			this.labels = new HashMap<int, string>(node.labels);
-			this.headEdge = node.headEdge;
+			labels = new HashMap<int, string>(node.labels);
+			headEdge = node.headEdge;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -64,11 +59,11 @@ namespace org.maltparser.core.lw.graph
 			{
 				throw new LWGraphException("Not allowed to have negative node index");
 			}
-			this.graph = _graph;
-			this.index = _index;
+			graph = _graph;
+			index = _index;
 	//		this.labels = new TreeMap<Integer, String>();
-			this.labels = new HashMap<int, string>();
-			this.headEdge = null;
+			labels = new HashMap<int, string>();
+			headEdge = null;
 		}
 
 	//	public void setHeadIndex(int _headIndex) throws LWGraphException {
@@ -102,11 +97,11 @@ namespace org.maltparser.core.lw.graph
 		{
 			get
 			{
-				return this.index;
+				return index;
 			}
 			set
 			{
-				this.index = value;
+				index = value;
 			}
 		}
 
@@ -553,7 +548,7 @@ namespace org.maltparser.core.lw.graph
 		{
 			get
 			{
-				if (!this.hasHead())
+				if (!hasHead())
 				{
 					return this;
 				}
@@ -573,7 +568,7 @@ namespace org.maltparser.core.lw.graph
 		{
 			get
 			{
-				if (!this.hasHead())
+				if (!hasHead())
 				{
 					return null;
 				}
@@ -866,7 +861,7 @@ namespace org.maltparser.core.lw.graph
 			get
 			{
 				ComparableNode node = LeftmostDescendant;
-				return (node != null)?node.Index:this.Index;
+				return (node != null)?node.Index:Index;
 			}
 		}
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -876,7 +871,7 @@ namespace org.maltparser.core.lw.graph
 			get
 			{
 				ComparableNode node = RightmostDescendant;
-				return (node != null)?node.Index:this.Index;
+				return (node != null)?node.Index:Index;
 			}
 		}
 
@@ -1132,7 +1127,7 @@ namespace org.maltparser.core.lw.graph
 //ORIGINAL LINE: public void addColumnLabels(String[] columnLabels) throws org.maltparser.core.exception.MaltChainedException
 		public void addColumnLabels(string[] columnLabels)
 		{
-			this.addColumnLabels(columnLabels, true);
+			addColumnLabels(columnLabels, true);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -1164,7 +1159,7 @@ namespace org.maltparser.core.lw.graph
 				}
 				if (tmpHeadIndex == -1)
 				{
-					this.headEdge = null;
+					headEdge = null;
 				}
 				else
 				{
@@ -1172,15 +1167,15 @@ namespace org.maltparser.core.lw.graph
 					{
 						throw new LWGraphException("Not allowed to have head index less than -1.");
 					}
-					if (this.index == 0 && tmpHeadIndex != -1)
+					if (index == 0 && tmpHeadIndex != -1)
 					{
 						throw new LWGraphException("Not allowed to add head to a root node.");
 					}
-					if (this.index == tmpHeadIndex)
+					if (index == tmpHeadIndex)
 					{
 						throw new LWGraphException("Not allowed to add head to itself");
 					}
-					this.headEdge = new LWEdge(this.graph.getNode(tmpHeadIndex), this, edgeLabels);
+					headEdge = new LWEdge(graph.getNode(tmpHeadIndex), this, edgeLabels);
 				}
 			}
 			else
@@ -1196,7 +1191,7 @@ namespace org.maltparser.core.lw.graph
 						}
 					}
 				}
-				this.headEdge = null;
+				headEdge = null;
 			}
 		}
 
@@ -1404,11 +1399,11 @@ namespace org.maltparser.core.lw.graph
 			{
 				return EQUAL;
 			}
-			if (this.index < that.Index)
+			if (index < that.Index)
 			{
 				return BEFORE;
 			}
-			if (this.index > that.Index)
+			if (index > that.Index)
 			{
 				return AFTER;
 			}
@@ -1435,7 +1430,7 @@ namespace org.maltparser.core.lw.graph
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

@@ -1,9 +1,7 @@
 ﻿namespace org.maltparser.parser.guide.instance
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.parser.history.action;
+    using  core.feature;
+	using  history.action;
 
 	public interface InstanceModel : Model
 	{

@@ -5,17 +5,12 @@ using System.Text;
 namespace org.maltparser.core.syntaxgraph.feature
 {
 
-	using  org.maltparser.core.exception;
+	using  exception;
 	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol.nullvalue.NullValues;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  org.maltparser.core.feature.value;
+    using  io.dataformat;
+	using  symbol;
+    using  node;
 
 	public sealed class DistanceFeature : FeatureFunction
 	{
@@ -37,9 +32,9 @@ namespace org.maltparser.core.syntaxgraph.feature
 //ORIGINAL LINE: public DistanceFeature(org.maltparser.core.symbol.SymbolTableHandler tableHandler) throws org.maltparser.core.exception.MaltChainedException
 		public DistanceFeature(SymbolTableHandler tableHandler)
 		{
-			this.featureValue = new SingleFeatureValue(this);
+			featureValue = new SingleFeatureValue(this);
 			this.tableHandler = tableHandler;
-			this.normalization = new LinkedHashMap<int, string>();
+			normalization = new LinkedHashMap<int, string>();
 		}
 
 		/// <summary>
@@ -89,7 +84,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 				{
 					v = int.Parse(items[i]);
 				}
-				catch (System.FormatException e)
+				catch (FormatException e)
 				{
 					throw new SyntaxGraphException("Could not initialize DistanceFeature (" + this + "): the third argument (normalization) must contain a sorted list of integer values separated with |", e);
 				}
@@ -253,7 +248,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			}
 			set
 			{
-				this.table = value;
+				table = value;
 			}
 		}
 
@@ -269,7 +264,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			}
 			set
 			{
-				this.addressFunction1 = value;
+				addressFunction1 = value;
 			}
 		}
 
@@ -287,7 +282,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			}
 			set
 			{
-				this.addressFunction2 = value;
+				addressFunction2 = value;
 			}
 		}
 
@@ -331,11 +326,11 @@ namespace org.maltparser.core.syntaxgraph.feature
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
-			return obj.ToString().Equals(this.ToString());
+			return obj.ToString().Equals(ToString());
 		}
 
 		public override int GetHashCode()

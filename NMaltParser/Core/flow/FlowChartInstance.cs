@@ -4,13 +4,10 @@ using System.Text;
 
 namespace org.maltparser.core.flow
 {
+    using  item;
+	using  spec;
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.flow.item;
-	using  org.maltparser.core.flow.spec;
-	using  org.maltparser.core.flow.spec;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -81,7 +78,7 @@ namespace org.maltparser.core.flow
 			ChartItem chartItem = null;
 			try
 			{
-				chartItem = System.Activator.CreateInstance(chartItemSpecification.ChartItemClass);
+				chartItem = Activator.CreateInstance(chartItemSpecification.ChartItemClass);
 				chartItem.initialize(this, chartItemSpecification);
 			}
 			catch (InstantiationException e)
@@ -158,7 +155,7 @@ namespace org.maltparser.core.flow
 			}
 			set
 			{
-				this.flowChartManager = value;
+				flowChartManager = value;
 			}
 		}
 
@@ -171,7 +168,7 @@ namespace org.maltparser.core.flow
 			}
 			set
 			{
-				this.optionContainerIndex = value;
+				optionContainerIndex = value;
 			}
 		}
 
@@ -184,7 +181,7 @@ namespace org.maltparser.core.flow
 			}
 			set
 			{
-				this.chartSpecification = value;
+				chartSpecification = value;
 			}
 		}
 
@@ -324,7 +321,7 @@ namespace org.maltparser.core.flow
 			}
 			set
 			{
-				this.name = value;
+				name = value;
 			}
 		}
 
@@ -334,7 +331,7 @@ namespace org.maltparser.core.flow
 			const int prime = 31;
 			int result = 1;
 			result = prime * result + optionContainerIndex;
-			result = prime * result + ((string.ReferenceEquals(name, null)) ? 0 : name.GetHashCode());
+			result = prime * result + ((ReferenceEquals(name, null)) ? 0 : name.GetHashCode());
 			result = prime * result + ((chartSpecification == null) ? 0 : chartSpecification.GetHashCode());
 	//		result = prime * result + ((dataFormatInstances == null) ? 0 : dataFormatInstances.hashCode());
 	//		result = prime * result + ((dataFormatManager == null) ? 0 : dataFormatManager.hashCode());
@@ -356,7 +353,7 @@ namespace org.maltparser.core.flow
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
@@ -365,9 +362,9 @@ namespace org.maltparser.core.flow
 			{
 				return false;
 			}
-			if (string.ReferenceEquals(name, null))
+			if (ReferenceEquals(name, null))
 			{
-				if (!string.ReferenceEquals(other.name, null))
+				if (!ReferenceEquals(other.name, null))
 				{
 					return false;
 				}

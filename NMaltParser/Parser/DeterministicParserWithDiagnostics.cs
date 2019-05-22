@@ -1,15 +1,13 @@
 ﻿namespace org.maltparser.parser
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.guide;
-	using  org.maltparser.parser.guide;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
+	using  core.exception;
+	using  core.feature;
+	using  core.symbol;
+	using  core.syntaxgraph;
+	using  guide;
+    using  history.action;
 
-	public class DeterministicParserWithDiagnostics : Parser
+    public class DeterministicParserWithDiagnostics : Parser
 	{
 		private readonly Diagnostics diagnostics;
 		private int parseCount;
@@ -19,9 +17,9 @@
 //ORIGINAL LINE: public DeterministicParserWithDiagnostics(DependencyParserConfig manager, org.maltparser.core.symbol.SymbolTableHandler symbolTableHandler) throws org.maltparser.core.exception.MaltChainedException
 		public DeterministicParserWithDiagnostics(DependencyParserConfig manager, SymbolTableHandler symbolTableHandler) : base(manager,symbolTableHandler)
 		{
-			this.diagnostics = new Diagnostics(manager.getOptionValue("singlemalt", "diafile").ToString());
+			diagnostics = new Diagnostics(manager.getOptionValue("singlemalt", "diafile").ToString());
 			registry.Algorithm = this;
-			Guide = new SingleGuide(this, org.maltparser.parser.guide.ClassifierGuide_GuideMode.CLASSIFY);
+			Guide = new SingleGuide(this, ClassifierGuide_GuideMode.CLASSIFY);
 			string featureModelFileName = manager.getOptionValue("guide", "features").ToString().Trim();
 			if (manager.LoggerInfoEnabled)
 			{

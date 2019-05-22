@@ -2,7 +2,7 @@
 
 namespace org.maltparser.concurrent.graph
 {
-	using  org.maltparser.core.exception;
+	using  core.exception;
 
 	/// <summary>
 	///  ConcurrentGraphException extends the MaltChainedException class and is thrown by classes

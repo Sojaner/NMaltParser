@@ -4,8 +4,8 @@ using System.Collections.Generic;
 namespace org.maltparser.core.syntaxgraph.node
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph.edge;
+	using  exception;
+	using  edge;
 
 	public interface ComparableNode : Element, IComparable<ComparableNode>
 	{

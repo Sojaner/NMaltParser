@@ -3,8 +3,8 @@ using System.Text;
 
 namespace org.maltparser.core.syntaxgraph.edge
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph.node;
+	using  exception;
+	using  node;
 
 
 	/// 
@@ -61,15 +61,15 @@ namespace org.maltparser.core.syntaxgraph.edge
 			base.clear();
 			if (source != null)
 			{
-				this.source.removeOutgoingEdge(this);
+				source.removeOutgoingEdge(this);
 			}
 			if (target != null)
 			{
-				this.target.removeIncomingEdge(this);
+				target.removeIncomingEdge(this);
 			}
-			this.source = null;
-			this.target = null;
-			this.type = -1;
+			source = null;
+			target = null;
+			type = -1;
 		}
 
 		/// <summary>
@@ -80,7 +80,7 @@ namespace org.maltparser.core.syntaxgraph.edge
 		{
 			get
 			{
-				return this.source;
+				return source;
 			}
 		}
 
@@ -92,7 +92,7 @@ namespace org.maltparser.core.syntaxgraph.edge
 		{
 			get
 			{
-				return this.target;
+				return target;
 			}
 		}
 
@@ -104,7 +104,7 @@ namespace org.maltparser.core.syntaxgraph.edge
 		{
 			get
 			{
-				return this.type;
+				return type;
 			}
 		}
 
@@ -119,29 +119,29 @@ namespace org.maltparser.core.syntaxgraph.edge
 				return EQUAL;
 			}
 
-			if (this.target.CompareToIndex < that.target.CompareToIndex)
+			if (target.CompareToIndex < that.target.CompareToIndex)
 			{
 				return BEFORE;
 			}
-			if (this.target.CompareToIndex > that.target.CompareToIndex)
+			if (target.CompareToIndex > that.target.CompareToIndex)
 			{
 				return AFTER;
 			}
 
-			if (this.source.CompareToIndex < that.source.CompareToIndex)
+			if (source.CompareToIndex < that.source.CompareToIndex)
 			{
 				return BEFORE;
 			}
-			if (this.source.CompareToIndex > that.source.CompareToIndex)
+			if (source.CompareToIndex > that.source.CompareToIndex)
 			{
 				return AFTER;
 			}
 
-			if (this.type < that.type)
+			if (type < that.type)
 			{
 				return BEFORE;
 			}
-			if (this.type > that.type)
+			if (type > that.type)
 			{
 				return AFTER;
 			}
@@ -155,7 +155,7 @@ namespace org.maltparser.core.syntaxgraph.edge
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final GraphEdge e = (GraphEdge)obj;
 			GraphEdge e = (GraphEdge)obj;
-			return this.type == e.Type && this.source.Equals(e.Source) && this.target.Equals(e.Target) && base.Equals(obj);
+			return type == e.Type && source.Equals(e.Source) && target.Equals(e.Target) && base.Equals(obj);
 		}
 
 		public override int GetHashCode()

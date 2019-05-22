@@ -3,13 +3,11 @@ using System.Collections.Generic;
 
 namespace org.maltparser.parser.algorithm.twoplanar
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.parser.history;
-	using  org.maltparser.parser.history.action;
+    using  core.syntaxgraph;
+	using  core.syntaxgraph.edge;
+	using  core.syntaxgraph.node;
+	using  history;
+	using  history.action;
 	/// <summary>
 	/// @author Carlos Gomez Rodriguez
 	/// 

@@ -3,11 +3,9 @@ using System.Text;
 
 namespace org.maltparser.parser.history
 {
+    using  action;
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// </summary>
@@ -33,7 +31,7 @@ namespace org.maltparser.parser.history
 			}
 			set
 			{
-				this.action = value;
+				action = value;
 			}
 		}
 
@@ -48,7 +46,7 @@ namespace org.maltparser.parser.history
 			{
 				if (value is HistoryTreeNode)
 				{
-					this.parent = (HistoryTreeNode)value;
+					parent = (HistoryTreeNode)value;
 					parent.addChild(this);
 					Depth = parent.Depth + 1;
 				}
@@ -64,7 +62,7 @@ namespace org.maltparser.parser.history
 			}
 			set
 			{
-				this.depth = value;
+				depth = value;
 			}
 		}
 

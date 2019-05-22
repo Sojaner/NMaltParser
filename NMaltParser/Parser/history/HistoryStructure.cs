@@ -1,8 +1,6 @@
 ﻿namespace org.maltparser.parser.history
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.parser.history.action;
+    using  action;
 
 	/// 
 	/// <summary>

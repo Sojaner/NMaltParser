@@ -1,16 +1,13 @@
 ﻿namespace org.maltparser.parser
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.guide;
-	using  org.maltparser.parser.guide;
-	using  org.maltparser.parser.guide;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
+	using  core.exception;
+	using  core.feature;
+	using  core.symbol;
+	using  core.syntaxgraph;
+	using  guide;
+    using  history.action;
 
-	public class BatchTrainerWithDiagnostics : Trainer
+    public class BatchTrainerWithDiagnostics : Trainer
 	{
 		private readonly Diagnostics diagnostics;
 		private readonly OracleGuide oracleGuide;
@@ -21,9 +18,9 @@
 //ORIGINAL LINE: public BatchTrainerWithDiagnostics(DependencyParserConfig manager, org.maltparser.core.symbol.SymbolTableHandler symbolTableHandler) throws org.maltparser.core.exception.MaltChainedException
 		public BatchTrainerWithDiagnostics(DependencyParserConfig manager, SymbolTableHandler symbolTableHandler) : base(manager,symbolTableHandler)
 		{
-			this.diagnostics = new Diagnostics(manager.getOptionValue("singlemalt", "diafile").ToString());
+			diagnostics = new Diagnostics(manager.getOptionValue("singlemalt", "diafile").ToString());
 			registry.Algorithm = this;
-			Guide = new SingleGuide(this, org.maltparser.parser.guide.ClassifierGuide_GuideMode.BATCH);
+			Guide = new SingleGuide(this, ClassifierGuide_GuideMode.BATCH);
 			string featureModelFileName = manager.getOptionValue("guide", "features").ToString().Trim();
 			if (manager.LoggerInfoEnabled)
 			{
@@ -32,7 +29,7 @@
 			}
 			string dataSplitColumn = manager.getOptionValue("guide", "data_split_column").ToString().Trim();
 			string dataSplitStructure = manager.getOptionValue("guide", "data_split_structure").ToString().Trim();
-			this.featureModel = manager.FeatureModelManager.getFeatureModel(SingleGuide.findURL(featureModelFileName, manager), 0, ParserRegistry, dataSplitColumn, dataSplitStructure);
+			featureModel = manager.FeatureModelManager.getFeatureModel(SingleGuide.findURL(featureModelFileName, manager), 0, ParserRegistry, dataSplitColumn, dataSplitStructure);
 
 			manager.writeInfoToConfigFile("\nFEATURE MODEL\n");
 			manager.writeInfoToConfigFile(featureModel.ToString());

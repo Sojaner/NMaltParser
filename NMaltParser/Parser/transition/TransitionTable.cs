@@ -2,11 +2,9 @@
 
 namespace org.maltparser.parser.transition
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.parser.history.container;
+    using  core.helper;
+	using  core.symbol;
+	using  history.container;
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -21,10 +19,10 @@ namespace org.maltparser.parser.transition
 
 		public TransitionTable(string tableName)
 		{
-			this.name = tableName;
-			this.code2transitionMap = new SortedDictionary<int, Transition>();
-			this.symbol2transitionMap = new HashMap<string, Transition>();
-			this.childrenTables = new HashMap<Transition, TransitionTable>();
+			name = tableName;
+			code2transitionMap = new SortedDictionary<int, Transition>();
+			symbol2transitionMap = new HashMap<string, Transition>();
+			childrenTables = new HashMap<Transition, TransitionTable>();
 		}
 
 		public virtual void addTransition(int code, string symbol, bool labeled, TransitionTable childrenTable)
@@ -121,7 +119,7 @@ namespace org.maltparser.parser.transition
 //ORIGINAL LINE: public int getSymbolStringToCode(String symbol) throws org.maltparser.core.exception.MaltChainedException
 		public virtual int getSymbolStringToCode(string symbol)
 		{
-			if (string.ReferenceEquals(symbol, null))
+			if (ReferenceEquals(symbol, null))
 			{
 				return -1;
 			}

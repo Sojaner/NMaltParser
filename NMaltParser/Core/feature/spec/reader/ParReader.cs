@@ -5,9 +5,7 @@ using System.IO;
 
 namespace org.maltparser.core.feature.spec.reader
 {
-
-	using  org.maltparser.core.exception;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -87,7 +85,7 @@ namespace org.maltparser.core.feature.spec.reader
 					{
 						throw new FeatureException("Could not read the feature specification file '" + specModelURL.ToString() + "'. ", e);
 					}
-					if (string.ReferenceEquals(fileLine, null))
+					if (ReferenceEquals(fileLine, null))
 					{
 						break;
 					}
@@ -157,7 +155,7 @@ namespace org.maltparser.core.feature.spec.reader
 						{
 							offset = new int?(int.Parse(items[2]));
 						}
-						catch (System.FormatException e)
+						catch (FormatException e)
 						{
 							throw new FeatureException("The feature specification file '" + specModelURL.ToString() + "' contains a illegal integer value. ", e);
 						}
@@ -453,7 +451,7 @@ namespace org.maltparser.core.feature.spec.reader
 			}
 			set
 			{
-				this.columnNameMap = value;
+				columnNameMap = value;
 			}
 		}
 
@@ -477,7 +475,7 @@ namespace org.maltparser.core.feature.spec.reader
 			}
 			set
 			{
-				this.dataStructuresMap = value;
+				dataStructuresMap = value;
 			}
 		}
 
@@ -498,7 +496,7 @@ namespace org.maltparser.core.feature.spec.reader
 			}
 			set
 			{
-				this.useSplitFeats = value;
+				useSplitFeats = value;
 			}
 		}
 
@@ -511,7 +509,7 @@ namespace org.maltparser.core.feature.spec.reader
 			}
 			set
 			{
-				this.covington = value;
+				covington = value;
 			}
 		}
 
@@ -524,7 +522,7 @@ namespace org.maltparser.core.feature.spec.reader
 			}
 			set
 			{
-				this.pppath = value;
+				pppath = value;
 			}
 		}
 
@@ -537,7 +535,7 @@ namespace org.maltparser.core.feature.spec.reader
 			}
 			set
 			{
-				this.pplifted = value;
+				pplifted = value;
 			}
 		}
 
@@ -550,7 +548,7 @@ namespace org.maltparser.core.feature.spec.reader
 			}
 			set
 			{
-				this.ppcoveredRoot = value;
+				ppcoveredRoot = value;
 			}
 		}
 

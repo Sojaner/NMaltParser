@@ -3,9 +3,7 @@ using System.Text;
 
 namespace org.maltparser.core.options.option
 {
-	using  org.maltparser.core.exception;
-
-	/// <summary>
+    /// <summary>
 	/// A boolean option is an option that can only contain a boolean value (true or false). 
 	/// 
 	/// @author Johan Hall
@@ -72,11 +70,11 @@ namespace org.maltparser.core.options.option
 			{
 				if (value.Equals("true", StringComparison.OrdinalIgnoreCase))
 				{
-					this.defaultValue = true;
+					defaultValue = true;
 				}
 				else if (value.Equals("false", StringComparison.OrdinalIgnoreCase))
 				{
-					this.defaultValue = false;
+					defaultValue = false;
 				}
 				else
 				{

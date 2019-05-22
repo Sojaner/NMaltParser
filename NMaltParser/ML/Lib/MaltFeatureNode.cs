@@ -29,7 +29,7 @@ namespace org.maltparser.ml.lib
 			}
 			set
 			{
-				this.index = value;
+				index = value;
 			}
 		}
 
@@ -58,7 +58,7 @@ namespace org.maltparser.ml.lib
 			const int prime = 31;
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final long temp = Double.doubleToLongBits(value);
-			long temp = System.BitConverter.DoubleToInt64Bits(value);
+			long temp = BitConverter.DoubleToInt64Bits(value);
 			return prime * (prime + index) + (int)(temp ^ ((long)((ulong)temp >> 32)));
 		}
 
@@ -72,7 +72,7 @@ namespace org.maltparser.ml.lib
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
@@ -81,7 +81,7 @@ namespace org.maltparser.ml.lib
 			{
 				return false;
 			}
-			if (System.BitConverter.DoubleToInt64Bits(value) != Double.doubleToLongBits(other.value))
+			if (BitConverter.DoubleToInt64Bits(value) != Double.doubleToLongBits(other.value))
 			{
 				return false;
 			}
@@ -99,20 +99,20 @@ namespace org.maltparser.ml.lib
 				return EQUAL;
 			}
 
-			if (this.index < aThat.index)
+			if (index < aThat.index)
 			{
 				return BEFORE;
 			}
-			if (this.index > aThat.index)
+			if (index > aThat.index)
 			{
 				return AFTER;
 			}
 
-			if (this.value < aThat.value)
+			if (value < aThat.value)
 			{
 				return BEFORE;
 			}
-			if (this.value > aThat.value)
+			if (value > aThat.value)
 			{
 				return AFTER;
 			}

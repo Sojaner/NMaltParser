@@ -4,8 +4,8 @@ using System.Text;
 namespace org.maltparser.core.feature.value
 {
 
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.helper;
+	using  function;
+	using  helper;
 	/// 
 	/// 
 	/// <summary>
@@ -36,7 +36,7 @@ namespace org.maltparser.core.feature.value
 		{
 			set
 			{
-				this.featureValues = value;
+				featureValues = value;
 			}
 		}
 
@@ -95,7 +95,7 @@ namespace org.maltparser.core.feature.value
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

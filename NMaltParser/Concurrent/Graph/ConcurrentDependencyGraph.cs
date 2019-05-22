@@ -5,12 +5,11 @@ using System.Text;
 namespace org.maltparser.concurrent.graph
 {
 
-	using  org.maltparser.concurrent.graph.dataformat;
-	using  org.maltparser.concurrent.graph.dataformat;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.node;
+	using  dataformat;
+    using  core.exception;
+	using  core.symbol;
+	using  core.syntaxgraph;
+	using  core.syntaxgraph.node;
 
 	/// <summary>
 	/// Immutable and tread-safe dependency graph implementation.
@@ -32,8 +31,8 @@ namespace org.maltparser.concurrent.graph
 //ORIGINAL LINE: public ConcurrentDependencyGraph(ConcurrentDependencyGraph graph) throws ConcurrentGraphException
 		public ConcurrentDependencyGraph(ConcurrentDependencyGraph graph)
 		{
-			this.dataFormat = graph.dataFormat;
-			this.nodes = new ConcurrentDependencyNode[graph.nodes.Length + 1];
+			dataFormat = graph.dataFormat;
+			nodes = new ConcurrentDependencyNode[graph.nodes.Length + 1];
 
 			for (int i = 0; i < graph.nodes.Length; i++)
 			{
@@ -52,7 +51,7 @@ namespace org.maltparser.concurrent.graph
 		public ConcurrentDependencyGraph(DataFormat dataFormat, string[] inputTokens)
 		{
 			this.dataFormat = dataFormat;
-			this.nodes = new ConcurrentDependencyNode[inputTokens.Length + 1];
+			nodes = new ConcurrentDependencyNode[inputTokens.Length + 1];
 
 			// Add nodes
 			nodes[0] = new ConcurrentDependencyNode(this, 0, null); // ROOT
@@ -84,7 +83,7 @@ namespace org.maltparser.concurrent.graph
 		public ConcurrentDependencyGraph(DataFormat dataFormat, DependencyStructure sourceGraph, string defaultRootLabel)
 		{
 			this.dataFormat = dataFormat;
-			this.nodes = new ConcurrentDependencyNode[sourceGraph.nDependencyNode()];
+			nodes = new ConcurrentDependencyNode[sourceGraph.nDependencyNode()];
 
 			// Add nodes
 			nodes[0] = new ConcurrentDependencyNode(this, 0, null); // ROOT
@@ -142,7 +141,7 @@ namespace org.maltparser.concurrent.graph
 		protected internal ConcurrentDependencyGraph(DataFormat dataFormat, ConcurrentDependencyNode[] inputNodes)
 		{
 			this.dataFormat = dataFormat;
-			this.nodes = new ConcurrentDependencyNode[inputNodes.Length];
+			nodes = new ConcurrentDependencyNode[inputNodes.Length];
 
 			// Add nodes
 			for (int i = 0; i < inputNodes.Length; i++)
@@ -692,7 +691,7 @@ namespace org.maltparser.concurrent.graph
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

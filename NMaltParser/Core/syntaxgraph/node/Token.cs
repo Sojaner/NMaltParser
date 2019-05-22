@@ -5,10 +5,10 @@ using System.Text;
 namespace org.maltparser.core.syntaxgraph.node
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.edge;
+	using  exception;
+	using  helper;
+	using  symbol;
+	using  edge;
 
 
 	public class Token : GraphNode, TokenNode, DependencyNode, PhraseStructureNode
@@ -107,7 +107,7 @@ namespace org.maltparser.core.syntaxgraph.node
 			}
 			set
 			{
-				this.rank = value;
+				rank = value;
 			}
 		}
 
@@ -134,7 +134,7 @@ namespace org.maltparser.core.syntaxgraph.node
 			}
 			set
 			{
-				this.component = value;
+				component = value;
 			}
 		}
 
@@ -146,11 +146,11 @@ namespace org.maltparser.core.syntaxgraph.node
 			base.addIncomingEdge(@in);
 			if (@in.Source != null)
 			{
-				if (@in.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.DEPENDENCY_EDGE && @in.Source is DependencyNode)
+				if (@in.Type == Edge_Fields.DEPENDENCY_EDGE && @in.Source is DependencyNode)
 				{
 					heads.Add((DependencyNode)@in.Source);
 				}
-				else if (@in.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.PHRASE_STRUCTURE_EDGE && @in.Source is PhraseStructureNode)
+				else if (@in.Type == Edge_Fields.PHRASE_STRUCTURE_EDGE && @in.Source is PhraseStructureNode)
 				{
 					parent = (PhraseStructureNode)@in.Source;
 				}
@@ -164,15 +164,15 @@ namespace org.maltparser.core.syntaxgraph.node
 			base.removeIncomingEdge(@in);
 			if (@in.Source != null)
 			{
-				if (@in.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.DEPENDENCY_EDGE && @in.Source is DependencyNode)
+				if (@in.Type == Edge_Fields.DEPENDENCY_EDGE && @in.Source is DependencyNode)
 				{
 					heads.remove((DependencyNode)@in.Source);
 				}
-				else if (@in.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.PHRASE_STRUCTURE_EDGE && @in.Source is PhraseStructureNode)
+				else if (@in.Type == Edge_Fields.PHRASE_STRUCTURE_EDGE && @in.Source is PhraseStructureNode)
 				{
 					if (@in.Source == parent)
 					{
-						this.parent = null;
+						parent = null;
 					}
 				}
 			}
@@ -183,7 +183,7 @@ namespace org.maltparser.core.syntaxgraph.node
 		public override void addOutgoingEdge(Edge @out)
 		{
 			base.addOutgoingEdge(@out);
-			if (@out.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.DEPENDENCY_EDGE && @out.Target is DependencyNode)
+			if (@out.Type == Edge_Fields.DEPENDENCY_EDGE && @out.Target is DependencyNode)
 			{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final DependencyNode dependent = (DependencyNode)out.getTarget();
@@ -204,7 +204,7 @@ namespace org.maltparser.core.syntaxgraph.node
 		public override void removeOutgoingEdge(Edge @out)
 		{
 			base.removeOutgoingEdge(@out);
-			if (@out.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.DEPENDENCY_EDGE && @out.Target is DependencyNode)
+			if (@out.Type == Edge_Fields.DEPENDENCY_EDGE && @out.Target is DependencyNode)
 			{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final DependencyNode dependent = (DependencyNode)out.getTarget();
@@ -228,7 +228,7 @@ namespace org.maltparser.core.syntaxgraph.node
 			{
 				if (value > 0)
 				{
-					this.index = value;
+					index = value;
 				}
 				else
 				{
@@ -264,7 +264,7 @@ namespace org.maltparser.core.syntaxgraph.node
 		{
 			get
 			{
-				if (!this.hasHead())
+				if (!hasHead())
 				{
 					return this;
 				}
@@ -284,7 +284,7 @@ namespace org.maltparser.core.syntaxgraph.node
 		{
 			get
 			{
-				if (!this.hasHead())
+				if (!hasHead())
 				{
 					return null;
 				}
@@ -570,7 +570,7 @@ namespace org.maltparser.core.syntaxgraph.node
 			{
 				foreach (Edge e in incomingEdges)
 				{
-					if (e.Source == parent && e.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.PHRASE_STRUCTURE_EDGE)
+					if (e.Source == parent && e.Type == Edge_Fields.PHRASE_STRUCTURE_EDGE)
 					{
 						return e;
 					}
@@ -585,7 +585,7 @@ namespace org.maltparser.core.syntaxgraph.node
 		{
 			foreach (Edge e in incomingEdges)
 			{
-				if (e.Source == parent && e.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.PHRASE_STRUCTURE_EDGE)
+				if (e.Source == parent && e.Type == Edge_Fields.PHRASE_STRUCTURE_EDGE)
 				{
 					return e.getLabelSymbol(table);
 				}
@@ -599,7 +599,7 @@ namespace org.maltparser.core.syntaxgraph.node
 		{
 			foreach (Edge e in incomingEdges)
 			{
-				if (e.Source == parent && e.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.PHRASE_STRUCTURE_EDGE)
+				if (e.Source == parent && e.Type == Edge_Fields.PHRASE_STRUCTURE_EDGE)
 				{
 					return e.getLabelCode(table);
 				}
@@ -613,7 +613,7 @@ namespace org.maltparser.core.syntaxgraph.node
 		{
 			foreach (Edge e in incomingEdges)
 			{
-				if (e.Source == parent && e.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.PHRASE_STRUCTURE_EDGE)
+				if (e.Source == parent && e.Type == Edge_Fields.PHRASE_STRUCTURE_EDGE)
 				{
 					return e.hasLabel(table);
 				}
@@ -936,7 +936,7 @@ namespace org.maltparser.core.syntaxgraph.node
 				{
 					return null;
 				}
-				else if (this.Index < Head.Index)
+				else if (Index < Head.Index)
 				{
 					try
 					{
@@ -947,7 +947,7 @@ namespace org.maltparser.core.syntaxgraph.node
 						return null;
 					}
 				}
-				else if (this.Index > Head.Index)
+				else if (Index > Head.Index)
 				{
 					try
 					{
@@ -1062,14 +1062,14 @@ namespace org.maltparser.core.syntaxgraph.node
     
 				foreach (DependencyNode node in Head.LeftDependents)
 				{
-					if (node.Index > this.Index)
+					if (node.Index > Index)
 					{
 						return node;
 					}
 				}
 				foreach (DependencyNode node in Head.RightDependents)
 				{
-					if (node.Index > this.Index)
+					if (node.Index > Index)
 					{
 						return node;
 					}
@@ -1092,7 +1092,7 @@ namespace org.maltparser.core.syntaxgraph.node
 				{
 					return null;
 				}
-				else if (this.Index < Head.Index)
+				else if (Index < Head.Index)
 				{
 	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 	//ORIGINAL LINE: final java.util.SortedSet<DependencyNode> tailSet = getHead().getLeftDependents().tailSet(this);
@@ -1103,7 +1103,7 @@ namespace org.maltparser.core.syntaxgraph.node
 					}
 					return tailSet.toArray(new DependencyNode[tailSet.Count])[1];
 				}
-				else if (this.Index > Head.Index)
+				else if (Index > Head.Index)
 				{
 	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 	//ORIGINAL LINE: final java.util.SortedSet<DependencyNode> tailSet = getHead().getRightDependents().tailSet(this);
@@ -1251,7 +1251,7 @@ namespace org.maltparser.core.syntaxgraph.node
 	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 	//ORIGINAL LINE: final DependencyNode head = getHead();
 					DependencyNode head = Head;
-					if (Head.Index < this.Index)
+					if (Head.Index < Index)
 					{
 						DependencyNode terminals = head;
 						DependencyNode tmp = null;
@@ -1350,11 +1350,11 @@ namespace org.maltparser.core.syntaxgraph.node
 
 			if (that is TokenNode)
 			{
-				if (this.index < that.CompareToIndex)
+				if (index < that.CompareToIndex)
 				{
 					return BEFORE;
 				}
-				if (this.index > that.CompareToIndex)
+				if (index > that.CompareToIndex)
 				{
 					return AFTER;
 				}
@@ -1366,13 +1366,13 @@ namespace org.maltparser.core.syntaxgraph.node
 				{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final int thisLCorner = this.index;
-					int thisLCorner = this.index;
+					int thisLCorner = index;
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final int thatLCorner = that.getLeftmostProperDescendantIndex();
 					int thatLCorner = that.LeftmostProperDescendantIndex;
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final int thisRCorner = this.index;
-					int thisRCorner = this.index;
+					int thisRCorner = index;
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final int thatRCorner = that.getRightmostProperDescendantIndex();
 					int thatRCorner = that.RightmostProperDescendantIndex;
@@ -1477,11 +1477,11 @@ namespace org.maltparser.core.syntaxgraph.node
 					Environment.Exit(1);
 				}
 			}
-			if (this.index < that.CompareToIndex)
+			if (index < that.CompareToIndex)
 			{
 				return BEFORE;
 			}
-			if (this.index > that.CompareToIndex)
+			if (index > that.CompareToIndex)
 			{
 				return AFTER;
 			}
@@ -1491,7 +1491,7 @@ namespace org.maltparser.core.syntaxgraph.node
 		public override bool Equals(object obj)
 		{
 			Token v = (Token)obj;
-			if (!(this.predecessor == v.predecessor && this.successor == v.successor))
+			if (!(predecessor == v.predecessor && successor == v.successor))
 			{
 				return false;
 			}

@@ -3,10 +3,10 @@
 namespace org.maltparser.core.syntaxgraph
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
+	using  exception;
+	using  symbol;
+	using  edge;
+	using  node;
 	/// 
 	/// 
 	/// <summary>

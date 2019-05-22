@@ -4,10 +4,7 @@ using System.Text;
 
 namespace org.maltparser.core.feature.spec
 {
-
-	using  org.maltparser.core.exception;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -27,22 +24,22 @@ namespace org.maltparser.core.feature.spec
 //ORIGINAL LINE: public SpecificationModel(String _specModelName) throws org.maltparser.core.exception.MaltChainedException
 		public SpecificationModel(string _specModelName)
 		{
-			this.specModelName = _specModelName;
-			this.subModelMap = new LinkedHashMap<string, SpecificationSubModel>();
+			specModelName = _specModelName;
+			subModelMap = new LinkedHashMap<string, SpecificationSubModel>();
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void add(String featureSpec) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void add(string featureSpec)
 		{
-			this.add("MAIN", featureSpec);
+			add("MAIN", featureSpec);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void add(String subModelName, String featureSpec) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void add(string subModelName, string featureSpec)
 		{
-			if (string.ReferenceEquals(subModelName, null) || subModelName.Length < 1 || subModelName.ToUpper().Equals("MAIN"))
+			if (ReferenceEquals(subModelName, null) || subModelName.Length < 1 || subModelName.ToUpper().Equals("MAIN"))
 			{
 				if (!subModelMap.containsKey("MAIN"))
 				{

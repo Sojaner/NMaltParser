@@ -3,9 +3,7 @@ using System.Text;
 
 namespace org.maltparser.core.options.option
 {
-	using  org.maltparser.core.exception;
-
-	/// <summary>
+    /// <summary>
 	/// An unary option is an option that doesn't need a value to the 
 	/// specified. For example the --system-help option (-h or --help). 
 	/// 

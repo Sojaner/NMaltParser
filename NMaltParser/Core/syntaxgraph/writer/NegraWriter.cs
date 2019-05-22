@@ -5,16 +5,13 @@ using System.IO;
 namespace org.maltparser.core.syntaxgraph.writer
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	/// 
+	using  exception;
+	using  io.dataformat;
+    using  symbol;
+    using  edge;
+	using  node;
+
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -379,7 +376,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.writer = value;
+				writer = value;
 			}
 		}
 
@@ -392,7 +389,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.sentenceCount = value;
+				sentenceCount = value;
 			}
 		}
 
@@ -405,7 +402,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.dataFormatInstance = value;
+				dataFormatInstance = value;
 			}
 		}
 
@@ -418,7 +415,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.optionString = value;
+				optionString = value;
 				string[] argv;
 				try
 				{
@@ -445,7 +442,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 						{
 							START_ID_OF_NONTERMINALS = int.Parse(argv[i]);
 						}
-						catch (System.FormatException)
+						catch (FormatException)
 						{
 							throw new MaltChainedException("The TigerXML Reader option -s must be an integer value. ");
 						}

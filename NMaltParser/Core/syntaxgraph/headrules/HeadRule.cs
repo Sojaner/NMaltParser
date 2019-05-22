@@ -3,15 +3,12 @@ using System.Text;
 
 namespace org.maltparser.core.syntaxgraph.headrules
 {
+    using  exception;
+	using  io.dataformat;
+	using  symbol;
+    using  node;
 
-	using  org.apache.log4j;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -74,14 +71,14 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			{
 				if (items[2].IndexOf(';') == -1)
 				{
-					this.Add(new PrioList(this, items[2]));
+					Add(new PrioList(this, items[2]));
 				}
 				else
 				{
 					string[] lists = items[2].Split(";", true);
 					for (int i = 0; i < lists.Length; i++)
 					{
-						this.Add(new PrioList(this, lists[i]));
+						Add(new PrioList(this, lists[i]));
 					}
 				}
 			}
@@ -92,7 +89,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 		public virtual PhraseStructureNode getHeadChild(NonTerminalNode nt)
 		{
 			PhraseStructureNode headChild = null;
-			for (int i = 0; i < this.Count; i++)
+			for (int i = 0; i < Count; i++)
 			{
 				headChild = this[i].getHeadChild(nt);
 				if (headChild != null)
@@ -111,7 +108,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			}
 			set
 			{
-				this.table = value;
+				table = value;
 			}
 		}
 
@@ -124,7 +121,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			}
 			set
 			{
-				this.symbolCode = value;
+				symbolCode = value;
 			}
 		}
 
@@ -147,7 +144,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			}
 			set
 			{
-				this.defaultDirection = value;
+				defaultDirection = value;
 			}
 		}
 
@@ -180,7 +177,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 		{
 			set
 			{
-				this.headRules = value;
+				headRules = value;
 			}
 		}
 
@@ -216,16 +213,16 @@ namespace org.maltparser.core.syntaxgraph.headrules
 				sb.Append('r');
 			}
 			sb.Append('\t');
-			if (this.Count == 0)
+			if (Count == 0)
 			{
 				sb.Append('*');
 			}
 			else
 			{
-				for (int i = 0; i < this.Count; i++)
+				for (int i = 0; i < Count; i++)
 				{
 					sb.Append(this[i]);
-					if (i < this.Count - 1)
+					if (i < Count - 1)
 					{
 						sb.Append(';');
 					}

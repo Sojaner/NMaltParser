@@ -6,15 +6,13 @@ using System.IO;
 namespace org.maltparser.core.syntaxgraph.reader
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	/// 
+	using  exception;
+	using  io.dataformat;
+    using  symbol;
+	using  edge;
+	using  node;
+
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -60,7 +58,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 		private void reopen()
 		{
 			close();
-			if (!string.ReferenceEquals(fileName, null))
+			if (!ReferenceEquals(fileName, null))
 			{
 				open(fileName, charsetName);
 			}
@@ -453,7 +451,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.reader = value;
+				reader = value;
 			}
 		}
 
@@ -468,7 +466,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.sentenceCount = value;
+				sentenceCount = value;
 			}
 		}
 
@@ -481,7 +479,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.dataFormatInstance = value;
+				dataFormatInstance = value;
 				inputColumns = dataFormatInstance.InputColumnDescriptions;
 				edgeLabelColumns = dataFormatInstance.PhraseStructureEdgeLabelColumnDescriptions;
 				phraseLabelColumns = dataFormatInstance.PhraseStructureNodeLabelColumnDescriptions;
@@ -497,7 +495,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.optionString = value;
+				optionString = value;
 			}
 		}
 
@@ -510,7 +508,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.fileName = value;
+				fileName = value;
 			}
 		}
 
@@ -523,7 +521,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.url = value;
+				url = value;
 			}
 		}
 
@@ -536,7 +534,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.charsetName = value;
+				charsetName = value;
 			}
 		}
 

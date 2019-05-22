@@ -1,12 +1,8 @@
 ﻿namespace org.maltparser.core.io.dataformat
 {
+    using  helper;
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
-
-	public class DataFormatManager
+    public class DataFormatManager
 	{
 		private DataFormatSpecification inputDataFormatSpec;
 		private DataFormatSpecification outputDataFormatSpec;
@@ -58,7 +54,7 @@
 			}
 			set
 			{
-				this.inputDataFormatSpec = value;
+				inputDataFormatSpec = value;
 			}
 		}
 
@@ -70,7 +66,7 @@
 			}
 			set
 			{
-				this.outputDataFormatSpec = value;
+				outputDataFormatSpec = value;
 			}
 		}
 

@@ -5,10 +5,10 @@ using System.Text;
 namespace org.maltparser.core.feature
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.spec;
-	using  org.maltparser.core.feature.value;
+	using  exception;
+	using  function;
+	using  spec;
+	using  value;
 
 	/// 
 	/// 
@@ -32,11 +32,11 @@ namespace org.maltparser.core.feature
 //ORIGINAL LINE: public FeatureVector(FeatureModel _featureModel, org.maltparser.core.feature.spec.SpecificationSubModel _specSubModel) throws org.maltparser.core.exception.MaltChainedException
 		public FeatureVector(FeatureModel _featureModel, SpecificationSubModel _specSubModel)
 		{
-			this.specSubModel = _specSubModel;
-			this.featureModel = _featureModel;
+			specSubModel = _specSubModel;
+			featureModel = _featureModel;
 			foreach (string spec in specSubModel)
 			{
-				this.Add(featureModel.identifyFeature(spec));
+				Add(featureModel.identifyFeature(spec));
 			}
 		}
 

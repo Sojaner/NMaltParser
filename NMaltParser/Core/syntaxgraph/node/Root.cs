@@ -6,15 +6,14 @@ namespace org.maltparser.core.syntaxgraph.node
 {
 
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.headrules;
-	using  org.maltparser.core.syntaxgraph.headrules;
+	using  exception;
+	using  helper;
+	using  symbol;
+	using  edge;
+	using  headrules;
 
 
-	public class Root : GraphNode, DependencyNode, PhraseStructureNode, NonTerminalNode
+    public class Root : GraphNode, DependencyNode, PhraseStructureNode, NonTerminalNode
 	{
 		protected internal readonly SortedSet<DependencyNode> leftDependents;
 		protected internal readonly SortedSet<DependencyNode> rightDependents;
@@ -53,7 +52,7 @@ namespace org.maltparser.core.syntaxgraph.node
 			base.addOutgoingEdge(@out);
 			if (@out.Target != null)
 			{
-				if (@out.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.DEPENDENCY_EDGE && @out.Target is DependencyNode)
+				if (@out.Type == Edge_Fields.DEPENDENCY_EDGE && @out.Target is DependencyNode)
 				{
 					Node dependent = @out.Target;
 					if (compareTo(dependent) > 0)
@@ -65,7 +64,7 @@ namespace org.maltparser.core.syntaxgraph.node
 						rightDependents.Add((DependencyNode)dependent);
 					}
 				}
-				else if (@out.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.PHRASE_STRUCTURE_EDGE && @out.Target is PhraseStructureNode)
+				else if (@out.Type == Edge_Fields.PHRASE_STRUCTURE_EDGE && @out.Target is PhraseStructureNode)
 				{
 					children.Add((PhraseStructureNode)@out.Target);
 				}
@@ -79,7 +78,7 @@ namespace org.maltparser.core.syntaxgraph.node
 			base.removeOutgoingEdge(@out);
 			if (@out.Target != null)
 			{
-				if (@out.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.DEPENDENCY_EDGE && @out.Target is DependencyNode)
+				if (@out.Type == Edge_Fields.DEPENDENCY_EDGE && @out.Target is DependencyNode)
 				{
 					Node dependent = @out.Target;
 					if (compareTo(dependent) > 0)
@@ -91,7 +90,7 @@ namespace org.maltparser.core.syntaxgraph.node
 						rightDependents.remove((DependencyNode)dependent);
 					}
 				}
-				else if (@out.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.PHRASE_STRUCTURE_EDGE && @out.Target is PhraseStructureNode)
+				else if (@out.Type == Edge_Fields.PHRASE_STRUCTURE_EDGE && @out.Target is PhraseStructureNode)
 				{
 					children.remove((PhraseStructureNode)@out.Target);
 				}
@@ -141,7 +140,7 @@ namespace org.maltparser.core.syntaxgraph.node
 			}
 			set
 			{
-				this.rank = value;
+				rank = value;
 			}
 		}
 
@@ -168,7 +167,7 @@ namespace org.maltparser.core.syntaxgraph.node
 			}
 			set
 			{
-				this.component = value;
+				component = value;
 			}
 		}
 
@@ -1139,13 +1138,13 @@ namespace org.maltparser.core.syntaxgraph.node
 			{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final int thisLCorner = this.getLeftmostProperDescendantIndex();
-				int thisLCorner = this.LeftmostProperDescendantIndex;
+				int thisLCorner = LeftmostProperDescendantIndex;
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final int thatLCorner = (o instanceof TokenNode)?o.getCompareToIndex():o.getLeftmostProperDescendantIndex();
 				int thatLCorner = (o is TokenNode)?o.CompareToIndex:o.LeftmostProperDescendantIndex;
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final int thisRCorner = this.getRightmostProperDescendantIndex();
-				int thisRCorner = this.RightmostProperDescendantIndex;
+				int thisRCorner = RightmostProperDescendantIndex;
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final int thatRCorner = (o instanceof TokenNode)?o.getCompareToIndex():o.getRightmostProperDescendantIndex();
 				int thatRCorner = (o is TokenNode)?o.CompareToIndex:o.RightmostProperDescendantIndex;

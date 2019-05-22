@@ -3,8 +3,8 @@
 namespace org.maltparser.core.syntaxgraph.reader
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
+	using  exception;
+	using  io.dataformat;
 
 	/// 
 	/// 

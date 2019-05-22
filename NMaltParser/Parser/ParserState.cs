@@ -1,13 +1,9 @@
 ﻿namespace org.maltparser.parser
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.history;
-	using  org.maltparser.parser.history;
-	using  org.maltparser.parser.history;
-	using  org.maltparser.parser.history;
-	using  org.maltparser.parser.history.action;
+    using  core.symbol;
+	using  core.syntaxgraph;
+	using  history;
+    using  history.action;
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -25,15 +21,15 @@
 		public ParserState(DependencyParserConfig manager, SymbolTableHandler symbolTableHandler, AbstractParserFactory factory)
 		{
 			this.factory = factory;
-			this.historyStructure = new HistoryList();
-			this.transitionSystem = factory.makeTransitionSystem();
+			historyStructure = new HistoryList();
+			transitionSystem = factory.makeTransitionSystem();
 			string decisionSettings = manager.getOptionValue("guide", "decision_settings").ToString().Trim();
 			TransitionSystem.initTableHandlers(decisionSettings, symbolTableHandler);
 			int kBestSize = ((int?)manager.getOptionValue("guide", "kbest")).Value;
 			string classitem_separator = manager.getOptionValue("guide", "classitem_separator").ToString();
-			this.history = new History(decisionSettings, classitem_separator, TransitionSystem.TableHandlers, kBestSize);
+			history = new History(decisionSettings, classitem_separator, TransitionSystem.TableHandlers, kBestSize);
 			TransitionSystem.initTransitionSystem(history);
-			this.config = factory.makeParserConfiguration();
+			config = factory.makeParserConfiguration();
 		}
 
 

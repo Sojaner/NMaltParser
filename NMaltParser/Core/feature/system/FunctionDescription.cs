@@ -3,9 +3,7 @@ using System.Text;
 
 namespace org.maltparser.core.feature.system
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.function;
+    using  function;
 	/// 
 	/// 
 	/// <summary>
@@ -21,10 +19,10 @@ namespace org.maltparser.core.feature.system
 
 		public FunctionDescription(string _name, Type _functionClass, bool _hasSubfunctions, bool _hasFactory)
 		{
-			this.name = _name;
-			this.functionClass = _functionClass;
-			this.hasSubfunctions = _hasSubfunctions;
-			this.hasFactory = _hasFactory;
+			name = _name;
+			functionClass = _functionClass;
+			hasSubfunctions = _hasSubfunctions;
+			hasFactory = _hasFactory;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -51,7 +49,7 @@ namespace org.maltparser.core.feature.system
 			{
 				try
 				{
-					return (Function)System.Activator.CreateInstance(functionClass);
+					return (Function)Activator.CreateInstance(functionClass);
 				}
 				catch (InstantiationException e)
 				{
@@ -69,7 +67,7 @@ namespace org.maltparser.core.feature.system
 			{
 				try
 				{
-					return (Function)System.Activator.CreateInstance(functionClass);
+					return (Function)Activator.CreateInstance(functionClass);
 				}
 				catch (InstantiationException e)
 				{
@@ -161,7 +159,7 @@ namespace org.maltparser.core.feature.system
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

@@ -5,16 +5,13 @@ using System.Text;
 namespace org.maltparser.parser.guide.instance
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.ml;
-	using  org.maltparser.ml.lib;
-	using  org.maltparser.ml.lib;
-	using  org.maltparser.parser.history.action;
+	using  core.exception;
+	using  core.feature;
+    using  core.feature.function;
+    using  core.syntaxgraph;
+	using  ml;
+	using  ml.lib;
+    using  history.action;
 
 
 	/// 
@@ -23,7 +20,7 @@ namespace org.maltparser.parser.guide.instance
 	/// </summary>
 	public class AtomicModel : InstanceModel
 	{
-		public static readonly Type[] argTypes = new Type[] {typeof(org.maltparser.parser.guide.instance.InstanceModel), typeof(Integer)};
+		public static readonly Type[] argTypes = new Type[] {typeof(InstanceModel), typeof(Integer)};
 		private readonly Model parent;
 		private readonly string modelName;
 	//	private final FeatureVector featureVector;
@@ -47,33 +44,33 @@ namespace org.maltparser.parser.guide.instance
 			this.index = index;
 			if (index == -1)
 			{
-				this.modelName = parent.ModelName + ".";
+				modelName = parent.ModelName + ".";
 			}
 			else
 			{
-				this.modelName = parent.ModelName + "." + (new Formatter()).format("%03d", index) + ".";
+				modelName = parent.ModelName + "." + (new Formatter()).format("%03d", index) + ".";
 			}
 	//		this.featureVector = featureVector;
-			this.frequency = 0;
+			frequency = 0;
 			int? learnerMode = null;
-			if (Guide.GuideMode == org.maltparser.parser.guide.ClassifierGuide_GuideMode.CLASSIFY)
+			if (Guide.GuideMode == ClassifierGuide_GuideMode.CLASSIFY)
 			{
-				learnerMode = org.maltparser.ml.LearningMethod_Fields.CLASSIFY;
+				learnerMode = LearningMethod_Fields.CLASSIFY;
 			}
-			else if (Guide.GuideMode == org.maltparser.parser.guide.ClassifierGuide_GuideMode.BATCH)
+			else if (Guide.GuideMode == ClassifierGuide_GuideMode.BATCH)
 			{
-				learnerMode = org.maltparser.ml.LearningMethod_Fields.BATCH;
+				learnerMode = LearningMethod_Fields.BATCH;
 			}
 
 			// start init learning method
 			Type clazz = (Type)Guide.Configuration.getOptionValue("guide", "learner");
 			if (clazz == typeof(LibSvm))
 			{
-				this.method = new LibSvm(this, learnerMode);
+				method = new LibSvm(this, learnerMode);
 			}
 			else if (clazz == typeof(LibLinear))
 			{
-				this.method = new LibLinear(this, learnerMode);
+				method = new LibLinear(this, learnerMode);
 			}
 			else
 			{
@@ -83,7 +80,7 @@ namespace org.maltparser.parser.guide.instance
 //JAVA TO C# CONVERTER WARNING: Java wildcard generics have no direct equivalent in .NET:
 //ORIGINAL LINE: Constructor<?> constructor = clazz.getConstructor(argTypes);
 					System.Reflection.ConstructorInfo<object> constructor = clazz.GetConstructor(argTypes);
-					this.method = (LearningMethod)constructor.newInstance(arguments);
+					method = (LearningMethod)constructor.newInstance(arguments);
 				}
 				catch (NoSuchMethodException e)
 				{
@@ -108,7 +105,7 @@ namespace org.maltparser.parser.guide.instance
 			}
 			// end init learning method
 
-			if (learnerMode.Value == org.maltparser.ml.LearningMethod_Fields.BATCH && index == -1 && Guide.Configuration != null)
+			if (learnerMode.Value == LearningMethod_Fields.BATCH && index == -1 && Guide.Configuration != null)
 			{
 				Guide.Configuration.writeInfoToConfigFile(method.ToString());
 			}
@@ -122,7 +119,7 @@ namespace org.maltparser.parser.guide.instance
 			{
 				method.addInstance(decision, featureVector);
 			}
-			catch (System.NullReferenceException e)
+			catch (NullReferenceException e)
 			{
 				throw new GuideException("The learner cannot be found. ", e);
 			}
@@ -137,7 +134,7 @@ namespace org.maltparser.parser.guide.instance
 			{
 				method.noMoreInstances();
 			}
-			catch (System.NullReferenceException e)
+			catch (NullReferenceException e)
 			{
 				throw new GuideException("The learner cannot be found. ", e);
 			}
@@ -151,7 +148,7 @@ namespace org.maltparser.parser.guide.instance
 			{
 				method.finalizeSentence(dependencyGraph);
 			}
-			catch (System.NullReferenceException e)
+			catch (NullReferenceException e)
 			{
 				throw new GuideException("The learner cannot be found. ", e);
 			}
@@ -165,7 +162,7 @@ namespace org.maltparser.parser.guide.instance
 			{
 				return method.predict(featureVector, decision);
 			}
-			catch (System.NullReferenceException e)
+			catch (NullReferenceException e)
 			{
 				throw new GuideException("The learner cannot be found. ", e);
 			}
@@ -184,7 +181,7 @@ namespace org.maltparser.parser.guide.instance
 				}
 				return null;
 			}
-			catch (System.NullReferenceException e)
+			catch (NullReferenceException e)
 			{
 				throw new GuideException("The learner cannot be found. ", e);
 			}
@@ -253,7 +250,7 @@ namespace org.maltparser.parser.guide.instance
 				method.train();
 				method.terminate();
 			}
-			catch (System.NullReferenceException e)
+			catch (NullReferenceException e)
 			{
 				throw new GuideException("The learner cannot be found. ", e);
 			}
@@ -328,7 +325,7 @@ namespace org.maltparser.parser.guide.instance
 			}
 			set
 			{
-				this.frequency = value;
+				frequency = value;
 			}
 		}
 

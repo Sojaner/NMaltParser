@@ -3,9 +3,7 @@ using System.IO;
 
 namespace org.maltparser.core.symbol.trie
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
+    using  helper;
 
 
 	/// 
@@ -130,7 +128,7 @@ namespace org.maltparser.core.symbol.trie
 			Pattern tabPattern = Pattern.compile("\t");
 			try
 			{
-				while (!string.ReferenceEquals((fileLine = bin.ReadLine()), null))
+				while (!ReferenceEquals((fileLine = bin.ReadLine()), null))
 				{
 					if (fileLine.Length == 0 || fileLine[0] != '\t')
 					{
@@ -151,7 +149,7 @@ namespace org.maltparser.core.symbol.trie
 					}
 					else if (items.Length == 3)
 					{
-						addSymbolTable(items[0], int.Parse(items[1]), org.maltparser.core.symbol.SymbolTable_Fields.STRING, items[2]);
+						addSymbolTable(items[0], int.Parse(items[1]), SymbolTable_Fields.STRING, items[2]);
 					}
 					else
 					{
@@ -190,7 +188,7 @@ namespace org.maltparser.core.symbol.trie
 				{
 					bin.reset();
 				}
-				while (!string.ReferenceEquals((fileLine = bin.ReadLine()), null))
+				while (!ReferenceEquals((fileLine = bin.ReadLine()), null))
 				{
 					if (fileLine.Length > 0)
 					{
@@ -235,7 +233,7 @@ namespace org.maltparser.core.symbol.trie
 				string fileLine;
 				TrieSymbolTable table = addSymbolTable(tableName, columnCategory, columnType, nullValueStrategy);
 
-				while (!string.ReferenceEquals((fileLine = br.ReadLine()), null))
+				while (!ReferenceEquals((fileLine = br.ReadLine()), null))
 				{
 					table.addSymbol(fileLine.Trim());
 				}

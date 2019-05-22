@@ -4,17 +4,11 @@ using System.IO;
 
 namespace org.maltparser.core.syntaxgraph.writer
 {
+    using  io.dataformat;
+    using  symbol;
+    using  node;
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -319,7 +313,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			set
 			{
 				close();
-				this.writer = value;
+				writer = value;
 			}
 		}
 
@@ -332,7 +326,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.dataFormatInstance = value;
+				dataFormatInstance = value;
 				inputColumns = value.InputColumnDescriptions;
 				edgeLabelColumns = value.PhraseStructureEdgeLabelColumnDescriptions;
 				phraseLabelColumns = value.PhraseStructureNodeLabelColumnDescriptions;
@@ -348,7 +342,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.optionString = value;
+				optionString = value;
 				format = PennWriterFormat.DEFAULT;
     
 				string[] argv;

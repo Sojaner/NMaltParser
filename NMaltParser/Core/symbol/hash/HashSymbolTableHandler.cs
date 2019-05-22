@@ -3,9 +3,7 @@ using System.IO;
 
 namespace org.maltparser.core.symbol.hash
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
+    using  helper;
 
 
 	public class HashSymbolTableHandler : SymbolTableHandler
@@ -14,7 +12,7 @@ namespace org.maltparser.core.symbol.hash
 
 		public HashSymbolTableHandler()
 		{
-			this.symbolTables = new HashMap<string, HashSymbolTable>();
+			symbolTables = new HashMap<string, HashSymbolTable>();
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -124,7 +122,7 @@ namespace org.maltparser.core.symbol.hash
 			Pattern tabPattern = Pattern.compile("\t");
 			try
 			{
-				while (!string.ReferenceEquals((fileLine = bin.ReadLine()), null))
+				while (!ReferenceEquals((fileLine = bin.ReadLine()), null))
 				{
 					if (fileLine.Length == 0 || fileLine[0] != '\t')
 					{
@@ -145,7 +143,7 @@ namespace org.maltparser.core.symbol.hash
 					}
 					else if (items.Length == 3)
 					{
-						addSymbolTable(items[0], int.Parse(items[1]), org.maltparser.core.symbol.SymbolTable_Fields.STRING, items[2]);
+						addSymbolTable(items[0], int.Parse(items[1]), SymbolTable_Fields.STRING, items[2]);
 					}
 					else
 					{
@@ -182,7 +180,7 @@ namespace org.maltparser.core.symbol.hash
 				{
 					bin.reset();
 				}
-				while (!string.ReferenceEquals((fileLine = bin.ReadLine()), null))
+				while (!ReferenceEquals((fileLine = bin.ReadLine()), null))
 				{
 					if (fileLine.Length > 0)
 					{
@@ -226,7 +224,7 @@ namespace org.maltparser.core.symbol.hash
 				string fileLine;
 				SymbolTable table = addSymbolTable(tableName, columnCategory, columnType, nullValueStrategy);
 
-				while (!string.ReferenceEquals((fileLine = br.ReadLine()), null))
+				while (!ReferenceEquals((fileLine = br.ReadLine()), null))
 				{
 					table.addSymbol(fileLine.Trim());
 				}

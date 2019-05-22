@@ -3,12 +3,8 @@ using System.IO;
 
 namespace org.maltparser.core.syntaxgraph.reader
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.syntaxgraph.edge;
+    using  io.dataformat;
+    using  edge;
 	/// 
 	/// 
 	/// <summary>
@@ -136,7 +132,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			try
 			{
 				string line;
-				while (!string.ReferenceEquals((line = reader.ReadLine()), null))
+				while (!ReferenceEquals((line = reader.ReadLine()), null))
 				{
 					if (line.Trim().Length == 0)
 					{
@@ -315,7 +311,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			set
 			{
 				close();
-				this.reader = value;
+				reader = value;
 			}
 		}
 
@@ -328,7 +324,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.dataFormatInstance = value;
+				dataFormatInstance = value;
 			}
 		}
 
@@ -343,7 +339,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.sentenceCount = value;
+				sentenceCount = value;
 			}
 		}
 
@@ -369,7 +365,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.fileName = value;
+				fileName = value;
 			}
 		}
 
@@ -382,7 +378,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.url = value;
+				url = value;
 			}
 		}
 
@@ -395,7 +391,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.charsetName = value;
+				charsetName = value;
 			}
 		}
 

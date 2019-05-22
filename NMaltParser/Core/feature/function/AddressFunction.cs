@@ -2,8 +2,7 @@
 
 namespace org.maltparser.core.feature.function
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.value;
+    using  value;
 
 	/// 
 	/// 
@@ -18,7 +17,7 @@ namespace org.maltparser.core.feature.function
 		protected internal readonly AddressValue address;
 		public AddressFunction()
 		{
-			this.address = new AddressValue(this);
+			address = new AddressValue(this);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -47,7 +46,7 @@ namespace org.maltparser.core.feature.function
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

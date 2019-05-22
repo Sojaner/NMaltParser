@@ -4,19 +4,13 @@ using System.IO;
 
 namespace org.maltparser.core.flow
 {
+    using  feature;
+	using  spec;
+	using  system;
+	using  helper;
+	using  plugin;
 
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.flow.spec;
-	using  org.maltparser.core.flow.system;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.plugin;
-	using  org.maltparser.core.plugin;
-	using  org.w3c.dom;
-	using  org.w3c.dom;
-	using  org.xml.sax;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

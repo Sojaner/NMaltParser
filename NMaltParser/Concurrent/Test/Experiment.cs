@@ -21,34 +21,34 @@ namespace org.maltparser.concurrent.test
 //ORIGINAL LINE: public Experiment(String _modelName, java.net.URL _modelURL, java.net.URL _dataFormatURL, String _charSet, java.util.List<java.net.URL> _inURLs, java.util.List<java.io.File> _outFiles) throws ExperimentException
 		public Experiment(string _modelName, URL _modelURL, URL _dataFormatURL, string _charSet, IList<URL> _inURLs, IList<File> _outFiles)
 		{
-			this.modelName = _modelName;
-			this.modelURL = _modelURL;
-			this.dataFormatURL = _dataFormatURL;
-			if (string.ReferenceEquals(_charSet, null) || _charSet.Length == 0)
+			modelName = _modelName;
+			modelURL = _modelURL;
+			dataFormatURL = _dataFormatURL;
+			if (ReferenceEquals(_charSet, null) || _charSet.Length == 0)
 			{
-				this.charSet = "UTF-8";
+				charSet = "UTF-8";
 			}
 			else
 			{
-				this.charSet = _charSet;
+				charSet = _charSet;
 			}
 			if (_inURLs.Count != _outFiles.Count)
 			{
 				throw new ExperimentException("The lists of in-files and out-files must match in size.");
 			}
-			this.inURLs = Collections.synchronizedList(new List<URL>(_inURLs));
-			this.outFiles = Collections.synchronizedList(new List<File>(_outFiles));
+			inURLs = Collections.synchronizedList(new List<URL>(_inURLs));
+			outFiles = Collections.synchronizedList(new List<File>(_outFiles));
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public Experiment(String _modelName, String _modelFileName, String _dataFormatFileName, String _charSet, java.util.List<String> _inFileNames, java.util.List<String> _outFileNames) throws ExperimentException
 		public Experiment(string _modelName, string _modelFileName, string _dataFormatFileName, string _charSet, IList<string> _inFileNames, IList<string> _outFileNames)
 		{
-			this.modelName = _modelName;
+			modelName = _modelName;
 
 			try
 			{
-				this.modelURL = (new File(_modelFileName)).toURI().toURL();
+				modelURL = (new File(_modelFileName)).toURI().toURL();
 			}
 			catch (MalformedURLException e)
 			{
@@ -57,20 +57,20 @@ namespace org.maltparser.concurrent.test
 
 			try
 			{
-				this.dataFormatURL = (new File(_dataFormatFileName)).toURI().toURL();
+				dataFormatURL = (new File(_dataFormatFileName)).toURI().toURL();
 			}
 			catch (MalformedURLException e)
 			{
 				throw new ExperimentException("The data format file name is malformed", e);
 			}
 
-			if (string.ReferenceEquals(_charSet, null) || _charSet.Length == 0)
+			if (ReferenceEquals(_charSet, null) || _charSet.Length == 0)
 			{
-				this.charSet = "UTF-8";
+				charSet = "UTF-8";
 			}
 			else
 			{
-				this.charSet = _charSet;
+				charSet = _charSet;
 			}
 
 			if (_inFileNames.Count != _outFileNames.Count)
@@ -78,12 +78,12 @@ namespace org.maltparser.concurrent.test
 				throw new ExperimentException("The lists of in-files and out-files must match in size.");
 			}
 
-			this.inURLs = Collections.synchronizedList(new List<URL>());
+			inURLs = Collections.synchronizedList(new List<URL>());
 			for (int i = 0; i < _inFileNames.Count; i++)
 			{
 				try
 				{
-					this.inURLs.Add((new File(_inFileNames[i])).toURI().toURL());
+					inURLs.Add((new File(_inFileNames[i])).toURI().toURL());
 				}
 				catch (MalformedURLException e)
 				{
@@ -91,10 +91,10 @@ namespace org.maltparser.concurrent.test
 				}
 			}
 
-			this.outFiles = Collections.synchronizedList(new List<File>());
+			outFiles = Collections.synchronizedList(new List<File>());
 			for (int i = 0; i < _outFileNames.Count; i++)
 			{
-				this.outFiles.Add(new File(_outFileNames[i]));
+				outFiles.Add(new File(_outFileNames[i]));
 			}
 		}
 
@@ -155,10 +155,10 @@ namespace org.maltparser.concurrent.test
 		{
 			const int prime = 31;
 			int result = 1;
-			result = prime * result + ((string.ReferenceEquals(charSet, null)) ? 0 : charSet.GetHashCode());
+			result = prime * result + ((ReferenceEquals(charSet, null)) ? 0 : charSet.GetHashCode());
 			result = prime * result + ((dataFormatURL == null) ? 0 : dataFormatURL.GetHashCode());
 			result = prime * result + ((inURLs == null) ? 0 : inURLs.GetHashCode());
-			result = prime * result + ((string.ReferenceEquals(modelName, null)) ? 0 : modelName.GetHashCode());
+			result = prime * result + ((ReferenceEquals(modelName, null)) ? 0 : modelName.GetHashCode());
 			result = prime * result + ((modelURL == null) ? 0 : modelURL.GetHashCode());
 			result = prime * result + ((outFiles == null) ? 0 : outFiles.GetHashCode());
 			return result;
@@ -174,14 +174,14 @@ namespace org.maltparser.concurrent.test
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
 			Experiment other = (Experiment) obj;
-			if (string.ReferenceEquals(charSet, null))
+			if (ReferenceEquals(charSet, null))
 			{
-				if (!string.ReferenceEquals(other.charSet, null))
+				if (!ReferenceEquals(other.charSet, null))
 				{
 					return false;
 				}
@@ -214,9 +214,9 @@ namespace org.maltparser.concurrent.test
 			{
 				return false;
 			}
-			if (string.ReferenceEquals(modelName, null))
+			if (ReferenceEquals(modelName, null))
 			{
-				if (!string.ReferenceEquals(other.modelName, null))
+				if (!ReferenceEquals(other.modelName, null))
 				{
 					return false;
 				}
@@ -313,7 +313,7 @@ namespace org.maltparser.concurrent.test
 			string charSet = null;
 			IList<URL> inURLs = new List<URL>();
 			IList<File> outFiles = new List<File>();
-			while (!string.ReferenceEquals((line = reader.ReadLine()), null))
+			while (!ReferenceEquals((line = reader.ReadLine()), null))
 			{
 	//			System.out.println(line);
 				if (line.Trim().Equals("#STARTEXP"))

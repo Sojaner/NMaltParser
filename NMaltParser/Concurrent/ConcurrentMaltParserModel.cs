@@ -4,22 +4,19 @@ using System.Collections.Generic;
 namespace org.maltparser.concurrent
 {
 
-	using  org.maltparser.concurrent.graph;
-	using  org.maltparser.concurrent.graph.dataformat;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature.system;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.lw.graph;
-	using  org.maltparser.core.lw.graph;
-	using  org.maltparser.core.lw.parser;
-	using  org.maltparser.core.lw.parser;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.plugin;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol.hash;
-	using  org.maltparser.core.symbol.parse;
+	using  graph;
+	using  graph.dataformat;
+	using  core.exception;
+	using  core.feature;
+	using  core.feature.system;
+	using  core.io.dataformat;
+    using  org.maltparser.core.lw.graph;
+    using  org.maltparser.core.lw.parser;
+    using  core.options;
+	using  core.plugin;
+	using  core.symbol;
+	using  core.symbol.hash;
+	using  core.symbol.parse;
 
 	/// <summary>
 	/// A concurrent MaltParser model that can be used to parse sentences in both a single threaded or multi threaded 
@@ -50,8 +47,8 @@ namespace org.maltparser.concurrent
 //ORIGINAL LINE: protected ConcurrentMaltParserModel(int _optionContainer, java.net.URL _mcoURL) throws org.maltparser.core.exception.MaltChainedException
 		protected internal ConcurrentMaltParserModel(int _optionContainer, URL _mcoURL)
 		{
-			this.optionContainer = _optionContainer;
-			this.mcoModel = new McoModel(_mcoURL);
+			optionContainer = _optionContainer;
+			mcoModel = new McoModel(_mcoURL);
 			string inputFormatName = OptionManager.instance().getOptionValue(optionContainer, "input", "format").ToString().Trim();
 			URL inputFormatURL = null;
 			try
@@ -63,25 +60,25 @@ namespace org.maltparser.concurrent
 				throw new MaltChainedException("Couldn't read file " + inputFormatName + " from mco-file ", e);
 			}
 			DataFormatManager dataFormatManager = new DataFormatManager(inputFormatURL, inputFormatURL);
-			this.parentSymbolTableHandler = new HashSymbolTableHandler();
-			this.dataFormatInstance = dataFormatManager.InputDataFormatSpec.createDataFormatInstance(this.parentSymbolTableHandler, OptionManager.instance().getOptionValueString(optionContainer, "singlemalt", "null_value"));
+			parentSymbolTableHandler = new HashSymbolTableHandler();
+			dataFormatInstance = dataFormatManager.InputDataFormatSpec.createDataFormatInstance(parentSymbolTableHandler, OptionManager.instance().getOptionValueString(optionContainer, "singlemalt", "null_value"));
 			try
 			{
-				this.parentSymbolTableHandler.load(mcoModel.getInputStreamReader("symboltables.sym", "UTF-8"));
+				parentSymbolTableHandler.load(mcoModel.getInputStreamReader("symboltables.sym", "UTF-8"));
 			}
 			catch (IOException e)
 			{
 				throw new MaltChainedException("Couldn't read file symboltables.sym from mco-file ", e);
 			}
-			this.defaultRootLabel = OptionManager.instance().getOptionValue(optionContainer, "graph", "root_label").ToString().Trim();
-			this.markingStrategy = LWDeprojectivizer.getMarkingStrategyInt(OptionManager.instance().getOptionValue(optionContainer, "pproj", "marking_strategy").ToString().Trim());
-			this.coveredRoot = !OptionManager.instance().getOptionValue(optionContainer, "pproj", "covered_root").ToString().Trim().Equals("none", StringComparison.OrdinalIgnoreCase);
+			defaultRootLabel = OptionManager.instance().getOptionValue(optionContainer, "graph", "root_label").ToString().Trim();
+			markingStrategy = LWDeprojectivizer.getMarkingStrategyInt(OptionManager.instance().getOptionValue(optionContainer, "pproj", "marking_strategy").ToString().Trim());
+			coveredRoot = !OptionManager.instance().getOptionValue(optionContainer, "pproj", "covered_root").ToString().Trim().Equals("none", StringComparison.OrdinalIgnoreCase);
 	//		final PropagationManager propagationManager = loadPropagationManager(this.optionContainer, mcoModel);
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.feature.FeatureModelManager featureModelManager = loadFeatureModelManager(this.optionContainer, mcoModel);
-			FeatureModelManager featureModelManager = loadFeatureModelManager(this.optionContainer, mcoModel);
-			this.singleMalt = new LWSingleMalt(this.optionContainer, this.dataFormatInstance, mcoModel, null, featureModelManager);
-			this.concurrentDataFormat = DataFormat.parseDataFormatXMLfile(inputFormatURL);
+			FeatureModelManager featureModelManager = loadFeatureModelManager(optionContainer, mcoModel);
+			singleMalt = new LWSingleMalt(optionContainer, dataFormatInstance, mcoModel, null, featureModelManager);
+			concurrentDataFormat = DataFormat.parseDataFormatXMLfile(inputFormatURL);
 		}
 
 		/// <summary>

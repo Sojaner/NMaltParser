@@ -1,8 +1,8 @@
 ﻿namespace org.maltparser.parser
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.history;
+	using  core.exception;
+	using  core.syntaxgraph;
+	using  history;
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -28,7 +28,7 @@
 			}
 			set
 			{
-				this.historyNode = value;
+				historyNode = value;
 			}
 		}
 

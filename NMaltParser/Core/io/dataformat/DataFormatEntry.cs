@@ -53,7 +53,7 @@ namespace org.maltparser.core.io.dataformat
 			}
 			set
 			{
-				this.dataFormatEntryName = value.ToUpper();
+				dataFormatEntryName = value.ToUpper();
 			}
 		}
 
@@ -71,7 +71,7 @@ namespace org.maltparser.core.io.dataformat
 			}
 			set
 			{
-				this.category = value.ToUpper();
+				category = value.ToUpper();
 			}
 		}
 
@@ -89,7 +89,7 @@ namespace org.maltparser.core.io.dataformat
 			}
 			set
 			{
-				this.type = value.ToUpper();
+				type = value.ToUpper();
 			}
 		}
 
@@ -106,7 +106,7 @@ namespace org.maltparser.core.io.dataformat
 			}
 			set
 			{
-				this.defaultOutput = value;
+				defaultOutput = value;
 			}
 		}
 
@@ -121,12 +121,12 @@ namespace org.maltparser.core.io.dataformat
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
 			DataFormatEntry objC = (DataFormatEntry)obj;
-			return ((string.ReferenceEquals(dataFormatEntryName, null)) ? string.ReferenceEquals(objC.dataFormatEntryName, null) : dataFormatEntryName.Equals(objC.dataFormatEntryName)) && ((string.ReferenceEquals(type, null)) ? string.ReferenceEquals(objC.type, null) : type.Equals(objC.type)) && ((string.ReferenceEquals(category, null)) ? string.ReferenceEquals(objC.category, null) : category.Equals(objC.category)) && ((string.ReferenceEquals(defaultOutput, null)) ? string.ReferenceEquals(objC.defaultOutput, null) : defaultOutput.Equals(objC.defaultOutput));
+			return ((ReferenceEquals(dataFormatEntryName, null)) ? ReferenceEquals(objC.dataFormatEntryName, null) : dataFormatEntryName.Equals(objC.dataFormatEntryName)) && ((ReferenceEquals(type, null)) ? ReferenceEquals(objC.type, null) : type.Equals(objC.type)) && ((ReferenceEquals(category, null)) ? ReferenceEquals(objC.category, null) : category.Equals(objC.category)) && ((ReferenceEquals(defaultOutput, null)) ? ReferenceEquals(objC.defaultOutput, null) : defaultOutput.Equals(objC.defaultOutput));
 		}
 
 		public override int GetHashCode()
@@ -153,7 +153,7 @@ namespace org.maltparser.core.io.dataformat
 			sb.Append(category);
 			sb.Append("\t");
 			sb.Append(type);
-			if (!string.ReferenceEquals(defaultOutput, null))
+			if (!ReferenceEquals(defaultOutput, null))
 			{
 				sb.Append("\t");
 				sb.Append(defaultOutput);

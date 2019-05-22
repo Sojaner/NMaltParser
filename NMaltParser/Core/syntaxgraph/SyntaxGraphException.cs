@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.syntaxgraph
 {
-	using  org.maltparser.core.exception;
+	using  exception;
 
 	/// <summary>
 	///  GraphException extends the MaltChainedException class and is thrown by classes

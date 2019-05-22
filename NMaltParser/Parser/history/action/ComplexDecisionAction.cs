@@ -5,10 +5,9 @@ using System.Text;
 namespace org.maltparser.parser.history.action
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.parser.history.container;
-	using  org.maltparser.parser.history.container;
-	using  org.maltparser.parser.history.kbest;
+	using  core.exception;
+	using  container;
+    using  kbest;
 
 	/// 
 	/// <summary>
@@ -25,7 +24,7 @@ namespace org.maltparser.parser.history.action
 		public ComplexDecisionAction(GuideUserHistory history)
 		{
 			this.history = history;
-			this.decisions = new List<SimpleDecisionAction>(history.DecisionTables.Count);
+			decisions = new List<SimpleDecisionAction>(history.DecisionTables.Count);
 			for (int i = 0, n = history.DecisionTables.Count; i < n; i++)
 			{
 				decisions.Add(new SimpleDecisionAction(history.KBestSize, history.DecisionTables[i]));
@@ -199,7 +198,7 @@ namespace org.maltparser.parser.history.action
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

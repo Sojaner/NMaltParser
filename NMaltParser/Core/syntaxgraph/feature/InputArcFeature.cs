@@ -2,19 +2,12 @@
 
 namespace org.maltparser.core.syntaxgraph.feature
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
+    using  org.maltparser.core.feature;
 	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol.nullvalue.NullValues;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  org.maltparser.core.feature.value;
+    using  io.dataformat;
+    using  symbol;
+    using  node;
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -38,7 +31,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 		{
 			this.dataFormatInstance = dataFormatInstance;
 			this.tableHandler = tableHandler;
-			this.featureValue = new SingleFeatureValue(this);
+			featureValue = new SingleFeatureValue(this);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -151,7 +144,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 					featureValue.NullValue = true;
 				}
 				}
-				catch (System.FormatException e)
+				catch (FormatException e)
 				{
 					throw new FeatureException("The index of the feature must be an integer value. ", e);
 				}
@@ -177,7 +170,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 				{
 					throw new FeatureException("InputArc feature column must be of type integer. ");
 				}
-				this.column = value;
+				column = value;
 			}
 		}
 
@@ -194,7 +187,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			}
 			set
 			{
-				this.addressFunction1 = value;
+				addressFunction1 = value;
 			}
 		}
 
@@ -212,7 +205,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			}
 			set
 			{
-				this.addressFunction2 = value;
+				addressFunction2 = value;
 			}
 		}
 
@@ -233,7 +226,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			}
 			set
 			{
-				this.table = value;
+				table = value;
 			}
 		}
 
@@ -268,7 +261,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			{
 				return false;
 			}
-			if (!obj.ToString().Equals(this.ToString()))
+			if (!obj.ToString().Equals(ToString()))
 			{
 				return false;
 			}

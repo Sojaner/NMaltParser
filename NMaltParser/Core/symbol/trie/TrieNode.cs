@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.symbol.trie
 {
-	using  org.maltparser.core.helper;
+	using  helper;
 
 	/// 
 	/// <summary>

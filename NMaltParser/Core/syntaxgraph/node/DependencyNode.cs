@@ -3,9 +3,9 @@
 namespace org.maltparser.core.syntaxgraph.node
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.edge;
+	using  exception;
+	using  symbol;
+	using  edge;
 
 
 

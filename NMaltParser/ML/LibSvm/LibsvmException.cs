@@ -2,7 +2,7 @@
 
 namespace org.maltparser.ml.libsvm
 {
-	using  org.maltparser.core.exception;
+	using  core.exception;
 
 	/// <summary>
 	///  LibsvmException extends the MaltChainedException class and is thrown by classes

@@ -3,9 +3,7 @@ using System.Text;
 
 namespace org.maltparser.core.syntaxgraph.node
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph.edge;
+    using  edge;
 
 
 
@@ -106,7 +104,7 @@ namespace org.maltparser.core.syntaxgraph.node
 			get
 			{
 				ComparableNode node = LeftmostProperDescendant;
-				return (node != null)?node.Index:this.Index;
+				return (node != null)?node.Index:Index;
 			}
 		}
 
@@ -117,7 +115,7 @@ namespace org.maltparser.core.syntaxgraph.node
 			get
 			{
 				ComparableNode node = RightmostProperDescendant;
-				return (node != null)?node.Index:this.Index;
+				return (node != null)?node.Index:Index;
 			}
 		}
 
@@ -169,7 +167,7 @@ namespace org.maltparser.core.syntaxgraph.node
 				SortedSet<Edge> inSecEdges = new SortedSet<Edge>();
 				foreach (Edge e in incomingEdges)
 				{
-					if (e.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.SECONDARY_EDGE)
+					if (e.Type == Edge_Fields.SECONDARY_EDGE)
 					{
 						inSecEdges.Add(e);
 					}
@@ -185,7 +183,7 @@ namespace org.maltparser.core.syntaxgraph.node
 				SortedSet<Edge> outSecEdges = new SortedSet<Edge>();
 				foreach (Edge e in outgoingEdges)
 				{
-					if (e.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.SECONDARY_EDGE)
+					if (e.Type == Edge_Fields.SECONDARY_EDGE)
 					{
 						outSecEdges.Add(e);
 					}

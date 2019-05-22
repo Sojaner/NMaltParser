@@ -4,7 +4,7 @@ using System.Text;
 namespace org.maltparser.core.options.option
 {
 
-	using  org.maltparser.core.exception;
+	using  exception;
 
 	/// <summary>
 	/// A string enum type option is an option that can only contain string value that corresponds to another string.
@@ -47,7 +47,7 @@ namespace org.maltparser.core.options.option
 //ORIGINAL LINE: public Object getValueObject(String value) throws org.maltparser.core.exception.MaltChainedException
 		public override object getValueObject(string value)
 		{
-			if (string.ReferenceEquals(value, null))
+			if (ReferenceEquals(value, null))
 			{
 				return null;
 			}
@@ -109,7 +109,7 @@ namespace org.maltparser.core.options.option
 		{
 			set
 			{
-				if (string.ReferenceEquals(value, null))
+				if (ReferenceEquals(value, null))
 				{
 					if (legalValues.Count == 0)
 					{
@@ -117,16 +117,16 @@ namespace org.maltparser.core.options.option
 					}
 					else
 					{
-						this.defaultValue = valueMapto[((SortedSet<string>)valueMapto.Keys).Min];
+						defaultValue = valueMapto[((SortedSet<string>)valueMapto.Keys).Min];
 					}
 				}
 				else if (legalValues.Contains(value.ToLower()))
 				{
-					this.defaultValue = valueMapto[value.ToLower()];
+					defaultValue = valueMapto[value.ToLower()];
 				}
 				else if (value.Equals(""))
 				{
-					this.defaultValue = value;
+					defaultValue = value;
 				}
 				else
 				{
@@ -167,7 +167,7 @@ namespace org.maltparser.core.options.option
 //ORIGINAL LINE: public void addLegalValue(String value, String desc, String mapto) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void addLegalValue(string value, string desc, string mapto)
 		{
-			if (string.ReferenceEquals(value, null) || value.Equals(""))
+			if (ReferenceEquals(value, null) || value.Equals(""))
 			{
 				throw new OptionException("The legal value is missing for the option " + Name + ".");
 			}
@@ -178,7 +178,7 @@ namespace org.maltparser.core.options.option
 			else
 			{
 				legalValues.Add(value.ToLower());
-				if (string.ReferenceEquals(desc, null) || desc.Equals(""))
+				if (ReferenceEquals(desc, null) || desc.Equals(""))
 				{
 					legalValueDesc[value.ToLower()] = "Description is missing. ";
 				}
@@ -186,7 +186,7 @@ namespace org.maltparser.core.options.option
 				{
 					legalValueDesc[value.ToLower()] = desc;
 				}
-				if (string.ReferenceEquals(mapto, null) || mapto.Equals(""))
+				if (ReferenceEquals(mapto, null) || mapto.Equals(""))
 				{
 					throw new OptionException("A mapto value is missing for the option " + Name + ". ");
 				}

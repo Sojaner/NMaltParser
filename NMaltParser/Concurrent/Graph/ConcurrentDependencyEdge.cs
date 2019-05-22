@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace org.maltparser.concurrent.graph
 {
 
-	using  org.maltparser.concurrent.graph.dataformat;
-	using  org.maltparser.concurrent.graph.dataformat;
-	/// <summary>
+	using  dataformat;
+
+    /// <summary>
 	/// Immutable and tread-safe dependency edge implementation.
 	/// 
 	/// @author Johan Hall
@@ -21,9 +21,9 @@ namespace org.maltparser.concurrent.graph
 //ORIGINAL LINE: protected ConcurrentDependencyEdge(ConcurrentDependencyEdge edge) throws ConcurrentGraphException
 		protected internal ConcurrentDependencyEdge(ConcurrentDependencyEdge edge)
 		{
-			this.source = edge.source;
-			this.target = edge.target;
-			this.labels = new SortedDictionary<int, string>(edge.labels);
+			source = edge.source;
+			target = edge.target;
+			labels = new SortedDictionary<int, string>(edge.labels);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -38,20 +38,20 @@ namespace org.maltparser.concurrent.graph
 			{
 				throw new ConcurrentGraphException("Not allowed to have an edge without a target node");
 			}
-			this.source = _source;
-			this.target = _target;
-			if (this.target.Index == 0)
+			source = _source;
+			target = _target;
+			if (target.Index == 0)
 			{
 				throw new ConcurrentGraphException("Not allowed to have an edge target as root node");
 			}
-			this.labels = new SortedDictionary<int, string>();
+			labels = new SortedDictionary<int, string>();
 			if (_labels != null)
 			{
 				foreach (int? i in _labels.Keys)
 				{
 					if (dataFormat.getColumnDescription(i).Category == ColumnDescription.DEPENDENCY_EDGE_LABEL)
 					{
-						this.labels[i] = _labels[i];
+						labels[i] = _labels[i];
 					}
 				}
 			}
@@ -153,31 +153,31 @@ namespace org.maltparser.concurrent.graph
 				return EQUAL;
 			}
 
-			if (this.target.Index < that.target.Index)
+			if (target.Index < that.target.Index)
 			{
 				return BEFORE;
 			}
-			if (this.target.Index > that.target.Index)
+			if (target.Index > that.target.Index)
 			{
 				return AFTER;
 			}
 
-			if (this.source.Index < that.source.Index)
+			if (source.Index < that.source.Index)
 			{
 				return BEFORE;
 			}
-			if (this.source.Index > that.source.Index)
+			if (source.Index > that.source.Index)
 			{
 				return AFTER;
 			}
 
 
-			if (this.labels.Equals(that.labels))
+			if (labels.Equals(that.labels))
 			{
 				return EQUAL;
 			}
 
-			IEnumerator<int> itthis = this.labels.Keys.GetEnumerator();
+			IEnumerator<int> itthis = labels.Keys.GetEnumerator();
 			IEnumerator<int> itthat = that.labels.Keys.GetEnumerator();
 			while (itthis.MoveNext() && itthat.MoveNext())
 			{
@@ -192,9 +192,9 @@ namespace org.maltparser.concurrent.graph
 				{
 					return AFTER;
 				}
-				if (this.labels[keythis].compareTo(that.labels[keythat]) != EQUAL)
+				if (labels[keythis].compareTo(that.labels[keythat]) != EQUAL)
 				{
-					return this.labels[keythis].compareTo(that.labels[keythat]);
+					return labels[keythis].compareTo(that.labels[keythat]);
 				}
 			}
 //JAVA TO C# CONVERTER TODO TASK: Java iterators are only converted within the context of 'while' and 'for' loops:
@@ -232,7 +232,7 @@ namespace org.maltparser.concurrent.graph
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

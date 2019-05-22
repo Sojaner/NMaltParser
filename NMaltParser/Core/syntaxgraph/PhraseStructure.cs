@@ -2,10 +2,8 @@
 
 namespace org.maltparser.core.syntaxgraph
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  edge;
+	using  node;
 	/// 
 	/// 
 	/// <summary>

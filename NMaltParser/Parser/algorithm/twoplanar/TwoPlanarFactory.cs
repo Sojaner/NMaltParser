@@ -1,21 +1,20 @@
 ﻿namespace org.maltparser.parser.algorithm.twoplanar
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature.function;
+    using  core.feature;
+	using  core.feature.function;
 	/// <summary>
 	/// @author Carlos Gomez Rodriguez
 	/// 
 	/// </summary>
 	public abstract class TwoPlanarFactory : AbstractParserFactory
 	{
-		public abstract org.maltparser.parser.guide.OracleGuide makeOracleGuide(org.maltparser.parser.history.GuideUserHistory history);
+		public abstract guide.OracleGuide makeOracleGuide(history.GuideUserHistory history);
 		public abstract TransitionSystem makeTransitionSystem();
 		protected internal readonly DependencyParserConfig manager;
 
 		public TwoPlanarFactory(DependencyParserConfig _manager)
 		{
-			this.manager = _manager;
+			manager = _manager;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:

@@ -3,11 +3,9 @@ using System.Text;
 
 namespace org.maltparser.parser.history.container
 {
+    using  core.symbol;
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -24,27 +22,27 @@ namespace org.maltparser.parser.history.container
 //ORIGINAL LINE: public CombinedTableContainer(org.maltparser.core.symbol.TableHandler _tableHandler, String _separator, java.util.List<TableContainer> _containers, char decisionSeparator) throws org.maltparser.core.exception.MaltChainedException
 		public CombinedTableContainer(TableHandler _tableHandler, string _separator, IList<TableContainer> _containers, char decisionSeparator) : base(null, null, decisionSeparator)
 		{
-			this.tableHandler = _tableHandler;
+			tableHandler = _tableHandler;
 			if (_separator.Length > 0)
 			{
-				this.separator = _separator[0];
+				separator = _separator[0];
 			}
 			else
 			{
-				this.separator = '~';
+				separator = '~';
 			};
-			this.containers = new TableContainer[_containers.Count];
+			containers = new TableContainer[_containers.Count];
 			for (int i = 0; i < _containers.Count; i++)
 			{
-				this.containers[i] = _containers[i];
+				containers[i] = _containers[i];
 			}
 
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final StringBuilder sb = new StringBuilder();
 			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < this.containers.Length; i++)
+			for (int i = 0; i < containers.Length; i++)
 			{
-				sb.Append(this.containers[i].TableContainerName);
+				sb.Append(containers[i].TableContainerName);
 				sb.Append('+');
 			}
 			sb.Length = sb.Length - 1;

@@ -2,15 +2,12 @@
 
 namespace org.maltparser.parser.algorithm.nivre
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.propagation;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.parser.history;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.transition;
+    using  core.propagation;
+	using  core.syntaxgraph.edge;
+	using  core.syntaxgraph.node;
+	using  history;
+	using  history.action;
+    using  transition;
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -71,7 +68,7 @@ namespace org.maltparser.parser.algorithm.nivre
 			NivreConfig nivreConfig = (NivreConfig)config;
 			if (!nivreConfig.AllowRoot && nivreConfig.Stack.Peek().Root)
 			{
-				return updateActionContainers(history, ArcStandard.SHIFT, null);
+				return updateActionContainers(history, SHIFT, null);
 			}
 			return null;
 		}
@@ -133,7 +130,7 @@ namespace org.maltparser.parser.algorithm.nivre
 //ORIGINAL LINE: public org.maltparser.parser.history.action.GuideUserAction defaultAction(org.maltparser.parser.history.GuideUserHistory history, org.maltparser.parser.ParserConfiguration configuration) throws org.maltparser.core.exception.MaltChainedException
 		public override GuideUserAction defaultAction(GuideUserHistory history, ParserConfiguration configuration)
 		{
-			return updateActionContainers(history, ArcStandard.SHIFT, null);
+			return updateActionContainers(history, SHIFT, null);
 		}
 	}
 

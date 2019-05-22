@@ -35,7 +35,7 @@ namespace org.maltparser.parser.history.kbest
 			}
 			set
 			{
-				this.actionCode = value;
+				actionCode = value;
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace org.maltparser.parser.history.kbest
 		/// </summary>
 		public virtual void reset()
 		{
-			this.actionCode = -1;
+			actionCode = -1;
 		}
 
 		public override int GetHashCode()
@@ -63,7 +63,7 @@ namespace org.maltparser.parser.history.kbest
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

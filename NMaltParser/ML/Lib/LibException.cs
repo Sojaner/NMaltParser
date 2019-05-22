@@ -2,7 +2,7 @@
 
 namespace org.maltparser.ml.lib
 {
-	using  org.maltparser.core.exception;
+	using  core.exception;
 
 
 	/// <summary>

@@ -2,17 +2,13 @@
 
 namespace org.maltparser.core.syntaxgraph.feature
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
+    using  org.maltparser.core.feature;
 	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol.nullvalue.NullValues;
+    using  org.maltparser.core.feature.value;
+    using  io.dataformat;
+	using  symbol;
 
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -27,7 +23,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 //ORIGINAL LINE: public ColumnFeature() throws org.maltparser.core.exception.MaltChainedException
 		public ColumnFeature()
 		{
-			this.featureValue = new SingleFeatureValue(this);
+			featureValue = new SingleFeatureValue(this);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -60,7 +56,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			}
 			set
 			{
-				this.column = value;
+				column = value;
 			}
 		}
 
@@ -73,7 +69,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			}
 			set
 			{
-				this.symbolTable = value;
+				symbolTable = value;
 			}
 		}
 
@@ -86,7 +82,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 //ORIGINAL LINE: final String symbol = symbolTable.getSymbolCodeToString(indexCode);
 			string symbol = symbolTable.getSymbolCodeToString(indexCode);
 
-			if (string.ReferenceEquals(symbol, null))
+			if (ReferenceEquals(symbol, null))
 			{
 				featureValue.update(indexCode, symbolTable.getNullValueSymbol(NullValueId.NO_NODE), true, 1);
 			}
@@ -153,7 +149,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 					featureValue.NullValue = false;
 					featureValue.IndexCode = 1;
 				}
-				catch (System.FormatException e)
+				catch (FormatException e)
 				{
 					throw new FeatureException("Could not cast the feature value '" + symbol + "' to integer value.", e);
 				}
@@ -188,7 +184,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 	//				featureValue.setValue(symbolTable.getSymbolStringToValue(symbol));
 					featureValue.Symbol = symbol;
 				}
-				catch (System.FormatException e)
+				catch (FormatException e)
 				{
 					throw new FeatureException("Could not cast the feature value '" + symbol + "' to real value.", e);
 				}
@@ -212,11 +208,11 @@ namespace org.maltparser.core.syntaxgraph.feature
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
-			return obj.ToString().Equals(this.ToString());
+			return obj.ToString().Equals(ToString());
 		}
 
 		public virtual string ColumnName

@@ -2,15 +2,11 @@
 
 namespace org.maltparser
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.flow;
-	using  org.maltparser.core.flow;
-	using  org.maltparser.core.flow.item;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.plugin;
+    using  core.flow;
+    using  core.flow.item;
+	using  core.helper;
+    using  core.options;
+	using  core.plugin;
 
 
 	public class Engine
@@ -25,9 +21,9 @@ namespace org.maltparser
 		{
 			startTime = DateTimeHelper.CurrentUnixTimeMillis();
 			flowChartManager = new FlowChartManager();
-			flowChartManager.FlowChartSystem.load(this.GetType().getResource("/appdata/flow/flowchartsystem.xml"));
+			flowChartManager.FlowChartSystem.load(GetType().getResource("/appdata/flow/flowchartsystem.xml"));
 			flowChartManager.FlowChartSystem.load(PluginLoader.instance());
-			flowChartManager.load(this.GetType().getResource("/appdata/flow/flowcharts.xml"));
+			flowChartManager.load(GetType().getResource("/appdata/flow/flowcharts.xml"));
 			flowChartManager.load(PluginLoader.instance());
 			flowChartInstances = new SortedDictionary<int, FlowChartInstance>();
 		}
@@ -41,7 +37,7 @@ namespace org.maltparser
 			{
 				flowChartName = OptionManager.instance().getOptionValue(optionContainerIndex, "config", "flowchart").ToString();
 			}
-			if (string.ReferenceEquals(flowChartName, null))
+			if (ReferenceEquals(flowChartName, null))
 			{
 				if (OptionManager.instance().getOptionValueNoDefault(optionContainerIndex, "singlemalt", "mode") != null)
 				{

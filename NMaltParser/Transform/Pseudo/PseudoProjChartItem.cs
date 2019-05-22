@@ -4,17 +4,16 @@ using System.Text;
 namespace org.maltparser.transform.pseudo
 {
 
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.flow;
-	using  org.maltparser.core.flow.item;
-	using  org.maltparser.core.flow.spec;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph;
-	/// 
+	using  core.config;
+    using  core.flow;
+	using  core.flow.item;
+	using  core.flow.spec;
+	using  core.helper;
+	using  core.io.dataformat;
+	using  core.options;
+	using  core.syntaxgraph;
+
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -64,28 +63,28 @@ namespace org.maltparser.transform.pseudo
 				}
 			}
 
-			if (string.ReferenceEquals(targetName, null))
+			if (ReferenceEquals(targetName, null))
 			{
 				targetName = getChartElement("pseudoproj").Attributes.get("target").DefaultValue;
 			}
-			else if (string.ReferenceEquals(sourceName, null))
+			else if (ReferenceEquals(sourceName, null))
 			{
 				sourceName = getChartElement("pseudoproj").Attributes.get("source").DefaultValue;
 			}
-			else if (string.ReferenceEquals(idName, null))
+			else if (ReferenceEquals(idName, null))
 			{
 				idName = getChartElement("pseudoproj").Attributes.get("id").DefaultValue;
 			}
-			else if (string.ReferenceEquals(taskName, null))
+			else if (ReferenceEquals(taskName, null))
 			{
 				taskName = getChartElement("pseudoproj").Attributes.get("task").DefaultValue;
 			}
 
-			PseudoProjectivity tmppproj = (PseudoProjectivity)flowChartinstance.getFlowChartRegistry(typeof(org.maltparser.transform.pseudo.PseudoProjectivity), idName);
+			PseudoProjectivity tmppproj = (PseudoProjectivity)flowChartinstance.getFlowChartRegistry(typeof(PseudoProjectivity), idName);
 			if (tmppproj == null)
 			{
 				pproj = new PseudoProjectivity();
-				flowChartinstance.addFlowChartRegistry(typeof(org.maltparser.transform.pseudo.PseudoProjectivity), idName, pproj);
+				flowChartinstance.addFlowChartRegistry(typeof(PseudoProjectivity), idName, pproj);
 			}
 			else
 			{
@@ -188,11 +187,11 @@ namespace org.maltparser.transform.pseudo
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
-			return obj.ToString().Equals(this.ToString());
+			return obj.ToString().Equals(ToString());
 		}
 
 		public override int GetHashCode()

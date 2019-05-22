@@ -103,7 +103,7 @@ namespace org.maltparser.core.symbol.trie
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

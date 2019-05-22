@@ -2,9 +2,7 @@
 
 namespace org.maltparser.core.flow.system.elem
 {
-	using  org.maltparser.core.exception;
-	using  org.w3c.dom;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -23,7 +21,7 @@ namespace org.maltparser.core.flow.system.elem
 			}
 			set
 			{
-				this.name = value;
+				name = value;
 			}
 		}
 
@@ -36,7 +34,7 @@ namespace org.maltparser.core.flow.system.elem
 			}
 			set
 			{
-				this.defaultValue = value;
+				defaultValue = value;
 			}
 		}
 

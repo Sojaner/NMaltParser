@@ -40,7 +40,7 @@ namespace org.maltparser.parser.transition
 			const int prime = 31;
 			int result = prime + code;
 			result = prime * result + (labeled ? 1231 : 1237);
-			this.cachedHash = prime * result + ((string.ReferenceEquals(symbol, null)) ? 0 : symbol.GetHashCode());
+			cachedHash = prime * result + ((ReferenceEquals(symbol, null)) ? 0 : symbol.GetHashCode());
 		}
 
 		/// <summary>
@@ -86,11 +86,11 @@ namespace org.maltparser.parser.transition
 			const int BEFORE = -1;
 			const int EQUAL = 0;
 			const int AFTER = 1;
-			if (this.code < that.code)
+			if (code < that.code)
 			{
 				return BEFORE;
 			}
-			if (this.code > that.code)
+			if (code > that.code)
 			{
 				return AFTER;
 			}
@@ -112,7 +112,7 @@ namespace org.maltparser.parser.transition
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
@@ -125,9 +125,9 @@ namespace org.maltparser.parser.transition
 			{
 				return false;
 			}
-			if (string.ReferenceEquals(symbol, null))
+			if (ReferenceEquals(symbol, null))
 			{
-				if (!string.ReferenceEquals(other.symbol, null))
+				if (!ReferenceEquals(other.symbol, null))
 				{
 					return false;
 				}

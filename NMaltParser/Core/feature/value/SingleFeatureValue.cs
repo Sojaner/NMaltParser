@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.feature.value
 {
-	using  org.maltparser.core.feature.function;
+	using  function;
 	/// 
 	/// 
 	/// <summary>
@@ -46,7 +46,7 @@ namespace org.maltparser.core.feature.value
 			}
 			set
 			{
-				this.indexCode = value;
+				indexCode = value;
 			}
 		}
 
@@ -59,7 +59,7 @@ namespace org.maltparser.core.feature.value
 			}
 			set
 			{
-				this.symbol = value;
+				symbol = value;
 			}
 		}
 
@@ -93,7 +93,7 @@ namespace org.maltparser.core.feature.value
 		public override int GetHashCode()
 		{
 			const int prime = 31;
-			return prime * (prime + indexCode) + ((string.ReferenceEquals(symbol, null)) ? 0 : symbol.GetHashCode());
+			return prime * (prime + indexCode) + ((ReferenceEquals(symbol, null)) ? 0 : symbol.GetHashCode());
 		}
 
 		public override bool Equals(object obj)
@@ -106,7 +106,7 @@ namespace org.maltparser.core.feature.value
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
@@ -115,9 +115,9 @@ namespace org.maltparser.core.feature.value
 			{
 				return false;
 			}
-			if (string.ReferenceEquals(symbol, null))
+			if (ReferenceEquals(symbol, null))
 			{
-				if (!string.ReferenceEquals(other.symbol, null))
+				if (!ReferenceEquals(other.symbol, null))
 				{
 					return false;
 				}

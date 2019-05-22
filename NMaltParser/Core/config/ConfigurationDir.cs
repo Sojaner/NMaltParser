@@ -6,20 +6,14 @@ using System.IO;
 namespace org.maltparser.core.config
 {
 
-	using  org.maltparser.core.config.version;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
-	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol.hash;
-	using  org.maltparser.core.symbol.parse;
+	using  version;
+	using  exception;
+	using  helper;
+    using  io.dataformat;
+    using  options;
+	using  symbol;
+	using  symbol.hash;
+	using  symbol.parse;
 
 	/// <summary>
 	/// This class contains methods for handle the configuration directory.
@@ -73,7 +67,7 @@ namespace org.maltparser.core.config
 			ContainerIndex = containerIndex;
 
 			initWorkingDirectory();
-			if (!string.ReferenceEquals(name, null) && name.Length > 0 && !string.ReferenceEquals(type, null) && type.Length > 0)
+			if (!ReferenceEquals(name, null) && name.Length > 0 && !ReferenceEquals(type, null) && type.Length > 0)
 			{
 				Name = name;
 				Type = type;
@@ -144,11 +138,11 @@ namespace org.maltparser.core.config
 					URL inputFormatURL = f.findURLinJars(inputFormatName);
 					if (inputFormatURL != null)
 					{
-						outputFormatName = inputFormatName = this.copyToConfig(inputFormatURL);
+						outputFormatName = inputFormatName = copyToConfig(inputFormatURL);
 					}
 					else
 					{
-						outputFormatName = inputFormatName = this.copyToConfig(inputFormatName);
+						outputFormatName = inputFormatName = copyToConfig(inputFormatName);
 					}
 				}
 				else
@@ -156,20 +150,20 @@ namespace org.maltparser.core.config
 					URL inputFormatURL = f.findURLinJars(inputFormatName);
 					if (inputFormatURL != null)
 					{
-						inputFormatName = this.copyToConfig(inputFormatURL);
+						inputFormatName = copyToConfig(inputFormatURL);
 					}
 					else
 					{
-						inputFormatName = this.copyToConfig(inputFormatName);
+						inputFormatName = copyToConfig(inputFormatName);
 					}
 					URL outputFormatURL = f.findURLinJars(outputFormatName);
 					if (inputFormatURL != null)
 					{
-						outputFormatName = this.copyToConfig(outputFormatURL);
+						outputFormatName = copyToConfig(outputFormatURL);
 					}
 					else
 					{
-						outputFormatName = this.copyToConfig(outputFormatName);
+						outputFormatName = copyToConfig(outputFormatName);
 					}
 				}
 				OptionManager.instance().overloadOptionValue(containerIndex, "input", "format", inputFormatName);
@@ -225,7 +219,7 @@ namespace org.maltparser.core.config
 						URL depFormatURL = f.findURLinJars(dep.UrlString);
 						if (depFormatURL != null)
 						{
-							this.copyToConfig(depFormatURL);
+							copyToConfig(depFormatURL);
 						}
 						else
 						{
@@ -254,7 +248,7 @@ namespace org.maltparser.core.config
 		private URL findURL(string specModelFileName)
 		{
 			URL url = null;
-			File specFile = this.getFile(specModelFileName);
+			File specFile = getFile(specModelFileName);
 			if (specFile.exists())
 			{
 				try
@@ -268,7 +262,7 @@ namespace org.maltparser.core.config
 			}
 			else
 			{
-				url = this.getConfigFileEntryURL(specModelFileName);
+				url = getConfigFileEntryURL(specModelFileName);
 			}
 			return url;
 		}
@@ -523,7 +517,7 @@ namespace org.maltparser.core.config
 				}
 				catch (MalformedURLException e)
 				{
-					throw new ConfigurationException("Couldn't find the URL '" + "jar:" + this.url.ToString() + "!/" + Name + '/' + fileName + "'", e);
+					throw new ConfigurationException("Couldn't find the URL '" + "jar:" + url.ToString() + "!/" + Name + '/' + fileName + "'", e);
 				}
 			}
 			else
@@ -716,7 +710,7 @@ namespace org.maltparser.core.config
 			}
 			set
 			{
-				this.configDirectory = value;
+				configDirectory = value;
 			}
 		}
 
@@ -907,7 +901,7 @@ namespace org.maltparser.core.config
 						StreamReader br = new StreamReader(entryStream);
 						string line = null;
 						sb.Length = 0;
-						while (!string.ReferenceEquals((line = br.ReadLine()), null))
+						while (!ReferenceEquals((line = br.ReadLine()), null))
 						{
 							sb.Append(line);
 							sb.Append('\n');
@@ -916,7 +910,7 @@ namespace org.maltparser.core.config
 						tempJar.write(outString.GetBytes());
 					}
 				}
-				if (!string.ReferenceEquals(versioning.FeatureModelXML, null) && versioning.FeatureModelXML.StartsWith("/appdata", StringComparison.Ordinal))
+				if (!ReferenceEquals(versioning.FeatureModelXML, null) && versioning.FeatureModelXML.StartsWith("/appdata", StringComparison.Ordinal))
 				{
 					int index = versioning.FeatureModelXML.LastIndexOf('/');
 					BufferedInputStream bis = new BufferedInputStream(f.findURLinJars(versioning.FeatureModelXML).openStream());
@@ -928,7 +922,7 @@ namespace org.maltparser.core.config
 					}
 					bis.close();
 				}
-				if (!string.ReferenceEquals(versioning.InputFormatXML, null) && versioning.InputFormatXML.StartsWith("/appdata", StringComparison.Ordinal))
+				if (!ReferenceEquals(versioning.InputFormatXML, null) && versioning.InputFormatXML.StartsWith("/appdata", StringComparison.Ordinal))
 				{
 					int index = versioning.InputFormatXML.LastIndexOf('/');
 					BufferedInputStream bis = new BufferedInputStream(f.findURLinJars(versioning.InputFormatXML).openStream());
@@ -1172,7 +1166,7 @@ namespace org.maltparser.core.config
 			}
 			set
 			{
-				this.name = value;
+				name = value;
 			}
 		}
 
@@ -1189,7 +1183,7 @@ namespace org.maltparser.core.config
 			}
 			set
 			{
-				this.type = value;
+				type = value;
 			}
 		}
 
@@ -1218,7 +1212,7 @@ namespace org.maltparser.core.config
 			{
 				initWorkingDirectory(OptionManager.instance().getOptionValue(containerIndex, "config", "workingdir").ToString());
 			}
-			catch (System.NullReferenceException e)
+			catch (NullReferenceException e)
 			{
 				throw new ConfigurationException("The configuration cannot be found.", e);
 			}
@@ -1234,7 +1228,7 @@ namespace org.maltparser.core.config
 //ORIGINAL LINE: public void initWorkingDirectory(String pathPrefixString) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void initWorkingDirectory(string pathPrefixString)
 		{
-			if (string.ReferenceEquals(pathPrefixString, null) || pathPrefixString.Equals("user.dir", StringComparison.OrdinalIgnoreCase) || pathPrefixString.Equals(".", StringComparison.OrdinalIgnoreCase))
+			if (ReferenceEquals(pathPrefixString, null) || pathPrefixString.Equals("user.dir", StringComparison.OrdinalIgnoreCase) || pathPrefixString.Equals(".", StringComparison.OrdinalIgnoreCase))
 			{
 				workingDirectory = new File(System.getProperty("user.dir"));
 			}
@@ -1261,7 +1255,7 @@ namespace org.maltparser.core.config
 			}
 			set
 			{
-				this.url = value;
+				url = value;
 			}
 		}
 
@@ -1278,7 +1272,7 @@ namespace org.maltparser.core.config
 			}
 			set
 			{
-				this.containerIndex = value;
+				containerIndex = value;
 			}
 		}
 
@@ -1295,7 +1289,7 @@ namespace org.maltparser.core.config
 			}
 			set
 			{
-				this.createdByMaltParserVersion = value;
+				createdByMaltParserVersion = value;
 			}
 		}
 
@@ -1308,7 +1302,7 @@ namespace org.maltparser.core.config
 			{
 				StreamReader br = new StreamReader(getInputStreamReaderFromConfigFileEntry(Name + "_" + Type + ".info", "UTF-8"));
 				string line = null;
-				while (!string.ReferenceEquals((line = br.ReadLine()), null))
+				while (!ReferenceEquals((line = br.ReadLine()), null))
 				{
 					if (line.StartsWith("Version:                       ", StringComparison.Ordinal))
 					{
@@ -1335,11 +1329,11 @@ namespace org.maltparser.core.config
 			initCreatedByMaltParserVersionFromInfoFile();
 			SystemLogger.logger().info("\nCurrent version      : " + SystemInfo.Version + "\n");
 			SystemLogger.logger().info("Parser model version : " + createdByMaltParserVersion + "\n");
-			if (string.ReferenceEquals(SystemInfo.Version, null))
+			if (ReferenceEquals(SystemInfo.Version, null))
 			{
 				throw new ConfigurationException("Couln't determine the version of MaltParser");
 			}
-			else if (string.ReferenceEquals(createdByMaltParserVersion, null))
+			else if (ReferenceEquals(createdByMaltParserVersion, null))
 			{
 				throw new ConfigurationException("Couln't determine the version of the parser model");
 			}
@@ -1398,7 +1392,7 @@ namespace org.maltparser.core.config
 					StreamReader br = new StreamReader(configDirectory.Path + File.separator + "savedoptions.sop.old");
 					StreamWriter bw = new StreamWriter(configDirectory.Path + File.separator + "savedoptions.sop");
 					string line;
-					while (!string.ReferenceEquals((line = br.ReadLine()), null))
+					while (!ReferenceEquals((line = br.ReadLine()), null))
 					{
 						if (line.StartsWith("0\tguide\tprediction_strategy", StringComparison.Ordinal))
 						{
@@ -1428,7 +1422,7 @@ namespace org.maltparser.core.config
 					StreamReader br = new StreamReader(configDirectory.Path + File.separator + "symboltables.sym.old");
 					StreamWriter bw = new StreamWriter(configDirectory.Path + File.separator + "symboltables.sym");
 					string line;
-					while (!string.ReferenceEquals((line = br.ReadLine()), null))
+					while (!ReferenceEquals((line = br.ReadLine()), null))
 					{
 						if (line.StartsWith("AllCombinedClassTable", StringComparison.Ordinal))
 						{
@@ -1469,7 +1463,7 @@ namespace org.maltparser.core.config
 					StreamReader br = new StreamReader(configDirectory.Path + File.separator + "savedoptions.sop.old");
 					StreamWriter bw = new StreamWriter(configDirectory.Path + File.separator + "savedoptions.sop");
 					string line;
-					while (!string.ReferenceEquals((line = br.ReadLine()), null))
+					while (!ReferenceEquals((line = br.ReadLine()), null))
 					{
 						int index = line.IndexOf('\t');
 						int container = 0;
@@ -1591,7 +1585,7 @@ namespace org.maltparser.core.config
 			}
 			set
 			{
-				this.symbolTables = value;
+				symbolTables = value;
 			}
 		}
 
@@ -1604,7 +1598,7 @@ namespace org.maltparser.core.config
 			}
 			set
 			{
-				this.dataFormatManager = value;
+				dataFormatManager = value;
 			}
 		}
 

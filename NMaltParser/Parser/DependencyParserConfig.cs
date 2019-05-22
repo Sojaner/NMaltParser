@@ -1,11 +1,10 @@
 ﻿namespace org.maltparser.parser
 {
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.propagation;
-	using  org.maltparser.core.syntaxgraph;
+	using  core.config;
+	using  core.io.dataformat;
+    using  core.feature;
+	using  core.propagation;
+	using  core.syntaxgraph;
 
 	/// <summary>
 	/// @author Johan Hall

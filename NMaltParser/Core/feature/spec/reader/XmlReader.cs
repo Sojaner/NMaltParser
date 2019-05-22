@@ -1,13 +1,6 @@
 ﻿namespace org.maltparser.core.feature.spec.reader
 {
-
-
-	using  org.maltparser.core.exception;
-	using  org.w3c.dom;
-	using  org.w3c.dom;
-	using  org.xml.sax;
-	using  org.xml.sax;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

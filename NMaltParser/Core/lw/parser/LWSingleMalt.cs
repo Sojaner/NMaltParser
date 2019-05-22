@@ -6,21 +6,18 @@ namespace org.maltparser.core.lw.parser
 {
 
 	using  org.maltparser.concurrent.graph.dataformat;
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.lw.graph;
-	using  org.maltparser.core.lw.graph;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.propagation;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol.parse;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser;
+	using  config;
+    using  feature;
+	using  io.dataformat;
+	using  graph;
+    using  options;
+	using  propagation;
+	using  symbol;
+	using  symbol.parse;
+	using  syntaxgraph;
 	using  org.maltparser.parser;
 
-	/// <summary>
+    /// <summary>
 	///  A lightweight version of org.maltparser.parser.SingleMalt. This class can only perform parsing and is used by 
 	///  the concurrent MaltParser model. 
 	/// 
@@ -49,20 +46,20 @@ namespace org.maltparser.core.lw.parser
 //ORIGINAL LINE: public LWSingleMalt(int containerIndex, org.maltparser.core.io.dataformat.DataFormatInstance dataFormatInstance, McoModel _mcoModel, org.maltparser.core.propagation.PropagationManager _propagationManager, org.maltparser.core.feature.FeatureModelManager _featureModelManager) throws org.maltparser.core.exception.MaltChainedException
 		public LWSingleMalt(int containerIndex, DataFormatInstance dataFormatInstance, McoModel _mcoModel, PropagationManager _propagationManager, FeatureModelManager _featureModelManager)
 		{
-			this.optionContainerIndex = containerIndex;
-			this.mcoModel = _mcoModel;
+			optionContainerIndex = containerIndex;
+			mcoModel = _mcoModel;
 			this.dataFormatInstance = dataFormatInstance;
-			this.propagationManager = _propagationManager;
-			this.featureModelManager = _featureModelManager;
-			this.parserFactory = makeParserFactory();
-			this.decisionSettings = getOptionValue("guide", "decision_settings").ToString().Trim();
-			this.kBestSize = ((int?)getOptionValue("guide", "kbest")).Value;
-			this.classitem_separator = getOptionValue("guide", "classitem_separator").ToString().Trim();
-			this.featureModelURL = getConfigFileEntryURL(getOptionValue("guide", "features").ToString().Trim());
-			this.dataSplitColumn = getOptionValue("guide", "data_split_column").ToString().Trim();
-			this.dataSplitStructure = getOptionValue("guide", "data_split_structure").ToString().Trim();
-			this.excludeNullValues = getOptionValue("singlemalt", "null_value").ToString().Equals("none", StringComparison.OrdinalIgnoreCase);
-			this.decisionModel = new LWDecisionModel(mcoModel, excludeNullValues, getOptionValueString("guide","learner"));
+			propagationManager = _propagationManager;
+			featureModelManager = _featureModelManager;
+			parserFactory = makeParserFactory();
+			decisionSettings = getOptionValue("guide", "decision_settings").ToString().Trim();
+			kBestSize = ((int?)getOptionValue("guide", "kbest")).Value;
+			classitem_separator = getOptionValue("guide", "classitem_separator").ToString().Trim();
+			featureModelURL = getConfigFileEntryURL(getOptionValue("guide", "features").ToString().Trim());
+			dataSplitColumn = getOptionValue("guide", "data_split_column").ToString().Trim();
+			dataSplitStructure = getOptionValue("guide", "data_split_structure").ToString().Trim();
+			excludeNullValues = getOptionValue("singlemalt", "null_value").ToString().Equals("none", StringComparison.OrdinalIgnoreCase);
+			decisionModel = new LWDecisionModel(mcoModel, excludeNullValues, getOptionValueString("guide","learner"));
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:

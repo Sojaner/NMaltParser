@@ -3,16 +3,9 @@ using System.Text;
 
 namespace org.maltparser.concurrent.graph.dataformat
 {
+    using  core.helper;
 
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
-	using  org.w3c.dom;
-	using  org.w3c.dom;
-	using  org.xml.sax;
-
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -25,13 +18,13 @@ namespace org.maltparser.concurrent.graph.dataformat
 
 		public DataFormat(DataFormat dataFormat)
 		{
-			this.name = dataFormat.name;
-			this.columns = new ColumnDescription[dataFormat.columns.Length];
-			this.columnMap = new HashMap<string, ColumnDescription>();
+			name = dataFormat.name;
+			columns = new ColumnDescription[dataFormat.columns.Length];
+			columnMap = new HashMap<string, ColumnDescription>();
 			for (int i = 0; i < dataFormat.columns.Length; i++)
 			{
-				this.columns[i] = new ColumnDescription(dataFormat.columns[i]);
-				this.columnMap[this.columns[i].Name] = this.columns[i];
+				columns[i] = new ColumnDescription(dataFormat.columns[i]);
+				columnMap[columns[i].Name] = columns[i];
 			}
 		}
 
@@ -39,11 +32,11 @@ namespace org.maltparser.concurrent.graph.dataformat
 		{
 			this.name = name;
 			this.columns = new ColumnDescription[columns.Length];
-			this.columnMap = new HashMap<string, ColumnDescription>();
+			columnMap = new HashMap<string, ColumnDescription>();
 			for (int i = 0; i < columns.Length; i++)
 			{
 				this.columns[i] = new ColumnDescription(columns[i]);
-				this.columnMap[this.columns[i].Name] = this.columns[i];
+				columnMap[this.columns[i].Name] = this.columns[i];
 			}
 		}
 
@@ -51,11 +44,11 @@ namespace org.maltparser.concurrent.graph.dataformat
 		{
 			this.name = name;
 			this.columns = new ColumnDescription[columns.Count];
-			this.columnMap = new HashMap<string, ColumnDescription>();
+			columnMap = new HashMap<string, ColumnDescription>();
 			for (int i = 0; i < columns.Count; i++)
 			{
 				this.columns[i] = new ColumnDescription(columns[i]);
-				this.columnMap[this.columns[i].Name] = this.columns[i];
+				columnMap[this.columns[i].Name] = this.columns[i];
 			}
 		}
 
@@ -84,7 +77,7 @@ namespace org.maltparser.concurrent.graph.dataformat
 			{
 				if (columns[i].Name.Equals(columnName.ToUpper()))
 				{
-					this.columnMap[columnName] = columns[i];
+					columnMap[columnName] = columns[i];
 					return columns[i];
 				}
 			}
@@ -127,7 +120,7 @@ namespace org.maltparser.concurrent.graph.dataformat
 			const int prime = 31;
 			int result = 1;
 			result = prime * result + Arrays.GetHashCode(columns);
-			result = prime * result + ((string.ReferenceEquals(name, null)) ? 0 : name.GetHashCode());
+			result = prime * result + ((ReferenceEquals(name, null)) ? 0 : name.GetHashCode());
 			return result;
 		}
 
@@ -141,7 +134,7 @@ namespace org.maltparser.concurrent.graph.dataformat
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
@@ -150,9 +143,9 @@ namespace org.maltparser.concurrent.graph.dataformat
 			{
 				return false;
 			}
-			if (string.ReferenceEquals(name, null))
+			if (ReferenceEquals(name, null))
 			{
-				if (!string.ReferenceEquals(other.name, null))
+				if (!ReferenceEquals(other.name, null))
 				{
 					return false;
 				}

@@ -3,12 +3,10 @@ using System.IO;
 
 namespace org.maltparser.ml
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.history.action;
+    using  core.feature;
+	using  core.feature.function;
+	using  core.syntaxgraph;
+	using  parser.history.action;
 
 
 	public interface LearningMethod

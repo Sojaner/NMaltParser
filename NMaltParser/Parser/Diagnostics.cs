@@ -3,7 +3,7 @@
 namespace org.maltparser.parser
 {
 
-	using  org.maltparser.core.exception;
+	using  core.exception;
 
 	public class Diagnostics
 	{

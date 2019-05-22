@@ -2,7 +2,7 @@
 
 namespace org.maltparser.ml.liblinear
 {
-	using  org.maltparser.core.exception;
+	using  core.exception;
 
 	/// <summary>
 	///  LiblinearException extends the MaltChainedException class and is thrown by classes

@@ -6,15 +6,13 @@ namespace org.maltparser.core.syntaxgraph.reader
 {
 
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
+	using  exception;
+	using  io.dataformat;
+    using  symbol;
+	using  edge;
+	using  node;
 
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -43,7 +41,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 
 		public TigerXMLReader()
 		{
-			this.ntid = new StringBuilder();
+			ntid = new StringBuilder();
 	//		elementContent = new StringBuilder();
 	//		valueName = new StringBuilder();
 	//		currentFeatureName = new StringBuilder(); 
@@ -57,7 +55,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 		private void reopen()
 		{
 			close();
-			if (!string.ReferenceEquals(fileName, null))
+			if (!ReferenceEquals(fileName, null))
 			{
 				open(fileName, charsetName);
 			}
@@ -275,7 +273,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 								string id = reader.getAttributeValue(null, "id");
 								bool indexable = false;
 								int index = -1;
-								if (!string.ReferenceEquals(id, null) && id.Length > 0)
+								if (!ReferenceEquals(id, null) && id.Length > 0)
 								{
 									for (int i = 0, n = id.Length; i < n; i++)
 									{
@@ -541,7 +539,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.sentenceCount = value;
+				sentenceCount = value;
 			}
 		}
 
@@ -554,7 +552,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.reader = value;
+				reader = value;
 			}
 		}
 
@@ -595,7 +593,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.dataFormatInstance = value;
+				dataFormatInstance = value;
 			}
 		}
 
@@ -608,7 +606,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.optionString = value;
+				optionString = value;
 				string[] argv;
 				try
 				{
@@ -656,7 +654,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.fileName = value;
+				fileName = value;
 			}
 		}
 
@@ -669,7 +667,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.url = value;
+				url = value;
 			}
 		}
 
@@ -682,7 +680,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			}
 			set
 			{
-				this.charsetName = value;
+				charsetName = value;
 			}
 		}
 

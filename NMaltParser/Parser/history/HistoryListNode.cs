@@ -2,8 +2,7 @@
 
 namespace org.maltparser.parser.history
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.parser.history.action;
+    using  action;
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -16,15 +15,15 @@ namespace org.maltparser.parser.history
 
 		public HistoryListNode(HistoryNode _previousNode, GuideUserAction _action)
 		{
-			this.previousNode = _previousNode;
-			this.action = _action;
+			previousNode = _previousNode;
+			action = _action;
 			if (previousNode != null)
 			{
-				this.position = previousNode.Position + 1;
+				position = previousNode.Position + 1;
 			}
 			else
 			{
-				this.position = 1;
+				position = 1;
 			}
 		}
 
@@ -36,7 +35,7 @@ namespace org.maltparser.parser.history
 			}
 			set
 			{
-				this.previousNode = value;
+				previousNode = value;
 			}
 		}
 
@@ -48,7 +47,7 @@ namespace org.maltparser.parser.history
 			}
 			set
 			{
-				this.action = value;
+				action = value;
 			}
 		}
 
@@ -66,8 +65,8 @@ namespace org.maltparser.parser.history
 //ORIGINAL LINE: public void clear() throws org.maltparser.core.exception.MaltChainedException
 		public virtual void clear()
 		{
-			this.previousNode = null;
-			this.action = null;
+			previousNode = null;
+			action = null;
 		}
 
 		public override string ToString()

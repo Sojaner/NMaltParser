@@ -4,26 +4,17 @@ using System.Text;
 namespace org.maltparser.core.lw.parser
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
+	using  exception;
+	using  feature;
+    using  org.maltparser.core.helper;
+	using  symbol;
+    using  syntaxgraph;
 	using  org.maltparser.parser;
-	using  org.maltparser.parser;
-	using  org.maltparser.parser;
-	using  org.maltparser.parser;
-	using  org.maltparser.parser;
-	using  org.maltparser.parser.history;
+    using  org.maltparser.parser.history;
 	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.container;
-	using  org.maltparser.parser.history.container;
-	using  org.maltparser.parser.history.container;
+    using  org.maltparser.parser.history.container;
 
-	/// <summary>
+    /// <summary>
 	/// A lightweight version of org.maltparser.parser.DeterministicParser. This class also implements a lightweight version of 
 	/// org.maltparser.parser.history.History and reduces the need of org.maltparser.parser.ParserState. 
 	/// 
@@ -50,48 +41,48 @@ namespace org.maltparser.core.lw.parser
 //ORIGINAL LINE: public LWDeterministicParser(LWSingleMalt lwSingleMalt, org.maltparser.core.symbol.SymbolTableHandler symbolTableHandler, org.maltparser.core.feature.FeatureModel _featureModel) throws org.maltparser.core.exception.MaltChainedException
 		public LWDeterministicParser(LWSingleMalt lwSingleMalt, SymbolTableHandler symbolTableHandler, FeatureModel _featureModel)
 		{
-			this.manager = lwSingleMalt;
-			this.registry = new ParserRegistry();
-			this.registry.SymbolTableHandler = symbolTableHandler;
-			this.registry.DataFormatInstance = manager.DataFormatInstance;
-			this.registry.setAbstractParserFeatureFactory(manager.ParserFactory);
-			this.registry.Algorithm = this;
-			this.transitionSystem = manager.ParserFactory.makeTransitionSystem();
-			this.transitionSystem.initTableHandlers(lwSingleMalt.DecisionSettings, symbolTableHandler);
+			manager = lwSingleMalt;
+			registry = new ParserRegistry();
+			registry.SymbolTableHandler = symbolTableHandler;
+			registry.DataFormatInstance = manager.DataFormatInstance;
+			registry.setAbstractParserFeatureFactory(manager.ParserFactory);
+			registry.Algorithm = this;
+			transitionSystem = manager.ParserFactory.makeTransitionSystem();
+			transitionSystem.initTableHandlers(lwSingleMalt.DecisionSettings, symbolTableHandler);
 
-			this.tableHandlers = transitionSystem.TableHandlers;
-			this.kBestSize = lwSingleMalt.getkBestSize();
-			this.decisionTables = new List<TableContainer>();
-			this.actionTables = new List<TableContainer>();
+			tableHandlers = transitionSystem.TableHandlers;
+			kBestSize = lwSingleMalt.getkBestSize();
+			decisionTables = new List<TableContainer>();
+			actionTables = new List<TableContainer>();
 			initDecisionSettings(lwSingleMalt.DecisionSettings, lwSingleMalt.Classitem_separator);
-			this.transitionSystem.initTransitionSystem(this);
-			this.config = manager.ParserFactory.makeParserConfiguration();
-			this.featureModel = _featureModel;
-			this.currentAction = new ComplexDecisionAction(this);
+			transitionSystem.initTransitionSystem(this);
+			config = manager.ParserFactory.makeParserConfiguration();
+			featureModel = _featureModel;
+			currentAction = new ComplexDecisionAction(this);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public LWDeterministicParser(LWSingleMalt lwSingleMalt, org.maltparser.core.symbol.SymbolTableHandler symbolTableHandler) throws org.maltparser.core.exception.MaltChainedException
 		public LWDeterministicParser(LWSingleMalt lwSingleMalt, SymbolTableHandler symbolTableHandler)
 		{
-			this.manager = lwSingleMalt;
-			this.registry = new ParserRegistry();
-			this.registry.SymbolTableHandler = symbolTableHandler;
-			this.registry.DataFormatInstance = manager.DataFormatInstance;
-			this.registry.setAbstractParserFeatureFactory(manager.ParserFactory);
-			this.registry.Algorithm = this;
-			this.transitionSystem = manager.ParserFactory.makeTransitionSystem();
-			this.transitionSystem.initTableHandlers(lwSingleMalt.DecisionSettings, symbolTableHandler);
+			manager = lwSingleMalt;
+			registry = new ParserRegistry();
+			registry.SymbolTableHandler = symbolTableHandler;
+			registry.DataFormatInstance = manager.DataFormatInstance;
+			registry.setAbstractParserFeatureFactory(manager.ParserFactory);
+			registry.Algorithm = this;
+			transitionSystem = manager.ParserFactory.makeTransitionSystem();
+			transitionSystem.initTableHandlers(lwSingleMalt.DecisionSettings, symbolTableHandler);
 
-			this.tableHandlers = transitionSystem.TableHandlers;
-			this.kBestSize = lwSingleMalt.getkBestSize();
-			this.decisionTables = new List<TableContainer>();
-			this.actionTables = new List<TableContainer>();
+			tableHandlers = transitionSystem.TableHandlers;
+			kBestSize = lwSingleMalt.getkBestSize();
+			decisionTables = new List<TableContainer>();
+			actionTables = new List<TableContainer>();
 			initDecisionSettings(lwSingleMalt.DecisionSettings, lwSingleMalt.Classitem_separator);
-			this.transitionSystem.initTransitionSystem(this);
-			this.config = manager.ParserFactory.makeParserConfiguration();
-			this.featureModel = manager.FeatureModelManager.getFeatureModel(lwSingleMalt.FeatureModelURL, 0, registry, manager.DataSplitColumn, manager.DataSplitStructure);
-			this.currentAction = new ComplexDecisionAction(this);
+			transitionSystem.initTransitionSystem(this);
+			config = manager.ParserFactory.makeParserConfiguration();
+			featureModel = manager.FeatureModelManager.getFeatureModel(lwSingleMalt.FeatureModelURL, 0, registry, manager.DataSplitColumn, manager.DataSplitStructure);
+			currentAction = new ComplexDecisionAction(this);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -129,7 +120,7 @@ namespace org.maltparser.core.lw.parser
 					if (manager.DecisionModel.predictFromKBestList(featureModel, currentAction) == false)
 					{
 						GuideUserAction defaultAction = transitionSystem.defaultAction(this, config);
-						ActionContainer[] actionContainers = this.ActionContainerArray;
+						ActionContainer[] actionContainers = ActionContainerArray;
 						defaultAction.getAction(actionContainers);
 						currentAction.addAction(actionContainers);
 						break;

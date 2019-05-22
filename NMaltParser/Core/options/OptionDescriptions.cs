@@ -5,22 +5,11 @@ namespace org.maltparser.core.options
 {
 
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.options.option;
-	using  org.maltparser.core.options.option;
-	using  org.maltparser.core.options.option;
-	using  org.maltparser.core.options.option;
-	using  org.maltparser.core.options.option;
-	using  org.maltparser.core.options.option;
-	using  org.maltparser.core.options.option;
-	using  org.maltparser.core.options.option;
-	using  org.w3c.dom;
-	using  org.w3c.dom;
-	using  org.xml.sax;
+	using  exception;
+	using  helper;
+    using  option;
 
-	/// <summary>
+    /// <summary>
 	/// Organizes all the option descriptions. Option descriptions can be loaded from the application data <code>/appdata/options.xml</code>, but also 
 	/// from a plugin option description file (always with the name <code>plugin.xml</code>).
 	/// 
@@ -60,14 +49,14 @@ namespace org.maltparser.core.options
 //ORIGINAL LINE: public org.maltparser.core.options.option.Option getOption(String optiongroup, String optionname) throws org.maltparser.core.exception.MaltChainedException
 		public virtual Option getOption(string optiongroup, string optionname)
 		{
-			if (string.ReferenceEquals(optionname, null) || optionname.Length <= 0)
+			if (ReferenceEquals(optionname, null) || optionname.Length <= 0)
 			{
 				throw new OptionException("The option name '" + optionname + "' cannot be found");
 			}
 			Option option;
 			if (ambiguous.Contains(optionname.ToLower()))
 			{
-				if (string.ReferenceEquals(optiongroup, null) || optiongroup.Length <= 0)
+				if (ReferenceEquals(optiongroup, null) || optiongroup.Length <= 0)
 				{
 					throw new OptionException("The option name '" + optionname + "' is ambiguous use option group name to distinguish the option. ");
 				}
@@ -436,7 +425,7 @@ namespace org.maltparser.core.options
 							ambiguousOptionMap[option.Group.Name + "-" + option.Name] = option;
 						}
 					}
-					if (!string.ReferenceEquals(option.Flag, null))
+					if (!ReferenceEquals(option.Flag, null))
 					{
 						Option co = flagOptionMap[option.Flag];
 						if (co != null)

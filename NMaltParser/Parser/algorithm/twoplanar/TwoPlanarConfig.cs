@@ -4,10 +4,8 @@ using System.Text;
 
 namespace org.maltparser.parser.algorithm.twoplanar
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  core.syntaxgraph;
+	using  core.syntaxgraph.node;
 	/// <summary>
 	/// @author Carlos Gomez Rodriguez
 	/// 
@@ -233,7 +231,7 @@ namespace org.maltparser.parser.algorithm.twoplanar
 		{
 			set
 			{
-				this.dependencyGraph = value;
+				dependencyGraph = value;
 		//		dependencyGraph.clear();
 		//		for (int index : value.getTokenIndices()) {
 		//			DependencyNode gnode = value.getDependencyNode(index);
@@ -266,7 +264,7 @@ namespace org.maltparser.parser.algorithm.twoplanar
 			if (parserConfiguration != null)
 			{
 				TwoPlanarConfig planarConfig = (TwoPlanarConfig)parserConfiguration;
-				this.activeStack = planarConfig.activeStack;
+				activeStack = planarConfig.activeStack;
 				Stack<DependencyNode> sourceActiveStack = planarConfig.ActiveStack;
 				Stack<DependencyNode> sourceInactiveStack = planarConfig.InactiveStack;
 				Stack<DependencyNode> sourceInput = planarConfig.Input;
@@ -399,7 +397,7 @@ namespace org.maltparser.parser.algorithm.twoplanar
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

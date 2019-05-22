@@ -1,16 +1,11 @@
 ﻿namespace org.maltparser.parser.guide.decision
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.guide.instance;
-	using  org.maltparser.parser.guide.instance;
-	using  org.maltparser.parser.guide.instance;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	/// 
+    using  core.feature;
+    using  core.syntaxgraph;
+	using  instance;
+    using  history.action;
+
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -29,38 +24,38 @@
 //ORIGINAL LINE: public OneDecisionModel(org.maltparser.parser.guide.ClassifierGuide _guide) throws org.maltparser.core.exception.MaltChainedException
 		public OneDecisionModel(ClassifierGuide _guide)
 		{
-			this.branchedDecisionSymbols = "";
-			this.guide = _guide;
+			branchedDecisionSymbols = "";
+			guide = _guide;
 	//		this.featureModel = _featureModel;
-			this.decisionIndex = 0;
-			if (string.ReferenceEquals(guide.GuideName, null) || guide.GuideName.Equals(""))
+			decisionIndex = 0;
+			if (ReferenceEquals(guide.GuideName, null) || guide.GuideName.Equals(""))
 			{
-				this.modelName = "odm" + decisionIndex;
+				modelName = "odm" + decisionIndex;
 			}
 			else
 			{
-				this.modelName = guide.GuideName + ".odm" + decisionIndex;
+				modelName = guide.GuideName + ".odm" + decisionIndex;
 			}
-			this.prevDecisionModel = null;
+			prevDecisionModel = null;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public OneDecisionModel(org.maltparser.parser.guide.ClassifierGuide _guide, DecisionModel _prevDecisionModel, String _branchedDecisionSymbol) throws org.maltparser.core.exception.MaltChainedException
 		public OneDecisionModel(ClassifierGuide _guide, DecisionModel _prevDecisionModel, string _branchedDecisionSymbol)
 		{
-			this.prevDecisionModel = _prevDecisionModel;
-			this.decisionIndex = prevDecisionModel.DecisionIndex + 1;
-			if (!string.ReferenceEquals(_branchedDecisionSymbol, null) && _branchedDecisionSymbol.Length > 0)
+			prevDecisionModel = _prevDecisionModel;
+			decisionIndex = prevDecisionModel.DecisionIndex + 1;
+			if (!ReferenceEquals(_branchedDecisionSymbol, null) && _branchedDecisionSymbol.Length > 0)
 			{
-				this.branchedDecisionSymbols = _branchedDecisionSymbol;
-				this.modelName = "odm" + decisionIndex + branchedDecisionSymbols;
+				branchedDecisionSymbols = _branchedDecisionSymbol;
+				modelName = "odm" + decisionIndex + branchedDecisionSymbols;
 			}
 			else
 			{
-				this.branchedDecisionSymbols = "";
-				this.modelName = "odm" + decisionIndex;
+				branchedDecisionSymbols = "";
+				modelName = "odm" + decisionIndex;
 			}
-			this.guide = _guide;
+			guide = _guide;
 	//		this.featureModel = prevDecisionModel.getFeatureModel();
 		}
 
@@ -96,7 +91,7 @@
 //ORIGINAL LINE: public void noMoreInstances(org.maltparser.core.feature.FeatureModel featureModel) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void noMoreInstances(FeatureModel featureModel)
 		{
-			if (guide.GuideMode == org.maltparser.parser.guide.ClassifierGuide_GuideMode.CLASSIFY)
+			if (guide.GuideMode == ClassifierGuide_GuideMode.CLASSIFY)
 			{
 				throw new GuideException("The decision model could not create it's model. ");
 			}

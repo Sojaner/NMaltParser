@@ -22,13 +22,13 @@ namespace org.maltparser.core.feature.spec
 
 		public SpecificationSubModel(string _name)
 		{
-			this.name = _name;
-			this.featureSpecSet = new SortedSet<string>();
+			name = _name;
+			featureSpecSet = new SortedSet<string>();
 		}
 
 		public virtual void add(string featureSpec)
 		{
-			if (!string.ReferenceEquals(featureSpec, null) && featureSpec.Trim().Length > 0)
+			if (!ReferenceEquals(featureSpec, null) && featureSpec.Trim().Length > 0)
 			{
 				string strippedFeatureSpec = blanks.matcher(featureSpec).replaceAll("");
 				featureSpecSet.Add(strippedFeatureSpec);
@@ -69,7 +69,7 @@ namespace org.maltparser.core.feature.spec
 			const int prime = 31;
 			int result = 1;
 			result = prime * result + ((featureSpecSet == null) ? 0 : featureSpecSet.GetHashCode());
-			result = prime * result + ((string.ReferenceEquals(name, null)) ? 0 : name.GetHashCode());
+			result = prime * result + ((ReferenceEquals(name, null)) ? 0 : name.GetHashCode());
 			return result;
 		}
 
@@ -83,7 +83,7 @@ namespace org.maltparser.core.feature.spec
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
@@ -99,9 +99,9 @@ namespace org.maltparser.core.feature.spec
 			{
 				return false;
 			}
-			if (string.ReferenceEquals(name, null))
+			if (ReferenceEquals(name, null))
 			{
-				if (!string.ReferenceEquals(other.name, null))
+				if (!ReferenceEquals(other.name, null))
 				{
 					return false;
 				}

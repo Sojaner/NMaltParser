@@ -3,19 +3,9 @@ using System.IO;
 
 namespace org.maltparser.ml.lib
 {
-
-	using  de.bwaldvogel.liblinear;
-	using  de.bwaldvogel.liblinear;
-	using  de.bwaldvogel.liblinear;
-	using  de.bwaldvogel.liblinear;
-	using  de.bwaldvogel.liblinear;
-	using  de.bwaldvogel.liblinear;
-
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.parser.guide.instance;
+    using  core.config;
+    using  core.helper;
+    using  parser.guide.instance;
 
 	public class LibLinear : Lib
 	{
@@ -24,7 +14,7 @@ namespace org.maltparser.ml.lib
 //ORIGINAL LINE: public LibLinear(org.maltparser.parser.guide.instance.InstanceModel owner, System.Nullable<int> learnerMode) throws org.maltparser.core.exception.MaltChainedException
 		public LibLinear(InstanceModel owner, int? learnerMode) : base(owner, learnerMode, "liblinear")
 		{
-			if (learnerMode.Value == org.maltparser.ml.LearningMethod_Fields.CLASSIFY)
+			if (learnerMode.Value == LearningMethod_Fields.CLASSIFY)
 			{
 				model = (MaltLibModel)getConfigFileEntryObject(".moo");
 			}
@@ -79,11 +69,11 @@ namespace org.maltparser.ml.lib
 					getFile(".ins").delete();
 				}
 			}
-			catch (System.OutOfMemoryException e)
+			catch (OutOfMemoryException e)
 			{
 				throw new LibException("Out of memory. Please increase the Java heap size (-Xmx<size>). ", e);
 			}
-			catch (System.ArgumentException e)
+			catch (ArgumentException e)
 			{
 				throw new LibException("The Liblinear learner was not able to redirect Standard Error stream. ", e);
 			}
@@ -113,7 +103,7 @@ namespace org.maltparser.ml.lib
 					config.logInfoMessage("- Save the Liblinear model " + getFile(".moo").Name + "\n");
 				}
 			}
-			catch (System.OutOfMemoryException e)
+			catch (OutOfMemoryException e)
 			{
 				throw new LibException("Out of memory. Please increase the Java heap size (-Xmx<size>). ", e);
 			}
@@ -132,11 +122,11 @@ namespace org.maltparser.ml.lib
 					}
 				}
 			}
-			catch (System.OutOfMemoryException e)
+			catch (OutOfMemoryException e)
 			{
 				throw new LibException("Out of memory. Please increase the Java heap size (-Xmx<size>). ", e);
 			}
-			catch (System.ArgumentException e)
+			catch (ArgumentException e)
 			{
 				throw new LibException("The Liblinear learner was not able to redirect Standard Error stream. ", e);
 			}
@@ -357,7 +347,7 @@ namespace org.maltparser.ml.lib
 			{
 				 throw new LibException("Learner is interrupted. ", e);
 			}
-			catch (System.ArgumentException e)
+			catch (ArgumentException e)
 			{
 				throw new LibException("The learner was not able to redirect Standard Error stream. ", e);
 			}
@@ -369,7 +359,7 @@ namespace org.maltparser.ml.lib
 			{
 				throw new LibException("The learner cannot save the model file '" + getFile(".mod").AbsolutePath + "'. ", e);
 			}
-			catch (System.OutOfMemoryException e)
+			catch (OutOfMemoryException e)
 			{
 				throw new LibException("Out of memory. Please increase the Java heap size (-Xmx<size>). ", e);
 			}
@@ -430,7 +420,7 @@ namespace org.maltparser.ml.lib
 				while (true)
 				{
 					string line = fp.ReadLine();
-					if (string.ReferenceEquals(line, null))
+					if (ReferenceEquals(line, null))
 					{
 						break;
 					}
@@ -451,7 +441,7 @@ namespace org.maltparser.ml.lib
 						}
 						i++;
 					}
-					catch (System.IndexOutOfRangeException e)
+					catch (IndexOutOfRangeException e)
 					{
 						throw new LibException("Couldn't read liblinear problem from the instance file. ", e);
 					}
@@ -538,7 +528,7 @@ namespace org.maltparser.ml.lib
 			{
 				param.C = Convert.ToDouble(libOptions.get("c"));
 			}
-			catch (System.FormatException e)
+			catch (FormatException e)
 			{
 				throw new LibException("The liblinear cost (-c) value is not numerical value. ", e);
 			}
@@ -546,7 +536,7 @@ namespace org.maltparser.ml.lib
 			{
 				param.Eps = Convert.ToDouble(libOptions.get("e"));
 			}
-			catch (System.FormatException e)
+			catch (FormatException e)
 			{
 				throw new LibException("The liblinear epsilon (-e) value is not numerical value. ", e);
 			}

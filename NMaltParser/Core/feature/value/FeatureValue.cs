@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.feature.value
 {
-	using  org.maltparser.core.feature.function;
+	using  function;
 
 	/// 
 	/// 
@@ -32,7 +32,7 @@ namespace org.maltparser.core.feature.value
 			}
 			set
 			{
-				this.nullValue = value;
+				nullValue = value;
 			}
 		}
 
@@ -51,7 +51,7 @@ namespace org.maltparser.core.feature.value
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

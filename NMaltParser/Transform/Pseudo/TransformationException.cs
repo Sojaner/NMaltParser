@@ -2,7 +2,7 @@
 
 namespace org.maltparser.transform.pseudo
 {
-	using  org.maltparser.core.exception;
+	using  core.exception;
 
 	/// <summary>
 	///  TransformationException extends the MaltChainedException class and is thrown by classes

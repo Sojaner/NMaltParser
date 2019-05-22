@@ -6,17 +6,13 @@ using System.IO;
 namespace org.maltparser.core.syntaxgraph.writer
 {
 
-	using  org.maltparser.core.exception;
+	using  exception;
 
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.reader;
+	using  helper;
+	using  io.dataformat;
+    using  symbol;
+	using  node;
+    using  reader;
 	/// 
 	/// 
 	/// <summary>
@@ -231,7 +227,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.writer = value;
+				writer = value;
 			}
 		}
 
@@ -476,7 +472,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.sentenceCount = value;
+				sentenceCount = value;
 			}
 		}
 
@@ -489,7 +485,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.dataFormatInstance = value;
+				dataFormatInstance = value;
 				labeledTerminalID = (value.InputColumnDescriptions.ContainsKey("id") || value.InputColumnDescriptions.ContainsKey("ID"));
 			}
 		}
@@ -503,7 +499,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.optionString = value;
+				optionString = value;
 				rootHandling = RootHandling.NORMAL;
     
 				string[] argv;
@@ -542,7 +538,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 						{
 							START_ID_OF_NONTERMINALS = int.Parse(argv[i]);
 						}
-						catch (System.FormatException)
+						catch (FormatException)
 						{
 							throw new MaltChainedException("The TigerXML writer option -s must be an integer value. ");
 						}

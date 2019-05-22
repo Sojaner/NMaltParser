@@ -3,9 +3,7 @@ using System.IO;
 
 namespace org.maltparser.core.symbol.parse
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
+    using  helper;
 
 	public class ParseSymbolTableHandler : SymbolTableHandler
 	{
@@ -17,7 +15,7 @@ namespace org.maltparser.core.symbol.parse
 		public ParseSymbolTableHandler(SymbolTableHandler parentSymbolTableHandler)
 		{
 			this.parentSymbolTableHandler = parentSymbolTableHandler;
-			this.symbolTables = new HashMap<string, ParseSymbolTable>();
+			symbolTables = new HashMap<string, ParseSymbolTable>();
 			foreach (string tableName in parentSymbolTableHandler.SymbolTableNames)
 			{
 				addSymbolTable(tableName);
@@ -106,7 +104,7 @@ namespace org.maltparser.core.symbol.parse
 			Pattern tabPattern = Pattern.compile("\t");
 			try
 			{
-				while (!string.ReferenceEquals((fileLine = bin.ReadLine()), null))
+				while (!ReferenceEquals((fileLine = bin.ReadLine()), null))
 				{
 					if (fileLine.Length == 0 || fileLine[0] != '\t')
 					{
@@ -127,7 +125,7 @@ namespace org.maltparser.core.symbol.parse
 					}
 					else if (items.Length == 3)
 					{
-						addSymbolTable(items[0], int.Parse(items[1]), org.maltparser.core.symbol.SymbolTable_Fields.STRING, items[2]);
+						addSymbolTable(items[0], int.Parse(items[1]), SymbolTable_Fields.STRING, items[2]);
 					}
 					else
 					{
@@ -165,7 +163,7 @@ namespace org.maltparser.core.symbol.parse
 				{
 					bin.reset();
 				}
-				while (!string.ReferenceEquals((fileLine = bin.ReadLine()), null))
+				while (!ReferenceEquals((fileLine = bin.ReadLine()), null))
 				{
 					if (fileLine.Length > 0)
 					{
@@ -209,7 +207,7 @@ namespace org.maltparser.core.symbol.parse
 				string fileLine;
 				SymbolTable table = addSymbolTable(tableName, columnCategory, columnType, nullValueStrategy);
 
-				while (!string.ReferenceEquals((fileLine = br.ReadLine()), null))
+				while (!ReferenceEquals((fileLine = br.ReadLine()), null))
 				{
 					table.addSymbol(fileLine.Trim());
 				}

@@ -5,8 +5,8 @@ using System.Text;
 namespace org.maltparser.core.syntaxgraph
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
+	using  exception;
+	using  symbol;
 
 	/// 
 	/// 
@@ -48,7 +48,7 @@ namespace org.maltparser.core.syntaxgraph
 //ORIGINAL LINE: public void addLabel(org.maltparser.core.symbol.SymbolTable table, int code) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void addLabel(SymbolTable table, int code)
 		{
-			if (!string.ReferenceEquals(table.getSymbolCodeToString(code), null))
+			if (!ReferenceEquals(table.getSymbolCodeToString(code), null))
 			{
 				if (labelSet == null)
 				{
@@ -230,7 +230,7 @@ namespace org.maltparser.core.syntaxgraph
 			}
 			set
 			{
-				this.belongsToGraph = value;
+				belongsToGraph = value;
 				addObserver((SyntaxGraph)value);
 			}
 		}
@@ -277,15 +277,15 @@ namespace org.maltparser.core.syntaxgraph
 				return EQUAL;
 			}
 
-			if (this.labelSet == null && o.labelSet != null)
+			if (labelSet == null && o.labelSet != null)
 			{
 				return BEFORE;
 			}
-			if (this.labelSet != null && o.labelSet == null)
+			if (labelSet != null && o.labelSet == null)
 			{
 				return AFTER;
 			}
-			if (this.labelSet == null && o.labelSet == null)
+			if (labelSet == null && o.labelSet == null)
 			{
 				return EQUAL;
 			}

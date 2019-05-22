@@ -1,9 +1,9 @@
 ﻿namespace org.maltparser.parser
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.guide;
+	using  core.exception;
+	using  core.symbol;
+	using  core.syntaxgraph;
+	using  guide;
 	/// <summary>
 	/// @author Johan Hall
 	/// 

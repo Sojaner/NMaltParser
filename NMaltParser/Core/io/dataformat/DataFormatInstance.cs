@@ -3,12 +3,9 @@ using System.Text;
 
 namespace org.maltparser.core.io.dataformat
 {
+    using  symbol;
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -50,7 +47,7 @@ namespace org.maltparser.core.io.dataformat
 //ORIGINAL LINE: public DataFormatInstance(java.util.Map<String, DataFormatEntry> entries, org.maltparser.core.symbol.SymbolTableHandler symbolTables, String nullValueStrategy, DataFormatSpecification dataFormarSpec) throws org.maltparser.core.exception.MaltChainedException
 		public DataFormatInstance(IDictionary<string, DataFormatEntry> entries, SymbolTableHandler symbolTables, string nullValueStrategy, DataFormatSpecification dataFormarSpec)
 		{
-			this.columnDescriptions = new SortedSet<ColumnDescription>();
+			columnDescriptions = new SortedSet<ColumnDescription>();
 			this.dataFormarSpec = dataFormarSpec;
 			createColumnDescriptions(symbolTables, entries, nullValueStrategy);
 

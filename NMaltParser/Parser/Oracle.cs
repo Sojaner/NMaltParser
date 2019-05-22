@@ -2,12 +2,11 @@
 
 namespace org.maltparser.parser
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.guide;
-	using  org.maltparser.parser.history;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.container;
+    using  core.syntaxgraph;
+	using  guide;
+	using  history;
+	using  history.action;
+	using  history.container;
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -15,8 +14,8 @@ namespace org.maltparser.parser
 	public abstract class Oracle : OracleGuide
 	{
 		public abstract void terminate();
-		public abstract void finalizeSentence(org.maltparser.core.syntaxgraph.DependencyStructure dependencyGraph);
-		public abstract GuideUserAction predict(org.maltparser.core.syntaxgraph.DependencyStructure gold, ParserConfiguration config);
+		public abstract void finalizeSentence(DependencyStructure dependencyGraph);
+		public abstract GuideUserAction predict(DependencyStructure gold, ParserConfiguration config);
 		private readonly DependencyParserConfig manager;
 		private readonly GuideUserHistory history;
 		private string name;
@@ -30,7 +29,7 @@ namespace org.maltparser.parser
 		{
 			this.manager = manager;
 			this.history = history;
-			this.actionContainers = history.ActionContainerArray;
+			actionContainers = history.ActionContainerArray;
 
 			if (actionContainers.Length < 1)
 			{
@@ -45,7 +44,7 @@ namespace org.maltparser.parser
 				}
 			}
 			int j = 0;
-			this.arcLabelActionContainers = new ActionContainer[nLabels];
+			arcLabelActionContainers = new ActionContainer[nLabels];
 			for (int i = 0; i < actionContainers.Length; i++)
 			{
 				if (actionContainers[i].TableContainerName.Equals("T.TRANS"))
@@ -83,7 +82,7 @@ namespace org.maltparser.parser
 			}
 			set
 			{
-				this.name = value;
+				name = value;
 			}
 		}
 

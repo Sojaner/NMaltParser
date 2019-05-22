@@ -5,10 +5,8 @@ using System.IO;
 
 namespace org.maltparser.core.plugin
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.options;
+    using  helper;
+	using  options;
 
 
 	/// <summary>

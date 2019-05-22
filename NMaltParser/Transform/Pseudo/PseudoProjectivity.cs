@@ -3,15 +3,10 @@ using System.Collections.Generic;
 
 namespace org.maltparser.transform.pseudo
 {
-
-	using  org.apache.log4j;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  core.io.dataformat;
+    using  core.symbol;
+    using  core.syntaxgraph;
+	using  core.syntaxgraph.node;
 
 	/// <summary>
 	/// This class contains methods for projectivizing and deprojectivizing
@@ -113,13 +108,13 @@ namespace org.maltparser.transform.pseudo
 			{
 				markingStrategy = PseudoProjectiveEncoding.TRACE;
 			}
-			this.deprelColumn = dataFormatInstance.getColumnDescriptionByName("DEPREL");
-			this.deprelSymbolTable = symbolTables.getSymbolTable(deprelColumn.Name);
+			deprelColumn = dataFormatInstance.getColumnDescriptionByName("DEPREL");
+			deprelSymbolTable = symbolTables.getSymbolTable(deprelColumn.Name);
 			if (markingStrategy == PseudoProjectiveEncoding.HEAD || markingStrategy == PseudoProjectiveEncoding.PATH || markingStrategy == PseudoProjectiveEncoding.HEADPATH)
 			{
-				this.ppliftedColumn = dataFormatInstance.addInternalColumnDescription(symbolTables, "PPLIFTED", "DEPENDENCY_EDGE_LABEL", "BOOLEAN", "", deprelColumn.NullValueStrategy);
-				this.ppliftedSymbolTable = symbolTables.getSymbolTable(ppliftedColumn.Name);
-				if (this.markingStrategy == PseudoProjectiveEncoding.PATH)
+				ppliftedColumn = dataFormatInstance.addInternalColumnDescription(symbolTables, "PPLIFTED", "DEPENDENCY_EDGE_LABEL", "BOOLEAN", "", deprelColumn.NullValueStrategy);
+				ppliftedSymbolTable = symbolTables.getSymbolTable(ppliftedColumn.Name);
+				if (markingStrategy == PseudoProjectiveEncoding.PATH)
 				{
 					ppliftedSymbolTable.addSymbol("#true#");
 					ppliftedSymbolTable.addSymbol("#false#");
@@ -132,37 +127,37 @@ namespace org.maltparser.transform.pseudo
 
 			if (markingStrategy == PseudoProjectiveEncoding.PATH || markingStrategy == PseudoProjectiveEncoding.HEADPATH)
 			{
-				this.pppathColumn = dataFormatInstance.addInternalColumnDescription(symbolTables, "PPPATH", "DEPENDENCY_EDGE_LABEL", "BOOLEAN", "", deprelColumn.NullValueStrategy);
-				this.pppathSymbolTable = symbolTables.getSymbolTable(pppathColumn.Name);
+				pppathColumn = dataFormatInstance.addInternalColumnDescription(symbolTables, "PPPATH", "DEPENDENCY_EDGE_LABEL", "BOOLEAN", "", deprelColumn.NullValueStrategy);
+				pppathSymbolTable = symbolTables.getSymbolTable(pppathColumn.Name);
 				pppathSymbolTable.addSymbol("#true#");
 				pppathSymbolTable.addSymbol("#false#");
 			}
 
 			if (coveredRoot.Equals("none", StringComparison.OrdinalIgnoreCase))
 			{
-				this.rootAttachment = CoveredRootAttachment.NONE;
+				rootAttachment = CoveredRootAttachment.NONE;
 			}
 			else if (coveredRoot.Equals("ignore", StringComparison.OrdinalIgnoreCase))
 			{
-				this.rootAttachment = CoveredRootAttachment.IGNORE;
+				rootAttachment = CoveredRootAttachment.IGNORE;
 			}
 			else if (coveredRoot.Equals("left", StringComparison.OrdinalIgnoreCase))
 			{
-				this.rootAttachment = CoveredRootAttachment.LEFT;
+				rootAttachment = CoveredRootAttachment.LEFT;
 			}
 			else if (coveredRoot.Equals("right", StringComparison.OrdinalIgnoreCase))
 			{
-				this.rootAttachment = CoveredRootAttachment.RIGHT;
+				rootAttachment = CoveredRootAttachment.RIGHT;
 			}
 			else if (coveredRoot.Equals("head", StringComparison.OrdinalIgnoreCase))
 			{
-				this.rootAttachment = CoveredRootAttachment.HEAD;
+				rootAttachment = CoveredRootAttachment.HEAD;
 			}
 
-			if (this.rootAttachment != CoveredRootAttachment.NONE)
+			if (rootAttachment != CoveredRootAttachment.NONE)
 			{
-				this.ppcoveredRootColumn = dataFormatInstance.addInternalColumnDescription(symbolTables, "PPCOVERED", "DEPENDENCY_EDGE_LABEL", "BOOLEAN", "", deprelColumn.NullValueStrategy);
-				this.ppcoveredRootSymbolTable = symbolTables.getSymbolTable(ppcoveredRootColumn.Name);
+				ppcoveredRootColumn = dataFormatInstance.addInternalColumnDescription(symbolTables, "PPCOVERED", "DEPENDENCY_EDGE_LABEL", "BOOLEAN", "", deprelColumn.NullValueStrategy);
+				ppcoveredRootSymbolTable = symbolTables.getSymbolTable(ppcoveredRootColumn.Name);
 				ppcoveredRootSymbolTable.addSymbol("#true#");
 				ppcoveredRootSymbolTable.addSymbol("#false#");
 			}
@@ -298,13 +293,13 @@ namespace org.maltparser.transform.pseudo
 				if (pdg.getTokenNode(index).HeadEdge.hasLabel(deprelSymbolTable))
 				{
 					label = deprelSymbolTable.getSymbolCodeToString(pdg.getTokenNode(index).HeadEdge.getLabelCode(deprelSymbolTable));
-					if (!string.ReferenceEquals(label, null) && (pathLabelIndex = label.IndexOf("%", StringComparison.Ordinal)) != -1)
+					if (!ReferenceEquals(label, null) && (pathLabelIndex = label.IndexOf("%", StringComparison.Ordinal)) != -1)
 					{
 						label = label.Substring(0, pathLabelIndex);
 						setLabel(pdg.getTokenNode(index), label);
 						pdg.getTokenNode(index).HeadEdge.addLabel(pppathSymbolTable, pppathSymbolTable.getSymbolStringToCode("#true#"));
 					}
-					if (!string.ReferenceEquals(label, null) && (movedLabelIndex = label.IndexOf("|", StringComparison.Ordinal)) != -1 && label.IndexOf("|null", StringComparison.Ordinal) == -1)
+					if (!ReferenceEquals(label, null) && (movedLabelIndex = label.IndexOf("|", StringComparison.Ordinal)) != -1 && label.IndexOf("|null", StringComparison.Ordinal) == -1)
 					{
 						if (movedLabelIndex + 1 < label.Length)
 						{
@@ -485,9 +480,9 @@ namespace org.maltparser.transform.pseudo
 			{
 				if (!isCoveredRoot(pdg.getDependencyNode(index)))
 				{
-					if (this.markingStrategy == PseudoProjectiveEncoding.HEAD || this.markingStrategy == PseudoProjectiveEncoding.PATH || this.markingStrategy == PseudoProjectiveEncoding.HEADPATH)
+					if (markingStrategy == PseudoProjectiveEncoding.HEAD || markingStrategy == PseudoProjectiveEncoding.PATH || markingStrategy == PseudoProjectiveEncoding.HEADPATH)
 					{
-						if (this.markingStrategy == PseudoProjectiveEncoding.PATH)
+						if (markingStrategy == PseudoProjectiveEncoding.PATH)
 						{
 							if (nodeLifted[index])
 							{
@@ -513,7 +508,7 @@ namespace org.maltparser.transform.pseudo
 						}
 					}
 
-					if (this.markingStrategy == PseudoProjectiveEncoding.PATH || this.markingStrategy == PseudoProjectiveEncoding.HEADPATH)
+					if (markingStrategy == PseudoProjectiveEncoding.PATH || markingStrategy == PseudoProjectiveEncoding.HEADPATH)
 					{
 						if (nodePath[index])
 						{
@@ -612,7 +607,7 @@ namespace org.maltparser.transform.pseudo
 				{
 					newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|null";
 				}
-				if (!string.ReferenceEquals(newLabel, null))
+				if (!ReferenceEquals(newLabel, null))
 				{
 					setLabel(pdg.getDependencyNode(index), newLabel);
 				}

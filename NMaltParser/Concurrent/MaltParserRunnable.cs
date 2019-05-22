@@ -5,7 +5,7 @@ using System.Threading;
 namespace org.maltparser.concurrent
 {
 
-	using  org.maltparser.core.exception;
+	using  core.exception;
 
 	public class MaltParserRunnable : ThreadStart
 	{
@@ -15,9 +15,9 @@ namespace org.maltparser.concurrent
 
 		public MaltParserRunnable(IList<string[]> sentences, ConcurrentMaltParserModel _model)
 		{
-			this.inputSentences = new List<string[]>(sentences);
-			this.outputSentences = null;
-			this.model = _model;
+			inputSentences = new List<string[]>(sentences);
+			outputSentences = null;
+			model = _model;
 		}
 
 		public virtual void run()

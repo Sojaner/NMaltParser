@@ -7,23 +7,18 @@ namespace org.maltparser.ml.libsvm
 {
 
 
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.ml.liblinear;
-	using  org.maltparser.parser;
-	using  org.maltparser.parser.guide.instance;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.kbest;
-	using  org.maltparser.parser.history.kbest;
+	using  core.config;
+    using  core.exception;
+	using  core.feature;
+	using  core.feature.function;
+	using  core.feature.value;
+    using  core.syntaxgraph;
+    using  parser;
+	using  parser.guide.instance;
+	using  parser.history.action;
+	using  parser.history.kbest;
 
-	/// <summary>
+    /// <summary>
 	/// Implements an interface to the LIBSVM learner (currently the LIBSVM 2.91 is used). More information
 	/// about LIBSVM can be found at 
 	/// <a href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/" target="_blank">LIBSVM -- A Library for Support Vector Machines</a>.
@@ -88,7 +83,7 @@ namespace org.maltparser.ml.libsvm
 			verbosity = Verbostity.SILENT;
 			initSvmParam(Configuration.getOptionValue("libsvm", "libsvm_options").ToString());
 			initSpecialParameters();
-			if (learnerMode.Value == org.maltparser.ml.LearningMethod_Fields.BATCH)
+			if (learnerMode.Value == LearningMethod_Fields.BATCH)
 			{
 	//			if (owner.getGuide().getConfiguration().getConfigLogger().isInfoEnabled()) {
 	//				if (pathExternalSVMTrain != null) {
@@ -307,7 +302,7 @@ namespace org.maltparser.ml.libsvm
 			{
 				 throw new LibsvmException("SVM-trainer is interrupted. ", e);
 			}
-			catch (System.ArgumentException e)
+			catch (ArgumentException e)
 			{
 				throw new LibsvmException("The LIBSVM learner was not able to redirect Standard Error stream. ", e);
 			}
@@ -319,7 +314,7 @@ namespace org.maltparser.ml.libsvm
 			{
 				throw new LibsvmException("The LIBSVM learner cannot save the model file '" + getFile(".mod").AbsolutePath + "'. ", e);
 			}
-			catch (System.OutOfMemoryException e)
+			catch (OutOfMemoryException e)
 			{
 				throw new LibsvmException("Out of memory. Please increase the Java heap size (-Xmx<size>). ", e);
 			}
@@ -439,7 +434,7 @@ namespace org.maltparser.ml.libsvm
 						@out.BaseStream.WriteByte('\n');
 						sb.Length = 0;
 						method.increaseNumberOfInstances();
-						this.decreaseNumberOfInstances();
+						decreaseNumberOfInstances();
 						j = 0;
 					}
 					else
@@ -454,7 +449,7 @@ namespace org.maltparser.ml.libsvm
 			{
 				throw new LibsvmException("The LIBSVM learner cannot remove the instance file. ", e);
 			}
-			catch (System.NullReferenceException e)
+			catch (NullReferenceException e)
 			{
 				throw new LibsvmException("The instance file cannot be found. ", e);
 			}
@@ -632,7 +627,7 @@ namespace org.maltparser.ml.libsvm
 			}
 			set
 			{
-				this.owner = value;
+				owner = value;
 			}
 		}
 
@@ -645,7 +640,7 @@ namespace org.maltparser.ml.libsvm
 			}
 			set
 			{
-				this.learnerMode = value;
+				learnerMode = value;
 			}
 		}
 
@@ -658,7 +653,7 @@ namespace org.maltparser.ml.libsvm
 			}
 			set
 			{
-				this.name = value;
+				name = value;
 			}
 		}
 
@@ -715,7 +710,7 @@ namespace org.maltparser.ml.libsvm
 			}
 			set
 			{
-				this.numberOfInstances = 0;
+				numberOfInstances = 0;
 			}
 		}
 
@@ -817,7 +812,7 @@ namespace org.maltparser.ml.libsvm
 				while (true)
 				{
 					string line = fp.ReadLine();
-					if (string.ReferenceEquals(line, null))
+					if (ReferenceEquals(line, null))
 					{
 						break;
 					}
@@ -851,7 +846,7 @@ namespace org.maltparser.ml.libsvm
 										p++;
 									}
 								}
-								catch (System.FormatException e)
+								catch (FormatException e)
 								{
 									throw new LibsvmException("The instance file contain a non-integer value '" + items[k] + "'", e);
 								}
@@ -866,7 +861,7 @@ namespace org.maltparser.ml.libsvm
 						i++;
 						xlist.Clear();
 					}
-					catch (System.IndexOutOfRangeException e)
+					catch (IndexOutOfRangeException e)
 					{
 						throw new LibsvmException("Cannot read from the instance file. ", e);
 					}
@@ -966,7 +961,7 @@ namespace org.maltparser.ml.libsvm
 		{
 			if (param == null)
 			{
-				throw new System.ArgumentException("Svm-parameters cannot be found. ");
+				throw new ArgumentException("Svm-parameters cannot be found. ");
 			}
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final StringBuffer sb = new StringBuffer();
@@ -1132,7 +1127,7 @@ namespace org.maltparser.ml.libsvm
 			{
 				throw new LibsvmException("Svm-parameters cannot be found. ");
 			}
-			if (string.ReferenceEquals(paramstring, null))
+			if (ReferenceEquals(paramstring, null))
 			{
 				return;
 			}
@@ -1226,15 +1221,15 @@ namespace org.maltparser.ml.libsvm
 						throw new LibsvmException("Unknown svm parameter: '" + argv[i - 1] + "' with value '" + argv[i] + "'. ");
 					}
 				}
-				catch (System.IndexOutOfRangeException e)
+				catch (IndexOutOfRangeException e)
 				{
 					throw new LibsvmException("The svm-parameter '" + argv[i - 1] + "' could not convert the string value '" + argv[i] + "' into a correct numeric value. ", e);
 				}
-				catch (System.FormatException e)
+				catch (FormatException e)
 				{
 					throw new LibsvmException("The svm-parameter '" + argv[i - 1] + "' could not convert the string value '" + argv[i] + "' into a correct numeric value. ", e);
 				}
-				catch (System.NullReferenceException e)
+				catch (NullReferenceException e)
 				{
 					throw new LibsvmException("The svm-parameter '" + argv[i - 1] + "' could not convert the string value '" + argv[i] + "' into a correct numeric value. ", e);
 				}

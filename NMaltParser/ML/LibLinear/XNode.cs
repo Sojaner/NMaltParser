@@ -21,7 +21,7 @@ namespace org.maltparser.ml.liblinear
 			}
 			set
 			{
-				this.index = value;
+				index = value;
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace org.maltparser.ml.liblinear
 			int result = 1;
 			result = prime * result + index;
 			long temp;
-			temp = System.BitConverter.DoubleToInt64Bits(value);
+			temp = BitConverter.DoubleToInt64Bits(value);
 			result = prime * result + (int)(temp ^ ((long)((ulong)temp >> 32)));
 			return result;
 		}
@@ -60,7 +60,7 @@ namespace org.maltparser.ml.liblinear
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
@@ -69,7 +69,7 @@ namespace org.maltparser.ml.liblinear
 			{
 				return false;
 			}
-			if (System.BitConverter.DoubleToInt64Bits(value) != Double.doubleToLongBits(other.value))
+			if (BitConverter.DoubleToInt64Bits(value) != Double.doubleToLongBits(other.value))
 			{
 				return false;
 			}
@@ -87,20 +87,20 @@ namespace org.maltparser.ml.liblinear
 				return EQUAL;
 			}
 
-			if (this.index < aThat.index)
+			if (index < aThat.index)
 			{
 				return BEFORE;
 			}
-			if (this.index > aThat.index)
+			if (index > aThat.index)
 			{
 				return AFTER;
 			}
 
-			if (this.value < aThat.value)
+			if (value < aThat.value)
 			{
 				return BEFORE;
 			}
-			if (this.value > aThat.value)
+			if (value > aThat.value)
 			{
 				return AFTER;
 			}

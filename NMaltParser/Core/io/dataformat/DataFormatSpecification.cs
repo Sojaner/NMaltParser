@@ -3,17 +3,10 @@ using System.Text;
 
 namespace org.maltparser.core.io.dataformat
 {
+    using  helper;
+    using  symbol;
 
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.symbol;
-	using  org.w3c.dom;
-	using  org.w3c.dom;
-	using  org.xml.sax;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -205,7 +198,7 @@ namespace org.maltparser.core.io.dataformat
 				}
 				set
 				{
-					this.dependentOn = value;
+					dependentOn = value;
 				}
 			}
 
@@ -217,7 +210,7 @@ namespace org.maltparser.core.io.dataformat
 				}
 				set
 				{
-					this.urlString = value;
+					urlString = value;
 				}
 			}
 
@@ -230,7 +223,7 @@ namespace org.maltparser.core.io.dataformat
 				}
 				set
 				{
-					this.map = value;
+					map = value;
 				}
 			}
 
@@ -242,7 +235,7 @@ namespace org.maltparser.core.io.dataformat
 				}
 				set
 				{
-					this.mapUrl = value;
+					mapUrl = value;
 				}
 			}
 

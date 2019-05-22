@@ -3,8 +3,8 @@
 namespace org.maltparser.core.syntaxgraph.writer
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
+	using  exception;
+	using  io.dataformat;
 	/// 
 	/// 
 	/// <summary>

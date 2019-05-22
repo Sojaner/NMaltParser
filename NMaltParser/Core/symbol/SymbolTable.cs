@@ -2,11 +2,7 @@
 
 namespace org.maltparser.core.symbol
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol.nullvalue.NullValues;
-
-	public interface SymbolTable : Table
+    public interface SymbolTable : Table
 	{
 		// Categories
 

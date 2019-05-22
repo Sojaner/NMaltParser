@@ -2,8 +2,7 @@
 
 namespace org.maltparser.core.syntaxgraph.edge
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  node;
 	/// 
 	/// 
 	/// <summary>
@@ -46,7 +45,7 @@ namespace org.maltparser.core.syntaxgraph.edge
 			}
 			set
 			{
-				this.weight = value;
+				weight = value;
 			}
 		}
 
@@ -57,7 +56,7 @@ namespace org.maltparser.core.syntaxgraph.edge
 			{
 				return 0;
 			}
-			int comparison = this.weight.compareTo(that.Weight);
+			int comparison = weight.compareTo(that.Weight);
 			if (comparison != 0)
 			{
 				return comparison;

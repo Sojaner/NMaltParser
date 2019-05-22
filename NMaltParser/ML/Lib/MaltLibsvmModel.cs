@@ -2,14 +2,7 @@
 
 namespace org.maltparser.ml.lib
 {
-
-	using  libsvm;
-	using  libsvm;
-	using  libsvm;
-	using  libsvm;
-
-
-	/// <summary>
+    /// <summary>
 	/// <para>This class borrows code from libsvm.svm.java of the Java implementation of the libsvm package.
 	/// MaltLibsvmModel stores the model obtained from the training procedure. In addition to the original code the model is more integrated to
 	/// MaltParser. Instead of moving features from MaltParser's internal data structures to liblinear's data structure it uses MaltParser's data 
@@ -37,14 +30,14 @@ namespace org.maltparser.ml.lib
 
 		public MaltLibsvmModel(svm_model model, svm_problem problem)
 		{
-			this.param = model.param;
-			this.nr_class = model.nr_class;
-			this.l = model.l;
-			this.SV = model.SV;
-			this.sv_coef = model.sv_coef;
-			this.rho = model.rho;
-			this.label = model.label;
-			this.nSV = model.nSV;
+			param = model.param;
+			nr_class = model.nr_class;
+			l = model.l;
+			SV = model.SV;
+			sv_coef = model.sv_coef;
+			rho = model.rho;
+			label = model.label;
+			nSV = model.nSV;
 			start = new int[nr_class];
 			start[0] = 0;
 			for (int i = 1;i < nr_class;i++)
@@ -67,7 +60,7 @@ namespace org.maltparser.ml.lib
 			int i;
 			for (i = 0;i < l;i++)
 			{
-				kvalue[i] = MaltLibsvmModel.k_function(x,SV[i],param);
+				kvalue[i] = k_function(x,SV[i],param);
 			}
 			for (i = 0;i < nr_class;i++)
 			{
@@ -158,7 +151,7 @@ namespace org.maltparser.ml.lib
 			int i;
 			for (i = 0;i < l;i++)
 			{
-				kvalue[i] = MaltLibsvmModel.k_function(x,SV[i],param);
+				kvalue[i] = k_function(x,SV[i],param);
 			}
 			for (i = 0;i < nr_class;i++)
 			{

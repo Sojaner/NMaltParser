@@ -5,11 +5,9 @@ using System.IO;
 namespace org.maltparser.ml.lib
 {
 
-	using  org.maltparser.core.helper;
+	using  core.helper;
 
-	using  de.bwaldvogel.liblinear;
-
-	/// <summary>
+    /// <summary>
 	/// <para>This class borrows code from liblinear.Model.java of the Java implementation of the liblinear package.
 	/// MaltLiblinearModel stores the model obtained from the training procedure. In addition to the original code the model is more integrated to
 	/// MaltParser. Instead of moving features from MaltParser's internal data structures to liblinear's data structure it uses MaltParser's data 
@@ -262,7 +260,7 @@ namespace org.maltparser.ml.lib
 			try
 			{
 				string line = null;
-				while (!string.ReferenceEquals((line = reader.ReadLine()), null))
+				while (!ReferenceEquals((line = reader.ReadLine()), null))
 				{
 					string[] split = whitespace.split(line);
 					if (split[0].Equals("solver_type"))
@@ -355,7 +353,7 @@ namespace org.maltparser.ml.lib
 		public override int GetHashCode()
 		{
 			const int prime = 31;
-			long temp = System.BitConverter.DoubleToInt64Bits(bias);
+			long temp = BitConverter.DoubleToInt64Bits(bias);
 			int result = prime * 1 + (int)(temp ^ ((long)((ulong)temp >> 32)));
 			result = prime * result + Arrays.GetHashCode(labels);
 			result = prime * result + nr_class;
@@ -378,12 +376,12 @@ namespace org.maltparser.ml.lib
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
 			MaltLiblinearModel other = (MaltLiblinearModel)obj;
-			if (System.BitConverter.DoubleToInt64Bits(bias) != Double.doubleToLongBits(other.bias))
+			if (BitConverter.DoubleToInt64Bits(bias) != Double.doubleToLongBits(other.bias))
 			{
 				return false;
 			}

@@ -3,18 +3,12 @@ using System.Text;
 
 namespace org.maltparser.core.feature.map
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	/// 
+    using  function;
+    using  value;
+    using  io.dataformat;
+    using  symbol;
+
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -36,7 +30,7 @@ namespace org.maltparser.core.feature.map
 		{
 			this.dataFormatInstance = dataFormatInstance;
 			this.tableHandler = tableHandler;
-			this.multipleFeatureValue = new MultipleFeatureValue(this);
+			multipleFeatureValue = new MultipleFeatureValue(this);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -164,7 +158,7 @@ namespace org.maltparser.core.feature.map
 			}
 			set
 			{
-				this.parentFeature = value;
+				parentFeature = value;
 			}
 		}
 
@@ -177,7 +171,7 @@ namespace org.maltparser.core.feature.map
 			}
 			set
 			{
-				this.suffixLength = value;
+				suffixLength = value;
 			}
 		}
 
@@ -198,7 +192,7 @@ namespace org.maltparser.core.feature.map
 			}
 			set
 			{
-				this.table = value;
+				table = value;
 			}
 		}
 
@@ -219,7 +213,7 @@ namespace org.maltparser.core.feature.map
 			}
 			set
 			{
-				this.column = value;
+				column = value;
 			}
 		}
 
@@ -250,11 +244,11 @@ namespace org.maltparser.core.feature.map
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
-			return obj.ToString().Equals(this.ToString());
+			return obj.ToString().Equals(ToString());
 		}
 
 		public override string ToString()

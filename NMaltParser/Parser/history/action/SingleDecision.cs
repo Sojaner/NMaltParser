@@ -1,9 +1,7 @@
 ﻿namespace org.maltparser.parser.history.action
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.parser.history.container;
-	using  org.maltparser.parser.history.container.TableContainer;
-	using  org.maltparser.parser.history.kbest;
+    using  container;
+    using  kbest;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

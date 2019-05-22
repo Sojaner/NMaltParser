@@ -1,7 +1,6 @@
 ﻿namespace org.maltparser.parser.guide
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.parser.history.action;
+    using  history.action;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

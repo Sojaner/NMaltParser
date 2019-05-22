@@ -4,14 +4,12 @@ using System.Text;
 namespace org.maltparser.core.propagation
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.propagation.spec;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
+	using  exception;
+	using  io.dataformat;
+    using  spec;
+	using  symbol;
+    using  syntaxgraph.edge;
+	using  syntaxgraph.node;
 
 	/// <summary>
 	/// A propagation object propagate a column value from one node to a column in another node based on the propagation specification. 
@@ -56,7 +54,7 @@ namespace org.maltparser.core.propagation
 
 
 			forSet = new SortedSet<string>();
-			if (!string.ReferenceEquals(spec.For, null) && spec.For.Length > 0)
+			if (!ReferenceEquals(spec.For, null) && spec.For.Length > 0)
 			{
 				string[] items = spec.For.Split("\\|", true);
 
@@ -67,7 +65,7 @@ namespace org.maltparser.core.propagation
 			}
 
 			overSet = new SortedSet<string>();
-			if (!string.ReferenceEquals(spec.Over, null) && spec.Over.Length > 0)
+			if (!ReferenceEquals(spec.Over, null) && spec.Over.Length > 0)
 			{
 				string[] items = spec.Over.Split("\\|", true);
 
@@ -119,7 +117,7 @@ namespace org.maltparser.core.propagation
 							propSymbol = fromSymbol;
 						}
 					}
-					if (!string.ReferenceEquals(propSymbol, null))
+					if (!ReferenceEquals(propSymbol, null))
 					{
 						to.addLabel(toTable, propSymbol);
 					}
@@ -131,7 +129,7 @@ namespace org.maltparser.core.propagation
 		{
 			SortedSet<string> symbolSet = new SortedSet<string>();
 
-			if (!string.ReferenceEquals(fromSymbol, null) && fromSymbol.Length != 0)
+			if (!ReferenceEquals(fromSymbol, null) && fromSymbol.Length != 0)
 			{
 				string[] fromSymbols = symbolSeparator.split(fromSymbol);
 				for (int i = 0; i < fromSymbols.Length; i++)
@@ -142,7 +140,7 @@ namespace org.maltparser.core.propagation
 					}
 				}
 			}
-			if (!string.ReferenceEquals(toSymbol, null) && toSymbol.Length != 0)
+			if (!ReferenceEquals(toSymbol, null) && toSymbol.Length != 0)
 			{
 				string[] toSymbols = symbolSeparator.split(toSymbol);
 				for (int i = 0; i < toSymbols.Length; i++)

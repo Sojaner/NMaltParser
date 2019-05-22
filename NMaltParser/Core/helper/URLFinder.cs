@@ -5,11 +5,10 @@ namespace org.maltparser.core.helper
 {
 
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.plugin;
-	using  org.maltparser.core.plugin;
+	using  exception;
+	using  plugin;
 
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -66,10 +65,10 @@ namespace org.maltparser.core.helper
 			try
 			{
 				// search in malt.jar and its plugins
-				if (this.GetType().getResource(fileString) != null)
+				if (GetType().getResource(fileString) != null)
 				{
 					// found the input string in the malt.jar file
-					return this.GetType().getResource(fileString);
+					return GetType().getResource(fileString);
 				}
 				else
 				{

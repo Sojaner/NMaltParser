@@ -3,14 +3,11 @@ using System.Text;
 
 namespace org.maltparser.core.syntaxgraph.feature
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.function;
+    using  org.maltparser.core.feature.function;
 	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol.nullvalue.NullValues;
-	using  org.maltparser.core.syntaxgraph.node;
+	using  io.dataformat;
+    using  symbol;
+    using  node;
 
 	/// 
 	/// 
@@ -119,7 +116,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			}
 			set
 			{
-				this.addressFunction = value;
+				addressFunction = value;
 			}
 		}
 
@@ -142,7 +139,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

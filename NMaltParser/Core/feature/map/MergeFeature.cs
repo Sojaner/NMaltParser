@@ -3,16 +3,12 @@ using System.Text;
 
 namespace org.maltparser.core.feature.map
 {
+    using  function;
+    using  value;
+    using  io.dataformat;
+	using  symbol;
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -33,7 +29,7 @@ namespace org.maltparser.core.feature.map
 		public MergeFeature(SymbolTableHandler tableHandler)
 		{
 			this.tableHandler = tableHandler;
-			this.singleFeatureValue = new SingleFeatureValue(this);
+			singleFeatureValue = new SingleFeatureValue(this);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -59,7 +55,7 @@ namespace org.maltparser.core.feature.map
 			{
 				throw new FeatureException("Could not initialize MergeFeature: the first and the second arguments are not of the same type.");
 			}
-			this.type = firstFeature.Type;
+			type = firstFeature.Type;
 			SymbolTable = tableHandler.addSymbolTable("MERGE2_" + firstFeature.MapIdentifier + "_" + secondFeature.MapIdentifier, ColumnDescription.INPUT, ColumnDescription.STRING, "One");
 		}
 
@@ -149,7 +145,7 @@ namespace org.maltparser.core.feature.map
 								firstInt = int.Parse(firstSymbol.Substring(0,dotIndex));
 							}
 						}
-						catch (System.FormatException e)
+						catch (FormatException e)
 						{
 							throw new FeatureException("Could not cast the feature value '" + firstSymbol + "' to integer value.", e);
 						}
@@ -166,7 +162,7 @@ namespace org.maltparser.core.feature.map
 								secondInt = int.Parse(secondSymbol.Substring(0,dotIndex));
 							}
 						}
-						catch (System.FormatException e)
+						catch (FormatException e)
 						{
 							throw new FeatureException("Could not cast the feature value '" + secondSymbol + "' to integer value.", e);
 						}
@@ -183,7 +179,7 @@ namespace org.maltparser.core.feature.map
 						{
 							firstReal = double.Parse(firstSymbol);
 						}
-						catch (System.FormatException e)
+						catch (FormatException e)
 						{
 							throw new FeatureException("Could not cast the feature value '" + firstSymbol + "' to real value.", e);
 						}
@@ -192,7 +188,7 @@ namespace org.maltparser.core.feature.map
 						{
 							secondReal = double.Parse(secondSymbol);
 						}
-						catch (System.FormatException e)
+						catch (FormatException e)
 						{
 							throw new FeatureException("Could not cast the feature value '" + secondSymbol + "' to real value.", e);
 						}
@@ -245,7 +241,7 @@ namespace org.maltparser.core.feature.map
 			}
 			set
 			{
-				this.firstFeature = value;
+				firstFeature = value;
 			}
 		}
 
@@ -258,7 +254,7 @@ namespace org.maltparser.core.feature.map
 			}
 			set
 			{
-				this.secondFeature = value;
+				secondFeature = value;
 			}
 		}
 
@@ -279,7 +275,7 @@ namespace org.maltparser.core.feature.map
 			}
 			set
 			{
-				this.table = value;
+				table = value;
 			}
 		}
 
@@ -310,11 +306,11 @@ namespace org.maltparser.core.feature.map
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
-			return obj.ToString().Equals(this.ToString());
+			return obj.ToString().Equals(ToString());
 		}
 
 		public override string ToString()

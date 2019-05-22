@@ -5,13 +5,9 @@ using System.IO;
 
 namespace org.maltparser.core.symbol.trie
 {
+    using  nullvalue;
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol.nullvalue;
-	using  org.maltparser.core.symbol.nullvalue;
-	using  org.maltparser.core.symbol.nullvalue;
-	using  org.maltparser.core.symbol.nullvalue.NullValues;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// @since 1.0
@@ -33,11 +29,11 @@ namespace org.maltparser.core.symbol.trie
 //ORIGINAL LINE: public TrieSymbolTable(String _name, Trie _trie, int _category, String nullValueStrategy) throws org.maltparser.core.exception.MaltChainedException
 		public TrieSymbolTable(string _name, Trie _trie, int _category, string nullValueStrategy)
 		{
-			this.name = _name;
-			this.trie = _trie;
-			this.category = _category;
+			name = _name;
+			trie = _trie;
+			category = _category;
 			codeTable = new SortedDictionary<int, TrieNode>();
-			if (this.category != org.maltparser.core.symbol.SymbolTable_Fields.OUTPUT)
+			if (category != SymbolTable_Fields.OUTPUT)
 			{
 				nullValues = new OutputNullValues(nullValueStrategy, this);
 			}
@@ -50,7 +46,7 @@ namespace org.maltparser.core.symbol.trie
 
 		public TrieSymbolTable(string _name, Trie trie)
 		{
-			this.name = _name;
+			name = _name;
 			this.trie = trie;
 			codeTable = new SortedDictionary<int, TrieNode>();
 			nullValues = new InputNullValues("one", this);
@@ -63,7 +59,7 @@ namespace org.maltparser.core.symbol.trie
 		{
 			if (nullValues == null || !nullValues.isNullValue(symbol))
 			{
-				if (string.ReferenceEquals(symbol, null) || symbol.Length == 0)
+				if (ReferenceEquals(symbol, null) || symbol.Length == 0)
 				{
 					throw new SymbolException("Symbol table error: empty string cannot be added to the symbol table");
 				}
@@ -119,7 +115,7 @@ namespace org.maltparser.core.symbol.trie
 //ORIGINAL LINE: public int getSymbolStringToCode(String symbol) throws org.maltparser.core.exception.MaltChainedException
 		public virtual int getSymbolStringToCode(string symbol)
 		{
-			if (!string.ReferenceEquals(symbol, null))
+			if (!ReferenceEquals(symbol, null))
 			{
 				if (nullValues == null || !nullValues.isNullValue(symbol))
 				{
@@ -150,7 +146,7 @@ namespace org.maltparser.core.symbol.trie
 //ORIGINAL LINE: public double getSymbolStringToValue(String symbol) throws org.maltparser.core.exception.MaltChainedException
 		public virtual double getSymbolStringToValue(string symbol)
 		{
-			if (string.ReferenceEquals(symbol, null))
+			if (ReferenceEquals(symbol, null))
 			{
 				throw new SymbolException("The symbol code '" + symbol + "' cannot be found in the symbol table. ");
 			}
@@ -194,7 +190,7 @@ namespace org.maltparser.core.symbol.trie
 				@out.append('\t');
 				@out.append(Convert.ToString(Category));
 				@out.append('\t');
-				@out.append(Convert.ToString(org.maltparser.core.symbol.SymbolTable_Fields.STRING));
+				@out.append(Convert.ToString(SymbolTable_Fields.STRING));
 				@out.append('\t');
 				@out.append(NullValueStrategy);
 				@out.append('\n');
@@ -243,7 +239,7 @@ namespace org.maltparser.core.symbol.trie
 			string fileLine;
 			try
 			{
-				while (!string.ReferenceEquals((fileLine = @in.ReadLine()), null))
+				while (!ReferenceEquals((fileLine = @in.ReadLine()), null))
 				{
 					if (fileLine.Length == 0 || (index = fileLine.IndexOf('\t')) == -1)
 					{
@@ -264,7 +260,7 @@ namespace org.maltparser.core.symbol.trie
 					}
 				}
 			}
-			catch (System.FormatException e)
+			catch (FormatException e)
 			{
 				throw new SymbolException("The symbol table file (.sym) contains a non-integer value in the first column. ", e);
 			}
@@ -290,7 +286,7 @@ namespace org.maltparser.core.symbol.trie
 			}
 			set
 			{
-				this.valueCounter = value;
+				valueCounter = value;
 			}
 		}
 
@@ -400,14 +396,14 @@ namespace org.maltparser.core.symbol.trie
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final TrieSymbolTable other = (TrieSymbolTable)obj;
 			TrieSymbolTable other = (TrieSymbolTable)obj;
-			return ((string.ReferenceEquals(name, null)) ? string.ReferenceEquals(other.name, null) : name.Equals(other.name));
+			return ((ReferenceEquals(name, null)) ? ReferenceEquals(other.name, null) : name.Equals(other.name));
 		}
 
 		public override int GetHashCode()

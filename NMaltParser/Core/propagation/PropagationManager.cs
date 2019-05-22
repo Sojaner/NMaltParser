@@ -1,13 +1,9 @@
 ﻿namespace org.maltparser.core.propagation
 {
-
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.propagation.spec;
-	using  org.maltparser.core.propagation.spec;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.io.dataformat;
+    using  spec;
+    using  symbol;
+	using  syntaxgraph.edge;
+	using  io.dataformat;
 
 	public class PropagationManager
 	{

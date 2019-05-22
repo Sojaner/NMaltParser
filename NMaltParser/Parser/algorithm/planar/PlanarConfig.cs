@@ -4,10 +4,8 @@ using System.Text;
 
 namespace org.maltparser.parser.algorithm.planar
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  core.syntaxgraph;
+	using  core.syntaxgraph.node;
 	/// <summary>
 	/// @author Carlos Gomez Rodriguez
 	/// 
@@ -128,7 +126,7 @@ namespace org.maltparser.parser.algorithm.planar
 		{
 			set
 			{
-				this.dependencyGraph = value;
+				dependencyGraph = value;
 		//		dependencyGraph.clear();
 		//		for (int index : value.getTokenIndices()) {
 		//			DependencyNode gnode = value.getDependencyNode(index);
@@ -343,7 +341,7 @@ namespace org.maltparser.parser.algorithm.planar
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

@@ -2,9 +2,7 @@
 
 namespace org.maltparser.core.options.option
 {
-	using  org.maltparser.core.exception;
-
-	/// <summary>
+    /// <summary>
 	/// A string option is an option that contains a string value. 
 	/// 
 	/// @author Johan Hall
@@ -62,7 +60,7 @@ namespace org.maltparser.core.options.option
 		{
 			set
 			{
-				this.defaultValue = value;
+				defaultValue = value;
 			}
 		}
 

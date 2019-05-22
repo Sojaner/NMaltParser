@@ -3,10 +3,7 @@ using System.Text;
 
 namespace org.maltparser.core.options.option
 {
-
-	using  org.maltparser.core.exception;
-
-	/// <summary>
+    /// <summary>
 	/// Abstract class that contains description of an option that are the same over all option types.
 	/// 
 	/// @author Johan Hall
@@ -54,7 +51,7 @@ namespace org.maltparser.core.options.option
 		public Option(OptionGroup group, string name, string shortDescription, string flag, string usage)
 		{
 			this.group = group;
-			if (string.ReferenceEquals(name, null) || name.Length == 0)
+			if (ReferenceEquals(name, null) || name.Length == 0)
 			{
 				throw new OptionException("The option name has no value. ");
 			}
@@ -159,13 +156,13 @@ namespace org.maltparser.core.options.option
 			}
 			set
 			{
-				if (string.ReferenceEquals(value, null))
+				if (ReferenceEquals(value, null))
 				{
-					this.flag = null;
+					flag = null;
 				}
 				else
 				{
-					this.flag = value;
+					flag = value;
 				}
 			}
 		}
@@ -187,25 +184,25 @@ namespace org.maltparser.core.options.option
 //ORIGINAL LINE: public void setUsage(String usage) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void setUsage(string usage)
 		{
-			if (string.ReferenceEquals(usage, null) || usage.Equals("") || usage.ToLower().Equals("none"))
+			if (ReferenceEquals(usage, null) || usage.Equals("") || usage.ToLower().Equals("none"))
 			{
-				this.usage = Option.NONE;
+				this.usage = NONE;
 			}
 			else if (usage.ToLower().Equals("train"))
 			{
-				this.usage = Option.TRAIN;
+				this.usage = TRAIN;
 			}
 			else if (usage.ToLower().Equals("process"))
 			{
-				this.usage = Option.PROCESS;
+				this.usage = PROCESS;
 			}
 			else if (usage.ToLower().Equals("both"))
 			{
-				this.usage = Option.BOTH;
+				this.usage = BOTH;
 			}
 			else if (usage.ToLower().Equals("save"))
 			{
-				this.usage = Option.SAVE;
+				this.usage = SAVE;
 			}
 			else
 			{
@@ -244,7 +241,7 @@ namespace org.maltparser.core.options.option
 			}
 			set
 			{
-				this.ambiguous = value;
+				ambiguous = value;
 			}
 		}
 
@@ -277,7 +274,7 @@ namespace org.maltparser.core.options.option
 			{
 				sb.Append(" ");
 			}
-			if (!string.ReferenceEquals(Flag, null))
+			if (!ReferenceEquals(Flag, null))
 			{
 				formatter.format("(%4s) : ", "-" + Flag);
 			}

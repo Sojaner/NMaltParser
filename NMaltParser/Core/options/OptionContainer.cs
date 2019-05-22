@@ -5,7 +5,7 @@ using System.Text;
 namespace org.maltparser.core.options
 {
 
-	using  org.maltparser.core.options.option;
+	using  option;
 
 	/// <summary>
 	/// An option container stores the option values for one instance usage. For example, a
@@ -70,19 +70,19 @@ namespace org.maltparser.core.options
 //ORIGINAL LINE: protected void addOptionValue(int type, org.maltparser.core.options.option.Option option, Object value) throws OptionException
 		protected internal virtual void addOptionValue(int type, Option option, object value)
 		{
-			if (type == OptionContainer.SAVEDOPTION)
+			if (type == SAVEDOPTION)
 			{
 				savedOptionMap[option] = value;
 			}
-			else if (type == OptionContainer.DEPENDENCIES_RESOLVED)
+			else if (type == DEPENDENCIES_RESOLVED)
 			{
 				dependenciesResolvedOptionMap[option] = value;
 			}
-			else if (type == OptionContainer.COMMANDLINE)
+			else if (type == COMMANDLINE)
 			{
 				commandLineOptionMap[option] = value;
 			}
-			else if (type == OptionContainer.OPTIONFILE)
+			else if (type == OPTIONFILE)
 			{
 				optionFileOptionMap[option] = value;
 			}
@@ -101,21 +101,21 @@ namespace org.maltparser.core.options
 		public virtual object getOptionValue(Option option)
 		{
 			object value = null;
-			for (int i = OptionContainer.SAVEDOPTION; i <= OptionContainer.OPTIONFILE; i++)
+			for (int i = SAVEDOPTION; i <= OPTIONFILE; i++)
 			{
-				if (i == OptionContainer.SAVEDOPTION)
+				if (i == SAVEDOPTION)
 				{
 					value = savedOptionMap[option];
 				}
-				else if (i == OptionContainer.DEPENDENCIES_RESOLVED)
+				else if (i == DEPENDENCIES_RESOLVED)
 				{
 					value = dependenciesResolvedOptionMap[option];
 				}
-				else if (i == OptionContainer.COMMANDLINE)
+				else if (i == COMMANDLINE)
 				{
 					value = commandLineOptionMap[option];
 				}
-				else if (i == OptionContainer.OPTIONFILE)
+				else if (i == OPTIONFILE)
 				{
 					value = optionFileOptionMap[option];
 				}
@@ -136,25 +136,25 @@ namespace org.maltparser.core.options
 		public virtual string getOptionValueString(Option option)
 		{
 			string value = null;
-			for (int i = OptionContainer.SAVEDOPTION; i <= OptionContainer.OPTIONFILE; i++)
+			for (int i = SAVEDOPTION; i <= OPTIONFILE; i++)
 			{
-				if (i == OptionContainer.SAVEDOPTION)
+				if (i == SAVEDOPTION)
 				{
 					value = option.getStringRepresentation(savedOptionMap[option]);
 				}
-				else if (i == OptionContainer.DEPENDENCIES_RESOLVED)
+				else if (i == DEPENDENCIES_RESOLVED)
 				{
 					value = option.getStringRepresentation(dependenciesResolvedOptionMap[option]);
 				}
-				else if (i == OptionContainer.COMMANDLINE)
+				else if (i == COMMANDLINE)
 				{
 					value = option.getStringRepresentation(commandLineOptionMap[option]);
 				}
-				else if (i == OptionContainer.OPTIONFILE)
+				else if (i == OPTIONFILE)
 				{
 					value = option.getStringRepresentation(optionFileOptionMap[option]);
 				}
-				if (!string.ReferenceEquals(value, null))
+				if (!ReferenceEquals(value, null))
 				{
 					return value;
 				}
@@ -174,19 +174,19 @@ namespace org.maltparser.core.options
 //ORIGINAL LINE: public boolean contains(int type, org.maltparser.core.options.option.Option option) throws OptionException
 		public virtual bool contains(int type, Option option)
 		{
-			if (type == OptionContainer.SAVEDOPTION)
+			if (type == SAVEDOPTION)
 			{
 				return savedOptionMap.ContainsValue(option);
 			}
-			else if (type == OptionContainer.DEPENDENCIES_RESOLVED)
+			else if (type == DEPENDENCIES_RESOLVED)
 			{
 				return dependenciesResolvedOptionMap.ContainsValue(option);
 			}
-			else if (type == OptionContainer.COMMANDLINE)
+			else if (type == COMMANDLINE)
 			{
 				return commandLineOptionMap.ContainsValue(option);
 			}
-			else if (type == OptionContainer.OPTIONFILE)
+			else if (type == OPTIONFILE)
 			{
 				return optionFileOptionMap.ContainsValue(option);
 			}
@@ -233,11 +233,11 @@ namespace org.maltparser.core.options
 			{
 				return EQUAL;
 			}
-			if (this.index < that.index)
+			if (index < that.index)
 			{
 				return BEFORE;
 			}
-			if (this.index > that.index)
+			if (index > that.index)
 			{
 				return AFTER;
 			}
@@ -260,21 +260,21 @@ namespace org.maltparser.core.options
 			foreach (Option option in union)
 			{
 				object value = null;
-				for (int i = OptionContainer.SAVEDOPTION; i <= OptionContainer.OPTIONFILE; i++)
+				for (int i = SAVEDOPTION; i <= OPTIONFILE; i++)
 				{
-					if (i == OptionContainer.SAVEDOPTION)
+					if (i == SAVEDOPTION)
 					{
 						value = savedOptionMap[option];
 					}
-					else if (i == OptionContainer.DEPENDENCIES_RESOLVED)
+					else if (i == DEPENDENCIES_RESOLVED)
 					{
 						value = dependenciesResolvedOptionMap[option];
 					}
-					else if (i == OptionContainer.COMMANDLINE)
+					else if (i == COMMANDLINE)
 					{
 						value = commandLineOptionMap[option];
 					}
-					else if (i == OptionContainer.OPTIONFILE)
+					else if (i == OPTIONFILE)
 					{
 						value = optionFileOptionMap[option];
 					}

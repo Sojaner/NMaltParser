@@ -3,10 +3,8 @@ using System.Text;
 
 namespace org.maltparser.parser.algorithm.stack
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  core.syntaxgraph;
+	using  core.syntaxgraph.node;
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -115,7 +113,7 @@ namespace org.maltparser.parser.algorithm.stack
 		{
 			set
 			{
-				this.dependencyGraph = value;
+				dependencyGraph = value;
 		//		dependencyGraph.clear();
 		//		for (int index : value.getTokenIndices()) {
 		//			DependencyNode gnode = value.getDependencyNode(index);
@@ -221,7 +219,7 @@ namespace org.maltparser.parser.algorithm.stack
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

@@ -5,18 +5,11 @@ using System.IO;
 
 namespace org.maltparser.core.feature.system
 {
+    using  function;
+	using  helper;
+    using  plugin;
 
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.plugin;
-	using  org.maltparser.core.plugin;
-	using  org.w3c.dom;
-	using  org.w3c.dom;
-	using  org.xml.sax;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -218,11 +211,11 @@ namespace org.maltparser.core.feature.system
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
-			if (this.Count != ((FeatureEngine)obj).Count)
+			if (Count != ((FeatureEngine)obj).Count)
 			{
 				return false;
 			}

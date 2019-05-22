@@ -3,9 +3,7 @@ using System.Text;
 
 namespace org.maltparser.core.options.option
 {
-	using  org.maltparser.core.exception;
-
-	/// <summary>
+    /// <summary>
 	/// An integer option is an option that can only contain an integer value.  
 	/// 
 	/// @author Johan Hall
@@ -44,7 +42,7 @@ namespace org.maltparser.core.options.option
 			{
 				return new int?(int.Parse(value));
 			}
-			catch (System.FormatException e)
+			catch (FormatException e)
 			{
 				throw new OptionException("Illegal integer value '" + value + "' for the '" + Name + "' option. ", e);
 			}
@@ -74,9 +72,9 @@ namespace org.maltparser.core.options.option
 			{
 				try
 				{
-					this.defaultValue = int.Parse(value);
+					defaultValue = int.Parse(value);
 				}
-				catch (System.FormatException e)
+				catch (FormatException e)
 				{
 					throw new OptionException("Illegal integer default value '" + value + "' for the '" + Name + "' option. ", e);
 				}

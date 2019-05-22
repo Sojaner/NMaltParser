@@ -2,9 +2,7 @@
 
 namespace org.maltparser.parser.history.container
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
+    using  core.symbol;
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -20,8 +18,8 @@ namespace org.maltparser.parser.history.container
 
 		public ActionContainer(TableContainer tableContainer)
 		{
-			this.table = tableContainer.Table;
-			this.name = tableContainer.TableContainerName;
+			table = tableContainer.Table;
+			name = tableContainer.TableContainerName;
 			clear();
 		}
 
@@ -60,7 +58,7 @@ namespace org.maltparser.parser.history.container
 				else
 				{
 					actionSymbol = table.getSymbolCodeToString(code);
-					if (string.ReferenceEquals(actionSymbol, null))
+					if (ReferenceEquals(actionSymbol, null))
 					{
 						clear();
 					}
@@ -77,7 +75,7 @@ namespace org.maltparser.parser.history.container
 //ORIGINAL LINE: public int setAction(String symbol) throws org.maltparser.core.exception.MaltChainedException
 		public virtual int setAction(string symbol)
 		{
-			if (string.ReferenceEquals(symbol, null))
+			if (ReferenceEquals(symbol, null))
 			{
 				clear();
 			}

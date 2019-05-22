@@ -6,7 +6,7 @@ using System.Threading;
 namespace org.maltparser.concurrent.test
 {
 
-	using  org.maltparser.core.exception;
+	using  core.exception;
 
 	/// <summary>
 	/// @author Johan Hall

@@ -3,7 +3,7 @@
 namespace org.maltparser.core.helper
 {
 
-	using  org.maltparser.core.options;
+	using  options;
 
 	/// 
 	/// 
@@ -18,7 +18,7 @@ namespace org.maltparser.core.helper
 
 		private SystemInfo()
 		{
-			URL url = this.GetType().getResource("/appdata/release.properties");
+			URL url = GetType().getResource("/appdata/release.properties");
 			if (url != null)
 			{
 				Properties properties = new Properties();

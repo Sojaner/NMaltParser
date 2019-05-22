@@ -5,18 +5,13 @@ using System.IO;
 
 namespace org.maltparser.ml.cheater
 {
-
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser;
-	using  org.maltparser.parser.guide.instance;
-	using  org.maltparser.parser.history.action;
+    using  core.feature;
+	using  core.feature.function;
+	using  core.feature.value;
+    using  core.syntaxgraph;
+	using  parser;
+	using  parser.guide.instance;
+	using  parser.history.action;
 
 	public class Cheater : LearningMethod
 	{
@@ -51,7 +46,7 @@ namespace org.maltparser.ml.cheater
 			verbosity = Verbostity.SILENT;
 			initSpecialParameters();
 
-			if (learnerMode.Value == org.maltparser.ml.LearningMethod_Fields.BATCH)
+			if (learnerMode.Value == LearningMethod_Fields.BATCH)
 			{
 				if (!saveCheatAction)
 				{
@@ -61,7 +56,7 @@ namespace org.maltparser.ml.cheater
 				{
 					try
 					{
-						if (!string.ReferenceEquals(cheaterFileName, null) && !cheaterFileName.Equals(""))
+						if (!ReferenceEquals(cheaterFileName, null) && !cheaterFileName.Equals(""))
 						{
 							cheaterWriter = new StreamWriter(new FileStream(cheaterFileName, FileMode.Create, FileAccess.Write));
 						}
@@ -178,7 +173,7 @@ namespace org.maltparser.ml.cheater
 	//		}
 			if (cheatValues == null)
 			{
-				if (string.ReferenceEquals(cheaterFileName, null) || cheaterFileName.Equals(""))
+				if (ReferenceEquals(cheaterFileName, null) || cheaterFileName.Equals(""))
 				{
 					throw new CheaterException("The cheater file name is assigned. ");
 				}
@@ -187,7 +182,7 @@ namespace org.maltparser.ml.cheater
 					StreamReader reader = new StreamReader(new FileStream(cheaterFileName, FileMode.Open, FileAccess.Read));
 					string line = "";
 					cheatValues = new List<int>();
-					while (!string.ReferenceEquals((line = reader.ReadLine()), null))
+					while (!ReferenceEquals((line = reader.ReadLine()), null))
 					{
 						cheatValues.Add(int.Parse(line));
 					}
@@ -489,7 +484,7 @@ namespace org.maltparser.ml.cheater
 			}
 			set
 			{
-				this.owner = value;
+				owner = value;
 			}
 		}
 
@@ -502,7 +497,7 @@ namespace org.maltparser.ml.cheater
 			}
 			set
 			{
-				this.learnerMode = value;
+				learnerMode = value;
 			}
 		}
 
@@ -515,7 +510,7 @@ namespace org.maltparser.ml.cheater
 			}
 			set
 			{
-				this.name = value;
+				name = value;
 			}
 		}
 
@@ -539,7 +534,7 @@ namespace org.maltparser.ml.cheater
 			}
 			set
 			{
-				this.numberOfInstances = 0;
+				numberOfInstances = 0;
 			}
 		}
 

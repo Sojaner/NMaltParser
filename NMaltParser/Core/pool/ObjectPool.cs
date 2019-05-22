@@ -1,8 +1,6 @@
 ﻿namespace org.maltparser.core.pool
 {
-	using  org.maltparser.core.exception;
-
-	public abstract class ObjectPool<T>
+    public abstract class ObjectPool<T>
 	{
 		protected internal int keepThreshold;
 
@@ -23,7 +21,7 @@
 			}
 			set
 			{
-				this.keepThreshold = value;
+				keepThreshold = value;
 			}
 		}
 

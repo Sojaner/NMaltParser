@@ -7,9 +7,8 @@ namespace org.maltparser.core.lw.parser
 {
 
 	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
 
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>
@@ -25,10 +24,10 @@ namespace org.maltparser.core.lw.parser
 
 		public McoModel(URL _mcoUrl)
 		{
-			this.mcoUrl = _mcoUrl;
-			this.nameUrlMap = Collections.synchronizedMap(new HashMap<string, URL>());
-			this.preLoadedObjects = Collections.synchronizedMap(new HashMap<string, object>());
-			this.preLoadedStrings = Collections.synchronizedMap(new HashMap<string, string>());
+			mcoUrl = _mcoUrl;
+			nameUrlMap = Collections.synchronizedMap(new HashMap<string, URL>());
+			preLoadedObjects = Collections.synchronizedMap(new HashMap<string, object>());
+			preLoadedStrings = Collections.synchronizedMap(new HashMap<string, string>());
 			URL tmpInfoURL = null;
 			string tmpInternalMcoName = null;
 			try
@@ -58,7 +57,7 @@ namespace org.maltparser.core.lw.parser
 					{
 						preLoadedStrings[fileName.Substring(index + 1)] = preLoadString(entryURL.openStream());
 					}
-					if (string.ReferenceEquals(tmpInternalMcoName, null))
+					if (ReferenceEquals(tmpInternalMcoName, null))
 					{
 						tmpInternalMcoName = fileName.Substring(0, index);
 					}
@@ -76,8 +75,8 @@ namespace org.maltparser.core.lw.parser
 				Console.WriteLine(e.ToString());
 				Console.Write(e.StackTrace);
 			}
-			this.internalMcoName = tmpInternalMcoName;
-			this.infoURL = tmpInfoURL;
+			internalMcoName = tmpInternalMcoName;
+			infoURL = tmpInfoURL;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -108,7 +107,7 @@ namespace org.maltparser.core.lw.parser
 			string line;
 			StringBuilder sb = new StringBuilder();
 
-			while (!string.ReferenceEquals((line = @in.ReadLine()), null))
+			while (!ReferenceEquals((line = @in.ReadLine()), null))
 			{
 				 sb.Append(line);
 				 sb.Append('\n');
@@ -191,7 +190,7 @@ namespace org.maltparser.core.lw.parser
     
 				StreamReader reader = new StreamReader(infoURL.openStream(), Encoding.UTF8);
 				string line;
-				while (!string.ReferenceEquals((line = reader.ReadLine()), null))
+				while (!ReferenceEquals((line = reader.ReadLine()), null))
 				{
 					sb.Append(line);
 					sb.Append('\n');

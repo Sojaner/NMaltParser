@@ -3,10 +3,8 @@ using System.Text;
 
 namespace org.maltparser.parser.algorithm.nivre
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  core.syntaxgraph;
+	using  core.syntaxgraph.node;
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -26,12 +24,12 @@ namespace org.maltparser.parser.algorithm.nivre
 //ORIGINAL LINE: public NivreConfig(boolean allowRoot, boolean allowReduce, boolean enforceTree) throws org.maltparser.core.exception.MaltChainedException
 		public NivreConfig(bool allowRoot, bool allowReduce, bool enforceTree) : base()
 		{
-			this.stack = new Stack<DependencyNode>();
-			this.input = new Stack<DependencyNode>();
+			stack = new Stack<DependencyNode>();
+			input = new Stack<DependencyNode>();
 			this.allowRoot = allowRoot;
 			this.allowReduce = allowReduce;
 			this.enforceTree = enforceTree;
-			this.end = false; // Added
+			end = false; // Added
 		}
 
 		public virtual Stack<DependencyNode> Stack
@@ -108,7 +106,7 @@ namespace org.maltparser.parser.algorithm.nivre
 		{
 			set
 			{
-				this.dependencyGraph = value;
+				dependencyGraph = value;
 			}
 			get
 			{
@@ -181,7 +179,7 @@ namespace org.maltparser.parser.algorithm.nivre
 		{
 			set
 			{
-				this.end = value;
+				end = value;
 			}
 			get
 			{
@@ -234,7 +232,7 @@ namespace org.maltparser.parser.algorithm.nivre
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

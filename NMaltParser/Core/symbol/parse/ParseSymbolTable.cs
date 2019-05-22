@@ -4,13 +4,10 @@ using System.IO;
 
 namespace org.maltparser.core.symbol.parse
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.symbol.nullvalue.NullValues;
+    using  helper;
 
 
-	public class ParseSymbolTable : SymbolTable
+    public class ParseSymbolTable : SymbolTable
 	{
 		private readonly string name;
 		private readonly SymbolTable parentSymbolTable;
@@ -26,26 +23,26 @@ namespace org.maltparser.core.symbol.parse
 //ORIGINAL LINE: public ParseSymbolTable(String _name, int _category, int _type, String nullValueStrategy, org.maltparser.core.symbol.SymbolTableHandler parentSymbolTableHandler) throws org.maltparser.core.exception.MaltChainedException
 		public ParseSymbolTable(string _name, int _category, int _type, string nullValueStrategy, SymbolTableHandler parentSymbolTableHandler)
 		{
-			this.name = _name;
-			this.type = _type;
-			this.parentSymbolTable = parentSymbolTableHandler.addSymbolTable(name, _category, _type, nullValueStrategy);
-			this.symbolCodeMap = new HashMap<string, int>();
-			this.codeSymbolMap = new HashMap<int, string>();
-			this.symbolValueMap = new HashMap<string, double>();
-			this.valueCounter = -1;
+			name = _name;
+			type = _type;
+			parentSymbolTable = parentSymbolTableHandler.addSymbolTable(name, _category, _type, nullValueStrategy);
+			symbolCodeMap = new HashMap<string, int>();
+			codeSymbolMap = new HashMap<int, string>();
+			symbolValueMap = new HashMap<string, double>();
+			valueCounter = -1;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public ParseSymbolTable(String _name, org.maltparser.core.symbol.SymbolTable parentTable, org.maltparser.core.symbol.SymbolTableHandler parentSymbolTableHandler) throws org.maltparser.core.exception.MaltChainedException
 		public ParseSymbolTable(string _name, SymbolTable parentTable, SymbolTableHandler parentSymbolTableHandler)
 		{
-			this.name = _name;
-			this.type = org.maltparser.core.symbol.SymbolTable_Fields.STRING;
-			this.parentSymbolTable = parentSymbolTableHandler.addSymbolTable(name, parentTable);
-			this.symbolCodeMap = new HashMap<string, int>();
-			this.codeSymbolMap = new HashMap<int, string>();
-			this.symbolValueMap = new HashMap<string, double>();
-			this.valueCounter = -1;
+			name = _name;
+			type = SymbolTable_Fields.STRING;
+			parentSymbolTable = parentSymbolTableHandler.addSymbolTable(name, parentTable);
+			symbolCodeMap = new HashMap<string, int>();
+			codeSymbolMap = new HashMap<int, string>();
+			symbolValueMap = new HashMap<string, double>();
+			valueCounter = -1;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -53,12 +50,12 @@ namespace org.maltparser.core.symbol.parse
 		public ParseSymbolTable(string name, SymbolTableHandler parentSymbolTableHandler)
 		{
 			this.name = name;
-			this.type = org.maltparser.core.symbol.SymbolTable_Fields.STRING;
-			this.parentSymbolTable = parentSymbolTableHandler.addSymbolTable(name);
-			this.symbolCodeMap = new HashMap<string, int>();
-			this.codeSymbolMap = new HashMap<int, string>();
-			this.symbolValueMap = new HashMap<string, double>();
-			this.valueCounter = -1;
+			type = SymbolTable_Fields.STRING;
+			parentSymbolTable = parentSymbolTableHandler.addSymbolTable(name);
+			symbolCodeMap = new HashMap<string, int>();
+			codeSymbolMap = new HashMap<int, string>();
+			symbolValueMap = new HashMap<string, double>();
+			valueCounter = -1;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -67,7 +64,7 @@ namespace org.maltparser.core.symbol.parse
 		{
 			if (!parentSymbolTable.isNullValue(symbol))
 			{
-				if (string.ReferenceEquals(symbol, null) || symbol.Length == 0)
+				if (ReferenceEquals(symbol, null) || symbol.Length == 0)
 				{
 					throw new SymbolException("Symbol table error: empty string cannot be added to the symbol table");
 				}
@@ -77,7 +74,7 @@ namespace org.maltparser.core.symbol.parse
 				{
 					return code;
 				}
-				if (this.type == org.maltparser.core.symbol.SymbolTable_Fields.REAL)
+				if (type == SymbolTable_Fields.REAL)
 				{
 					addSymbolValue(symbol);
 				}
@@ -132,7 +129,7 @@ namespace org.maltparser.core.symbol.parse
 				throw new SymbolException("The symbol code '" + code + "' cannot be found in the symbol table. ");
 			}
 			string symbol = parentSymbolTable.getSymbolCodeToString(code);
-			if (!string.ReferenceEquals(symbol, null))
+			if (!ReferenceEquals(symbol, null))
 			{
 				return symbol;
 			}
@@ -146,7 +143,7 @@ namespace org.maltparser.core.symbol.parse
 //ORIGINAL LINE: public int getSymbolStringToCode(String symbol) throws org.maltparser.core.exception.MaltChainedException
 		public virtual int getSymbolStringToCode(string symbol)
 		{
-			if (string.ReferenceEquals(symbol, null))
+			if (ReferenceEquals(symbol, null))
 			{
 				throw new SymbolException("The symbol code '" + symbol + "' cannot be found in the symbol table. ");
 			}
@@ -169,7 +166,7 @@ namespace org.maltparser.core.symbol.parse
 //ORIGINAL LINE: public double getSymbolStringToValue(String symbol) throws org.maltparser.core.exception.MaltChainedException
 		public virtual double getSymbolStringToValue(string symbol)
 		{
-			if (string.ReferenceEquals(symbol, null))
+			if (ReferenceEquals(symbol, null))
 			{
 				throw new SymbolException("The symbol code '" + symbol + "' cannot be found in the symbol table. ");
 			}
@@ -270,14 +267,14 @@ namespace org.maltparser.core.symbol.parse
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final ParseSymbolTable other = (ParseSymbolTable)obj;
 			ParseSymbolTable other = (ParseSymbolTable)obj;
-			return ((string.ReferenceEquals(name, null)) ? string.ReferenceEquals(other.name, null) : name.Equals(other.name));
+			return ((ReferenceEquals(name, null)) ? ReferenceEquals(other.name, null) : name.Equals(other.name));
 		}
 
 		public override int GetHashCode()

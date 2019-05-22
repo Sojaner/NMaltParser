@@ -5,17 +5,12 @@ using System.Text;
 namespace org.maltparser.core.syntaxgraph.feature
 {
 
-	using  org.maltparser.core.exception;
+	using  exception;
 	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol.nullvalue.NullValues;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  org.maltparser.core.feature.value;
+    using  io.dataformat;
+	using  symbol;
+    using  node;
 
 	public sealed class NumOfFeature : FeatureFunction
 	{
@@ -41,8 +36,8 @@ namespace org.maltparser.core.syntaxgraph.feature
 		public NumOfFeature(SymbolTableHandler tableHandler)
 		{
 			this.tableHandler = tableHandler;
-			this.featureValue = new SingleFeatureValue(this);
-			this.normalization = new LinkedHashMap<int, string>();
+			featureValue = new SingleFeatureValue(this);
+			normalization = new LinkedHashMap<int, string>();
 		}
 
 		/// <summary>
@@ -91,7 +86,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 				{
 					v = int.Parse(items[i]);
 				}
-				catch (System.FormatException e)
+				catch (FormatException e)
 				{
 					throw new SyntaxGraphException("Could not initialize NumOfFeature (" + this + "): the third argument (normalization) must contain a sorted list of integer values separated with |", e);
 				}
@@ -242,7 +237,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			}
 			set
 			{
-				this.table = value;
+				table = value;
 			}
 		}
 
@@ -258,7 +253,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			}
 			set
 			{
-				this.addressFunction = value;
+				addressFunction = value;
 			}
 		}
 
@@ -291,11 +286,11 @@ namespace org.maltparser.core.syntaxgraph.feature
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
-			return obj.ToString().Equals(this.ToString());
+			return obj.ToString().Equals(ToString());
 		}
 
 		public override int GetHashCode()

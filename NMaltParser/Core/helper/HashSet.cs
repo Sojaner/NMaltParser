@@ -63,7 +63,7 @@ namespace org.maltparser.core.helper
 		{
 		  if (last < 0)
 		  {
-			throw new System.InvalidOperationException();
+			throw new InvalidOperationException();
 		  }
 		  outerInstance.internalRemove(last);
 		  if (outerInstance.table[last] != null)

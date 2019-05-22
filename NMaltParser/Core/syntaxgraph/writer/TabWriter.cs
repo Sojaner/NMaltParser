@@ -5,13 +5,9 @@ using System.IO;
 
 namespace org.maltparser.core.syntaxgraph.writer
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  io.dataformat;
+    using  symbol;
+	using  node;
 	/// 
 	/// 
 	/// <summary>
@@ -234,7 +230,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			set
 			{
 				close();
-				this.writer = value;
+				writer = value;
 			}
 		}
 
@@ -247,7 +243,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 			}
 			set
 			{
-				this.dataFormatInstance = value;
+				dataFormatInstance = value;
 			}
 		}
 

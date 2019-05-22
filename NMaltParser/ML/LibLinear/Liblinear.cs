@@ -5,35 +5,20 @@ using System.IO;
 
 namespace org.maltparser.ml.liblinear
 {
-
-	using  de.bwaldvogel.liblinear;
-	using  de.bwaldvogel.liblinear;
-	using  de.bwaldvogel.liblinear;
-	using  de.bwaldvogel.liblinear;
-	using  de.bwaldvogel.liblinear;
-	using  de.bwaldvogel.liblinear;
-
-
-
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser;
-	using  org.maltparser.parser.guide.instance;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.kbest;
-	using  org.maltparser.parser.history.kbest;
+    using  core.config;
+    using  core.exception;
+	using  core.feature;
+	using  core.feature.function;
+	using  core.feature.value;
+    using  core.helper;
+	using  core.syntaxgraph;
+	using  parser;
+	using  parser.guide.instance;
+	using  parser.history.action;
+	using  parser.history.kbest;
 
 
-
-	public class Liblinear : LearningMethod
+    public class Liblinear : LearningMethod
 	{
 		public const string LIBLINEAR_VERSION = "1.51";
 		public enum Verbostity
@@ -95,7 +80,7 @@ namespace org.maltparser.ml.liblinear
 			parseParameters(Configuration.getOptionValue("liblinear", "liblinear_options").ToString());
 			initSpecialParameters();
 
-			if (learnerMode.Value == org.maltparser.ml.LearningMethod_Fields.BATCH)
+			if (learnerMode.Value == LearningMethod_Fields.BATCH)
 			{
 				if (featurePruning)
 				{
@@ -257,7 +242,7 @@ namespace org.maltparser.ml.liblinear
 				throw new LiblinearException("The parent guide model cannot be found. ");
 			 }
 	//		cardinalities = getCardinalities(featureVector);
-			if (string.ReferenceEquals(pathExternalLiblinearTrain, null))
+			if (ReferenceEquals(pathExternalLiblinearTrain, null))
 			{
 				try
 				{
@@ -291,11 +276,11 @@ namespace org.maltparser.ml.liblinear
 						getFile(".ins").delete();
 					}
 				}
-				catch (System.OutOfMemoryException e)
+				catch (OutOfMemoryException e)
 				{
 					throw new LiblinearException("Out of memory. Please increase the Java heap size (-Xmx<size>). ", e);
 				}
-				catch (System.ArgumentException e)
+				catch (ArgumentException e)
 				{
 					throw new LiblinearException("The Liblinear learner was not able to redirect Standard Error stream. ", e);
 				}
@@ -404,7 +389,7 @@ namespace org.maltparser.ml.liblinear
 			{
 				 throw new LiblinearException("Liblinear is interrupted. ", e);
 			}
-			catch (System.ArgumentException e)
+			catch (ArgumentException e)
 			{
 				throw new LiblinearException("The Liblinear learner was not able to redirect Standard Error stream. ", e);
 			}
@@ -416,7 +401,7 @@ namespace org.maltparser.ml.liblinear
 			{
 				throw new LiblinearException("The Liblinear learner cannot save the model file '" + getFile(".mod").AbsolutePath + "'. ", e);
 			}
-			catch (System.OutOfMemoryException e)
+			catch (OutOfMemoryException e)
 			{
 				throw new LiblinearException("Out of memory. Please increase the Java heap size (-Xmx<size>). ", e);
 			}
@@ -531,7 +516,7 @@ namespace org.maltparser.ml.liblinear
 						@out.BaseStream.WriteByte('\n');
 						sb.Length = 0;
 						method.increaseNumberOfInstances();
-						this.decreaseNumberOfInstances();
+						decreaseNumberOfInstances();
 						j = 0;
 					}
 					else
@@ -547,7 +532,7 @@ namespace org.maltparser.ml.liblinear
 			{
 				throw new LiblinearException("The Liblinear learner cannot remove the instance file. ", e);
 			}
-			catch (System.NullReferenceException e)
+			catch (NullReferenceException e)
 			{
 				throw new LiblinearException("The instance file cannot be found. ", e);
 			}
@@ -764,7 +749,7 @@ namespace org.maltparser.ml.liblinear
 			}
 			set
 			{
-				this.owner = value;
+				owner = value;
 			}
 		}
 
@@ -777,7 +762,7 @@ namespace org.maltparser.ml.liblinear
 			}
 			set
 			{
-				this.learnerMode = value;
+				learnerMode = value;
 			}
 		}
 
@@ -790,7 +775,7 @@ namespace org.maltparser.ml.liblinear
 			}
 			set
 			{
-				this.name = value;
+				name = value;
 			}
 		}
 
@@ -842,7 +827,7 @@ namespace org.maltparser.ml.liblinear
 			}
 			set
 			{
-				this.numberOfInstances = 0;
+				numberOfInstances = 0;
 			}
 		}
 
@@ -934,7 +919,7 @@ namespace org.maltparser.ml.liblinear
 				{
 					string line = fp.ReadLine();
 
-					if (string.ReferenceEquals(line, null))
+					if (ReferenceEquals(line, null))
 					{
 						break;
 					}
@@ -984,7 +969,7 @@ namespace org.maltparser.ml.liblinear
 										featureSet.Add(new XNode(index,value));
 									}
 								}
-								catch (System.FormatException e)
+								catch (FormatException e)
 								{
 									throw new LiblinearException("The instance file contain a non-integer value '" + items[k] + "'", e);
 								}
@@ -999,7 +984,7 @@ namespace org.maltparser.ml.liblinear
 						featureSet.Clear();
 						i++;
 					}
-					catch (System.IndexOutOfRangeException e)
+					catch (IndexOutOfRangeException e)
 					{
 						throw new LiblinearException("Cannot read from the instance file. ", e);
 					}
@@ -1052,7 +1037,7 @@ namespace org.maltparser.ml.liblinear
 				{
 					string line = fp.ReadLine();
 
-					if (string.ReferenceEquals(line, null))
+					if (ReferenceEquals(line, null))
 					{
 						break;
 					}
@@ -1084,7 +1069,7 @@ namespace org.maltparser.ml.liblinear
 										p++;
 									}
 								}
-								catch (System.FormatException e)
+								catch (FormatException e)
 								{
 									throw new LiblinearException("The instance file contain a non-integer value '" + items[k] + "'", e);
 								}
@@ -1099,7 +1084,7 @@ namespace org.maltparser.ml.liblinear
 						i++;
 						xlist.Clear();
 					}
-					catch (System.IndexOutOfRangeException e)
+					catch (IndexOutOfRangeException e)
 					{
 						throw new LiblinearException("Cannot read from the instance file. ", e);
 					}
@@ -1184,7 +1169,7 @@ namespace org.maltparser.ml.liblinear
 //ORIGINAL LINE: public void parseParameters(String paramstring) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void parseParameters(string paramstring)
 		{
-			if (string.ReferenceEquals(paramstring, null))
+			if (ReferenceEquals(paramstring, null))
 			{
 				return;
 			}
@@ -1222,15 +1207,15 @@ namespace org.maltparser.ml.liblinear
 						throw new LiblinearException("Unknown liblinear parameter: '" + argv[i - 1] + "' with value '" + argv[i] + "'. ");
 					}
 				}
-				catch (System.IndexOutOfRangeException e)
+				catch (IndexOutOfRangeException e)
 				{
 					throw new LiblinearException("The liblinear parameter '" + argv[i - 1] + "' could not convert the string value '" + argv[i] + "' into a correct numeric value. ", e);
 				}
-				catch (System.FormatException e)
+				catch (FormatException e)
 				{
 					throw new LiblinearException("The liblinear parameter '" + argv[i - 1] + "' could not convert the string value '" + argv[i] + "' into a correct numeric value. ", e);
 				}
-				catch (System.NullReferenceException e)
+				catch (NullReferenceException e)
 				{
 					throw new LiblinearException("The liblinear parameter '" + argv[i - 1] + "' could not convert the string value '" + argv[i] + "' into a correct numeric value. ", e);
 				}
@@ -1247,7 +1232,7 @@ namespace org.maltparser.ml.liblinear
 				{
 					return Convert.ToDouble(liblinearOptions.get("B"));
 				}
-				catch (System.FormatException e)
+				catch (FormatException e)
 				{
 					throw new LiblinearException("The liblinear bias value is not numerical value. ", e);
 				}
@@ -1299,7 +1284,7 @@ namespace org.maltparser.ml.liblinear
 				{
 					param.C = Convert.ToDouble(liblinearOptions.get("c"));
 				}
-				catch (System.FormatException e)
+				catch (FormatException e)
 				{
 					throw new LiblinearException("The liblinear cost (-c) value is not numerical value. ", e);
 				}
@@ -1307,7 +1292,7 @@ namespace org.maltparser.ml.liblinear
 				{
 					param.Eps = Convert.ToDouble(liblinearOptions.get("e"));
 				}
-				catch (System.FormatException e)
+				catch (FormatException e)
 				{
 					throw new LiblinearException("The liblinear epsilon (-e) value is not numerical value. ", e);
 				}

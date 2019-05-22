@@ -5,20 +5,13 @@ using System.Text;
 namespace org.maltparser.core.syntaxgraph
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.pool;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	/// 
+	using  exception;
+	using  pool;
+	using  symbol;
+	using  edge;
+    using  node;
+
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -197,7 +190,7 @@ namespace org.maltparser.core.syntaxgraph
 			{
 				Edge e = edgePool.checkOut();
 				e.BelongsToGraph = this;
-				e.setEdge((Node)parent, (Node)child, org.maltparser.core.syntaxgraph.edge.Edge_Fields.PHRASE_STRUCTURE_EDGE);
+				e.setEdge((Node)parent, (Node)child, Edge_Fields.PHRASE_STRUCTURE_EDGE);
 				graphEdges.Add(e);
 				return e;
 			}
@@ -248,7 +241,7 @@ namespace org.maltparser.core.syntaxgraph
 			{
 				Edge e = edgePool.checkOut();
 				e.BelongsToGraph = this;
-				e.setEdge((Node)source, (Node)target, org.maltparser.core.syntaxgraph.edge.Edge_Fields.SECONDARY_EDGE);
+				e.setEdge((Node)source, (Node)target, Edge_Fields.SECONDARY_EDGE);
 				graphEdges.Add(e);
 				return e;
 			}

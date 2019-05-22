@@ -3,13 +3,10 @@ using System.Text;
 
 namespace org.maltparser.core.flow.system.elem
 {
+    using  item;
+	using  plugin;
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.flow.item;
-	using  org.maltparser.core.plugin;
-	using  org.w3c.dom;
-	using  org.w3c.dom;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -33,7 +30,7 @@ namespace org.maltparser.core.flow.system.elem
 			}
 			set
 			{
-				this.item = value;
+				item = value;
 			}
 		}
 
@@ -82,9 +79,9 @@ namespace org.maltparser.core.flow.system.elem
 				{
 					clazz = Type.GetType(chartItemClassName);
 				}
-				this.chartItemClass = clazz.asSubclass(typeof(ChartItem));
+				chartItemClass = clazz.asSubclass(typeof(ChartItem));
 			}
-			catch (System.InvalidCastException e)
+			catch (InvalidCastException e)
 			{
 //JAVA TO C# CONVERTER WARNING: The .NET Type.FullName property will not always yield results identical to the Java Class.getName method:
 				throw new FlowException("The class '" + clazz.FullName + "' is not a subclass of '" + typeof(ChartItem).FullName + "'. ", e);

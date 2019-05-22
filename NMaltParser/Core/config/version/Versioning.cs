@@ -4,10 +4,9 @@ using System.Text;
 namespace org.maltparser.core.config.version
 {
 
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
+	using  helper;
 
-	public class Versioning
+    public class Versioning
 	{
 		private string maltParserVersion;
 		private string parserModelVersion;
@@ -271,7 +270,7 @@ namespace org.maltparser.core.config.version
 			}
 			set
 			{
-				this.featureModelXML = value;
+				featureModelXML = value;
 			}
 		}
 
@@ -284,7 +283,7 @@ namespace org.maltparser.core.config.version
 			}
 			set
 			{
-				this.inputFormatXML = value;
+				inputFormatXML = value;
 			}
 		}
 
@@ -297,7 +296,7 @@ namespace org.maltparser.core.config.version
 			}
 			set
 			{
-				this.newConfigName = value;
+				newConfigName = value;
 			}
 		}
 
@@ -310,7 +309,7 @@ namespace org.maltparser.core.config.version
 			}
 			set
 			{
-				this.configName = value;
+				configName = value;
 			}
 		}
 
@@ -323,7 +322,7 @@ namespace org.maltparser.core.config.version
 			}
 			set
 			{
-				this.configType = value;
+				configType = value;
 			}
 		}
 
@@ -336,7 +335,7 @@ namespace org.maltparser.core.config.version
 			}
 			set
 			{
-				this.mcoPath = value;
+				mcoPath = value;
 			}
 		}
 
@@ -349,7 +348,7 @@ namespace org.maltparser.core.config.version
 			}
 			set
 			{
-				this.maltParserVersion = value;
+				maltParserVersion = value;
 			}
 		}
 
@@ -362,7 +361,7 @@ namespace org.maltparser.core.config.version
 			}
 			set
 			{
-				this.parserModelVersion = value;
+				parserModelVersion = value;
 			}
 		}
 

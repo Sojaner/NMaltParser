@@ -2,7 +2,7 @@
 
 namespace org.maltparser.parser
 {
-	using  org.maltparser.core.exception;
+	using  core.exception;
 
 	/// <summary>
 	///  ParsingException extends the MaltChainedException class and is thrown by classes

@@ -1,12 +1,11 @@
 ﻿namespace org.maltparser.parser
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.parser.guide;
+	using  core.exception;
+	using  core.symbol;
+    using  core.syntaxgraph;
+	using  core.syntaxgraph.edge;
+	using  core.syntaxgraph.node;
+	using  guide;
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -29,8 +28,8 @@
 //ORIGINAL LINE: public ParsingAlgorithm(DependencyParserConfig _manager, org.maltparser.core.symbol.SymbolTableHandler symbolTableHandler) throws org.maltparser.core.exception.MaltChainedException
 		public ParsingAlgorithm(DependencyParserConfig _manager, SymbolTableHandler symbolTableHandler)
 		{
-			this.manager = _manager;
-			this.registry = new ParserRegistry();
+			manager = _manager;
+			registry = new ParserRegistry();
 			registry.SymbolTableHandler = symbolTableHandler;
 			registry.DataFormatInstance = manager.DataFormatInstance;
 			registry.setAbstractParserFeatureFactory(manager.ParserFactory);
@@ -61,7 +60,7 @@
 			}
 			set
 			{
-				this.classifierGuide = value;
+				classifierGuide = value;
 			}
 		}
 
@@ -78,7 +77,7 @@
 			}
 			set
 			{
-				this.currentParserConfiguration = value;
+				currentParserConfiguration = value;
 			}
 		}
 

@@ -3,14 +3,11 @@ using System.Text;
 
 namespace org.maltparser.core.syntaxgraph.headrules
 {
+    using  io.dataformat;
+	using  symbol;
+	using  node;
 
-	using  org.apache.log4j;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -55,7 +52,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 				string[] items = spec.Substring(2, (spec.Length - 1) - 2).Split(" ", true);
 				for (int i = 0; i < items.Length; i++)
 				{
-					this.Add(new PrioSet(this, items[i]));
+					Add(new PrioSet(this, items[i]));
 				}
 			}
 			else
@@ -69,7 +66,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 		public virtual PhraseStructureNode getHeadChild(NonTerminalNode nt)
 		{
 			PhraseStructureNode headChild = null;
-			for (int i = 0, n = this.Count; i < n; i++)
+			for (int i = 0, n = Count; i < n; i++)
 			{
 				headChild = this[i].getHeadChild(nt, direction);
 				if (headChild != null)
@@ -112,7 +109,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			}
 			set
 			{
-				this.headRule = value;
+				headRule = value;
 			}
 		}
 
@@ -127,7 +124,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

@@ -5,8 +5,8 @@ using System.Text;
 namespace org.maltparser.core.options.option
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.plugin;
+	using  exception;
+	using  plugin;
 
 	/// <summary>
 	/// A class type option is an option that can only contain string value that corresponds to a class. 
@@ -49,7 +49,7 @@ namespace org.maltparser.core.options.option
 //ORIGINAL LINE: public Object getValueObject(String value) throws org.maltparser.core.exception.MaltChainedException
 		public override object getValueObject(string value)
 		{
-			if (string.ReferenceEquals(value, null))
+			if (ReferenceEquals(value, null))
 			{
 				return null;
 			}
@@ -98,7 +98,7 @@ namespace org.maltparser.core.options.option
 		{
 			set
 			{
-				if (string.ReferenceEquals(value, null))
+				if (ReferenceEquals(value, null))
 				{
 					if (legalValues.Count == 0)
 					{
@@ -106,12 +106,12 @@ namespace org.maltparser.core.options.option
 					}
 					else
 					{
-						this.defaultValue = legalValueClass[((SortedSet<string>)legalValueClass.Keys).Min];
+						defaultValue = legalValueClass[((SortedSet<string>)legalValueClass.Keys).Min];
 					}
 				}
 				else if (legalValues.Contains(value.ToLower()))
 				{
-					this.defaultValue = legalValueClass[value.ToLower()];
+					defaultValue = legalValueClass[value.ToLower()];
 				}
 				else
 				{
@@ -141,7 +141,7 @@ namespace org.maltparser.core.options.option
 //ORIGINAL LINE: public void addLegalValue(String value, String desc, String classname) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void addLegalValue(string value, string desc, string classname)
 		{
-			if (string.ReferenceEquals(value, null) || value.Equals(""))
+			if (ReferenceEquals(value, null) || value.Equals(""))
 			{
 				throw new OptionException("The legal value is missing for the '" + Name + "' option. ");
 			}
@@ -152,7 +152,7 @@ namespace org.maltparser.core.options.option
 			else
 			{
 				legalValues.Add(value.ToLower());
-				if (string.ReferenceEquals(desc, null) || desc.Equals(""))
+				if (ReferenceEquals(desc, null) || desc.Equals(""))
 				{
 					legalValueDesc[value.ToLower()] = "Description is missing. ";
 				}
@@ -160,7 +160,7 @@ namespace org.maltparser.core.options.option
 				{
 					legalValueDesc[value.ToLower()] = desc;
 				}
-				if (string.ReferenceEquals(classname, null) || classname.Equals(""))
+				if (ReferenceEquals(classname, null) || classname.Equals(""))
 				{
 					throw new OptionException("The class name used by the '" + Name + "' option is missing. ");
 				}

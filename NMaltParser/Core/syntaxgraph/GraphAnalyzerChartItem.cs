@@ -4,14 +4,14 @@ using System.IO;
 namespace org.maltparser.core.syntaxgraph
 {
 
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.flow;
-	using  org.maltparser.core.flow.item;
-	using  org.maltparser.core.flow.spec;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.syntaxgraph.node;
+	using  config;
+	using  exception;
+	using  flow;
+	using  flow.item;
+	using  flow.spec;
+	using  io.dataformat;
+	using  options;
+	using  node;
 
 	public class GraphAnalyzerChartItem : ChartItem
 	{
@@ -40,11 +40,11 @@ namespace org.maltparser.core.syntaxgraph
 					sourceName = chartItemSpecification.ChartItemAttributes[key];
 				}
 			}
-			if (string.ReferenceEquals(idName, null))
+			if (ReferenceEquals(idName, null))
 			{
 				idName = getChartElement("analyzer").Attributes.get("id").DefaultValue;
 			}
-			else if (string.ReferenceEquals(sourceName, null))
+			else if (ReferenceEquals(sourceName, null))
 			{
 				sourceName = getChartElement("analyzer").Attributes.get("source").DefaultValue;
 			}
@@ -68,7 +68,7 @@ namespace org.maltparser.core.syntaxgraph
 			{
 				if (cachedSource == null)
 				{
-					cachedSource = (DependencyStructure)flowChartinstance.getFlowChartRegistry(typeof(org.maltparser.core.syntaxgraph.DependencyStructure), sourceName);
+					cachedSource = (DependencyStructure)flowChartinstance.getFlowChartRegistry(typeof(DependencyStructure), sourceName);
 				}
 				try
 				{
@@ -154,7 +154,7 @@ namespace org.maltparser.core.syntaxgraph
 			set
 			{
 				close();
-				this.writer = value;
+				writer = value;
 			}
 		}
 

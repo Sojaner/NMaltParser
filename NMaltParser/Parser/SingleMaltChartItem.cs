@@ -4,17 +4,13 @@ using System.Text;
 namespace org.maltparser.parser
 {
 
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.flow;
-	using  org.maltparser.core.flow.item;
-	using  org.maltparser.core.flow.spec;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
-	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.syntaxgraph;
+	using  core.config;
+    using  core.flow;
+	using  core.flow.item;
+	using  core.flow.spec;
+	using  core.io.dataformat;
+    using  core.options;
+	using  core.syntaxgraph;
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -61,33 +57,33 @@ namespace org.maltparser.parser
 					idName = chartItemSpecification.ChartItemAttributes[key];
 				}
 			}
-			if (string.ReferenceEquals(targetName, null))
+			if (ReferenceEquals(targetName, null))
 			{
 				targetName = getChartElement("singlemalt").Attributes.get("target").DefaultValue;
 			}
-			else if (string.ReferenceEquals(sourceName, null))
+			else if (ReferenceEquals(sourceName, null))
 			{
 				sourceName = getChartElement("singlemalt").Attributes.get("source").DefaultValue;
 			}
-			else if (string.ReferenceEquals(modeName, null))
+			else if (ReferenceEquals(modeName, null))
 			{
 				modeName = getChartElement("singlemalt").Attributes.get("mode").DefaultValue;
 			}
-			else if (string.ReferenceEquals(taskName, null))
+			else if (ReferenceEquals(taskName, null))
 			{
 				taskName = getChartElement("singlemalt").Attributes.get("task").DefaultValue;
 			}
-			else if (string.ReferenceEquals(idName, null))
+			else if (ReferenceEquals(idName, null))
 			{
 				idName = getChartElement("singlemalt").Attributes.get("id").DefaultValue;
 			}
 
-			singleMalt = (SingleMalt)flowChartinstance.getFlowChartRegistry(typeof(org.maltparser.parser.SingleMalt), idName);
+			singleMalt = (SingleMalt)flowChartinstance.getFlowChartRegistry(typeof(SingleMalt), idName);
 			if (singleMalt == null)
 			{
 				singleMalt = new SingleMalt();
-				flowChartinstance.addFlowChartRegistry(typeof(org.maltparser.parser.SingleMalt), idName, singleMalt);
-				flowChartinstance.addFlowChartRegistry(typeof(org.maltparser.core.config.Configuration), idName, singleMalt);
+				flowChartinstance.addFlowChartRegistry(typeof(SingleMalt), idName, singleMalt);
+				flowChartinstance.addFlowChartRegistry(typeof(Configuration), idName, singleMalt);
 
 			}
 		}
@@ -149,12 +145,12 @@ namespace org.maltparser.parser
 					}
 					else
 					{
-						return ChartItem.TERMINATE;
+						return TERMINATE;
 					}
 				}
 				else
 				{
-					return ChartItem.TERMINATE;
+					return TERMINATE;
 				}
 			}
 			return signal;
@@ -209,11 +205,11 @@ namespace org.maltparser.parser
 //ORIGINAL LINE: public void terminate() throws org.maltparser.core.exception.MaltChainedException
 		public override void terminate()
 		{
-			if (flowChartinstance.getFlowChartRegistry(typeof(org.maltparser.parser.SingleMalt), idName) != null)
+			if (flowChartinstance.getFlowChartRegistry(typeof(SingleMalt), idName) != null)
 			{
 				singleMalt.terminate(null);
-				flowChartinstance.removeFlowChartRegistry(typeof(org.maltparser.parser.SingleMalt), idName);
-				flowChartinstance.removeFlowChartRegistry(typeof(org.maltparser.core.config.Configuration), idName);
+				flowChartinstance.removeFlowChartRegistry(typeof(SingleMalt), idName);
+				flowChartinstance.removeFlowChartRegistry(typeof(Configuration), idName);
 				singleMalt = null;
 			}
 			else
@@ -232,7 +228,7 @@ namespace org.maltparser.parser
 			}
 			set
 			{
-				this.singleMalt = value;
+				singleMalt = value;
 			}
 		}
 
@@ -245,7 +241,7 @@ namespace org.maltparser.parser
 			}
 			set
 			{
-				this.targetName = value;
+				targetName = value;
 			}
 		}
 
@@ -258,7 +254,7 @@ namespace org.maltparser.parser
 			}
 			set
 			{
-				this.sourceName = value;
+				sourceName = value;
 			}
 		}
 
@@ -273,11 +269,11 @@ namespace org.maltparser.parser
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
-			return obj.ToString().Equals(this.ToString());
+			return obj.ToString().Equals(ToString());
 		}
 
 		public override int GetHashCode()

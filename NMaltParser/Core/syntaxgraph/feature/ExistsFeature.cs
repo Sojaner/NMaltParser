@@ -3,16 +3,13 @@ using System.Text;
 
 namespace org.maltparser.core.syntaxgraph.feature
 {
-	using  org.maltparser.core.exception;
+	using  exception;
 	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
+    using  org.maltparser.core.feature.value;
+    using  io.dataformat;
+	using  symbol;
 
-	public sealed class ExistsFeature : FeatureFunction
+    public sealed class ExistsFeature : FeatureFunction
 	{
 		public static readonly Type[] paramTypes = new Type[] {typeof(AddressFunction)};
 		private AddressFunction addressFunction;
@@ -25,7 +22,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 		public ExistsFeature(SymbolTableHandler tableHandler)
 		{
 			this.tableHandler = tableHandler;
-			this.featureValue = new SingleFeatureValue(this);
+			featureValue = new SingleFeatureValue(this);
 		}
 
 		/// <summary>
@@ -140,7 +137,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			}
 			set
 			{
-				this.table = value;
+				table = value;
 			}
 		}
 
@@ -156,7 +153,7 @@ namespace org.maltparser.core.syntaxgraph.feature
 			}
 			set
 			{
-				this.addressFunction = value;
+				addressFunction = value;
 			}
 		}
 
@@ -201,11 +198,11 @@ namespace org.maltparser.core.syntaxgraph.feature
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
-			return obj.ToString().Equals(this.ToString());
+			return obj.ToString().Equals(ToString());
 		}
 
 		public override int GetHashCode()

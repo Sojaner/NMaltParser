@@ -61,10 +61,10 @@ namespace org.maltparser.core.propagation.spec
 		{
 			const int prime = 31;
 			int result = 1;
-			result = prime * result + ((string.ReferenceEquals(_for, null)) ? 0 : _for.GetHashCode());
-			result = prime * result + ((string.ReferenceEquals(from, null)) ? 0 : from.GetHashCode());
-			result = prime * result + ((string.ReferenceEquals(over, null)) ? 0 : over.GetHashCode());
-			result = prime * result + ((string.ReferenceEquals(to, null)) ? 0 : to.GetHashCode());
+			result = prime * result + ((ReferenceEquals(_for, null)) ? 0 : _for.GetHashCode());
+			result = prime * result + ((ReferenceEquals(from, null)) ? 0 : from.GetHashCode());
+			result = prime * result + ((ReferenceEquals(over, null)) ? 0 : over.GetHashCode());
+			result = prime * result + ((ReferenceEquals(to, null)) ? 0 : to.GetHashCode());
 			return result;
 		}
 
@@ -78,14 +78,14 @@ namespace org.maltparser.core.propagation.spec
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
 			PropagationSpec other = (PropagationSpec) obj;
-			if (string.ReferenceEquals(_for, null))
+			if (ReferenceEquals(_for, null))
 			{
-				if (!string.ReferenceEquals(other._for, null))
+				if (!ReferenceEquals(other._for, null))
 				{
 					return false;
 				}
@@ -94,9 +94,9 @@ namespace org.maltparser.core.propagation.spec
 			{
 				return false;
 			}
-			if (string.ReferenceEquals(from, null))
+			if (ReferenceEquals(from, null))
 			{
-				if (!string.ReferenceEquals(other.from, null))
+				if (!ReferenceEquals(other.from, null))
 				{
 					return false;
 				}
@@ -105,9 +105,9 @@ namespace org.maltparser.core.propagation.spec
 			{
 				return false;
 			}
-			if (string.ReferenceEquals(over, null))
+			if (ReferenceEquals(over, null))
 			{
-				if (!string.ReferenceEquals(other.over, null))
+				if (!ReferenceEquals(other.over, null))
 				{
 					return false;
 				}
@@ -116,9 +116,9 @@ namespace org.maltparser.core.propagation.spec
 			{
 				return false;
 			}
-			if (string.ReferenceEquals(to, null))
+			if (ReferenceEquals(to, null))
 			{
-				if (!string.ReferenceEquals(other.to, null))
+				if (!ReferenceEquals(other.to, null))
 				{
 					return false;
 				}

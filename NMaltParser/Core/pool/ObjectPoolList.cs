@@ -3,10 +3,7 @@ using System.Text;
 
 namespace org.maltparser.core.pool
 {
-
-	using  org.maltparser.core.exception;
-
-	public abstract class ObjectPoolList<T> : ObjectPool<T>
+    public abstract class ObjectPoolList<T> : ObjectPool<T>
 	{
 		private readonly List<T> objectList;
 		private int currentSize;
@@ -85,7 +82,7 @@ namespace org.maltparser.core.pool
 			}
 			set
 			{
-				this.currentSize = value;
+				currentSize = value;
 			}
 		}
 

@@ -1,13 +1,6 @@
 ﻿namespace org.maltparser.core.propagation.spec
 {
-
-
-	using  org.maltparser.core.exception;
-	using  org.w3c.dom;
-	using  org.w3c.dom;
-	using  org.xml.sax;
-
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

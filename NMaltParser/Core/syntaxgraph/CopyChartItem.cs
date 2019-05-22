@@ -3,15 +3,13 @@ using System.Text;
 
 namespace org.maltparser.core.syntaxgraph
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.flow;
-	using  org.maltparser.core.flow.item;
-	using  org.maltparser.core.flow.spec;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  flow;
+	using  flow.item;
+	using  flow.spec;
+	using  options;
+	using  symbol;
+	using  edge;
+	using  node;
 	/// 
 	/// 
 	/// <summary>
@@ -56,19 +54,19 @@ namespace org.maltparser.core.syntaxgraph
 					taskName = chartItemSpecification.ChartItemAttributes[key];
 				}
 			}
-			if (string.ReferenceEquals(idName, null))
+			if (ReferenceEquals(idName, null))
 			{
 				idName = getChartElement("copy").Attributes.get("id").DefaultValue;
 			}
-			else if (string.ReferenceEquals(targetName, null))
+			else if (ReferenceEquals(targetName, null))
 			{
 				targetName = getChartElement("copy").Attributes.get("target").DefaultValue;
 			}
-			else if (string.ReferenceEquals(sourceName, null))
+			else if (ReferenceEquals(sourceName, null))
 			{
 				sourceName = getChartElement("copy").Attributes.get("source").DefaultValue;
 			}
-			else if (string.ReferenceEquals(taskName, null))
+			else if (ReferenceEquals(taskName, null))
 			{
 				taskName = getChartElement("copy").Attributes.get("task").DefaultValue;
 			}
@@ -90,11 +88,11 @@ namespace org.maltparser.core.syntaxgraph
 			{
 				if (cachedSource == null)
 				{
-					cachedSource = (TokenStructure)flowChartinstance.getFlowChartRegistry(typeof(org.maltparser.core.syntaxgraph.TokenStructure), sourceName);
+					cachedSource = (TokenStructure)flowChartinstance.getFlowChartRegistry(typeof(TokenStructure), sourceName);
 				}
 				if (cachedTarget == null)
 				{
-					cachedTarget = (TokenStructure)flowChartinstance.getFlowChartRegistry(typeof(org.maltparser.core.syntaxgraph.TokenStructure), targetName);
+					cachedTarget = (TokenStructure)flowChartinstance.getFlowChartRegistry(typeof(TokenStructure), targetName);
 				}
 				copyTerminalStructure(cachedSource, cachedTarget);
 	//			SystemLogger.logger().info("usePartialTree:" + usePartialTree);
@@ -190,11 +188,11 @@ namespace org.maltparser.core.syntaxgraph
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
-			return obj.ToString().Equals(this.ToString());
+			return obj.ToString().Equals(ToString());
 		}
 
 		public override int GetHashCode()

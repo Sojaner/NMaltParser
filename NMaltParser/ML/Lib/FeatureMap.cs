@@ -4,7 +4,7 @@ namespace org.maltparser.ml.lib
 {
 
 
-	using  org.maltparser.core.helper;
+	using  core.helper;
 
 	/// <summary>
 	/// The purpose of the feature map is to map MaltParser's column based features together with the symbol code from the symbol table to 
@@ -27,7 +27,7 @@ namespace org.maltparser.ml.lib
 		public FeatureMap()
 		{
 			map = new HashMap<long, int>();
-			this.featureCounter = 1;
+			featureCounter = 1;
 		}
 
 		/// <summary>
@@ -137,7 +137,7 @@ namespace org.maltparser.ml.lib
 		{
 			set
 			{
-				this.featureCounter = value;
+				featureCounter = value;
 			}
 			get
 			{

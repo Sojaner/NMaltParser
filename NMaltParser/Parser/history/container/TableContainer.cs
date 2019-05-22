@@ -2,8 +2,7 @@
 
 namespace org.maltparser.parser.history.container
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
+    using  core.symbol;
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -27,27 +26,27 @@ namespace org.maltparser.parser.history.container
 
 		public TableContainer(Table _table, string _name, char _decisionSeparator)
 		{
-			this.table = _table;
-			this.name = _name;
+			table = _table;
+			name = _name;
 			switch (_decisionSeparator)
 			{
 			case '+':
-				this.relationToNextDecision = RelationToNextDecision.COMBINED;
+				relationToNextDecision = RelationToNextDecision.COMBINED;
 				break;
 			case ',':
-				this.relationToNextDecision = RelationToNextDecision.SEQUANTIAL;
+				relationToNextDecision = RelationToNextDecision.SEQUANTIAL;
 				break;
 			case ';':
-				this.relationToNextDecision = RelationToNextDecision.BRANCHED;
+				relationToNextDecision = RelationToNextDecision.BRANCHED;
 				break;
 			case '#':
-				this.relationToNextDecision = RelationToNextDecision.BRANCHED;
+				relationToNextDecision = RelationToNextDecision.BRANCHED;
 				break;
 			case '?':
-				this.relationToNextDecision = RelationToNextDecision.SWITCHED;
+				relationToNextDecision = RelationToNextDecision.SWITCHED;
 				break;
 			default:
-				this.relationToNextDecision = RelationToNextDecision.NONE;
+				relationToNextDecision = RelationToNextDecision.NONE;
 			break;
 			}
 			cachedSymbol = new StringBuilder();
@@ -156,7 +155,7 @@ namespace org.maltparser.parser.history.container
 			}
 			set
 			{
-				this.table = value;
+				table = value;
 			}
 		}
 
@@ -186,7 +185,7 @@ namespace org.maltparser.parser.history.container
 		{
 			set
 			{
-				this.name = value;
+				name = value;
 			}
 		}
 

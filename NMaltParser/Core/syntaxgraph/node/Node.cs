@@ -2,9 +2,7 @@
 
 namespace org.maltparser.core.syntaxgraph.node
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph.edge;
+    using  edge;
 
 	public interface Node : ComparableNode, Element
 	{

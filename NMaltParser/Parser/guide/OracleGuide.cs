@@ -1,8 +1,7 @@
 ﻿namespace org.maltparser.parser.guide
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.history.action;
+    using  core.syntaxgraph;
+	using  history.action;
 
 	public interface OracleGuide : Guide
 	{

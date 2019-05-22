@@ -2,10 +2,8 @@
 
 namespace org.maltparser.parser.history.action
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.parser.history.container;
-	using  org.maltparser.parser.history.container.TableContainer;
-	using  org.maltparser.parser.history.kbest;
+    using  container;
+    using  kbest;
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -21,8 +19,8 @@ namespace org.maltparser.parser.history.action
 //ORIGINAL LINE: public SimpleDecisionAction(int kBestSize, org.maltparser.parser.history.container.TableContainer _tableContainer) throws org.maltparser.core.exception.MaltChainedException
 		public SimpleDecisionAction(int kBestSize, TableContainer _tableContainer)
 		{
-			this.tableContainer = _tableContainer;
-			this.kBestList = new KBestList(kBestSize, this);
+			tableContainer = _tableContainer;
+			kBestList = new KBestList(kBestSize, this);
 			clear();
 		}
 

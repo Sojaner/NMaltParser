@@ -2,14 +2,10 @@
 
 namespace org.maltparser.core.symbol
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.feature.value;
-	using  org.maltparser.core.symbol.nullvalue.NullValues;
+    using  feature.function;
+    using  feature.value;
 
-	public abstract class TableFeature : FeatureFunction, Modifiable
+    public abstract class TableFeature : FeatureFunction, Modifiable
 	{
 		protected internal readonly SingleFeatureValue featureValue;
 		protected internal SymbolTable table;
@@ -22,7 +18,7 @@ namespace org.maltparser.core.symbol
 		public TableFeature(SymbolTableHandler tableHandler)
 		{
 			this.tableHandler = tableHandler;
-			this.featureValue = new SingleFeatureValue(this);
+			featureValue = new SingleFeatureValue(this);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -55,7 +51,7 @@ namespace org.maltparser.core.symbol
 			}
 			set
 			{
-				this.table = value;
+				table = value;
 			}
 		}
 
@@ -64,7 +60,7 @@ namespace org.maltparser.core.symbol
 //ORIGINAL LINE: public void setFeatureValue(int indexCode) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void setFeatureValue(int indexCode)
 		{
-			if (string.ReferenceEquals(table.getSymbolCodeToString(indexCode), null))
+			if (ReferenceEquals(table.getSymbolCodeToString(indexCode), null))
 			{
 				featureValue.IndexCode = indexCode;
 				featureValue.Value = 1;
@@ -119,7 +115,7 @@ namespace org.maltparser.core.symbol
 			{
 				return false;
 			}
-			if (!obj.ToString().Equals(this.ToString()))
+			if (!obj.ToString().Equals(ToString()))
 			{
 				return false;
 			}
@@ -130,7 +126,7 @@ namespace org.maltparser.core.symbol
 		{
 			set
 			{
-				this.tableName = value;
+				tableName = value;
 			}
 			get
 			{
@@ -147,7 +143,7 @@ namespace org.maltparser.core.symbol
 			}
 			set
 			{
-				this.type = value;
+				type = value;
 			}
 		}
 

@@ -3,9 +3,8 @@ using System.Text;
 
 namespace org.maltparser.parser.algorithm.nivre
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
+    using  core.feature.function;
+	using  core.feature.value;
 
 	/// 
 	/// <summary>
@@ -27,9 +26,9 @@ namespace org.maltparser.parser.algorithm.nivre
 
 		public NivreAddressFunction(string _subFunctionName, AlgoritmInterface _parsingAlgorithm) : base()
 		{
-			this.subFunctionName = _subFunctionName;
-			this.subFunction = Enum.Parse(typeof(NivreSubFunction), subFunctionName.ToUpper());
-			this.parsingAlgorithm = _parsingAlgorithm;
+			subFunctionName = _subFunctionName;
+			subFunction = Enum.Parse(typeof(NivreSubFunction), subFunctionName.ToUpper());
+			parsingAlgorithm = _parsingAlgorithm;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -39,12 +38,12 @@ namespace org.maltparser.parser.algorithm.nivre
 			if (arguments.Length != 1)
 			{
 //JAVA TO C# CONVERTER WARNING: The .NET Type.FullName property will not always yield results identical to the Java Class.getName method:
-				throw new ParsingException("Could not initialize " + this.GetType().FullName + ": number of arguments are not correct. ");
+				throw new ParsingException("Could not initialize " + GetType().FullName + ": number of arguments are not correct. ");
 			}
 			if (!(arguments[0] is int?))
 			{
 //JAVA TO C# CONVERTER WARNING: The .NET Type.FullName property will not always yield results identical to the Java Class.getName method:
-				throw new ParsingException("Could not initialize " + this.GetType().FullName + ": the first argument is not an integer. ");
+				throw new ParsingException("Could not initialize " + GetType().FullName + ": the first argument is not an integer. ");
 			}
 
 			Index = ((int?)arguments[0]).Value;
@@ -137,7 +136,7 @@ namespace org.maltparser.parser.algorithm.nivre
 			}
 			set
 			{
-				this.index = value;
+				index = value;
 			}
 		}
 
@@ -152,7 +151,7 @@ namespace org.maltparser.parser.algorithm.nivre
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}

@@ -1,8 +1,8 @@
 ﻿namespace org.maltparser.core.flow.item
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.flow.spec;
-	using  org.maltparser.core.flow.system.elem;
+	using  exception;
+	using  spec;
+	using  system.elem;
 	/// 
 	/// 
 	/// <summary>
@@ -86,7 +86,7 @@
 			}
 			set
 			{
-				this.flowChartinstance = value;
+				flowChartinstance = value;
 			}
 		}
 
@@ -125,7 +125,7 @@
 			}
 			set
 			{
-				this.chartItemSpecification = value;
+				chartItemSpecification = value;
 			}
 		}
 

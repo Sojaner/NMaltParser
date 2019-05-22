@@ -3,10 +3,7 @@ using System.IO;
 
 namespace org.maltparser.core.symbol
 {
-
-	using  org.maltparser.core.exception;
-
-	public interface SymbolTableHandler : TableHandler
+    public interface SymbolTableHandler : TableHandler
 	{
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public SymbolTable addSymbolTable(String tableName) throws org.maltparser.core.exception.MaltChainedException;

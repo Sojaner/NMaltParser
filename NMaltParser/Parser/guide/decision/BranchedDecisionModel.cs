@@ -2,19 +2,13 @@
 
 namespace org.maltparser.parser.guide.decision
 {
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.feature;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.parser.guide.instance;
-	using  org.maltparser.parser.guide.instance;
-	using  org.maltparser.parser.guide.instance;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.container.TableContainer;
-	/// 
+    using  core.feature;
+    using  core.helper;
+	using  core.syntaxgraph;
+	using  instance;
+    using  history.action;
+
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -34,34 +28,34 @@ namespace org.maltparser.parser.guide.decision
 //ORIGINAL LINE: public BranchedDecisionModel(org.maltparser.parser.guide.ClassifierGuide _guide) throws org.maltparser.core.exception.MaltChainedException
 		public BranchedDecisionModel(ClassifierGuide _guide)
 		{
-			this.guide = _guide;
-			this.branchedDecisionSymbols = "";
+			guide = _guide;
+			branchedDecisionSymbols = "";
 	//		this.featureModel = _featureModel;
-			this.decisionIndex = 0;
-			this.modelName = "bdm0";
-			this.parentDecisionModel = null;
-			this.children = new HashMap<int, DecisionModel>();
+			decisionIndex = 0;
+			modelName = "bdm0";
+			parentDecisionModel = null;
+			children = new HashMap<int, DecisionModel>();
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public BranchedDecisionModel(org.maltparser.parser.guide.ClassifierGuide _guide, DecisionModel _parentDecisionModel, String _branchedDecisionSymbol) throws org.maltparser.core.exception.MaltChainedException
 		public BranchedDecisionModel(ClassifierGuide _guide, DecisionModel _parentDecisionModel, string _branchedDecisionSymbol)
 		{
-			this.guide = _guide;
-			this.parentDecisionModel = _parentDecisionModel;
-			this.decisionIndex = parentDecisionModel.DecisionIndex + 1;
-			if (!string.ReferenceEquals(_branchedDecisionSymbol, null) && _branchedDecisionSymbol.Length > 0)
+			guide = _guide;
+			parentDecisionModel = _parentDecisionModel;
+			decisionIndex = parentDecisionModel.DecisionIndex + 1;
+			if (!ReferenceEquals(_branchedDecisionSymbol, null) && _branchedDecisionSymbol.Length > 0)
 			{
-				this.branchedDecisionSymbols = _branchedDecisionSymbol;
-				this.modelName = "bdm" + decisionIndex + branchedDecisionSymbols;
+				branchedDecisionSymbols = _branchedDecisionSymbol;
+				modelName = "bdm" + decisionIndex + branchedDecisionSymbols;
 			}
 			else
 			{
-				this.branchedDecisionSymbols = "";
-				this.modelName = "bdm" + decisionIndex;
+				branchedDecisionSymbols = "";
+				modelName = "bdm" + decisionIndex;
 			}
 	//		this.featureModel = parentDecisionModel.getFeatureModel();
-			this.children = new HashMap<int, DecisionModel>();
+			children = new HashMap<int, DecisionModel>();
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -103,7 +97,7 @@ namespace org.maltparser.parser.guide.decision
 //ORIGINAL LINE: public void noMoreInstances(org.maltparser.core.feature.FeatureModel featureModel) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void noMoreInstances(FeatureModel featureModel)
 		{
-			if (guide.GuideMode == org.maltparser.parser.guide.ClassifierGuide_GuideMode.CLASSIFY)
+			if (guide.GuideMode == ClassifierGuide_GuideMode.CLASSIFY)
 			{
 				throw new GuideException("The decision model could not create it's model. ");
 			}

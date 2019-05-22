@@ -2,20 +2,15 @@
 
 namespace org.maltparser.core.syntaxgraph
 {
-	using  org.maltparser.core.config;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.flow;
-	using  org.maltparser.core.flow;
-	using  org.maltparser.core.flow.item;
-	using  org.maltparser.core.flow.spec;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
-	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
-	using  org.maltparser.core.options;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.ds2ps;
+	using  config;
+    using  flow;
+    using  flow.item;
+	using  flow.spec;
+	using  helper;
+	using  io.dataformat;
+    using  options;
+	using  symbol;
+	using  ds2ps;
 	/// 
 	/// 
 	/// <summary>
@@ -53,15 +48,15 @@ namespace org.maltparser.core.syntaxgraph
 					taskName = chartItemSpecification.ChartItemAttributes[key];
 				}
 			}
-			if (string.ReferenceEquals(idName, null))
+			if (ReferenceEquals(idName, null))
 			{
 				idName = getChartElement("graph").Attributes.get("id").DefaultValue;
 			}
-			else if (string.ReferenceEquals(structureName, null))
+			else if (ReferenceEquals(structureName, null))
 			{
 				structureName = getChartElement("graph").Attributes.get("structure").DefaultValue;
 			}
-			else if (string.ReferenceEquals(taskName, null))
+			else if (ReferenceEquals(taskName, null))
 			{
 				taskName = getChartElement("graph").Attributes.get("task").DefaultValue;
 			}
@@ -111,7 +106,7 @@ namespace org.maltparser.core.syntaxgraph
 				if (dependency == true && phrase == false)
 				{
 					graph = new DependencyGraph(symbolTables);
-					flowChartinstance.addFlowChartRegistry(typeof(org.maltparser.core.syntaxgraph.DependencyStructure), structureName, graph);
+					flowChartinstance.addFlowChartRegistry(typeof(DependencyStructure), structureName, graph);
 				}
 				else if (dependency == true && phrase == true)
 				{
@@ -144,13 +139,13 @@ namespace org.maltparser.core.syntaxgraph
 					{
 						throw new FlowException("Couldn't determine the input and output data format. ");
 					}
-					flowChartinstance.addFlowChartRegistry(typeof(org.maltparser.core.syntaxgraph.DependencyStructure), structureName, graph);
-					flowChartinstance.addFlowChartRegistry(typeof(org.maltparser.core.syntaxgraph.PhraseStructure), structureName, graph);
+					flowChartinstance.addFlowChartRegistry(typeof(DependencyStructure), structureName, graph);
+					flowChartinstance.addFlowChartRegistry(typeof(PhraseStructure), structureName, graph);
 				}
 				else if (dependency == false && phrase == true)
 				{
 					graph = new PhraseStructureGraph(symbolTables);
-					flowChartinstance.addFlowChartRegistry(typeof(org.maltparser.core.syntaxgraph.PhraseStructure), structureName, graph);
+					flowChartinstance.addFlowChartRegistry(typeof(PhraseStructure), structureName, graph);
 				}
 				else
 				{
@@ -161,7 +156,7 @@ namespace org.maltparser.core.syntaxgraph
 				{
 					((DependencyStructure)graph).setDefaultRootEdgeLabels(OptionManager.instance().getOptionValue(OptionContainerIndex, "graph", "root_label").ToString(), dataFormatInstance.getDependencyEdgeLabelSymbolTables(symbolTables));
 				}
-				flowChartinstance.addFlowChartRegistry(typeof(org.maltparser.core.syntaxgraph.TokenStructure), structureName, graph);
+				flowChartinstance.addFlowChartRegistry(typeof(TokenStructure), structureName, graph);
 			}
 			return signal;
 		}
@@ -201,11 +196,11 @@ namespace org.maltparser.core.syntaxgraph
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
-			return obj.ToString().Equals(this.ToString());
+			return obj.ToString().Equals(ToString());
 		}
 
 		public override int GetHashCode()

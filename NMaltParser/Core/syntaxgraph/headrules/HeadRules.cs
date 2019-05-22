@@ -5,18 +5,12 @@ using System.IO;
 
 namespace org.maltparser.core.syntaxgraph.headrules
 {
+    using  helper;
+    using  io.dataformat;
+	using  symbol;
+    using  node;
 
-	using  org.apache.log4j;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -81,7 +75,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 				{
 					throw new HeadRuleException("Could not read the head rules from file '" + url.ToString() + "'. ", e);
 				}
-				if (string.ReferenceEquals(fileLine, null))
+				if (ReferenceEquals(fileLine, null))
 				{
 					break;
 				}
@@ -150,7 +144,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 			}
 			set
 			{
-				this.logger = value;
+				logger = value;
 			}
 		}
 
@@ -176,7 +170,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final StringBuilder sb = new StringBuilder();
 			StringBuilder sb = new StringBuilder();
-			foreach (HeadRule rule in this.Values)
+			foreach (HeadRule rule in Values)
 			{
 				sb.Append(rule);
 				sb.Append('\n');

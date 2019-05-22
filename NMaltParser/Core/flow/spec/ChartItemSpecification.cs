@@ -4,13 +4,7 @@ using System.Text;
 
 namespace org.maltparser.core.flow.spec
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.flow.item;
-	using  org.w3c.dom;
-	using  org.w3c.dom;
-	using  org.w3c.dom;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -40,7 +34,7 @@ namespace org.maltparser.core.flow.spec
 			}
 			set
 			{
-				this.chartItemName = value;
+				chartItemName = value;
 			}
 		}
 
@@ -53,7 +47,7 @@ namespace org.maltparser.core.flow.spec
 			}
 			set
 			{
-				this.chartItemClass = value;
+				chartItemClass = value;
 			}
 		}
 
@@ -100,7 +94,7 @@ namespace org.maltparser.core.flow.spec
 		{
 			const int prime = 31;
 			int result = 1;
-			result = prime * result + ((string.ReferenceEquals(chartItemName, null)) ? 0 : chartItemName.GetHashCode());
+			result = prime * result + ((ReferenceEquals(chartItemName, null)) ? 0 : chartItemName.GetHashCode());
 			result = prime * result + ((attributes == null) ? 0 : attributes.GetHashCode());
 			result = prime * result + ((chartItemClass == null) ? 0 : chartItemClass.GetHashCode());
 			return result;
@@ -116,14 +110,14 @@ namespace org.maltparser.core.flow.spec
 			{
 				return false;
 			}
-			if (this.GetType() != obj.GetType())
+			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
 			ChartItemSpecification other = (ChartItemSpecification) obj;
-			if (string.ReferenceEquals(chartItemName, null))
+			if (ReferenceEquals(chartItemName, null))
 			{
-				if (!string.ReferenceEquals(other.chartItemName, null))
+				if (!ReferenceEquals(other.chartItemName, null))
 				{
 					return false;
 				}

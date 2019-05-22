@@ -6,13 +6,12 @@ namespace org.maltparser.core.lw.graph
 {
 
 	using  org.maltparser.concurrent.graph.dataformat;
-	using  org.maltparser.concurrent.graph.dataformat;
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol.hash;
-	using  org.maltparser.core.syntaxgraph;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.node;
+    using  exception;
+	using  symbol;
+	using  symbol.hash;
+	using  syntaxgraph;
+	using  syntaxgraph.edge;
+	using  syntaxgraph.node;
 
 
 	public class LWTest
@@ -24,7 +23,7 @@ namespace org.maltparser.core.lw.graph
 		{
 			List<string> tokens = new List<string>();
 			string line;
-			while (!string.ReferenceEquals((line = reader.ReadLine()), null))
+			while (!ReferenceEquals((line = reader.ReadLine()), null))
 			{
 				if (line.Trim().Length == 0)
 				{
@@ -43,7 +42,7 @@ namespace org.maltparser.core.lw.graph
 //ORIGINAL LINE: public static org.maltparser.core.syntaxgraph.DependencyStructure getOldDependencyGraph(org.maltparser.concurrent.graph.dataformat.DataFormat dataFormat, org.maltparser.core.symbol.SymbolTableHandler symbolTableHandlers, String[] tokens) throws org.maltparser.core.exception.MaltChainedException
 		public static DependencyStructure getOldDependencyGraph(DataFormat dataFormat, SymbolTableHandler symbolTableHandlers, string[] tokens)
 		{
-			DependencyStructure oldGraph = new org.maltparser.core.syntaxgraph.DependencyGraph(symbolTableHandlers);
+			DependencyStructure oldGraph = new DependencyGraph(symbolTableHandlers);
 			for (int i = 0; i < tokens.Length; i++)
 			{
 				oldGraph.addDependencyNode(i + 1);

@@ -5,18 +5,15 @@ using System.Text;
 namespace org.maltparser.core.syntaxgraph.ds2ps
 {
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.io.dataformat;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.core.syntaxgraph.edge;
-	using  org.maltparser.core.syntaxgraph.headrules;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	using  org.maltparser.core.syntaxgraph.node;
-	/// 
+	using  exception;
+	using  helper;
+	using  io.dataformat;
+    using  symbol;
+    using  edge;
+	using  headrules;
+	using  node;
+
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -78,7 +75,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 			}
 			set
 			{
-				this.optionString = value;
+				optionString = value;
 			}
 		}
 
@@ -91,7 +88,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 			}
 			set
 			{
-				this.dependencyDataFormatInstance = value;
+				dependencyDataFormatInstance = value;
 			}
 		}
 
@@ -104,7 +101,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 			}
 			set
 			{
-				this.phraseStructuretDataFormatInstance = value;
+				phraseStructuretDataFormatInstance = value;
 			}
 		}
 
@@ -127,7 +124,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 	//					updateDependenyGraph(graph, graph.getPhraseStructureRoot());
 	//				}
 	//			}
-				if (e.Type == org.maltparser.core.syntaxgraph.edge.Edge_Fields.DEPENDENCY_EDGE && e.Source is DependencyNode && e.Target is DependencyNode)
+				if (e.Type == Edge_Fields.DEPENDENCY_EDGE && e.Source is DependencyNode && e.Target is DependencyNode)
 				{
 					if (e.Labeled && e.LabelSet.size() == 4)
 					{
@@ -338,7 +335,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 			else
 			{
 				string deprelDefaultRootLabel = graph.getDefaultRootEdgeLabelSymbol(symbolTables.getSymbolTable(DEPREL));
-				if (!string.ReferenceEquals(deprelDefaultRootLabel, null))
+				if (!ReferenceEquals(deprelDefaultRootLabel, null))
 				{
 					e.addLabel(symbolTables.getSymbolTable(DEPREL), deprelDefaultRootLabel);
 				}
@@ -380,7 +377,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 						if (tmp.Parent.Root)
 						{
 							string deprelDefaultRootLabel = graph.getDefaultRootEdgeLabelSymbol(symbolTables.getSymbolTable(PHRASE));
-							if (!string.ReferenceEquals(deprelDefaultRootLabel, null))
+							if (!ReferenceEquals(deprelDefaultRootLabel, null))
 							{
 								phrase.Append(deprelDefaultRootLabel);
 							}
@@ -485,7 +482,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 				{
 					edgeSpineLabel = depEdge.getLabelSymbol(graph.SymbolTables.getSymbolTable(HEADREL));
 				}
-				if (!string.ReferenceEquals(phraseSpineLabel, null) && phraseSpineLabel.Length > 0 && phraseSpineLabel[0] != EMPTY_SPINE)
+				if (!ReferenceEquals(phraseSpineLabel, null) && phraseSpineLabel.Length > 0 && phraseSpineLabel[0] != EMPTY_SPINE)
 				{
 					int ps = 0, es = 0, i = 0, j = 0, n = phraseSpineLabel.Length - 1, m = edgeSpineLabel.Length - 1;
 					PhraseStructureNode child = (PhraseStructureNode)depEdge.Target;
@@ -518,7 +515,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 						}
 
 						empty_label = 0;
-						if (!string.ReferenceEquals(edgeSpineLabel, null))
+						if (!ReferenceEquals(edgeSpineLabel, null))
 						{
 							while (j <= m && edgeSpineLabel[j] != SPINE_ELEMENT_SEPARATOR)
 							{
@@ -535,7 +532,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 						}
 						lockUpdate = true;
 						Edge e = graph.addPhraseStructureEdge(dependentSpine, child);
-						if (empty_label != 2 && es != j && !string.ReferenceEquals(edgeSpineLabel, null) && e != null)
+						if (empty_label != 2 && es != j && !ReferenceEquals(edgeSpineLabel, null) && e != null)
 						{
 							e.addLabel(graph.SymbolTables.addSymbolTable(EDGELABEL), edgeSpineLabel.Substring(es, j - es));
 						}
@@ -590,7 +587,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 					{
 					a = int.Parse((depEdge.getLabelSymbol(graph.SymbolTables.getSymbolTable(ATTACH))));
 					}
-					catch (System.FormatException e)
+					catch (FormatException e)
 					{
 						throw new MaltChainedException(e.Message);
 					}
@@ -656,7 +653,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 //ORIGINAL LINE: public void setHeadRules(String headRulesURL) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void setHeadRules(string headRulesURL)
 		{
-			if (!string.ReferenceEquals(headRulesURL, null) && headRulesURL.Length > 0 && !headRulesURL.Equals("*"))
+			if (!ReferenceEquals(headRulesURL, null) && headRulesURL.Length > 0 && !headRulesURL.Equals("*"))
 			{
 				headRules = new HeadRules(SystemLogger.logger(), phraseStructuretDataFormatInstance, symbolTableHandler);
 				headRules.parseHeadRules(headRulesURL);

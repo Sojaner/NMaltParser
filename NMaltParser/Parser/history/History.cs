@@ -3,20 +3,13 @@ using System.Text;
 
 namespace org.maltparser.parser.history
 {
+    using  core.helper;
+	using  core.pool;
+	using  core.symbol;
+	using  action;
+    using  container;
 
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.core.pool;
-	using  org.maltparser.core.symbol;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.action;
-	using  org.maltparser.parser.history.container;
-	using  org.maltparser.parser.history.container;
-	using  org.maltparser.parser.history.container;
-
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// 
@@ -35,19 +28,19 @@ namespace org.maltparser.parser.history
 //ORIGINAL LINE: public History(String _decisionSettings, String _separator, org.maltparser.core.helper.HashMap<String, org.maltparser.core.symbol.TableHandler> _tableHandlers, int _kBestSize) throws org.maltparser.core.exception.MaltChainedException
 		public History(string _decisionSettings, string _separator, HashMap<string, TableHandler> _tableHandlers, int _kBestSize)
 		{
-			this.tableHandlers = _tableHandlers;
-			if (string.ReferenceEquals(_separator, null) || _separator.Length < 1)
+			tableHandlers = _tableHandlers;
+			if (ReferenceEquals(_separator, null) || _separator.Length < 1)
 			{
-				this.separator = "~";
+				separator = "~";
 			}
 			else
 			{
-				this.separator = _separator;
+				separator = _separator;
 			}
-			this.kBestSize = _kBestSize;
-			this.decisionTables = new List<TableContainer>();
-			this.actionTables = new List<TableContainer>();
-			this.decisionSettings = _decisionSettings;
+			kBestSize = _kBestSize;
+			decisionTables = new List<TableContainer>();
+			actionTables = new List<TableContainer>();
+			decisionSettings = _decisionSettings;
 			initDecisionSettings();
 			actionPool = new ObjectPoolListAnonymousInnerClass(this);
 			clear();
