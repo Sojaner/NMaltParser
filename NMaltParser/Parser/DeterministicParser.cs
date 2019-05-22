@@ -1,14 +1,14 @@
 ﻿namespace org.maltparser.parser
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureModel = org.maltparser.core.feature.FeatureModel;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph;
 
-	using ClassifierGuide = org.maltparser.parser.guide.ClassifierGuide;
-	using SingleGuide = org.maltparser.parser.guide.SingleGuide;
-	using GuideDecision = org.maltparser.parser.history.action.GuideDecision;
-	using GuideUserAction = org.maltparser.parser.history.action.GuideUserAction;
+	using  org.maltparser.parser.guide;
+	using  org.maltparser.parser.guide;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.action;
 	/// <summary>
 	/// @author Johan Hall
 	/// 

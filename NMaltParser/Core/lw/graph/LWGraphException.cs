@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.lw.graph
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// <summary>
 	///  LWGraphException extends the MaltChainedException class and is thrown by classes

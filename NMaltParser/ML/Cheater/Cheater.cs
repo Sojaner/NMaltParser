@@ -7,16 +7,16 @@ namespace org.maltparser.ml.cheater
 {
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureVector = org.maltparser.core.feature.FeatureVector;
-	using FeatureFunction = org.maltparser.core.feature.function.FeatureFunction;
-	using FeatureValue = org.maltparser.core.feature.value.FeatureValue;
-	using MultipleFeatureValue = org.maltparser.core.feature.value.MultipleFeatureValue;
-	using SingleFeatureValue = org.maltparser.core.feature.value.SingleFeatureValue;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using DependencyParserConfig = org.maltparser.parser.DependencyParserConfig;
-	using InstanceModel = org.maltparser.parser.guide.instance.InstanceModel;
-	using SingleDecision = org.maltparser.parser.history.action.SingleDecision;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.parser;
+	using  org.maltparser.parser.guide.instance;
+	using  org.maltparser.parser.history.action;
 
 	public class Cheater : LearningMethod
 	{

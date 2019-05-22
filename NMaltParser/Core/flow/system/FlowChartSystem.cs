@@ -6,15 +6,15 @@ namespace org.maltparser.core.flow.system
 {
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureException = org.maltparser.core.feature.FeatureException;
-	using ChartElement = org.maltparser.core.flow.system.elem.ChartElement;
-	using URLFinder = org.maltparser.core.helper.URLFinder;
-	using Plugin = org.maltparser.core.plugin.Plugin;
-	using PluginLoader = org.maltparser.core.plugin.PluginLoader;
-	using Element = org.w3c.dom.Element;
-	using NodeList = org.w3c.dom.NodeList;
-	using SAXException = org.xml.sax.SAXException;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.flow.system.elem;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.plugin;
+	using  org.maltparser.core.plugin;
+	using  org.w3c.dom;
+	using  org.w3c.dom;
+	using  org.xml.sax;
 	/// 
 	/// 
 	/// <summary>

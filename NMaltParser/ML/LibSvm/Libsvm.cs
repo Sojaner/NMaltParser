@@ -7,21 +7,21 @@ namespace org.maltparser.ml.libsvm
 {
 
 
-	using Configuration = org.maltparser.core.config.Configuration;
-	using ConfigurationException = org.maltparser.core.config.ConfigurationException;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureVector = org.maltparser.core.feature.FeatureVector;
-	using FeatureFunction = org.maltparser.core.feature.function.FeatureFunction;
-	using FeatureValue = org.maltparser.core.feature.value.FeatureValue;
-	using MultipleFeatureValue = org.maltparser.core.feature.value.MultipleFeatureValue;
-	using SingleFeatureValue = org.maltparser.core.feature.value.SingleFeatureValue;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using LiblinearException = org.maltparser.ml.liblinear.LiblinearException;
-	using DependencyParserConfig = org.maltparser.parser.DependencyParserConfig;
-	using InstanceModel = org.maltparser.parser.guide.instance.InstanceModel;
-	using SingleDecision = org.maltparser.parser.history.action.SingleDecision;
-	using KBestList = org.maltparser.parser.history.kbest.KBestList;
-	using ScoredKBestList = org.maltparser.parser.history.kbest.ScoredKBestList;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.ml.liblinear;
+	using  org.maltparser.parser;
+	using  org.maltparser.parser.guide.instance;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.kbest;
+	using  org.maltparser.parser.history.kbest;
 
 	/// <summary>
 	/// Implements an interface to the LIBSVM learner (currently the LIBSVM 2.91 is used). More information

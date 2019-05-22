@@ -4,17 +4,17 @@ using System.Text;
 namespace org.maltparser.parser.history
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashMap = org.maltparser.core.helper.HashMap;
-	using ObjectPoolList = org.maltparser.core.pool.ObjectPoolList;
-	using TableHandler = org.maltparser.core.symbol.TableHandler;
-	using ActionDecision = org.maltparser.parser.history.action.ActionDecision;
-	using ComplexDecisionAction = org.maltparser.parser.history.action.ComplexDecisionAction;
-	using GuideDecision = org.maltparser.parser.history.action.GuideDecision;
-	using GuideUserAction = org.maltparser.parser.history.action.GuideUserAction;
-	using ActionContainer = org.maltparser.parser.history.container.ActionContainer;
-	using CombinedTableContainer = org.maltparser.parser.history.container.CombinedTableContainer;
-	using TableContainer = org.maltparser.parser.history.container.TableContainer;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.pool;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.container;
+	using  org.maltparser.parser.history.container;
+	using  org.maltparser.parser.history.container;
 
 	/// 
 	/// <summary>

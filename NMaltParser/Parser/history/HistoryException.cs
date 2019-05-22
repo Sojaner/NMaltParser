@@ -2,7 +2,7 @@
 
 namespace org.maltparser.parser.history
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 
 	/// <summary>

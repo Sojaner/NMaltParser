@@ -1,8 +1,8 @@
 ﻿namespace org.maltparser.core.syntaxgraph
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using ComparableNode = org.maltparser.core.syntaxgraph.node.ComparableNode;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.syntaxgraph.node;
 	/// 
 	/// 
 	/// <summary>

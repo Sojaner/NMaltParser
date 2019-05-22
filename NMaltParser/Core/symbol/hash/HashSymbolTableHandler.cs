@@ -4,8 +4,8 @@ using System.IO;
 namespace org.maltparser.core.symbol.hash
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashMap = org.maltparser.core.helper.HashMap;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
 
 
 	public class HashSymbolTableHandler : SymbolTableHandler

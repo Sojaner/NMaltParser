@@ -1,8 +1,8 @@
 ﻿namespace org.maltparser.parser.algorithm.nivre
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using OracleGuide = org.maltparser.parser.guide.OracleGuide;
-	using GuideUserHistory = org.maltparser.parser.history.GuideUserHistory;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.parser.guide;
+	using  org.maltparser.parser.history;
 	/// <summary>
 	/// @author Johan Hall
 	/// 

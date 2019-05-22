@@ -1,7 +1,7 @@
 ﻿namespace org.maltparser.core.syntaxgraph.edge
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using Node = org.maltparser.core.syntaxgraph.node.Node;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.syntaxgraph.node;
 	/// 
 	/// 
 	/// <summary>

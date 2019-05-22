@@ -4,8 +4,8 @@ using System.Text;
 namespace org.maltparser.core.syntaxgraph.node
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.syntaxgraph.edge;
 
 
 

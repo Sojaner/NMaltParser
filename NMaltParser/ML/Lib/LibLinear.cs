@@ -4,18 +4,18 @@ using System.IO;
 namespace org.maltparser.ml.lib
 {
 
-	using FeatureNode = de.bwaldvogel.liblinear.FeatureNode;
-	using Linear = de.bwaldvogel.liblinear.Linear;
-	using Model = de.bwaldvogel.liblinear.Model;
-	using Parameter = de.bwaldvogel.liblinear.Parameter;
-	using Problem = de.bwaldvogel.liblinear.Problem;
-	using SolverType = de.bwaldvogel.liblinear.SolverType;
+	using  de.bwaldvogel.liblinear;
+	using  de.bwaldvogel.liblinear;
+	using  de.bwaldvogel.liblinear;
+	using  de.bwaldvogel.liblinear;
+	using  de.bwaldvogel.liblinear;
+	using  de.bwaldvogel.liblinear;
 
-	using Configuration = org.maltparser.core.config.Configuration;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using NoPrintStream = org.maltparser.core.helper.NoPrintStream;
-	using Util = org.maltparser.core.helper.Util;
-	using InstanceModel = org.maltparser.parser.guide.instance.InstanceModel;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.parser.guide.instance;
 
 	public class LibLinear : Lib
 	{

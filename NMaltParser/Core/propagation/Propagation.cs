@@ -4,14 +4,14 @@ using System.Text;
 namespace org.maltparser.core.propagation
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using ColumnDescription = org.maltparser.core.io.dataformat.ColumnDescription;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using PropagationSpec = org.maltparser.core.propagation.spec.PropagationSpec;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.propagation.spec;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.syntaxgraph.node;
 
 	/// <summary>
 	/// A propagation object propagate a column value from one node to a column in another node based on the propagation specification. 

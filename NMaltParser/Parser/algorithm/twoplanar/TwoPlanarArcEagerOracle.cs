@@ -4,12 +4,12 @@ using System.Collections.Generic;
 namespace org.maltparser.parser.algorithm.twoplanar
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
-	using GuideUserHistory = org.maltparser.parser.history.GuideUserHistory;
-	using GuideUserAction = org.maltparser.parser.history.action.GuideUserAction;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.parser.history;
+	using  org.maltparser.parser.history.action;
 	/// <summary>
 	/// @author Carlos Gomez Rodriguez
 	/// 

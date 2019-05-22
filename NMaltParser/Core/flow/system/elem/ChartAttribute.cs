@@ -2,8 +2,8 @@
 
 namespace org.maltparser.core.flow.system.elem
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using Element = org.w3c.dom.Element;
+	using  org.maltparser.core.exception;
+	using  org.w3c.dom;
 	/// 
 	/// 
 	/// <summary>

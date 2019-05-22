@@ -4,14 +4,14 @@ using System.Collections.Generic;
 namespace org.maltparser.transform.pseudo
 {
 
-	using Logger = org.apache.log4j.Logger;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using ColumnDescription = org.maltparser.core.io.dataformat.ColumnDescription;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
+	using  org.apache.log4j;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph.node;
 
 	/// <summary>
 	/// This class contains methods for projectivizing and deprojectivizing

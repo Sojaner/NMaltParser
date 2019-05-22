@@ -3,10 +3,10 @@
 namespace org.maltparser.parser.history
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using GuideUserAction = org.maltparser.parser.history.action.GuideUserAction;
-	using ActionContainer = org.maltparser.parser.history.container.ActionContainer;
-	using TableContainer = org.maltparser.parser.history.container.TableContainer;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.container;
+	using  org.maltparser.parser.history.container;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

@@ -6,17 +6,17 @@ using System.IO;
 namespace org.maltparser.core.syntaxgraph.writer
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
-	using Util = org.maltparser.core.helper.Util;
-	using ColumnDescription = org.maltparser.core.io.dataformat.ColumnDescription;
-	using DataFormatException = org.maltparser.core.io.dataformat.DataFormatException;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using NonTerminalNode = org.maltparser.core.syntaxgraph.node.NonTerminalNode;
-	using PhraseStructureNode = org.maltparser.core.syntaxgraph.node.PhraseStructureNode;
-	using TokenNode = org.maltparser.core.syntaxgraph.node.TokenNode;
-	using TigerXMLHeader = org.maltparser.core.syntaxgraph.reader.TigerXMLHeader;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.core.syntaxgraph.reader;
 	/// 
 	/// 
 	/// <summary>

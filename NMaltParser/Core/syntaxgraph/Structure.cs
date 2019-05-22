@@ -1,6 +1,6 @@
 ﻿namespace org.maltparser.core.syntaxgraph
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 	/// 
 	/// 
 	/// <summary>

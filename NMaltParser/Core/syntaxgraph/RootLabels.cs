@@ -3,8 +3,8 @@
 namespace org.maltparser.core.syntaxgraph
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.symbol;
 
 	/// 
 	/// 

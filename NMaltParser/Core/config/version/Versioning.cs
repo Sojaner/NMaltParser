@@ -4,8 +4,8 @@ using System.Text;
 namespace org.maltparser.core.config.version
 {
 
-	using SystemInfo = org.maltparser.core.helper.SystemInfo;
-	using SystemLogger = org.maltparser.core.helper.SystemLogger;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
 
 	public class Versioning
 	{

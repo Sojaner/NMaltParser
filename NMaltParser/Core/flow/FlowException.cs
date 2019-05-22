@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.flow
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 	/// <summary>
 	///  FlowException extends the MaltChainedException class and is thrown by classes
 	///  within the flow package.

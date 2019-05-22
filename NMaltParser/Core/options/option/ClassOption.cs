@@ -5,8 +5,8 @@ using System.Text;
 namespace org.maltparser.core.options.option
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using PluginLoader = org.maltparser.core.plugin.PluginLoader;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.plugin;
 
 	/// <summary>
 	/// A class type option is an option that can only contain string value that corresponds to a class. 

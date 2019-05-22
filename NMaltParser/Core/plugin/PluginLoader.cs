@@ -4,7 +4,7 @@ using System.Text;
 
 namespace org.maltparser.core.plugin
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// <summary>
 	/// Loads MaltParser plug-ins and makes new instances of classes within these plug-ins. 

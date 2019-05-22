@@ -6,20 +6,20 @@ using System.IO;
 namespace org.maltparser.core.config
 {
 
-	using Versioning = org.maltparser.core.config.version.Versioning;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashSet = org.maltparser.core.helper.HashSet;
-	using SystemInfo = org.maltparser.core.helper.SystemInfo;
-	using SystemLogger = org.maltparser.core.helper.SystemLogger;
-	using URLFinder = org.maltparser.core.helper.URLFinder;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using DataFormatManager = org.maltparser.core.io.dataformat.DataFormatManager;
-	using DataStructure = org.maltparser.core.io.dataformat.DataFormatSpecification.DataStructure;
-	using Dependency = org.maltparser.core.io.dataformat.DataFormatSpecification.Dependency;
-	using OptionManager = org.maltparser.core.options.OptionManager;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using HashSymbolTableHandler = org.maltparser.core.symbol.hash.HashSymbolTableHandler;
-	using ParseSymbolTableHandler = org.maltparser.core.symbol.parse.ParseSymbolTableHandler;
+	using  org.maltparser.core.config.version;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
+	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
+	using  org.maltparser.core.options;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol.hash;
+	using  org.maltparser.core.symbol.parse;
 
 	/// <summary>
 	/// This class contains methods for handle the configuration directory.

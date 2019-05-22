@@ -5,7 +5,7 @@ using System.IO;
 namespace org.maltparser.concurrent.test
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// 
 	/// <summary>

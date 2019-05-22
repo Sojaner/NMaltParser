@@ -3,7 +3,7 @@ using System.Text;
 
 namespace org.maltparser.core.options.option
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// <summary>
 	/// A boolean option is an option that can only contain a boolean value (true or false). 

@@ -5,20 +5,20 @@ using System.IO;
 namespace org.maltparser.core.lw.parser
 {
 
-	using DataFormat = org.maltparser.concurrent.graph.dataformat.DataFormat;
-	using ConfigurationException = org.maltparser.core.config.ConfigurationException;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureModelManager = org.maltparser.core.feature.FeatureModelManager;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using LWDependencyGraph = org.maltparser.core.lw.graph.LWDependencyGraph;
-	using LWDeprojectivizer = org.maltparser.core.lw.graph.LWDeprojectivizer;
-	using OptionManager = org.maltparser.core.options.OptionManager;
-	using PropagationManager = org.maltparser.core.propagation.PropagationManager;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using ParseSymbolTableHandler = org.maltparser.core.symbol.parse.ParseSymbolTableHandler;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using AbstractParserFactory = org.maltparser.parser.AbstractParserFactory;
-	using DependencyParserConfig = org.maltparser.parser.DependencyParserConfig;
+	using  org.maltparser.concurrent.graph.dataformat;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.lw.graph;
+	using  org.maltparser.core.lw.graph;
+	using  org.maltparser.core.options;
+	using  org.maltparser.core.propagation;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol.parse;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.parser;
+	using  org.maltparser.parser;
 
 	/// <summary>
 	///  A lightweight version of org.maltparser.parser.SingleMalt. This class can only perform parsing and is used by 

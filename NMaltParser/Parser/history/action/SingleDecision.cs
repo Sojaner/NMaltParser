@@ -1,9 +1,9 @@
 ﻿namespace org.maltparser.parser.history.action
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using TableContainer = org.maltparser.parser.history.container.TableContainer;
-	using RelationToNextDecision = org.maltparser.parser.history.container.TableContainer.RelationToNextDecision;
-	using KBestList = org.maltparser.parser.history.kbest.KBestList;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.parser.history.container;
+	using  org.maltparser.parser.history.container.TableContainer;
+	using  org.maltparser.parser.history.kbest;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

@@ -4,7 +4,7 @@ using System.Text;
 namespace org.maltparser.core.pool
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	public abstract class ObjectPoolList<T> : ObjectPool<T>
 	{

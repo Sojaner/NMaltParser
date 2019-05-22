@@ -4,7 +4,7 @@ namespace org.maltparser.ml.lib
 {
 
 
-	using HashMap = org.maltparser.core.helper.HashMap;
+	using  org.maltparser.core.helper;
 
 	/// <summary>
 	/// The purpose of the feature map is to map MaltParser's column based features together with the symbol code from the symbol table to 

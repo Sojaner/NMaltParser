@@ -6,8 +6,8 @@ namespace org.maltparser.core.helper
 {
 
 
-	using Logger = org.apache.log4j.Logger;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.apache.log4j;
+	using  org.maltparser.core.exception;
 
 	/// 
 	/// 

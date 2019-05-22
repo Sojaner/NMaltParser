@@ -3,12 +3,12 @@
 namespace org.maltparser.core.propagation
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using PropagationSpec = org.maltparser.core.propagation.spec.PropagationSpec;
-	using PropagationSpecs = org.maltparser.core.propagation.spec.PropagationSpecs;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.propagation.spec;
+	using  org.maltparser.core.propagation.spec;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph.edge;
 
 	public class Propagations
 	{

@@ -2,12 +2,12 @@
 
 namespace org.maltparser.parser
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using LabelSet = org.maltparser.core.syntaxgraph.LabelSet;
-	using OracleGuide = org.maltparser.parser.guide.OracleGuide;
-	using GuideUserHistory = org.maltparser.parser.history.GuideUserHistory;
-	using GuideUserAction = org.maltparser.parser.history.action.GuideUserAction;
-	using ActionContainer = org.maltparser.parser.history.container.ActionContainer;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.parser.guide;
+	using  org.maltparser.parser.history;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.container;
 	/// <summary>
 	/// @author Johan Hall
 	/// 

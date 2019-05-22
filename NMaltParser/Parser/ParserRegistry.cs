@@ -2,11 +2,11 @@
 
 namespace org.maltparser.parser
 {
-	using AbstractFeatureFactory = org.maltparser.core.feature.AbstractFeatureFactory;
-	using FeatureRegistry = org.maltparser.core.feature.FeatureRegistry;
-	using HashMap = org.maltparser.core.helper.HashMap;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.symbol;
 
 	public class ParserRegistry : FeatureRegistry
 	{

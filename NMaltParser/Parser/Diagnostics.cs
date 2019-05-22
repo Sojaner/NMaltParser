@@ -3,7 +3,7 @@
 namespace org.maltparser.parser
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	public class Diagnostics
 	{

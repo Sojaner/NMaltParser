@@ -1,8 +1,8 @@
 ﻿namespace org.maltparser.parser.history
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using GuideUserAction = org.maltparser.parser.history.action.GuideUserAction;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.parser.history.action;
 
 	/// 
 	/// <summary>

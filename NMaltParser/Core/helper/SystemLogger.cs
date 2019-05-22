@@ -1,9 +1,9 @@
 ﻿namespace org.maltparser.core.helper
 {
-	using ConsoleAppender = org.apache.log4j.ConsoleAppender;
-	using Level = org.apache.log4j.Level;
-	using Logger = org.apache.log4j.Logger;
-	using PatternLayout = org.apache.log4j.PatternLayout;
+	using  org.apache.log4j;
+	using  org.apache.log4j;
+	using  org.apache.log4j;
+	using  org.apache.log4j;
 
 	/// 
 	/// 

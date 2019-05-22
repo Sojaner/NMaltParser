@@ -3,15 +3,15 @@ using System.Text;
 
 namespace org.maltparser.core.syntaxgraph.feature
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using AddressFunction = org.maltparser.core.feature.function.AddressFunction;
-	using AddressValue = org.maltparser.core.feature.value.AddressValue;
-	using ColumnDescription = org.maltparser.core.io.dataformat.ColumnDescription;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using TableFeature = org.maltparser.core.symbol.TableFeature;
-	using NullValueId = org.maltparser.core.symbol.nullvalue.NullValues.NullValueId;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol.nullvalue.NullValues;
+	using  org.maltparser.core.syntaxgraph.node;
 	/// 
 	/// 
 	/// <summary>

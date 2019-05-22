@@ -2,9 +2,9 @@
 
 namespace org.maltparser.parser.history
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using ObjectPoolList = org.maltparser.core.pool.ObjectPoolList;
-	using GuideUserAction = org.maltparser.parser.history.action.GuideUserAction;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.pool;
+	using  org.maltparser.parser.history.action;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

@@ -1,10 +1,10 @@
 ﻿namespace org.maltparser.core.io.dataformat
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashMap = org.maltparser.core.helper.HashMap;
-	using URLFinder = org.maltparser.core.helper.URLFinder;
-	using Dependency = org.maltparser.core.io.dataformat.DataFormatSpecification.Dependency;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
 
 	public class DataFormatManager
 	{

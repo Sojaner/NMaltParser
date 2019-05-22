@@ -5,13 +5,13 @@ namespace org.maltparser.core.io.dataformat
 {
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashSet = org.maltparser.core.helper.HashSet;
-	using URLFinder = org.maltparser.core.helper.URLFinder;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using Element = org.w3c.dom.Element;
-	using NodeList = org.w3c.dom.NodeList;
-	using SAXException = org.xml.sax.SAXException;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.symbol;
+	using  org.w3c.dom;
+	using  org.w3c.dom;
+	using  org.xml.sax;
 
 	/// 
 	/// 

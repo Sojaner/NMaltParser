@@ -6,12 +6,12 @@ using System.IO;
 namespace org.maltparser.core.lw.helper
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using ColumnDescription = org.maltparser.core.io.dataformat.ColumnDescription;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using DependencyGraph = org.maltparser.core.syntaxgraph.DependencyGraph;
-	using TokenNode = org.maltparser.core.syntaxgraph.node.TokenNode;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph.node;
 
 	/// <summary>
 	/// @author Johan Hall

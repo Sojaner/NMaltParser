@@ -3,8 +3,8 @@
 namespace org.maltparser.core.syntaxgraph
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using TokenNode = org.maltparser.core.syntaxgraph.node.TokenNode;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.syntaxgraph.node;
 
 	/// 
 	/// 

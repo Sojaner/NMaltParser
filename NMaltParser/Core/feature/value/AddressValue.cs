@@ -3,7 +3,7 @@ using System.Text;
 
 namespace org.maltparser.core.feature.value
 {
-	using Function = org.maltparser.core.feature.function.Function;
+	using  org.maltparser.core.feature.function;
 	/// 
 	/// 
 	/// <summary>

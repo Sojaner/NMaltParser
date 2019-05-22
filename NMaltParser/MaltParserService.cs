@@ -4,20 +4,20 @@ using System.Text;
 namespace org.maltparser
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FlowChartInstance = org.maltparser.core.flow.FlowChartInstance;
-	using ColumnDescription = org.maltparser.core.io.dataformat.ColumnDescription;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using DataFormatSpecification = org.maltparser.core.io.dataformat.DataFormatSpecification;
-	using OptionManager = org.maltparser.core.options.OptionManager;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using HashSymbolTableHandler = org.maltparser.core.symbol.hash.HashSymbolTableHandler;
-	using DependencyGraph = org.maltparser.core.syntaxgraph.DependencyGraph;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
-	using SingleMalt = org.maltparser.parser.SingleMalt;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.flow;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.options;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol.hash;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.parser;
 
 	/// <summary>
 	/// The purpose of MaltParserService is to easily write third-party programs that uses MaltParser. 

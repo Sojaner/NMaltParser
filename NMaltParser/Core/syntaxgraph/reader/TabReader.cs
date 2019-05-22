@@ -4,11 +4,11 @@ using System.IO;
 namespace org.maltparser.core.syntaxgraph.reader
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using ColumnDescription = org.maltparser.core.io.dataformat.ColumnDescription;
-	using DataFormatException = org.maltparser.core.io.dataformat.DataFormatException;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.syntaxgraph.edge;
 	/// 
 	/// 
 	/// <summary>

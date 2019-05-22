@@ -2,8 +2,8 @@
 
 namespace org.maltparser.core.feature.function
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using AddressValue = org.maltparser.core.feature.value.AddressValue;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature.value;
 
 	/// 
 	/// 

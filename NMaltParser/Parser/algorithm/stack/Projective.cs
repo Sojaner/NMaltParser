@@ -3,15 +3,15 @@
 namespace org.maltparser.parser.algorithm.stack
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using PropagationManager = org.maltparser.core.propagation.PropagationManager;
-	using LabelSet = org.maltparser.core.syntaxgraph.LabelSet;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
-	using GuideUserHistory = org.maltparser.parser.history.GuideUserHistory;
-	using ComplexDecisionAction = org.maltparser.parser.history.action.ComplexDecisionAction;
-	using GuideUserAction = org.maltparser.parser.history.action.GuideUserAction;
-	using TransitionTable = org.maltparser.parser.transition.TransitionTable;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.propagation;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.parser.history;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.transition;
 	/// <summary>
 	/// @author Johan Hall
 	/// 

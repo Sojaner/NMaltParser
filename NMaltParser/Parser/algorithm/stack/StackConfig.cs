@@ -4,9 +4,9 @@ using System.Text;
 namespace org.maltparser.parser.algorithm.stack
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph.node;
 	/// <summary>
 	/// @author Johan Hall
 	/// 

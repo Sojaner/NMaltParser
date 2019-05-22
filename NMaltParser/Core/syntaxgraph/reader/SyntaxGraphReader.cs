@@ -3,8 +3,8 @@
 namespace org.maltparser.core.syntaxgraph.reader
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.io.dataformat;
 
 	/// 
 	/// 

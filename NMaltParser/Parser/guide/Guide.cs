@@ -1,7 +1,7 @@
 ﻿namespace org.maltparser.parser.guide
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.syntaxgraph;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

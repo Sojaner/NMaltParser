@@ -5,9 +5,9 @@ using System.IO;
 namespace org.maltparser.ml.lib
 {
 
-	using Util = org.maltparser.core.helper.Util;
+	using  org.maltparser.core.helper;
 
-	using SolverType = de.bwaldvogel.liblinear.SolverType;
+	using  de.bwaldvogel.liblinear;
 
 	/// <summary>
 	/// <para>This class borrows code from liblinear.Model.java of the Java implementation of the liblinear package.

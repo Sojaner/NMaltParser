@@ -5,16 +5,16 @@ using System.Text;
 namespace org.maltparser.parser.guide.instance
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureModel = org.maltparser.core.feature.FeatureModel;
-	using FeatureVector = org.maltparser.core.feature.FeatureVector;
-	using FeatureFunction = org.maltparser.core.feature.function.FeatureFunction;
-	using Modifiable = org.maltparser.core.feature.function.Modifiable;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using LearningMethod = org.maltparser.ml.LearningMethod;
-	using LibLinear = org.maltparser.ml.lib.LibLinear;
-	using LibSvm = org.maltparser.ml.lib.LibSvm;
-	using SingleDecision = org.maltparser.parser.history.action.SingleDecision;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.ml;
+	using  org.maltparser.ml.lib;
+	using  org.maltparser.ml.lib;
+	using  org.maltparser.parser.history.action;
 
 
 	/// 

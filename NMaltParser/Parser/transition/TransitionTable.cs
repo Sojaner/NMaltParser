@@ -3,10 +3,10 @@
 namespace org.maltparser.parser.transition
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashMap = org.maltparser.core.helper.HashMap;
-	using Table = org.maltparser.core.symbol.Table;
-	using DecisionPropertyTable = org.maltparser.parser.history.container.DecisionPropertyTable;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.parser.history.container;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

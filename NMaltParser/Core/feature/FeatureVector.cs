@@ -5,10 +5,10 @@ using System.Text;
 namespace org.maltparser.core.feature
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureFunction = org.maltparser.core.feature.function.FeatureFunction;
-	using SpecificationSubModel = org.maltparser.core.feature.spec.SpecificationSubModel;
-	using FeatureValue = org.maltparser.core.feature.value.FeatureValue;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.spec;
+	using  org.maltparser.core.feature.value;
 
 	/// 
 	/// 

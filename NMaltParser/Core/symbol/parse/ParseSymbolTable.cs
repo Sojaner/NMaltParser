@@ -5,9 +5,9 @@ using System.IO;
 namespace org.maltparser.core.symbol.parse
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashMap = org.maltparser.core.helper.HashMap;
-	using NullValueId = org.maltparser.core.symbol.nullvalue.NullValues.NullValueId;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.symbol.nullvalue.NullValues;
 
 
 	public class ParseSymbolTable : SymbolTable

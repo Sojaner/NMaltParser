@@ -1,8 +1,8 @@
 ﻿namespace org.maltparser.parser.guide
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using GuideUserAction = org.maltparser.parser.history.action.GuideUserAction;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.parser.history.action;
 
 	public interface OracleGuide : Guide
 	{

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace org.maltparser.core.io.dataformat
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// 
 	/// 

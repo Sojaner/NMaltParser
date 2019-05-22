@@ -1,8 +1,8 @@
 ﻿namespace org.maltparser.parser
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph;
 	/// <summary>
 	/// @author Johan Hall
 	/// 

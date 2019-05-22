@@ -5,11 +5,11 @@ using System.Text;
 namespace org.maltparser.core.flow.spec
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using ChartItem = org.maltparser.core.flow.item.ChartItem;
-	using Attr = org.w3c.dom.Attr;
-	using Element = org.w3c.dom.Element;
-	using NamedNodeMap = org.w3c.dom.NamedNodeMap;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.flow.item;
+	using  org.w3c.dom;
+	using  org.w3c.dom;
+	using  org.w3c.dom;
 	/// 
 	/// 
 	/// <summary>

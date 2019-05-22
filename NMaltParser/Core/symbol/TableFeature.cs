@@ -2,12 +2,12 @@
 
 namespace org.maltparser.core.symbol
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureFunction = org.maltparser.core.feature.function.FeatureFunction;
-	using Modifiable = org.maltparser.core.feature.function.Modifiable;
-	using FeatureValue = org.maltparser.core.feature.value.FeatureValue;
-	using SingleFeatureValue = org.maltparser.core.feature.value.SingleFeatureValue;
-	using NullValueId = org.maltparser.core.symbol.nullvalue.NullValues.NullValueId;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.symbol.nullvalue.NullValues;
 
 	public abstract class TableFeature : FeatureFunction, Modifiable
 	{

@@ -7,15 +7,15 @@ namespace org.maltparser.core.feature.system
 {
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using Function = org.maltparser.core.feature.function.Function;
-	using HashMap = org.maltparser.core.helper.HashMap;
-	using URLFinder = org.maltparser.core.helper.URLFinder;
-	using Plugin = org.maltparser.core.plugin.Plugin;
-	using PluginLoader = org.maltparser.core.plugin.PluginLoader;
-	using Element = org.w3c.dom.Element;
-	using NodeList = org.w3c.dom.NodeList;
-	using SAXException = org.xml.sax.SAXException;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.plugin;
+	using  org.maltparser.core.plugin;
+	using  org.w3c.dom;
+	using  org.w3c.dom;
+	using  org.xml.sax;
 	/// 
 	/// 
 	/// <summary>

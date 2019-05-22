@@ -1,9 +1,9 @@
 ﻿namespace org.maltparser.parser.guide.instance
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureVector = org.maltparser.core.feature.FeatureVector;
-	using SingleDecision = org.maltparser.parser.history.action.SingleDecision;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.parser.history.action;
 
 	public interface InstanceModel : Model
 	{

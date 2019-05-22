@@ -2,7 +2,7 @@
 
 namespace org.maltparser.ml.cheater
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// <summary>
 	///  CheaterException extends the MaltChainedException class and is thrown by classes

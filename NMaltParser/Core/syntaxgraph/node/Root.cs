@@ -6,12 +6,12 @@ namespace org.maltparser.core.syntaxgraph.node
 {
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using SystemLogger = org.maltparser.core.helper.SystemLogger;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using Direction = org.maltparser.core.syntaxgraph.headrules.Direction;
-	using HeadRules = org.maltparser.core.syntaxgraph.headrules.HeadRules;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.syntaxgraph.headrules;
+	using  org.maltparser.core.syntaxgraph.headrules;
 
 
 	public class Root : GraphNode, DependencyNode, PhraseStructureNode, NonTerminalNode

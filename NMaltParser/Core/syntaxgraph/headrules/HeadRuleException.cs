@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.syntaxgraph.headrules
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// <summary>
 	///  HeadRuleException extends the MaltChainedException class and is thrown by classes

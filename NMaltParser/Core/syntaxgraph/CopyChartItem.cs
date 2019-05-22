@@ -4,14 +4,14 @@ using System.Text;
 namespace org.maltparser.core.syntaxgraph
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FlowChartInstance = org.maltparser.core.flow.FlowChartInstance;
-	using ChartItem = org.maltparser.core.flow.item.ChartItem;
-	using ChartItemSpecification = org.maltparser.core.flow.spec.ChartItemSpecification;
-	using OptionManager = org.maltparser.core.options.OptionManager;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.flow;
+	using  org.maltparser.core.flow.item;
+	using  org.maltparser.core.flow.spec;
+	using  org.maltparser.core.options;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.syntaxgraph.node;
 	/// 
 	/// 
 	/// <summary>

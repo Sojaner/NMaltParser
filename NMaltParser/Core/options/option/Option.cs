@@ -4,7 +4,7 @@ using System.Text;
 namespace org.maltparser.core.options.option
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// <summary>
 	/// Abstract class that contains description of an option that are the same over all option types.

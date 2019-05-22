@@ -4,20 +4,20 @@ using System.Text;
 namespace org.maltparser.core.lw.graph
 {
 
-	using ColumnDescription = org.maltparser.concurrent.graph.dataformat.ColumnDescription;
-	using DataFormat = org.maltparser.concurrent.graph.dataformat.DataFormat;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashMap = org.maltparser.core.helper.HashMap;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using Element = org.maltparser.core.syntaxgraph.Element;
-	using LabelSet = org.maltparser.core.syntaxgraph.LabelSet;
-	using RootLabels = org.maltparser.core.syntaxgraph.RootLabels;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using ComparableNode = org.maltparser.core.syntaxgraph.node.ComparableNode;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
-	using TokenNode = org.maltparser.core.syntaxgraph.node.TokenNode;
+	using  org.maltparser.concurrent.graph.dataformat;
+	using  org.maltparser.concurrent.graph.dataformat;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.core.syntaxgraph.node;
 
 	/// <summary>
 	/// A lightweight version of org.maltparser.core.syntaxgraph.DependencyGraph.

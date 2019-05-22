@@ -6,8 +6,8 @@ using System.IO;
 namespace org.maltparser.core.lw.parser
 {
 
-	using HashMap = org.maltparser.core.helper.HashMap;
-	using HashSet = org.maltparser.core.helper.HashSet;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
 
 	/// <summary>
 	/// @author Johan Hall

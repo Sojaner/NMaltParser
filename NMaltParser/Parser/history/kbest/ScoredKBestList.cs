@@ -1,7 +1,7 @@
 ﻿namespace org.maltparser.parser.history.kbest
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using SingleDecision = org.maltparser.parser.history.action.SingleDecision;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.parser.history.action;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

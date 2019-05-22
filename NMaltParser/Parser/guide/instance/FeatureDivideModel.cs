@@ -6,12 +6,12 @@ namespace org.maltparser.parser.guide.instance
 {
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureModel = org.maltparser.core.feature.FeatureModel;
-	using FeatureVector = org.maltparser.core.feature.FeatureVector;
-	using SingleFeatureValue = org.maltparser.core.feature.value.SingleFeatureValue;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using SingleDecision = org.maltparser.parser.history.action.SingleDecision;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.parser.history.action;
 
 	/// <summary>
 	/// The feature divide model is used for divide the training instances into several models according to

@@ -3,17 +3,17 @@ using System.Text;
 
 namespace org.maltparser.core.feature.map
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureFunction = org.maltparser.core.feature.function.FeatureFunction;
-	using FeatureMapFunction = org.maltparser.core.feature.function.FeatureMapFunction;
-	using FeatureValue = org.maltparser.core.feature.value.FeatureValue;
-	using FunctionValue = org.maltparser.core.feature.value.FunctionValue;
-	using MultipleFeatureValue = org.maltparser.core.feature.value.MultipleFeatureValue;
-	using SingleFeatureValue = org.maltparser.core.feature.value.SingleFeatureValue;
-	using ColumnDescription = org.maltparser.core.io.dataformat.ColumnDescription;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
 	/// 
 	/// 
 	/// <summary>

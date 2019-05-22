@@ -3,9 +3,9 @@ using System.Text;
 
 namespace org.maltparser.parser.algorithm.nivre
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using AddressFunction = org.maltparser.core.feature.function.AddressFunction;
-	using AddressValue = org.maltparser.core.feature.value.AddressValue;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.value;
 
 	/// 
 	/// <summary>

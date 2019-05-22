@@ -1,9 +1,9 @@
 ﻿namespace org.maltparser.parser.guide
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureModel = org.maltparser.core.feature.FeatureModel;
-	using FeatureVector = org.maltparser.core.feature.FeatureVector;
-	using GuideDecision = org.maltparser.parser.history.action.GuideDecision;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.parser.history.action;
 
 	public interface ClassifierGuide : Guide
 	{

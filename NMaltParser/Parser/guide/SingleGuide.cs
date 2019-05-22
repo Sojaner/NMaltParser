@@ -3,18 +3,18 @@
 namespace org.maltparser.parser.guide
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureModel = org.maltparser.core.feature.FeatureModel;
-	using FeatureVector = org.maltparser.core.feature.FeatureVector;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using BranchedDecisionModel = org.maltparser.parser.guide.decision.BranchedDecisionModel;
-	using DecisionModel = org.maltparser.parser.guide.decision.DecisionModel;
-	using OneDecisionModel = org.maltparser.parser.guide.decision.OneDecisionModel;
-	using SeqDecisionModel = org.maltparser.parser.guide.decision.SeqDecisionModel;
-	using GuideDecision = org.maltparser.parser.history.action.GuideDecision;
-	using MultipleDecision = org.maltparser.parser.history.action.MultipleDecision;
-	using SingleDecision = org.maltparser.parser.history.action.SingleDecision;
-	using RelationToNextDecision = org.maltparser.parser.history.container.TableContainer.RelationToNextDecision;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.parser.guide.decision;
+	using  org.maltparser.parser.guide.decision;
+	using  org.maltparser.parser.guide.decision;
+	using  org.maltparser.parser.guide.decision;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.container.TableContainer;
 
 
 	/// <summary>

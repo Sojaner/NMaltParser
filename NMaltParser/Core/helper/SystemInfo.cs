@@ -3,7 +3,7 @@
 namespace org.maltparser.core.helper
 {
 
-	using OptionManager = org.maltparser.core.options.OptionManager;
+	using  org.maltparser.core.options;
 
 	/// 
 	/// 

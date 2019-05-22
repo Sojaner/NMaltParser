@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.options.option
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// <summary>
 	/// A string option is an option that contains a string value. 

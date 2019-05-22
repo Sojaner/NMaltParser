@@ -4,11 +4,11 @@ using System.Text;
 namespace org.maltparser.core.flow.system.elem
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using ChartItem = org.maltparser.core.flow.item.ChartItem;
-	using PluginLoader = org.maltparser.core.plugin.PluginLoader;
-	using Element = org.w3c.dom.Element;
-	using NodeList = org.w3c.dom.NodeList;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.flow.item;
+	using  org.maltparser.core.plugin;
+	using  org.w3c.dom;
+	using  org.w3c.dom;
 	/// 
 	/// 
 	/// <summary>

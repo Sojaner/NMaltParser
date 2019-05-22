@@ -4,9 +4,9 @@ using System.Text;
 namespace org.maltparser.core.io.dataformat
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
 
 	/// 
 	/// 

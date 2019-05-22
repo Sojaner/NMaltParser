@@ -3,11 +3,11 @@
 namespace org.maltparser.parser.algorithm.stack
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
-	using GuideUserHistory = org.maltparser.parser.history.GuideUserHistory;
-	using GuideUserAction = org.maltparser.parser.history.action.GuideUserAction;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.parser.history;
+	using  org.maltparser.parser.history.action;
 	/// <summary>
 	/// @author Johan Hall
 	/// 

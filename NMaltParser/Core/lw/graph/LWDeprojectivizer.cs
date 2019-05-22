@@ -4,11 +4,11 @@ using System.Collections.Generic;
 namespace org.maltparser.core.lw.graph
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.syntaxgraph.node;
 
 	/// <summary>
 	/// A lightweight version of pseudo projectivity and this class can only perform deprojectivizing. The class is based on 

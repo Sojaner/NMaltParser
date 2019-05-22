@@ -3,9 +3,9 @@
 namespace org.maltparser.core.flow.spec
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using Element = org.w3c.dom.Element;
-	using NodeList = org.w3c.dom.NodeList;
+	using  org.maltparser.core.exception;
+	using  org.w3c.dom;
+	using  org.w3c.dom;
 	/// 
 	/// 
 	/// <summary>

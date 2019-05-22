@@ -4,7 +4,7 @@ using System.Text;
 namespace org.maltparser.core.options
 {
 
-	using Option = org.maltparser.core.options.option.Option;
+	using  org.maltparser.core.options.option;
 
 	/// <summary>
 	/// OptionValues contain a number of option containers, which contains the option values (the instance of 

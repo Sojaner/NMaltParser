@@ -7,13 +7,13 @@ using System.IO;
 namespace org.maltparser
 {
 
-	using ConcurrentMaltParserModel = org.maltparser.concurrent.ConcurrentMaltParserModel;
-	using ConcurrentMaltParserService = org.maltparser.concurrent.ConcurrentMaltParserService;
-	using ConcurrentUtils = org.maltparser.concurrent.ConcurrentUtils;
-	using MaltParserRunnable = org.maltparser.concurrent.MaltParserRunnable;
-	using ConfigurationException = org.maltparser.core.config.ConfigurationException;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using OptionManager = org.maltparser.core.options.OptionManager;
+	using  org.maltparser.concurrent;
+	using  org.maltparser.concurrent;
+	using  org.maltparser.concurrent;
+	using  org.maltparser.concurrent;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.options;
 
 	public class ConcurrentEngine
 	{

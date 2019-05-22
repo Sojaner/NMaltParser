@@ -5,8 +5,8 @@ using System.Text;
 namespace org.maltparser.core.syntaxgraph.reader
 {
 
-	using Util = org.maltparser.core.helper.Util;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.symbol;
 	/// 
 	/// 
 	/// <summary>

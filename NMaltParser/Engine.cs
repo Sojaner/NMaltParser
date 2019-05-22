@@ -3,14 +3,14 @@
 namespace org.maltparser
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FlowChartInstance = org.maltparser.core.flow.FlowChartInstance;
-	using FlowChartManager = org.maltparser.core.flow.FlowChartManager;
-	using ChartItem = org.maltparser.core.flow.item.ChartItem;
-	using SystemLogger = org.maltparser.core.helper.SystemLogger;
-	using Util = org.maltparser.core.helper.Util;
-	using OptionManager = org.maltparser.core.options.OptionManager;
-	using PluginLoader = org.maltparser.core.plugin.PluginLoader;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.flow;
+	using  org.maltparser.core.flow;
+	using  org.maltparser.core.flow.item;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.options;
+	using  org.maltparser.core.plugin;
 
 
 	public class Engine

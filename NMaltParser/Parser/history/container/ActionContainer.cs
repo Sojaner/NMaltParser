@@ -3,8 +3,8 @@
 namespace org.maltparser.parser.history.container
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using Table = org.maltparser.core.symbol.Table;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.symbol;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

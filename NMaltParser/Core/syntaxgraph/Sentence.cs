@@ -4,12 +4,12 @@ using System.Text;
 namespace org.maltparser.core.syntaxgraph
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashMap = org.maltparser.core.helper.HashMap;
-	using ObjectPoolList = org.maltparser.core.pool.ObjectPoolList;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using Token = org.maltparser.core.syntaxgraph.node.Token;
-	using TokenNode = org.maltparser.core.syntaxgraph.node.TokenNode;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.pool;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.core.syntaxgraph.node;
 	/// 
 	/// 
 	/// <summary>

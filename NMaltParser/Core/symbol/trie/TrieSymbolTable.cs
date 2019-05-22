@@ -6,11 +6,11 @@ using System.IO;
 namespace org.maltparser.core.symbol.trie
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using InputNullValues = org.maltparser.core.symbol.nullvalue.InputNullValues;
-	using NullValues = org.maltparser.core.symbol.nullvalue.NullValues;
-	using OutputNullValues = org.maltparser.core.symbol.nullvalue.OutputNullValues;
-	using NullValueId = org.maltparser.core.symbol.nullvalue.NullValues.NullValueId;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.symbol.nullvalue;
+	using  org.maltparser.core.symbol.nullvalue;
+	using  org.maltparser.core.symbol.nullvalue;
+	using  org.maltparser.core.symbol.nullvalue.NullValues;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

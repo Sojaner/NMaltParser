@@ -4,17 +4,17 @@ using System.IO;
 namespace org.maltparser.ml.lib
 {
 
-	using Configuration = org.maltparser.core.config.Configuration;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using NoPrintStream = org.maltparser.core.helper.NoPrintStream;
-	using InstanceModel = org.maltparser.parser.guide.instance.InstanceModel;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.parser.guide.instance;
 
 
-	using svm = libsvm.svm;
-	using svm_model = libsvm.svm_model;
-	using svm_node = libsvm.svm_node;
-	using svm_parameter = libsvm.svm_parameter;
-	using svm_problem = libsvm.svm_problem;
+	using  libsvm;
+	using  libsvm;
+	using  libsvm;
+	using  libsvm;
+	using  libsvm;
 
 	public class LibSvm : Lib
 	{

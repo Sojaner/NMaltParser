@@ -5,14 +5,14 @@ using System.IO;
 namespace org.maltparser.core.lw.graph
 {
 
-	using ColumnDescription = org.maltparser.concurrent.graph.dataformat.ColumnDescription;
-	using DataFormat = org.maltparser.concurrent.graph.dataformat.DataFormat;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using HashSymbolTableHandler = org.maltparser.core.symbol.hash.HashSymbolTableHandler;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
+	using  org.maltparser.concurrent.graph.dataformat;
+	using  org.maltparser.concurrent.graph.dataformat;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol.hash;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.syntaxgraph.node;
 
 
 	public class LWTest

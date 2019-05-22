@@ -2,20 +2,20 @@
 
 namespace org.maltparser.core.syntaxgraph
 {
-	using ConfigurationDir = org.maltparser.core.config.ConfigurationDir;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FlowChartInstance = org.maltparser.core.flow.FlowChartInstance;
-	using FlowException = org.maltparser.core.flow.FlowException;
-	using ChartItem = org.maltparser.core.flow.item.ChartItem;
-	using ChartItemSpecification = org.maltparser.core.flow.spec.ChartItemSpecification;
-	using HashSet = org.maltparser.core.helper.HashSet;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using DataFormatManager = org.maltparser.core.io.dataformat.DataFormatManager;
-	using DataStructure = org.maltparser.core.io.dataformat.DataFormatSpecification.DataStructure;
-	using Dependency = org.maltparser.core.io.dataformat.DataFormatSpecification.Dependency;
-	using OptionManager = org.maltparser.core.options.OptionManager;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using LosslessMapping = org.maltparser.core.syntaxgraph.ds2ps.LosslessMapping;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.flow;
+	using  org.maltparser.core.flow;
+	using  org.maltparser.core.flow.item;
+	using  org.maltparser.core.flow.spec;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
+	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
+	using  org.maltparser.core.options;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph.ds2ps;
 	/// 
 	/// 
 	/// <summary>

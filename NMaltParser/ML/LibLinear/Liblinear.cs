@@ -6,30 +6,30 @@ using System.IO;
 namespace org.maltparser.ml.liblinear
 {
 
-	using FeatureNode = de.bwaldvogel.liblinear.FeatureNode;
-	using Linear = de.bwaldvogel.liblinear.Linear;
-	using Model = de.bwaldvogel.liblinear.Model;
-	using Parameter = de.bwaldvogel.liblinear.Parameter;
-	using Problem = de.bwaldvogel.liblinear.Problem;
-	using SolverType = de.bwaldvogel.liblinear.SolverType;
+	using  de.bwaldvogel.liblinear;
+	using  de.bwaldvogel.liblinear;
+	using  de.bwaldvogel.liblinear;
+	using  de.bwaldvogel.liblinear;
+	using  de.bwaldvogel.liblinear;
+	using  de.bwaldvogel.liblinear;
 
 
 
-	using Configuration = org.maltparser.core.config.Configuration;
-	using ConfigurationException = org.maltparser.core.config.ConfigurationException;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureVector = org.maltparser.core.feature.FeatureVector;
-	using FeatureFunction = org.maltparser.core.feature.function.FeatureFunction;
-	using FeatureValue = org.maltparser.core.feature.value.FeatureValue;
-	using MultipleFeatureValue = org.maltparser.core.feature.value.MultipleFeatureValue;
-	using SingleFeatureValue = org.maltparser.core.feature.value.SingleFeatureValue;
-	using NoPrintStream = org.maltparser.core.helper.NoPrintStream;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using DependencyParserConfig = org.maltparser.parser.DependencyParserConfig;
-	using InstanceModel = org.maltparser.parser.guide.instance.InstanceModel;
-	using SingleDecision = org.maltparser.parser.history.action.SingleDecision;
-	using KBestList = org.maltparser.parser.history.kbest.KBestList;
-	using ScoredKBestList = org.maltparser.parser.history.kbest.ScoredKBestList;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.parser;
+	using  org.maltparser.parser.guide.instance;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.kbest;
+	using  org.maltparser.parser.history.kbest;
 
 
 

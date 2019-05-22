@@ -2,7 +2,7 @@
 
 namespace org.maltparser.concurrent.test
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// <summary>
 	///  ExperimentException extends the MaltChainedException class and is thrown by classes

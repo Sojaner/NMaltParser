@@ -8,16 +8,16 @@ namespace org.maltparser.core.options
 
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using EnumOption = org.maltparser.core.options.option.EnumOption;
-	using ClassOption = org.maltparser.core.options.option.ClassOption;
-	using StringEnumOption = org.maltparser.core.options.option.StringEnumOption;
-	using Option = org.maltparser.core.options.option.Option;
-	using UnaryOption = org.maltparser.core.options.option.UnaryOption;
-	using PluginLoader = org.maltparser.core.plugin.PluginLoader;
-	using Element = org.w3c.dom.Element;
-	using NodeList = org.w3c.dom.NodeList;
-	using SAXException = org.xml.sax.SAXException;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.options.option;
+	using  org.maltparser.core.options.option;
+	using  org.maltparser.core.options.option;
+	using  org.maltparser.core.options.option;
+	using  org.maltparser.core.options.option;
+	using  org.maltparser.core.plugin;
+	using  org.w3c.dom;
+	using  org.w3c.dom;
+	using  org.xml.sax;
 
 
 	/// <summary>

@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.plugin
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 	/// <summary>
 	///  PluginException extends the MaltChainedException class and is thrown by classes
 	///  within the plugin package.

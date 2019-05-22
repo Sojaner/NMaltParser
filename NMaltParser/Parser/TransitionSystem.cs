@@ -4,21 +4,21 @@ using System.Text;
 namespace org.maltparser.parser
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashMap = org.maltparser.core.helper.HashMap;
-	using PropagationManager = org.maltparser.core.propagation.PropagationManager;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using Table = org.maltparser.core.symbol.Table;
-	using TableHandler = org.maltparser.core.symbol.TableHandler;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using LabelSet = org.maltparser.core.syntaxgraph.LabelSet;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using GuideUserHistory = org.maltparser.parser.history.GuideUserHistory;
-	using GuideUserAction = org.maltparser.parser.history.action.GuideUserAction;
-	using ActionContainer = org.maltparser.parser.history.container.ActionContainer;
-	using TransitionTable = org.maltparser.parser.transition.TransitionTable;
-	using TransitionTableHandler = org.maltparser.parser.transition.TransitionTableHandler;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.propagation;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.parser.history;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.container;
+	using  org.maltparser.parser.transition;
+	using  org.maltparser.parser.transition;
 	/// <summary>
 	/// @author Johan Hall
 	/// 

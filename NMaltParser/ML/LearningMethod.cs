@@ -4,11 +4,11 @@ using System.IO;
 namespace org.maltparser.ml
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureVector = org.maltparser.core.feature.FeatureVector;
-	using FeatureFunction = org.maltparser.core.feature.function.FeatureFunction;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using SingleDecision = org.maltparser.parser.history.action.SingleDecision;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.parser.history.action;
 
 
 	public interface LearningMethod

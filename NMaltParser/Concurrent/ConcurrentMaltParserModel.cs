@@ -4,22 +4,22 @@ using System.Collections.Generic;
 namespace org.maltparser.concurrent
 {
 
-	using ConcurrentDependencyGraph = org.maltparser.concurrent.graph.ConcurrentDependencyGraph;
-	using DataFormat = org.maltparser.concurrent.graph.dataformat.DataFormat;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureModelManager = org.maltparser.core.feature.FeatureModelManager;
-	using FeatureEngine = org.maltparser.core.feature.system.FeatureEngine;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using DataFormatManager = org.maltparser.core.io.dataformat.DataFormatManager;
-	using LWDeprojectivizer = org.maltparser.core.lw.graph.LWDeprojectivizer;
-	using LWDependencyGraph = org.maltparser.core.lw.graph.LWDependencyGraph;
-	using LWSingleMalt = org.maltparser.core.lw.parser.LWSingleMalt;
-	using McoModel = org.maltparser.core.lw.parser.McoModel;
-	using OptionManager = org.maltparser.core.options.OptionManager;
-	using PluginLoader = org.maltparser.core.plugin.PluginLoader;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using HashSymbolTableHandler = org.maltparser.core.symbol.hash.HashSymbolTableHandler;
-	using ParseSymbolTableHandler = org.maltparser.core.symbol.parse.ParseSymbolTableHandler;
+	using  org.maltparser.concurrent.graph;
+	using  org.maltparser.concurrent.graph.dataformat;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature.system;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.lw.graph;
+	using  org.maltparser.core.lw.graph;
+	using  org.maltparser.core.lw.parser;
+	using  org.maltparser.core.lw.parser;
+	using  org.maltparser.core.options;
+	using  org.maltparser.core.plugin;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol.hash;
+	using  org.maltparser.core.symbol.parse;
 
 	/// <summary>
 	/// A concurrent MaltParser model that can be used to parse sentences in both a single threaded or multi threaded 

@@ -4,13 +4,13 @@ using System.Text;
 namespace org.maltparser.core.syntaxgraph.headrules
 {
 
-	using Logger = org.apache.log4j.Logger;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using NonTerminalNode = org.maltparser.core.syntaxgraph.node.NonTerminalNode;
-	using PhraseStructureNode = org.maltparser.core.syntaxgraph.node.PhraseStructureNode;
+	using  org.apache.log4j;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.core.syntaxgraph.node;
 	/// 
 	/// 
 	/// <summary>

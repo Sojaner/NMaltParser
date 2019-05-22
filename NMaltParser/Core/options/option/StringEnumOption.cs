@@ -4,7 +4,7 @@ using System.Text;
 namespace org.maltparser.core.options.option
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// <summary>
 	/// A string enum type option is an option that can only contain string value that corresponds to another string.

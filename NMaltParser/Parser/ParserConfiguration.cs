@@ -1,8 +1,8 @@
 ﻿namespace org.maltparser.parser
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using HistoryNode = org.maltparser.parser.history.HistoryNode;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.parser.history;
 	/// <summary>
 	/// @author Johan Hall
 	/// 

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace org.maltparser.core.options.option
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// <summary>
 	/// An unary option is an option that doesn't need a value to the 

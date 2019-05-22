@@ -1,7 +1,7 @@
 ﻿namespace org.maltparser.core.syntaxgraph
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.symbol;
 	/// 
 	/// 
 	/// <summary>

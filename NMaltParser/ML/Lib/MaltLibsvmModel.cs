@@ -3,10 +3,10 @@
 namespace org.maltparser.ml.lib
 {
 
-	using svm_model = libsvm.svm_model;
-	using svm_node = libsvm.svm_node;
-	using svm_parameter = libsvm.svm_parameter;
-	using svm_problem = libsvm.svm_problem;
+	using  libsvm;
+	using  libsvm;
+	using  libsvm;
+	using  libsvm;
 
 
 	/// <summary>

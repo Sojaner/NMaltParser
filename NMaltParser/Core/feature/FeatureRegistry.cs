@@ -2,8 +2,8 @@
 
 namespace org.maltparser.core.feature
 {
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.symbol;
 
 	public interface FeatureRegistry
 	{

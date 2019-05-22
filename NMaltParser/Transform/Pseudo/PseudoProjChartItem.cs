@@ -4,16 +4,16 @@ using System.Text;
 namespace org.maltparser.transform.pseudo
 {
 
-	using ConfigurationDir = org.maltparser.core.config.ConfigurationDir;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FlowChartInstance = org.maltparser.core.flow.FlowChartInstance;
-	using ChartItem = org.maltparser.core.flow.item.ChartItem;
-	using ChartItemSpecification = org.maltparser.core.flow.spec.ChartItemSpecification;
-	using SystemLogger = org.maltparser.core.helper.SystemLogger;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using OptionManager = org.maltparser.core.options.OptionManager;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using TokenStructure = org.maltparser.core.syntaxgraph.TokenStructure;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.flow;
+	using  org.maltparser.core.flow.item;
+	using  org.maltparser.core.flow.spec;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.options;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph;
 	/// 
 	/// 
 	/// <summary>

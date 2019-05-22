@@ -5,17 +5,17 @@ using System.IO;
 namespace org.maltparser.core.syntaxgraph.reader
 {
 
-	using ConfigurationDir = org.maltparser.core.config.ConfigurationDir;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FlowChartInstance = org.maltparser.core.flow.FlowChartInstance;
-	using ChartItem = org.maltparser.core.flow.item.ChartItem;
-	using ChartItemSpecification = org.maltparser.core.flow.spec.ChartItemSpecification;
-	using URLFinder = org.maltparser.core.helper.URLFinder;
-	using DataFormatException = org.maltparser.core.io.dataformat.DataFormatException;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using DataFormatManager = org.maltparser.core.io.dataformat.DataFormatManager;
-	using OptionManager = org.maltparser.core.options.OptionManager;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.flow;
+	using  org.maltparser.core.flow.item;
+	using  org.maltparser.core.flow.spec;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.options;
+	using  org.maltparser.core.symbol;
 
 	public class ReadChartItem : ChartItem
 	{

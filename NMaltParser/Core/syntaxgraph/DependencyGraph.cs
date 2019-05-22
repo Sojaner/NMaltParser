@@ -4,16 +4,16 @@ using System.Text;
 namespace org.maltparser.core.syntaxgraph
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using ObjectPoolList = org.maltparser.core.pool.ObjectPoolList;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using GraphEdge = org.maltparser.core.syntaxgraph.edge.GraphEdge;
-	using ComparableNode = org.maltparser.core.syntaxgraph.node.ComparableNode;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
-	using Node = org.maltparser.core.syntaxgraph.node.Node;
-	using Root = org.maltparser.core.syntaxgraph.node.Root;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.pool;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.core.syntaxgraph.node;
 	/// 
 	/// 
 	/// <summary>

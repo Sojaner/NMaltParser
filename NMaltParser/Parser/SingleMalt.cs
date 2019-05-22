@@ -5,25 +5,25 @@ using System.IO;
 namespace org.maltparser.parser
 {
 
-	using FileAppender = org.apache.log4j.FileAppender;
-	using Level = org.apache.log4j.Level;
-	using Logger = org.apache.log4j.Logger;
-	using PatternLayout = org.apache.log4j.PatternLayout;
-	using ConfigurationDir = org.maltparser.core.config.ConfigurationDir;
-	using ConfigurationException = org.maltparser.core.config.ConfigurationException;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureModelManager = org.maltparser.core.feature.FeatureModelManager;
-	using FeatureEngine = org.maltparser.core.feature.system.FeatureEngine;
-	using SystemLogger = org.maltparser.core.helper.SystemLogger;
-	using URLFinder = org.maltparser.core.helper.URLFinder;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using OptionManager = org.maltparser.core.options.OptionManager;
-	using PluginLoader = org.maltparser.core.plugin.PluginLoader;
-	using PropagationException = org.maltparser.core.propagation.PropagationException;
-	using PropagationManager = org.maltparser.core.propagation.PropagationManager;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using ClassifierGuide = org.maltparser.parser.guide.ClassifierGuide;
+	using  org.apache.log4j;
+	using  org.apache.log4j;
+	using  org.apache.log4j;
+	using  org.apache.log4j;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature.system;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.options;
+	using  org.maltparser.core.plugin;
+	using  org.maltparser.core.propagation;
+	using  org.maltparser.core.propagation;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.parser.guide;
 
 	/// <summary>
 	/// @author Johan Hall

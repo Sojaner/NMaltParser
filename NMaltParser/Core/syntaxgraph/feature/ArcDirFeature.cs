@@ -3,16 +3,16 @@ using System.Text;
 
 namespace org.maltparser.core.syntaxgraph.feature
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using AddressFunction = org.maltparser.core.feature.function.AddressFunction;
-	using FeatureFunction = org.maltparser.core.feature.function.FeatureFunction;
-	using FeatureValue = org.maltparser.core.feature.value.FeatureValue;
-	using SingleFeatureValue = org.maltparser.core.feature.value.SingleFeatureValue;
-	using ColumnDescription = org.maltparser.core.io.dataformat.ColumnDescription;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using NullValueId = org.maltparser.core.symbol.nullvalue.NullValues.NullValueId;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol.nullvalue.NullValues;
+	using  org.maltparser.core.syntaxgraph.node;
 
 	public sealed class ArcDirFeature : FeatureFunction
 	{

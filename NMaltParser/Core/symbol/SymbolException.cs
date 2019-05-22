@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.symbol
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// <summary>
 	///  SymbolException extends the MaltChainedException class and is thrown by classes

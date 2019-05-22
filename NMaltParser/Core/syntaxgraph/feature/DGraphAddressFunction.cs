@@ -2,10 +2,10 @@
 
 namespace org.maltparser.core.syntaxgraph.feature
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using AddressFunction = org.maltparser.core.feature.function.AddressFunction;
-	using AddressValue = org.maltparser.core.feature.value.AddressValue;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.syntaxgraph.node;
 	/// 
 	/// 
 	/// <summary>

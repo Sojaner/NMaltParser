@@ -3,17 +3,17 @@
 namespace org.maltparser.core.lw.parser
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureVector = org.maltparser.core.feature.FeatureVector;
-	using FeatureValue = org.maltparser.core.feature.value.FeatureValue;
-	using MultipleFeatureValue = org.maltparser.core.feature.value.MultipleFeatureValue;
-	using SingleFeatureValue = org.maltparser.core.feature.value.SingleFeatureValue;
-	using FeatureList = org.maltparser.ml.lib.FeatureList;
-	using FeatureMap = org.maltparser.ml.lib.FeatureMap;
-	using MaltFeatureNode = org.maltparser.ml.lib.MaltFeatureNode;
-	using MaltLibModel = org.maltparser.ml.lib.MaltLibModel;
-	using LibException = org.maltparser.ml.lib.LibException;
-	using SingleDecision = org.maltparser.parser.history.action.SingleDecision;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.ml.lib;
+	using  org.maltparser.ml.lib;
+	using  org.maltparser.ml.lib;
+	using  org.maltparser.ml.lib;
+	using  org.maltparser.ml.lib;
+	using  org.maltparser.parser.history.action;
 
 	/// <summary>
 	/// A lightweight version of org.maltparser.ml.lib.{Lib,LibLinear,LibSvm} and can only predict the next transition.

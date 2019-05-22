@@ -3,8 +3,8 @@
 namespace org.maltparser.core.symbol
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using NullValueId = org.maltparser.core.symbol.nullvalue.NullValues.NullValueId;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.symbol.nullvalue.NullValues;
 
 	public interface SymbolTable : Table
 	{

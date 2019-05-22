@@ -4,17 +4,17 @@ using System.Text;
 namespace org.maltparser.parser
 {
 
-	using ConfigurationDir = org.maltparser.core.config.ConfigurationDir;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FlowChartInstance = org.maltparser.core.flow.FlowChartInstance;
-	using ChartItem = org.maltparser.core.flow.item.ChartItem;
-	using ChartItemSpecification = org.maltparser.core.flow.spec.ChartItemSpecification;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using DataFormatManager = org.maltparser.core.io.dataformat.DataFormatManager;
-	using DataStructure = org.maltparser.core.io.dataformat.DataFormatSpecification.DataStructure;
-	using Dependency = org.maltparser.core.io.dataformat.DataFormatSpecification.Dependency;
-	using OptionManager = org.maltparser.core.options.OptionManager;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
+	using  org.maltparser.core.config;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.flow;
+	using  org.maltparser.core.flow.item;
+	using  org.maltparser.core.flow.spec;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
+	using  org.maltparser.core.io.dataformat.DataFormatSpecification;
+	using  org.maltparser.core.options;
+	using  org.maltparser.core.syntaxgraph;
 	/// <summary>
 	/// @author Johan Hall
 	/// 

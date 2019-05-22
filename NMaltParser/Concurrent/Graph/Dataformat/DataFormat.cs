@@ -5,12 +5,12 @@ namespace org.maltparser.concurrent.graph.dataformat
 {
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashMap = org.maltparser.core.helper.HashMap;
-	using URLFinder = org.maltparser.core.helper.URLFinder;
-	using Element = org.w3c.dom.Element;
-	using NodeList = org.w3c.dom.NodeList;
-	using SAXException = org.xml.sax.SAXException;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
+	using  org.w3c.dom;
+	using  org.w3c.dom;
+	using  org.xml.sax;
 
 	/// 
 	/// <summary>

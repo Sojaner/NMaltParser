@@ -6,9 +6,9 @@ using System.IO;
 namespace org.maltparser.core.plugin
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashSet = org.maltparser.core.helper.HashSet;
-	using OptionManager = org.maltparser.core.options.OptionManager;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.options;
 
 
 	/// <summary>

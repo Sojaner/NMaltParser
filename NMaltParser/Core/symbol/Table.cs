@@ -1,6 +1,6 @@
 ﻿namespace org.maltparser.core.symbol
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	public interface Table
 	{

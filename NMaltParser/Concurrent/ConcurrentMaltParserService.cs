@@ -1,9 +1,9 @@
 ﻿namespace org.maltparser.concurrent
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using Utils = org.maltparser.core.lw.helper.Utils;
-	using OptionManager = org.maltparser.core.options.OptionManager;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.lw.helper;
+	using  org.maltparser.core.options;
 
 	/// <summary>
 	/// The purpose of ConcurrentMaltParserService is to provide an interface to MaltParser that makes it easier to parse sentences from 

@@ -6,13 +6,13 @@ namespace org.maltparser.core.syntaxgraph.reader
 {
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using DataFormatException = org.maltparser.core.io.dataformat.DataFormatException;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using NonTerminalNode = org.maltparser.core.syntaxgraph.node.NonTerminalNode;
-	using PhraseStructureNode = org.maltparser.core.syntaxgraph.node.PhraseStructureNode;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.syntaxgraph.node;
+	using  org.maltparser.core.syntaxgraph.node;
 
 	/// 
 	/// 

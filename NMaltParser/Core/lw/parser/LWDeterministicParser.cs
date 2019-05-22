@@ -4,24 +4,24 @@ using System.Text;
 namespace org.maltparser.core.lw.parser
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureModel = org.maltparser.core.feature.FeatureModel;
-	using FeatureModelManager = org.maltparser.core.feature.FeatureModelManager;
-	using HashMap = org.maltparser.core.helper.HashMap;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using TableHandler = org.maltparser.core.symbol.TableHandler;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using AlgoritmInterface = org.maltparser.parser.AlgoritmInterface;
-	using DependencyParserConfig = org.maltparser.parser.DependencyParserConfig;
-	using ParserConfiguration = org.maltparser.parser.ParserConfiguration;
-	using ParserRegistry = org.maltparser.parser.ParserRegistry;
-	using TransitionSystem = org.maltparser.parser.TransitionSystem;
-	using GuideUserHistory = org.maltparser.parser.history.GuideUserHistory;
-	using ComplexDecisionAction = org.maltparser.parser.history.action.ComplexDecisionAction;
-	using GuideUserAction = org.maltparser.parser.history.action.GuideUserAction;
-	using ActionContainer = org.maltparser.parser.history.container.ActionContainer;
-	using CombinedTableContainer = org.maltparser.parser.history.container.CombinedTableContainer;
-	using TableContainer = org.maltparser.parser.history.container.TableContainer;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.parser;
+	using  org.maltparser.parser;
+	using  org.maltparser.parser;
+	using  org.maltparser.parser;
+	using  org.maltparser.parser;
+	using  org.maltparser.parser.history;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.container;
+	using  org.maltparser.parser.history.container;
+	using  org.maltparser.parser.history.container;
 
 	/// <summary>
 	/// A lightweight version of org.maltparser.parser.DeterministicParser. This class also implements a lightweight version of 

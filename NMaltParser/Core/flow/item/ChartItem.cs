@@ -1,8 +1,8 @@
 ﻿namespace org.maltparser.core.flow.item
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using ChartItemSpecification = org.maltparser.core.flow.spec.ChartItemSpecification;
-	using ChartElement = org.maltparser.core.flow.system.elem.ChartElement;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.flow.spec;
+	using  org.maltparser.core.flow.system.elem;
 	/// 
 	/// 
 	/// <summary>

@@ -3,7 +3,7 @@
 namespace org.maltparser.core.plugin
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// <summary>
 	/// The class Plugin contains information about a plug-in that comply to the the MaltParser Plugin Standard.

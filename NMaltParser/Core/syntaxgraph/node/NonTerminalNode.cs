@@ -3,8 +3,8 @@
 namespace org.maltparser.core.syntaxgraph.node
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HeadRules = org.maltparser.core.syntaxgraph.headrules.HeadRules;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.syntaxgraph.headrules;
 
 	public interface NonTerminalNode : PhraseStructureNode
 	{

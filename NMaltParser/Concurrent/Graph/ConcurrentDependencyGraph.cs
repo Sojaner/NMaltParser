@@ -5,12 +5,12 @@ using System.Text;
 namespace org.maltparser.concurrent.graph
 {
 
-	using ColumnDescription = org.maltparser.concurrent.graph.dataformat.ColumnDescription;
-	using DataFormat = org.maltparser.concurrent.graph.dataformat.DataFormat;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
-	using DependencyStructure = org.maltparser.core.syntaxgraph.DependencyStructure;
-	using DependencyNode = org.maltparser.core.syntaxgraph.node.DependencyNode;
+	using  org.maltparser.concurrent.graph.dataformat;
+	using  org.maltparser.concurrent.graph.dataformat;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph;
+	using  org.maltparser.core.syntaxgraph.node;
 
 	/// <summary>
 	/// Immutable and tread-safe dependency graph implementation.

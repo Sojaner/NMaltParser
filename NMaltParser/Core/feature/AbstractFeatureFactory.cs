@@ -1,7 +1,7 @@
 ﻿namespace org.maltparser.core.feature
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using Function = org.maltparser.core.feature.function.Function;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature.function;
 
 	public interface AbstractFeatureFactory
 	{

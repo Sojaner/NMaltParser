@@ -5,14 +5,14 @@ using System.Text;
 namespace org.maltparser.core.lw.parser
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureModel = org.maltparser.core.feature.FeatureModel;
-	using FeatureVector = org.maltparser.core.feature.FeatureVector;
-	using SingleFeatureValue = org.maltparser.core.feature.value.SingleFeatureValue;
-	using HashMap = org.maltparser.core.helper.HashMap;
-	using ComplexDecisionAction = org.maltparser.parser.history.action.ComplexDecisionAction;
-	using SingleDecision = org.maltparser.parser.history.action.SingleDecision;
-	using RelationToNextDecision = org.maltparser.parser.history.container.TableContainer.RelationToNextDecision;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.core.feature.value;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.action;
+	using  org.maltparser.parser.history.container.TableContainer;
 
 	/// <summary>
 	/// A lightweight version of the decision models, the guide model and the instance models located in org.maltparser.parser.guide.{decision,instance} and

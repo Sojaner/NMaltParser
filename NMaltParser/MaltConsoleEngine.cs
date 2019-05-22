@@ -3,11 +3,11 @@
 namespace org.maltparser
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using SystemInfo = org.maltparser.core.helper.SystemInfo;
-	using SystemLogger = org.maltparser.core.helper.SystemLogger;
-	using OptionManager = org.maltparser.core.options.OptionManager;
-	using PluginLoader = org.maltparser.core.plugin.PluginLoader;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.options;
+	using  org.maltparser.core.plugin;
 
 	/// <summary>
 	/// MaltConsoleEngine controls the MaltParser system using the console version. 

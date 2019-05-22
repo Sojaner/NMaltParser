@@ -1,7 +1,7 @@
 ﻿namespace org.maltparser.core.feature.spec.reader
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 	/// 
 	/// 
 	/// <summary>

@@ -1,7 +1,7 @@
 ﻿namespace org.maltparser.core.syntaxgraph
 {
 
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
+	using  org.maltparser.core.symbol;
 	/// 
 	/// 
 	/// <summary>

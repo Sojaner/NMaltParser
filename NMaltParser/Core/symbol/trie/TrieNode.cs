@@ -2,7 +2,7 @@
 
 namespace org.maltparser.core.symbol.trie
 {
-	using HashMap = org.maltparser.core.helper.HashMap;
+	using  org.maltparser.core.helper;
 
 	/// 
 	/// <summary>

@@ -2,11 +2,11 @@
 {
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using Element = org.w3c.dom.Element;
-	using NodeList = org.w3c.dom.NodeList;
-	using SAXException = org.xml.sax.SAXException;
-	using SAXParseException = org.xml.sax.SAXParseException;
+	using  org.maltparser.core.exception;
+	using  org.w3c.dom;
+	using  org.w3c.dom;
+	using  org.xml.sax;
+	using  org.xml.sax;
 	/// 
 	/// 
 	/// <summary>

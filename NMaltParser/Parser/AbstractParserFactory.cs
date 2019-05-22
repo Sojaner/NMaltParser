@@ -1,9 +1,9 @@
 ﻿namespace org.maltparser.parser
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using AbstractFeatureFactory = org.maltparser.core.feature.AbstractFeatureFactory;
-	using OracleGuide = org.maltparser.parser.guide.OracleGuide;
-	using GuideUserHistory = org.maltparser.parser.history.GuideUserHistory;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature;
+	using  org.maltparser.parser.guide;
+	using  org.maltparser.parser.history;
 	/// <summary>
 	/// @author Johan Hall
 	/// 

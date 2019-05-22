@@ -6,14 +6,14 @@ namespace org.maltparser.core.feature
 {
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using AddressFunction = org.maltparser.core.feature.function.AddressFunction;
-	using FeatureFunction = org.maltparser.core.feature.function.FeatureFunction;
-	using Function = org.maltparser.core.feature.function.Function;
-	using SpecificationModel = org.maltparser.core.feature.spec.SpecificationModel;
-	using SpecificationSubModel = org.maltparser.core.feature.spec.SpecificationSubModel;
-	using FeatureEngine = org.maltparser.core.feature.system.FeatureEngine;
-	using HashMap = org.maltparser.core.helper.HashMap;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.feature.spec;
+	using  org.maltparser.core.feature.spec;
+	using  org.maltparser.core.feature.system;
+	using  org.maltparser.core.helper;
 
 
 	/// 

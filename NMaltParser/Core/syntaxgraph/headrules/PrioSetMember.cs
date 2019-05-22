@@ -2,9 +2,9 @@
 
 namespace org.maltparser.core.syntaxgraph.headrules
 {
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using ColumnDescription = org.maltparser.core.io.dataformat.ColumnDescription;
-	using SymbolTable = org.maltparser.core.symbol.SymbolTable;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.symbol;
 	/// 
 	/// 
 	/// <summary>

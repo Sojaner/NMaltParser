@@ -2,12 +2,12 @@
 {
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using PropagationSpecs = org.maltparser.core.propagation.spec.PropagationSpecs;
-	using PropagationSpecsReader = org.maltparser.core.propagation.spec.PropagationSpecsReader;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
-	using Edge = org.maltparser.core.syntaxgraph.edge.Edge;
-	using DataFormatInstance = org.maltparser.core.io.dataformat.DataFormatInstance;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.propagation.spec;
+	using  org.maltparser.core.propagation.spec;
+	using  org.maltparser.core.symbol;
+	using  org.maltparser.core.syntaxgraph.edge;
+	using  org.maltparser.core.io.dataformat;
 
 	public class PropagationManager
 	{

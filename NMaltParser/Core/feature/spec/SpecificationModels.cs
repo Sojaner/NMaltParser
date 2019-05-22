@@ -5,10 +5,10 @@ using System.Text;
 namespace org.maltparser.core.feature.spec
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using FeatureSpecReader = org.maltparser.core.feature.spec.reader.FeatureSpecReader;
-	using ParReader = org.maltparser.core.feature.spec.reader.ParReader;
-	using HashMap = org.maltparser.core.helper.HashMap;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature.spec.reader;
+	using  org.maltparser.core.feature.spec.reader;
+	using  org.maltparser.core.helper;
 
 	/// 
 	/// 

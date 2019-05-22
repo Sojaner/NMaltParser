@@ -5,9 +5,9 @@ namespace org.maltparser.core.helper
 {
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using Plugin = org.maltparser.core.plugin.Plugin;
-	using PluginLoader = org.maltparser.core.plugin.PluginLoader;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.plugin;
+	using  org.maltparser.core.plugin;
 
 	/// 
 	/// 

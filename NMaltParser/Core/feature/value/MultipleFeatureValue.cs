@@ -4,8 +4,8 @@ using System.Text;
 namespace org.maltparser.core.feature.value
 {
 
-	using Function = org.maltparser.core.feature.function.Function;
-	using HashSet = org.maltparser.core.helper.HashSet;
+	using  org.maltparser.core.feature.function;
+	using  org.maltparser.core.helper;
 	/// 
 	/// 
 	/// <summary>

@@ -2,11 +2,11 @@
 
 namespace org.maltparser.core.helper
 {
-	using Logger = org.apache.log4j.Logger;
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using ColumnDescription = org.maltparser.core.io.dataformat.ColumnDescription;
-	using OptionManager = org.maltparser.core.options.OptionManager;
-	using SymbolTableHandler = org.maltparser.core.symbol.SymbolTableHandler;
+	using  org.apache.log4j;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.io.dataformat;
+	using  org.maltparser.core.options;
+	using  org.maltparser.core.symbol;
 	/// 
 	/// 
 	/// <summary>

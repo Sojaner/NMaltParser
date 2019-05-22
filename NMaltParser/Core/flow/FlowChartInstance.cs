@@ -5,10 +5,10 @@ using System.Text;
 namespace org.maltparser.core.flow
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using ChartItem = org.maltparser.core.flow.item.ChartItem;
-	using ChartItemSpecification = org.maltparser.core.flow.spec.ChartItemSpecification;
-	using ChartSpecification = org.maltparser.core.flow.spec.ChartSpecification;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.flow.item;
+	using  org.maltparser.core.flow.spec;
+	using  org.maltparser.core.flow.spec;
 
 	/// 
 	/// 

@@ -3,8 +3,8 @@
 namespace org.maltparser.core.pool
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashSet = org.maltparser.core.helper.HashSet;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
 
 
 	public abstract class ObjectPoolSet<T> : ObjectPool<T>

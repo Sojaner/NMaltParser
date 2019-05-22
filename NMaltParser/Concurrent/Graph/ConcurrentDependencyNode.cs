@@ -5,8 +5,8 @@ using System.Text;
 namespace org.maltparser.concurrent.graph
 {
 
-	using ColumnDescription = org.maltparser.concurrent.graph.dataformat.ColumnDescription;
-	using DataFormat = org.maltparser.concurrent.graph.dataformat.DataFormat;
+	using  org.maltparser.concurrent.graph.dataformat;
+	using  org.maltparser.concurrent.graph.dataformat;
 
 	/// <summary>
 	/// Immutable and tread-safe dependency node implementation.

@@ -3,8 +3,8 @@
 namespace org.maltparser.parser.history.action
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using ActionContainer = org.maltparser.parser.history.container.ActionContainer;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.parser.history.container;
 	/// 
 	/// <summary>
 	/// @author Johan Hall

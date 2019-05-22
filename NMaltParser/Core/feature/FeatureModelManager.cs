@@ -1,10 +1,10 @@
 ﻿namespace org.maltparser.core.feature
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using SpecificationModel = org.maltparser.core.feature.spec.SpecificationModel;
-	using SpecificationModels = org.maltparser.core.feature.spec.SpecificationModels;
-	using FeatureEngine = org.maltparser.core.feature.system.FeatureEngine;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.feature.spec;
+	using  org.maltparser.core.feature.spec;
+	using  org.maltparser.core.feature.system;
 
 	/// 
 	/// 

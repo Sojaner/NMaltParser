@@ -5,7 +5,7 @@ using System.Text;
 namespace org.maltparser.core.feature.spec
 {
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
+	using  org.maltparser.core.exception;
 
 	/// 
 	/// 

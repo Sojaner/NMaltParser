@@ -5,20 +5,20 @@ namespace org.maltparser.core.options
 {
 
 
-	using MaltChainedException = org.maltparser.core.exception.MaltChainedException;
-	using HashSet = org.maltparser.core.helper.HashSet;
-	using SystemLogger = org.maltparser.core.helper.SystemLogger;
-	using BoolOption = org.maltparser.core.options.option.BoolOption;
-	using ClassOption = org.maltparser.core.options.option.ClassOption;
-	using EnumOption = org.maltparser.core.options.option.EnumOption;
-	using IntegerOption = org.maltparser.core.options.option.IntegerOption;
-	using Option = org.maltparser.core.options.option.Option;
-	using StringEnumOption = org.maltparser.core.options.option.StringEnumOption;
-	using StringOption = org.maltparser.core.options.option.StringOption;
-	using UnaryOption = org.maltparser.core.options.option.UnaryOption;
-	using Element = org.w3c.dom.Element;
-	using NodeList = org.w3c.dom.NodeList;
-	using SAXException = org.xml.sax.SAXException;
+	using  org.maltparser.core.exception;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.helper;
+	using  org.maltparser.core.options.option;
+	using  org.maltparser.core.options.option;
+	using  org.maltparser.core.options.option;
+	using  org.maltparser.core.options.option;
+	using  org.maltparser.core.options.option;
+	using  org.maltparser.core.options.option;
+	using  org.maltparser.core.options.option;
+	using  org.maltparser.core.options.option;
+	using  org.w3c.dom;
+	using  org.w3c.dom;
+	using  org.xml.sax;
 
 	/// <summary>
 	/// Organizes all the option descriptions. Option descriptions can be loaded from the application data <code>/appdata/options.xml</code>, but also 
