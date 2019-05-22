@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace org.maltparser.core.io.dataformat
+namespace NMaltParser.Core.IO.DataFormat
 {
     /// 
 	/// 

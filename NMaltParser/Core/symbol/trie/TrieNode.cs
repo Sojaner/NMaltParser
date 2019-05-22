@@ -1,10 +1,9 @@
 ﻿using System.Text;
+using NMaltParser.Core.Helper;
 
-namespace org.maltparser.core.symbol.trie
+namespace NMaltParser.Core.Symbol.Trie
 {
-	using  helper;
-
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// </summary>

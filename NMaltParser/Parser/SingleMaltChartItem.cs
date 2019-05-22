@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Config;
+using NMaltParser.Core.Flow;
+using NMaltParser.Core.Flow.Item;
+using NMaltParser.Core.Flow.Spec;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Options;
+using NMaltParser.Core.SyntaxGraph;
 
-namespace org.maltparser.parser
+namespace NMaltParser.Parser
 {
-
-	using  core.config;
-    using  core.flow;
-	using  core.flow.item;
-	using  core.flow.spec;
-	using  core.io.dataformat;
-    using  core.options;
-	using  core.syntaxgraph;
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

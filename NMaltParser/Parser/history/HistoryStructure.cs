@@ -1,8 +1,8 @@
-﻿namespace org.maltparser.parser.history
-{
-    using  action;
+﻿using NMaltParser.Parser.History.Action;
 
-	/// 
+namespace NMaltParser.Parser.History
+{
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// </summary>

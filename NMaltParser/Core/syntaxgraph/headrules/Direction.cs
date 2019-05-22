@@ -1,4 +1,4 @@
-﻿namespace org.maltparser.core.syntaxgraph.headrules
+﻿namespace NMaltParser.Core.SyntaxGraph.HeadRules
 {
 	/// 
 	/// 

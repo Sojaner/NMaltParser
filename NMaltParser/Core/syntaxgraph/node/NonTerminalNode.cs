@@ -1,23 +1,21 @@
 ﻿using System.Collections.Generic;
 
-namespace org.maltparser.core.syntaxgraph.node
+namespace NMaltParser.Core.SyntaxGraph.Node
 {
-    using  headrules;
-
-	public interface NonTerminalNode : PhraseStructureNode
+    public interface NonTerminalNode : PhraseStructureNode
 	{
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public TokenNode identifyHead(org.maltparser.core.syntaxgraph.headrules.HeadRules headRules) throws org.maltparser.core.exception.MaltChainedException;
-		TokenNode identifyHead(HeadRules headRules);
+		TokenNode identifyHead(HeadRules.HeadRules headRules);
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public TokenNode getLexicalHead(org.maltparser.core.syntaxgraph.headrules.HeadRules headRules) throws org.maltparser.core.exception.MaltChainedException;
-		TokenNode getLexicalHead(HeadRules headRules);
+		TokenNode getLexicalHead(HeadRules.HeadRules headRules);
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public TokenNode getLexicalHead() throws org.maltparser.core.exception.MaltChainedException;
 		TokenNode LexicalHead {get;}
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public PhraseStructureNode getHeadChild(org.maltparser.core.syntaxgraph.headrules.HeadRules headRules) throws org.maltparser.core.exception.MaltChainedException;
-		PhraseStructureNode getHeadChild(HeadRules headRules);
+		PhraseStructureNode getHeadChild(HeadRules.HeadRules headRules);
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public PhraseStructureNode getHeadChild() throws org.maltparser.core.exception.MaltChainedException;
 		PhraseStructureNode HeadChild {get;}

@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
+using NMaltParser.Core.Propagation;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Edge;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Parser.History;
+using NMaltParser.Parser.History.Action;
+using NMaltParser.Parser.Transition;
 
-namespace org.maltparser.parser.algorithm.planar
+namespace NMaltParser.Parser.Algorithm.Planar
 {
-    using  core.propagation;
-	using  core.syntaxgraph;
-	using  core.syntaxgraph.edge;
-	using  core.syntaxgraph.node;
-	using  history;
-	using  history.action;
-    using  transition;
-	/// <summary>
+    /// <summary>
 	/// @author Carlos Gomez Rodriguez
 	/// 
 	/// </summary>

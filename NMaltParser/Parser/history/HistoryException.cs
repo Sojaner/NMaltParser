@@ -1,11 +1,9 @@
 ﻿using System;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.parser.history
+namespace NMaltParser.Parser.History
 {
-	using  core.exception;
-
-
-	/// <summary>
+    /// <summary>
 	///  HistoryException extends the MaltChainedException class and is thrown by classes
 	///  within the history package.
 	/// 

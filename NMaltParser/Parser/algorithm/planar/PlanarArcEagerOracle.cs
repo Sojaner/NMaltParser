@@ -1,10 +1,11 @@
-﻿namespace org.maltparser.parser.algorithm.planar
+﻿using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Parser.History;
+using NMaltParser.Parser.History.Action;
+
+namespace NMaltParser.Parser.Algorithm.Planar
 {
-    using  core.syntaxgraph;
-	using  core.syntaxgraph.node;
-	using  history;
-	using  history.action;
-	/// <summary>
+    /// <summary>
 	/// @author Carlos Gomez Rodriguez
 	/// 
 	/// </summary>

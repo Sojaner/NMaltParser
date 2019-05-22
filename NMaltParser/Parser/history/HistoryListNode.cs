@@ -1,9 +1,9 @@
 ﻿using System.Text;
+using NMaltParser.Parser.History.Action;
 
-namespace org.maltparser.parser.history
+namespace NMaltParser.Parser.History
 {
-    using  action;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// </summary>

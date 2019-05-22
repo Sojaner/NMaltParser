@@ -1,13 +1,12 @@
 ﻿using System.Text;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser.Guide.Instance;
+using NMaltParser.Parser.History.Action;
 
-namespace org.maltparser.parser.guide.decision
+namespace NMaltParser.Parser.Guide.Decision
 {
-    using  core.feature;
-    using  core.helper;
-	using  core.syntaxgraph;
-	using  instance;
-    using  history.action;
-
     /// 
 	/// <summary>
 	/// @author Johan Hall

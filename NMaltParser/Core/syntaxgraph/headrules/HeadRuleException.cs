@@ -1,10 +1,8 @@
-﻿using System;
+﻿using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.syntaxgraph.headrules
+namespace NMaltParser.Core.SyntaxGraph.HeadRules
 {
-	using  exception;
-
-	/// <summary>
+    /// <summary>
 	///  HeadRuleException extends the MaltChainedException class and is thrown by classes
 	///  within the headrule package.
 	/// 
@@ -28,7 +26,7 @@ namespace org.maltparser.core.syntaxgraph.headrules
 		/// </summary>
 		/// <param name="message">	the message </param>
 		/// <param name="cause">		the cause to the exception </param>
-		public HeadRuleException(string message, Exception cause) : base(message, cause)
+		public HeadRuleException(string message, System.Exception cause) : base(message, cause)
 		{
 		}
 	}

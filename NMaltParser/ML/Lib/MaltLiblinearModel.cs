@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Helper;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.ml.lib
+namespace NMaltParser.ML.Lib
 {
-
-	using  core.helper;
-
     /// <summary>
 	/// <para>This class borrows code from liblinear.Model.java of the Java implementation of the liblinear package.
 	/// MaltLiblinearModel stores the model obtained from the training procedure. In addition to the original code the model is more integrated to

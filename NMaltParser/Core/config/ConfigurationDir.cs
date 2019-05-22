@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Config.Version;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Options;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.Symbol.Hash;
+using NMaltParser.Core.Symbol.Parse;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.config
+namespace NMaltParser.Core.Config
 {
-
-	using  version;
-	using  exception;
-	using  helper;
-    using  io.dataformat;
-    using  options;
-	using  symbol;
-	using  symbol.hash;
-	using  symbol.parse;
-
-	/// <summary>
+    /// <summary>
 	/// This class contains methods for handle the configuration directory.
 	/// 
 	/// @author Johan Hall
@@ -764,7 +763,7 @@ namespace org.maltparser.core.config
 				infoFile.Write("\nMALTPARSER\n");
 				infoFile.Write("Version:                       " + SystemInfo.Version + "\n");
 				infoFile.Write("Build date:                    " + SystemInfo.BuildDate + "\n");
-				ISet<string> excludeGroups = new HashSet<string>();
+				ISet<string> excludeGroups = new Helper.HashSet<string>();
 				excludeGroups.Add("system");
 				infoFile.Write("\nSETTINGS\n");
 				infoFile.Write(OptionManager.instance().toStringPrettyValues(containerIndex, excludeGroups));

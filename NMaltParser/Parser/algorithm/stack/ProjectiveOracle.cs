@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Parser.History;
+using NMaltParser.Parser.History.Action;
 
-namespace org.maltparser.parser.algorithm.stack
+namespace NMaltParser.Parser.Algorithm.Stack
 {
-    using  core.syntaxgraph;
-	using  core.syntaxgraph.node;
-	using  history;
-	using  history.action;
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

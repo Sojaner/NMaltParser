@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.ML;
+using NMaltParser.ML.Lib;
+using NMaltParser.Parser.History.Action;
 
-namespace org.maltparser.parser.guide.instance
+namespace NMaltParser.Parser.Guide.Instance
 {
-
-	using  core.exception;
-	using  core.feature;
-    using  core.feature.function;
-    using  core.syntaxgraph;
-	using  ml;
-	using  ml.lib;
-    using  history.action;
-
-
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// </summary>

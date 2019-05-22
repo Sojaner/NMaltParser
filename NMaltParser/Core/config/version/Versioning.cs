@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Text;
+using NMaltParser.Core.Helper;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.config.version
+namespace NMaltParser.Core.Config.Version
 {
-
-	using  helper;
-
     public class Versioning
 	{
 		private string maltParserVersion;

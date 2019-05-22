@@ -1,14 +1,17 @@
-﻿namespace org.maltparser.parser.algorithm.nivre
+﻿using NMaltParser.Core.Feature;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Parser.Guide;
+using NMaltParser.Parser.History;
+
+namespace NMaltParser.Parser.Algorithm.Nivre
 {
-    using  core.feature;
-	using  core.feature.function;
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>
 	public abstract class NivreFactory : AbstractParserFactory
 	{
-		public abstract guide.OracleGuide makeOracleGuide(history.GuideUserHistory history);
+		public abstract OracleGuide makeOracleGuide(GuideUserHistory history);
 		public abstract TransitionSystem makeTransitionSystem();
 		protected internal readonly DependencyParserConfig manager;
 

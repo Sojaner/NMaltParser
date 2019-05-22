@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace org.maltparser.parser.history.kbest
+namespace NMaltParser.Parser.History.KBest
 {
 	/// 
 	/// <summary>

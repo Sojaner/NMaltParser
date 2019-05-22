@@ -1,10 +1,9 @@
 ﻿using System.IO;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.core.config
+namespace NMaltParser.Core.Config
 {
-    using  symbol;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

@@ -1,15 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser.History.Action;
 
-namespace org.maltparser.ml
+namespace NMaltParser.ML
 {
-    using  core.feature;
-	using  core.feature.function;
-	using  core.syntaxgraph;
-	using  parser.history.action;
-
-
-	public interface LearningMethod
+    public interface LearningMethod
 	{
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void addInstance(org.maltparser.parser.history.action.SingleDecision decision, org.maltparser.core.feature.FeatureVector featureVector) throws org.maltparser.core.exception.MaltChainedException;

@@ -1,7 +1,6 @@
-﻿namespace org.maltparser.core.feature.function
+﻿namespace NMaltParser.Core.Feature.Function
 {
-	using  exception;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

@@ -1,10 +1,9 @@
 ﻿using System;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.parser
+namespace NMaltParser.Parser
 {
-	using  core.exception;
-
-	/// <summary>
+    /// <summary>
 	///  ParsingException extends the MaltChainedException class and is thrown by classes
 	///  within the parser.algorithm package.
 	/// 

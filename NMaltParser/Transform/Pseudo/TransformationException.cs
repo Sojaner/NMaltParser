@@ -1,10 +1,9 @@
 ﻿using System;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.transform.pseudo
+namespace NMaltParser.Transform.Pseudo
 {
-	using  core.exception;
-
-	/// <summary>
+    /// <summary>
 	///  TransformationException extends the MaltChainedException class and is thrown by classes
 	///  within the transform package.
 	/// 

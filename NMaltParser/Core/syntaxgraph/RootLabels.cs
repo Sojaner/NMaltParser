@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.syntaxgraph
+namespace NMaltParser.Core.SyntaxGraph
 {
-    using  symbol;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

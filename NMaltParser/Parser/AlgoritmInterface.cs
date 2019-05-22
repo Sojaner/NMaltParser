@@ -1,4 +1,4 @@
-﻿namespace org.maltparser.parser
+﻿namespace NMaltParser.Parser
 {
 
 	public interface AlgoritmInterface

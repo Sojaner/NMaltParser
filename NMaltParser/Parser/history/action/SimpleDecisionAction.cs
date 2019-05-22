@@ -1,10 +1,10 @@
 ﻿using System.Text;
+using NMaltParser.Parser.History.Container;
+using NMaltParser.Parser.History.KBest;
 
-namespace org.maltparser.parser.history.action
+namespace NMaltParser.Parser.History.Action
 {
-    using  container;
-    using  kbest;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// 

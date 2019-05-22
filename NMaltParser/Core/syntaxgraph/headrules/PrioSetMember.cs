@@ -1,11 +1,11 @@
 ﻿using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.core.syntaxgraph.headrules
+namespace NMaltParser.Core.SyntaxGraph.HeadRules
 {
-	using  exception;
-	using  io.dataformat;
-	using  symbol;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

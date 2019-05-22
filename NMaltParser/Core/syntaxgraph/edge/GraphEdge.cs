@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Text;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.syntaxgraph.edge
+namespace NMaltParser.Core.SyntaxGraph.Edge
 {
-	using  exception;
-	using  node;
-
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
 	/// </summary>
 	public class GraphEdge : GraphElement, Edge, IComparable<GraphEdge>
 	{
-		private Node source = null;
-		private Node target = null;
+		private Node.Node source = null;
+		private Node.Node target = null;
 		private int type;
 
 		public GraphEdge()
@@ -24,7 +21,7 @@ namespace org.maltparser.core.syntaxgraph.edge
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public GraphEdge(org.maltparser.core.syntaxgraph.node.Node source, org.maltparser.core.syntaxgraph.node.Node target, int type) throws org.maltparser.core.exception.MaltChainedException
-		public GraphEdge(Node source, Node target, int type) : base()
+		public GraphEdge(Node.Node source, Node.Node target, int type) : base()
 		{
 			clear();
 			setEdge(source, target, type);
@@ -40,7 +37,7 @@ namespace org.maltparser.core.syntaxgraph.edge
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void setEdge(org.maltparser.core.syntaxgraph.node.Node source, org.maltparser.core.syntaxgraph.node.Node target, int type) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void setEdge(Node source, Node target, int type)
+		public virtual void setEdge(Node.Node source, Node.Node target, int type)
 		{
 			this.source = source;
 			this.target = target;
@@ -76,7 +73,7 @@ namespace org.maltparser.core.syntaxgraph.edge
 		/// Returns the source node of the edge.
 		/// </summary>
 		/// <returns> the source node of the edge. </returns>
-		public virtual Node Source
+		public virtual Node.Node Source
 		{
 			get
 			{
@@ -88,7 +85,7 @@ namespace org.maltparser.core.syntaxgraph.edge
 		/// Returns the target node of the edge.
 		/// </summary>
 		/// <returns> the target node of the edge. </returns>
-		public virtual Node Target
+		public virtual Node.Node Target
 		{
 			get
 			{

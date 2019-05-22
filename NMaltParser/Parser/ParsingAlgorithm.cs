@@ -1,12 +1,13 @@
-﻿namespace org.maltparser.parser
+﻿using NMaltParser.Core.Exception;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Edge;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Parser.Guide;
+
+namespace NMaltParser.Parser
 {
-	using  core.exception;
-	using  core.symbol;
-    using  core.syntaxgraph;
-	using  core.syntaxgraph.edge;
-	using  core.syntaxgraph.node;
-	using  guide;
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

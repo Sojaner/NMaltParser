@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using NMaltParser.Core.Helper;
 
-namespace org.maltparser.core.symbol.parse
+namespace NMaltParser.Core.Symbol.Parse
 {
-    using  helper;
-
-
     public class ParseSymbolTable : SymbolTable
 	{
 		private readonly string name;

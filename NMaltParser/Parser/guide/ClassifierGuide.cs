@@ -1,9 +1,9 @@
-﻿namespace org.maltparser.parser.guide
-{
-    using  core.feature;
-    using  history.action;
+﻿using NMaltParser.Core.Feature;
+using NMaltParser.Parser.History.Action;
 
-	public interface ClassifierGuide : Guide
+namespace NMaltParser.Parser.Guide
+{
+    public interface ClassifierGuide : Guide
 	{
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:

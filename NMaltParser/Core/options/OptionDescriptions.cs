@@ -1,14 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Options.Option;
 
-namespace org.maltparser.core.options
+namespace NMaltParser.Core.Options
 {
-
-
-	using  exception;
-	using  helper;
-    using  option;
-
     /// <summary>
 	/// Organizes all the option descriptions. Option descriptions can be loaded from the application data <code>/appdata/options.xml</code>, but also 
 	/// from a plugin option description file (always with the name <code>plugin.xml</code>).
@@ -21,9 +18,9 @@ namespace org.maltparser.core.options
 	{
 		private readonly Dictionary<string, OptionGroup> optionGroups;
 		private readonly SortedSet<string> ambiguous;
-		private readonly Dictionary<string, Option> unambiguousOptionMap;
-		private readonly Dictionary<string, Option> ambiguousOptionMap;
-		private readonly Dictionary<string, Option> flagOptionMap;
+		private readonly Dictionary<string, Option.Option> unambiguousOptionMap;
+		private readonly Dictionary<string, Option.Option> ambiguousOptionMap;
+		private readonly Dictionary<string, Option.Option> flagOptionMap;
 
 		/// <summary>
 		/// Creates the Option Descriptions
@@ -32,9 +29,9 @@ namespace org.maltparser.core.options
 		{
 			optionGroups = new Dictionary<string, OptionGroup>();
 			ambiguous = new SortedSet<string>();
-			unambiguousOptionMap = new Dictionary<string, Option>();
-			ambiguousOptionMap = new Dictionary<string, Option>();
-			flagOptionMap = new Dictionary<string, Option>();
+			unambiguousOptionMap = new Dictionary<string, Option.Option>();
+			ambiguousOptionMap = new Dictionary<string, Option.Option>();
+			flagOptionMap = new Dictionary<string, Option.Option>();
 		}
 
 
@@ -47,13 +44,13 @@ namespace org.maltparser.core.options
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.options.option.Option getOption(String optiongroup, String optionname) throws org.maltparser.core.exception.MaltChainedException
-		public virtual Option getOption(string optiongroup, string optionname)
+		public virtual Option.Option getOption(string optiongroup, string optionname)
 		{
 			if (ReferenceEquals(optionname, null) || optionname.Length <= 0)
 			{
 				throw new OptionException("The option name '" + optionname + "' cannot be found");
 			}
-			Option option;
+			Option.Option option;
 			if (ambiguous.Contains(optionname.ToLower()))
 			{
 				if (ReferenceEquals(optiongroup, null) || optiongroup.Length <= 0)
@@ -88,9 +85,9 @@ namespace org.maltparser.core.options
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.options.option.Option getOption(String optionflag) throws org.maltparser.core.exception.MaltChainedException
-		public virtual Option getOption(string optionflag)
+		public virtual Option.Option getOption(string optionflag)
 		{
-			Option option = flagOptionMap[optionflag];
+			Option.Option option = flagOptionMap[optionflag];
 			if (option == null)
 			{
 				throw new OptionException("The option flag -" + optionflag + " could not be found. ");
@@ -102,22 +99,22 @@ namespace org.maltparser.core.options
 		/// Returns a set of option that are marked as SAVEOPTION
 		/// </summary>
 		/// <returns> a set of option that are marked as SAVEOPTION </returns>
-		public virtual ISet<Option> SaveOptionSet
+		public virtual ISet<Option.Option> SaveOptionSet
 		{
 			get
 			{
-				ISet<Option> optionToSave = new HashSet<Option>();
+				ISet<Option.Option> optionToSave = new Helper.HashSet<Option.Option>();
     
 				foreach (string optionname in unambiguousOptionMap.Keys)
 				{
-					if (unambiguousOptionMap[optionname].getUsage() == Option.SAVE)
+					if (unambiguousOptionMap[optionname].getUsage() == Option.Option.SAVE)
 					{
 						optionToSave.Add(unambiguousOptionMap[optionname]);
 					}
 				}
 				foreach (string optionname in ambiguousOptionMap.Keys)
 				{
-					if (ambiguousOptionMap[optionname].getUsage() == Option.SAVE)
+					if (ambiguousOptionMap[optionname].getUsage() == Option.Option.SAVE)
 					{
 						optionToSave.Add(ambiguousOptionMap[optionname]);
 					}
@@ -143,7 +140,7 @@ namespace org.maltparser.core.options
 		/// </summary>
 		/// <param name="groupname"> the name of the option group </param>
 		/// <returns> a collection of option that are member of an option group  </returns>
-		protected internal virtual ICollection<Option> getOptionGroupList(string groupname)
+		protected internal virtual ICollection<Option.Option> getOptionGroupList(string groupname)
 		{
 			return optionGroups[groupname].OptionList;
 		}
@@ -239,7 +236,7 @@ namespace org.maltparser.core.options
 
 				if (optiontype.Equals("string") || optiontype.Equals("bool") || optiontype.Equals("integer") || optiontype.Equals("unary"))
 				{
-					Option op = og.getOption(optionname);
+					Option.Option op = og.getOption(optionname);
 					if (op != null)
 					{
 						throw new OptionException("The option name '" + optionname + "' for option group '" + og.Name + "' already exists. It is only allowed to override the class and enum option type to add legal value. ");
@@ -247,7 +244,7 @@ namespace org.maltparser.core.options
 				}
 				else if (optiontype.Equals("class") || optiontype.Equals("enum") || optiontype.Equals("stringenum"))
 				{
-					Option op = og.getOption(optionname);
+					Option.Option op = og.getOption(optionname);
 					if (op != null)
 					{
 						if (op is EnumOption && !optiontype.Equals("enum"))
@@ -282,7 +279,7 @@ namespace org.maltparser.core.options
 				}
 				else if (optiontype.Equals("enum"))
 				{
-					Option op = og.getOption(optionname);
+					Option.Option op = og.getOption(optionname);
 					EnumOption eop = null;
 					if (op == null)
 					{
@@ -314,7 +311,7 @@ namespace org.maltparser.core.options
 				}
 				else if (optiontype.Equals("class"))
 				{
-					Option op = og.getOption(optionname);
+					Option.Option op = og.getOption(optionname);
 					ClassOption cop = null;
 					if (op == null)
 					{
@@ -346,7 +343,7 @@ namespace org.maltparser.core.options
 				}
 				else if (optiontype.Equals("stringenum"))
 				{
-					Option op = og.getOption(optionname);
+					Option.Option op = og.getOption(optionname);
 					StringEnumOption ueop = null;
 					if (op == null)
 					{
@@ -399,9 +396,9 @@ namespace org.maltparser.core.options
 			foreach (string groupname in optionGroups.Keys)
 			{
 				OptionGroup og = optionGroups[groupname];
-				ICollection<Option> options = og.OptionList;
+				ICollection<Option.Option> options = og.OptionList;
 
-				foreach (Option option in options)
+				foreach (Option.Option option in options)
 				{
 					if (ambiguous.Contains(option.Name))
 					{
@@ -416,7 +413,7 @@ namespace org.maltparser.core.options
 						}
 						else
 						{
-							Option ambig = unambiguousOptionMap[option.Name];
+							Option.Option ambig = unambiguousOptionMap[option.Name];
 							unambiguousOptionMap.Remove(ambig);
 							ambig.Ambiguous = true;
 							option.Ambiguous = true;
@@ -427,7 +424,7 @@ namespace org.maltparser.core.options
 					}
 					if (!ReferenceEquals(option.Flag, null))
 					{
-						Option co = flagOptionMap[option.Flag];
+						Option.Option co = flagOptionMap[option.Flag];
 						if (co != null)
 						{
 							flagOptionMap.Remove(co);

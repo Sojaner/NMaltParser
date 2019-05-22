@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Config;
+using NMaltParser.Core.Flow;
+using NMaltParser.Core.Flow.Item;
+using NMaltParser.Core.Flow.Spec;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Options;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.core.syntaxgraph.reader
+namespace NMaltParser.Core.SyntaxGraph.Reader
 {
-
-	using  config;
-    using  flow;
-	using  flow.item;
-	using  flow.spec;
-	using  helper;
-	using  io.dataformat;
-    using  options;
-	using  symbol;
-
-	public class ReadChartItem : ChartItem
+    public class ReadChartItem : ChartItem
 	{
 		private string idName;
 		private string inputFormatName;

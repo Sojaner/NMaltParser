@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace org.maltparser.core.pool
+namespace NMaltParser.Core.Pool
 {
     public abstract class ObjectPoolList<T> : ObjectPool<T>
 	{

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace org.maltparser.ml.lib
+namespace NMaltParser.ML.Lib
 {
 
 	public class MaltFeatureNode : IComparable<MaltFeatureNode>

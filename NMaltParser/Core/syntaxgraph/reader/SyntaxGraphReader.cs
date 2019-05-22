@@ -1,12 +1,10 @@
 ﻿using System.IO;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.IO.DataFormat;
 
-namespace org.maltparser.core.syntaxgraph.reader
+namespace NMaltParser.Core.SyntaxGraph.Reader
 {
-
-	using  exception;
-	using  io.dataformat;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.SyntaxGraph.Edge;
 
-namespace org.maltparser.core.syntaxgraph.node
+namespace NMaltParser.Core.SyntaxGraph.Node
 {
-    using  edge;
-
-
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -20,20 +17,20 @@ namespace org.maltparser.core.syntaxgraph.node
 		public abstract ComparableNode RightmostProperDescendant {get;}
 		public abstract ComparableNode LeftmostProperDescendant {get;}
 		public abstract int CompareToIndex {get;}
-		protected internal SortedSet<Edge> incomingEdges;
-		protected internal SortedSet<Edge> outgoingEdges;
+		protected internal SortedSet<Edge.Edge> incomingEdges;
+		protected internal SortedSet<Edge.Edge> outgoingEdges;
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public GraphNode() throws org.maltparser.core.exception.MaltChainedException
 		public GraphNode() : base()
 		{
-			incomingEdges = new SortedSet<Edge>();
-			outgoingEdges = new SortedSet<Edge>();
+			incomingEdges = new SortedSet<Edge.Edge>();
+			outgoingEdges = new SortedSet<Edge.Edge>();
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void addIncomingEdge(org.maltparser.core.syntaxgraph.edge.Edge in) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void addIncomingEdge(Edge @in)
+		public virtual void addIncomingEdge(Edge.Edge @in)
 		{
 			if (@in.Target != this)
 			{
@@ -44,7 +41,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void addOutgoingEdge(org.maltparser.core.syntaxgraph.edge.Edge out) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void addOutgoingEdge(Edge @out)
+		public virtual void addOutgoingEdge(Edge.Edge @out)
 		{
 			if (@out.Source != this)
 			{
@@ -55,7 +52,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void removeIncomingEdge(org.maltparser.core.syntaxgraph.edge.Edge in) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void removeIncomingEdge(Edge @in)
+		public virtual void removeIncomingEdge(Edge.Edge @in)
 		{
 			if (@in.Target != this)
 			{
@@ -66,7 +63,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void removeOutgoingEdge(org.maltparser.core.syntaxgraph.edge.Edge out) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void removeOutgoingEdge(Edge @out)
+		public virtual void removeOutgoingEdge(Edge.Edge @out)
 		{
 			if (@out.Source != this)
 			{
@@ -119,7 +116,7 @@ namespace org.maltparser.core.syntaxgraph.node
 			}
 		}
 
-		public virtual IEnumerator<Edge> IncomingEdgeIterator
+		public virtual IEnumerator<Edge.Edge> IncomingEdgeIterator
 		{
 			get
 			{
@@ -127,7 +124,7 @@ namespace org.maltparser.core.syntaxgraph.node
 			}
 		}
 
-		public virtual IEnumerator<Edge> OutgoingEdgeIterator
+		public virtual IEnumerator<Edge.Edge> OutgoingEdgeIterator
 		{
 			get
 			{
@@ -160,12 +157,12 @@ namespace org.maltparser.core.syntaxgraph.node
 			}
 		}
 
-		public virtual SortedSet<Edge> IncomingSecondaryEdges
+		public virtual SortedSet<Edge.Edge> IncomingSecondaryEdges
 		{
 			get
 			{
-				SortedSet<Edge> inSecEdges = new SortedSet<Edge>();
-				foreach (Edge e in incomingEdges)
+				SortedSet<Edge.Edge> inSecEdges = new SortedSet<Edge.Edge>();
+				foreach (Edge.Edge e in incomingEdges)
 				{
 					if (e.Type == Edge_Fields.SECONDARY_EDGE)
 					{
@@ -176,12 +173,12 @@ namespace org.maltparser.core.syntaxgraph.node
 			}
 		}
 
-		public virtual SortedSet<Edge> OutgoingSecondaryEdges
+		public virtual SortedSet<Edge.Edge> OutgoingSecondaryEdges
 		{
 			get
 			{
-				SortedSet<Edge> outSecEdges = new SortedSet<Edge>();
-				foreach (Edge e in outgoingEdges)
+				SortedSet<Edge.Edge> outSecEdges = new SortedSet<Edge.Edge>();
+				foreach (Edge.Edge e in outgoingEdges)
 				{
 					if (e.Type == Edge_Fields.SECONDARY_EDGE)
 					{
@@ -224,7 +221,7 @@ namespace org.maltparser.core.syntaxgraph.node
 			StringBuilder sb = new StringBuilder();
 			sb.Append(Index);
 			sb.Append(" [I:");
-			foreach (Edge e in incomingEdges)
+			foreach (Edge.Edge e in incomingEdges)
 			{
 				sb.Append(e.Source.Index);
 				sb.Append("(");
@@ -236,7 +233,7 @@ namespace org.maltparser.core.syntaxgraph.node
 				}
 			}
 			sb.Append("][O:");
-			foreach (Edge e in outgoingEdges)
+			foreach (Edge.Edge e in outgoingEdges)
 			{
 				sb.Append(e.Target.Index);
 				if (outgoingEdges.Max != e)

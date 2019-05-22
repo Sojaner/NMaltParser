@@ -1,11 +1,11 @@
 ﻿using System;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Options;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.core.helper
+namespace NMaltParser.Core.Helper
 {
-    using  io.dataformat;
-	using  options;
-	using  symbol;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

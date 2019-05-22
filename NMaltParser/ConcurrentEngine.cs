@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading;
-using System.IO;
+using NMaltParser.Concurrent;
+using NMaltParser.Core.Config;
+using NMaltParser.Core.Options;
 
-namespace org.maltparser
+namespace NMaltParser
 {
-
-	using  concurrent;
-    using  core.config;
-    using  core.options;
-
-	public class ConcurrentEngine
+    public class ConcurrentEngine
 	{
 		private readonly int optionContainer;
 		private ConcurrentMaltParserModel model;

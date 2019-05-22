@@ -1,9 +1,9 @@
-﻿namespace org.maltparser.parser.guide.instance
-{
-    using  core.feature;
-	using  history.action;
+﻿using NMaltParser.Core.Feature;
+using NMaltParser.Parser.History.Action;
 
-	public interface InstanceModel : Model
+namespace NMaltParser.Parser.Guide.Instance
+{
+    public interface InstanceModel : Model
 	{
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void addInstance(org.maltparser.core.feature.FeatureVector featureVector, org.maltparser.parser.history.action.SingleDecision decision) throws org.maltparser.core.exception.MaltChainedException;

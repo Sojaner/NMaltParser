@@ -1,9 +1,10 @@
-﻿namespace org.maltparser.core.flow.item
+﻿using NMaltParser.Core.Exception;
+using NMaltParser.Core.Flow.Spec;
+using NMaltParser.Core.Flow.System.Elem;
+
+namespace NMaltParser.Core.Flow.Item
 {
-	using  exception;
-	using  spec;
-	using  system.elem;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.concurrent
+namespace NMaltParser.Concurrent
 {
 
 	/// <summary>

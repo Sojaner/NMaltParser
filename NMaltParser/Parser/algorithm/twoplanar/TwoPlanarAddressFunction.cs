@@ -1,11 +1,10 @@
 ﻿using System;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
 
-namespace org.maltparser.parser.algorithm.twoplanar
+namespace NMaltParser.Parser.Algorithm.TwoPlanar
 {
-    using  core.feature.function;
-	using  core.feature.value;
-
-	/// 
+    /// 
 	/// <summary>
 	/// @author Carlos Gomez Rodriguez
 	/// 

@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace org.maltparser.core.options
+namespace NMaltParser.Core.Options
 {
-
-	using  option;
-
-	/// <summary>
+    /// <summary>
 	/// An option container stores the option values for one instance usage. For example, a
 	/// single malt configuration there will only be one option container, but for an ensemble parser there
 	/// could be several option containers. 
@@ -39,10 +36,10 @@ namespace org.maltparser.core.options
 		public const int OPTIONFILE = 3;
 
 		private readonly int index;
-		private readonly SortedDictionary<Option, object> savedOptionMap;
-		private readonly SortedDictionary<Option, object> dependenciesResolvedOptionMap;
-		private readonly SortedDictionary<Option, object> commandLineOptionMap;
-		private readonly SortedDictionary<Option, object> optionFileOptionMap;
+		private readonly SortedDictionary<Option.Option, object> savedOptionMap;
+		private readonly SortedDictionary<Option.Option, object> dependenciesResolvedOptionMap;
+		private readonly SortedDictionary<Option.Option, object> commandLineOptionMap;
+		private readonly SortedDictionary<Option.Option, object> optionFileOptionMap;
 
 		/// <summary>
 		/// Creates an option container
@@ -53,10 +50,10 @@ namespace org.maltparser.core.options
 		public OptionContainer(int index)
 		{
 			this.index = index;
-			savedOptionMap = Collections.synchronizedSortedMap(new SortedDictionary<Option, object>());
-			dependenciesResolvedOptionMap = Collections.synchronizedSortedMap(new SortedDictionary<Option, object>());
-			commandLineOptionMap = Collections.synchronizedSortedMap(new SortedDictionary<Option, object>());
-			optionFileOptionMap = Collections.synchronizedSortedMap(new SortedDictionary<Option, object>());
+			savedOptionMap = Collections.synchronizedSortedMap(new SortedDictionary<Option.Option, object>());
+			dependenciesResolvedOptionMap = Collections.synchronizedSortedMap(new SortedDictionary<Option.Option, object>());
+			commandLineOptionMap = Collections.synchronizedSortedMap(new SortedDictionary<Option.Option, object>());
+			optionFileOptionMap = Collections.synchronizedSortedMap(new SortedDictionary<Option.Option, object>());
 		}
 
 		/// <summary>
@@ -68,7 +65,7 @@ namespace org.maltparser.core.options
 		/// <exception cref="OptionException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: protected void addOptionValue(int type, org.maltparser.core.options.option.Option option, Object value) throws OptionException
-		protected internal virtual void addOptionValue(int type, Option option, object value)
+		protected internal virtual void addOptionValue(int type, Option.Option option, object value)
 		{
 			if (type == SAVEDOPTION)
 			{
@@ -98,7 +95,7 @@ namespace org.maltparser.core.options
 		/// </summary>
 		/// <param name="option"> the option object </param>
 		/// <returns> the option value object </returns>
-		public virtual object getOptionValue(Option option)
+		public virtual object getOptionValue(Option.Option option)
 		{
 			object value = null;
 			for (int i = SAVEDOPTION; i <= OPTIONFILE; i++)
@@ -133,7 +130,7 @@ namespace org.maltparser.core.options
 		/// </summary>
 		/// <param name="option"> the option object </param>
 		/// <returns> a string representation of the option value </returns>
-		public virtual string getOptionValueString(Option option)
+		public virtual string getOptionValueString(Option.Option option)
 		{
 			string value = null;
 			for (int i = SAVEDOPTION; i <= OPTIONFILE; i++)
@@ -172,7 +169,7 @@ namespace org.maltparser.core.options
 		/// <exception cref="OptionException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public boolean contains(int type, org.maltparser.core.options.option.Option option) throws OptionException
-		public virtual bool contains(int type, Option option)
+		public virtual bool contains(int type, Option.Option option)
 		{
 			if (type == SAVEDOPTION)
 			{
@@ -204,7 +201,7 @@ namespace org.maltparser.core.options
 		{
 			get
 			{
-				SortedSet<Option> union = new SortedSet<Option>(savedOptionMap.Keys);
+				SortedSet<Option.Option> union = new SortedSet<Option.Option>(savedOptionMap.Keys);
 				union.addAll(dependenciesResolvedOptionMap.Keys);
 				union.addAll(commandLineOptionMap.Keys);
 				union.addAll(optionFileOptionMap.Keys);
@@ -253,11 +250,11 @@ namespace org.maltparser.core.options
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final StringBuilder sb = new StringBuilder();
 			StringBuilder sb = new StringBuilder();
-			SortedSet<Option> union = new SortedSet<Option>(savedOptionMap.Keys);
+			SortedSet<Option.Option> union = new SortedSet<Option.Option>(savedOptionMap.Keys);
 			union.addAll(dependenciesResolvedOptionMap.Keys);
 			union.addAll(commandLineOptionMap.Keys);
 			union.addAll(optionFileOptionMap.Keys);
-			foreach (Option option in union)
+			foreach (Option.Option option in union)
 			{
 				object value = null;
 				for (int i = SAVEDOPTION; i <= OPTIONFILE; i++)

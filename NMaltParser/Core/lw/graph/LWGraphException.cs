@@ -1,10 +1,8 @@
-﻿using System;
+﻿using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.lw.graph
+namespace NMaltParser.Core.LW.Graph
 {
-	using  exception;
-
-	/// <summary>
+    /// <summary>
 	///  LWGraphException extends the MaltChainedException class and is thrown by classes
 	///  within the graph package.
 	/// 
@@ -28,7 +26,7 @@ namespace org.maltparser.core.lw.graph
 		/// </summary>
 		/// <param name="message">	the message </param>
 		/// <param name="cause">		the cause to the exception </param>
-		public LWGraphException(string message, Exception cause) : base(message, cause)
+		public LWGraphException(string message, System.Exception cause) : base(message, cause)
 		{
 		}
 	}

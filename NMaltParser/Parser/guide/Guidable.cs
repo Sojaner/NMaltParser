@@ -1,7 +1,8 @@
-﻿namespace org.maltparser.parser.guide
+﻿using NMaltParser.Parser.History.Action;
+
+namespace NMaltParser.Parser.Guide
 {
-    using  history.action;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// @since 1.1

@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Edge;
 
-namespace org.maltparser.core.syntaxgraph.node
+namespace NMaltParser.Core.SyntaxGraph.Node
 {
-
-	using  exception;
-	using  helper;
-	using  symbol;
-	using  edge;
-
-
-	public class Token : GraphNode, TokenNode, DependencyNode, PhraseStructureNode
+    public class Token : GraphNode, TokenNode, DependencyNode, PhraseStructureNode
 	{
 		/// <summary>
 		/// the previous terminal node in the linear precedence
@@ -141,7 +138,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void addIncomingEdge(org.maltparser.core.syntaxgraph.edge.Edge in) throws org.maltparser.core.exception.MaltChainedException
-		public override void addIncomingEdge(Edge @in)
+		public override void addIncomingEdge(Edge.Edge @in)
 		{
 			base.addIncomingEdge(@in);
 			if (@in.Source != null)
@@ -159,7 +156,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void removeIncomingEdge(org.maltparser.core.syntaxgraph.edge.Edge in) throws org.maltparser.core.exception.MaltChainedException
-		public override void removeIncomingEdge(Edge @in)
+		public override void removeIncomingEdge(Edge.Edge @in)
 		{
 			base.removeIncomingEdge(@in);
 			if (@in.Source != null)
@@ -180,7 +177,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void addOutgoingEdge(org.maltparser.core.syntaxgraph.edge.Edge out) throws org.maltparser.core.exception.MaltChainedException
-		public override void addOutgoingEdge(Edge @out)
+		public override void addOutgoingEdge(Edge.Edge @out)
 		{
 			base.addOutgoingEdge(@out);
 			if (@out.Type == Edge_Fields.DEPENDENCY_EDGE && @out.Target is DependencyNode)
@@ -201,7 +198,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void removeOutgoingEdge(org.maltparser.core.syntaxgraph.edge.Edge out) throws org.maltparser.core.exception.MaltChainedException
-		public override void removeOutgoingEdge(Edge @out)
+		public override void removeOutgoingEdge(Edge.Edge @out)
 		{
 			base.removeOutgoingEdge(@out);
 			if (@out.Type == Edge_Fields.DEPENDENCY_EDGE && @out.Target is DependencyNode)
@@ -564,11 +561,11 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge getParentEdge() throws org.maltparser.core.exception.MaltChainedException
-		public virtual Edge ParentEdge
+		public virtual Edge.Edge ParentEdge
 		{
 			get
 			{
-				foreach (Edge e in incomingEdges)
+				foreach (Edge.Edge e in incomingEdges)
 				{
 					if (e.Source == parent && e.Type == Edge_Fields.PHRASE_STRUCTURE_EDGE)
 					{
@@ -583,7 +580,7 @@ namespace org.maltparser.core.syntaxgraph.node
 //ORIGINAL LINE: public String getParentEdgeLabelSymbol(org.maltparser.core.symbol.SymbolTable table) throws org.maltparser.core.exception.MaltChainedException
 		public virtual string getParentEdgeLabelSymbol(SymbolTable table)
 		{
-			foreach (Edge e in incomingEdges)
+			foreach (Edge.Edge e in incomingEdges)
 			{
 				if (e.Source == parent && e.Type == Edge_Fields.PHRASE_STRUCTURE_EDGE)
 				{
@@ -597,7 +594,7 @@ namespace org.maltparser.core.syntaxgraph.node
 //ORIGINAL LINE: public int getParentEdgeLabelCode(org.maltparser.core.symbol.SymbolTable table) throws org.maltparser.core.exception.MaltChainedException
 		public virtual int getParentEdgeLabelCode(SymbolTable table)
 		{
-			foreach (Edge e in incomingEdges)
+			foreach (Edge.Edge e in incomingEdges)
 			{
 				if (e.Source == parent && e.Type == Edge_Fields.PHRASE_STRUCTURE_EDGE)
 				{
@@ -611,7 +608,7 @@ namespace org.maltparser.core.syntaxgraph.node
 //ORIGINAL LINE: public boolean hasParentEdgeLabel(org.maltparser.core.symbol.SymbolTable table) throws org.maltparser.core.exception.MaltChainedException
 		public virtual bool hasParentEdgeLabel(SymbolTable table)
 		{
-			foreach (Edge e in incomingEdges)
+			foreach (Edge.Edge e in incomingEdges)
 			{
 				if (e.Source == parent && e.Type == Edge_Fields.PHRASE_STRUCTURE_EDGE)
 				{
@@ -644,7 +641,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public java.util.Set<org.maltparser.core.syntaxgraph.edge.Edge> getHeadEdges() throws org.maltparser.core.exception.MaltChainedException
-		public virtual ISet<Edge> HeadEdges
+		public virtual ISet<Edge.Edge> HeadEdges
 		{
 			get
 			{
@@ -697,7 +694,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge getHeadEdge() throws org.maltparser.core.exception.MaltChainedException
-		public virtual Edge HeadEdge
+		public virtual Edge.Edge HeadEdge
 		{
 			get
 			{
@@ -711,7 +708,7 @@ namespace org.maltparser.core.syntaxgraph.node
 				}
 				if (heads.Count == 1)
 				{
-					foreach (Edge e in incomingEdges)
+					foreach (Edge.Edge e in incomingEdges)
 					{
 						if (e.Source == heads.Min)
 						{

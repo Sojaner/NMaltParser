@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Config;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser;
+using NMaltParser.Parser.Guide.Instance;
+using NMaltParser.Parser.History.Action;
+using NMaltParser.Parser.History.KBest;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.ml.libsvm
+namespace NMaltParser.ML.LibSvm
 {
-
-
-	using  core.config;
-    using  core.exception;
-	using  core.feature;
-	using  core.feature.function;
-	using  core.feature.value;
-    using  core.syntaxgraph;
-    using  parser;
-	using  parser.guide.instance;
-	using  parser.history.action;
-	using  parser.history.kbest;
-
     /// <summary>
 	/// Implements an interface to the LIBSVM learner (currently the LIBSVM 2.91 is used). More information
 	/// about LIBSVM can be found at 

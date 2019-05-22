@@ -1,10 +1,8 @@
-﻿using System;
+﻿using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.feature
+namespace NMaltParser.Core.Feature
 {
-	using  exception;
-
-	/// <summary>
+    /// <summary>
 	///  FeatureException extends the MaltChainedException class and is thrown by classes
 	///  within the feature package.
 	/// 
@@ -26,7 +24,7 @@ namespace org.maltparser.core.feature
 		/// </summary>
 		/// <param name="message">	the message </param>
 		/// <param name="cause">		the cause to the exception </param>
-		public FeatureException(string message, Exception cause) : base(message, cause)
+		public FeatureException(string message, global::System.Exception cause) : base(message, cause)
 		{
 		}
 	}

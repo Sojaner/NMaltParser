@@ -1,10 +1,9 @@
 ﻿using System;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.concurrent.test
+namespace NMaltParser.Concurrent.Test
 {
-	using  core.exception;
-
-	/// <summary>
+    /// <summary>
 	///  ExperimentException extends the MaltChainedException class and is thrown by classes
 	///  within the graph package.
 	/// 

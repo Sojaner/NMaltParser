@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.syntaxgraph.headrules
+namespace NMaltParser.Core.SyntaxGraph.HeadRules
 {
-    using  exception;
-	using  io.dataformat;
-	using  symbol;
-    using  node;
-
     /// 
 	/// 
 	/// <summary>

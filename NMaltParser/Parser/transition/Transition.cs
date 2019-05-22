@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace org.maltparser.parser.transition
+namespace NMaltParser.Parser.Transition
 {
 
 	/// <summary>

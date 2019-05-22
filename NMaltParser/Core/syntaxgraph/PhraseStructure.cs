@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.syntaxgraph
+namespace NMaltParser.Core.SyntaxGraph
 {
-    using  edge;
-	using  node;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -21,7 +20,7 @@ namespace org.maltparser.core.syntaxgraph
 		int nTerminalNode();
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge addPhraseStructureEdge(org.maltparser.core.syntaxgraph.node.PhraseStructureNode source, org.maltparser.core.syntaxgraph.node.PhraseStructureNode target) throws org.maltparser.core.exception.MaltChainedException;
-		Edge addPhraseStructureEdge(PhraseStructureNode source, PhraseStructureNode target);
+		Edge.Edge addPhraseStructureEdge(PhraseStructureNode source, PhraseStructureNode target);
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void removePhraseStructureEdge(org.maltparser.core.syntaxgraph.node.PhraseStructureNode source, org.maltparser.core.syntaxgraph.node.PhraseStructureNode target) throws org.maltparser.core.exception.MaltChainedException;
 		void removePhraseStructureEdge(PhraseStructureNode source, PhraseStructureNode target);

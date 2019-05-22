@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace org.maltparser.ml.lib
+namespace NMaltParser.ML.Lib
 {
     /// <summary>
 	/// <para>This class borrows code from libsvm.svm.java of the Java implementation of the libsvm package.

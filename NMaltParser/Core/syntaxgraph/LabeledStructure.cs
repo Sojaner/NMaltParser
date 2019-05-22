@@ -1,8 +1,9 @@
-﻿namespace org.maltparser.core.syntaxgraph
+﻿using NMaltParser.Core.Exception;
+using NMaltParser.Core.Symbol;
+
+namespace NMaltParser.Core.SyntaxGraph
 {
-	using  exception;
-	using  symbol;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

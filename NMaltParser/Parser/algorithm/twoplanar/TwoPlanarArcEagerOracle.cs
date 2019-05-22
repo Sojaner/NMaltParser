@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Edge;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Parser.History;
+using NMaltParser.Parser.History.Action;
 
-namespace org.maltparser.parser.algorithm.twoplanar
+namespace NMaltParser.Parser.Algorithm.TwoPlanar
 {
-    using  core.syntaxgraph;
-	using  core.syntaxgraph.edge;
-	using  core.syntaxgraph.node;
-	using  history;
-	using  history.action;
-	/// <summary>
+    /// <summary>
 	/// @author Carlos Gomez Rodriguez
 	/// 
 	/// </summary>

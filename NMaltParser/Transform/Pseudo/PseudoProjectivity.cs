@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.transform.pseudo
+namespace NMaltParser.Transform.Pseudo
 {
-    using  core.io.dataformat;
-    using  core.symbol;
-    using  core.syntaxgraph;
-	using  core.syntaxgraph.node;
-
-	/// <summary>
+    /// <summary>
 	/// This class contains methods for projectivizing and deprojectivizing
 	/// 
 	/// @author Jens Nilsson

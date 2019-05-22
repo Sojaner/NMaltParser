@@ -1,8 +1,8 @@
-﻿namespace org.maltparser.parser.transition
-{
-    using  core.helper;
-	using  core.symbol;
+﻿using NMaltParser.Core.Helper;
+using NMaltParser.Core.Symbol;
 
+namespace NMaltParser.Parser.Transition
+{
     /// 
 	/// <summary>
 	/// @author Johan Hall

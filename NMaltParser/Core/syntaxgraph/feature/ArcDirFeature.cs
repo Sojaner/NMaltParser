@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.syntaxgraph.feature
+namespace NMaltParser.Core.SyntaxGraph.Feature
 {
-	using  exception;
-	using  org.maltparser.core.feature.function;
-    using  org.maltparser.core.feature.value;
-    using  io.dataformat;
-	using  symbol;
-    using  node;
-
-	public sealed class ArcDirFeature : FeatureFunction
+    public sealed class ArcDirFeature : FeatureFunction
 	{
 		public static readonly Type[] paramTypes = new Type[] {typeof(AddressFunction)};
 		private AddressFunction addressFunction;

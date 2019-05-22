@@ -1,10 +1,9 @@
 ﻿using System;
+using NMaltParser.Core.Feature.Value;
 
-namespace org.maltparser.core.feature.function
+namespace NMaltParser.Core.Feature.Function
 {
-    using  value;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

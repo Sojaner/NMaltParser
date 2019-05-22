@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Options;
 
-namespace org.maltparser.core.plugin
+namespace NMaltParser.Core.Plugin
 {
-    using  helper;
-	using  options;
-
-
-	/// <summary>
+    /// <summary>
 	/// The jar class loader loads the content of a jar file that complies with a MaltParser Plugin.
 	/// 
 	/// @author Johan Hall
@@ -66,7 +63,7 @@ namespace org.maltparser.core.plugin
 		{
 			JarInputStream jis;
 			JarEntry je;
-			ISet<URL> pluginXMLs = new HashSet<URL>();
+			ISet<URL> pluginXMLs = new Helper.HashSet<URL>();
 
 			/*if (logger.isDebugEnabled()) {
 				logger.debug("Loading jar " + jarUrl+"\n");

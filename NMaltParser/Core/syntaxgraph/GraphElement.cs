@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.core.syntaxgraph
+namespace NMaltParser.Core.SyntaxGraph
 {
-
-	using  exception;
-	using  symbol;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

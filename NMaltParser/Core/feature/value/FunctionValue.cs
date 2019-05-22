@@ -1,9 +1,8 @@
 ﻿using System.Text;
 
-namespace org.maltparser.core.feature.value
+namespace NMaltParser.Core.Feature.Value
 {
-	using  function;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -11,14 +10,14 @@ namespace org.maltparser.core.feature.value
 	/// </summary>
 	public abstract class FunctionValue
 	{
-		protected internal Function function;
+		protected internal Function.Function function;
 
-		public FunctionValue(Function function)
+		public FunctionValue(Function.Function function)
 		{
 			Function = function;
 		}
 
-		public virtual Function Function
+		public virtual Function.Function Function
 		{
 			get
 			{

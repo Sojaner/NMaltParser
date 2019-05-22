@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Concurrent.Graph.DataFormat;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Edge;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.lw.graph
+namespace NMaltParser.Core.LW.Graph
 {
-
-	using  org.maltparser.concurrent.graph.dataformat;
-    using  org.maltparser.core.helper;
-	using  symbol;
-    using  syntaxgraph;
-    using  syntaxgraph.edge;
-	using  syntaxgraph.node;
-
     /// <summary>
 	/// A lightweight version of org.maltparser.core.syntaxgraph.DependencyGraph.
 	/// 

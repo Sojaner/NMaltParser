@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Plugin;
 
-namespace org.maltparser.core.options.option
+namespace NMaltParser.Core.Options.Option
 {
-
-	using  exception;
-	using  plugin;
-
-	/// <summary>
+    /// <summary>
 	/// A class type option is an option that can only contain string value that corresponds to a class. 
 	/// 
 	/// @author Johan Hall

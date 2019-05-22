@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace org.maltparser.core.feature.value
+namespace NMaltParser.Core.Feature.Value
 {
-
-	using  function;
-	using  helper;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -16,7 +13,7 @@ namespace org.maltparser.core.feature.value
 	{
 		protected internal SortedDictionary<int, string> featureValues;
 
-		public MultipleFeatureValue(Function function) : base(function)
+		public MultipleFeatureValue(Function.Function function) : base(function)
 		{
 			FeatureValues = new SortedDictionary<int, string>();
 		}
@@ -60,7 +57,7 @@ namespace org.maltparser.core.feature.value
 		{
 			get
 			{
-				return new HashSet<string>(featureValues.Values);
+				return new Helper.HashSet<string>(featureValues.Values);
 			}
 		}
 

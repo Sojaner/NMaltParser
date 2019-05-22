@@ -1,13 +1,13 @@
 ﻿using System;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser.Guide;
+using NMaltParser.Parser.History;
+using NMaltParser.Parser.History.Action;
+using NMaltParser.Parser.History.Container;
 
-namespace org.maltparser.parser
+namespace NMaltParser.Parser
 {
-    using  core.syntaxgraph;
-	using  guide;
-	using  history;
-	using  history.action;
-	using  history.container;
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

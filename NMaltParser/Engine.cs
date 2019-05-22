@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
+using NMaltParser.Core.Flow;
+using NMaltParser.Core.Flow.Item;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Options;
+using NMaltParser.Core.Plugin;
+using NMaltParser.Utilities;
 
-namespace org.maltparser
+namespace NMaltParser
 {
-    using  core.flow;
-    using  core.flow.item;
-	using  core.helper;
-    using  core.options;
-	using  core.plugin;
-
-
-	public class Engine
+    public class Engine
 	{
 		private readonly long startTime;
 		private readonly FlowChartManager flowChartManager;

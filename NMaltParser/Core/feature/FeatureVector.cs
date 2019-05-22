@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Spec;
+using NMaltParser.Core.Feature.Value;
 
-namespace org.maltparser.core.feature
+namespace NMaltParser.Core.Feature
 {
-
-	using  exception;
-	using  function;
-	using  spec;
-	using  value;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Symbol.NullValue;
 
-namespace org.maltparser.core.symbol.hash
+namespace NMaltParser.Core.Symbol.Hash
 {
-    using  helper;
-	using  nullvalue;
-
-
     public sealed class HashSymbolTable : SymbolTable
 	{
 		private readonly string name;

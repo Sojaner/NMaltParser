@@ -1,10 +1,9 @@
 ﻿using System;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.ml.liblinear
+namespace NMaltParser.ML.LibLinear
 {
-	using  core.exception;
-
-	/// <summary>
+    /// <summary>
 	///  LiblinearException extends the MaltChainedException class and is thrown by classes
 	///  within the libsvm package.
 	/// 

@@ -1,23 +1,23 @@
 ﻿using System;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Config;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Feature.System;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Options;
+using NMaltParser.Core.Plugin;
+using NMaltParser.Core.Propagation;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser.Guide;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.parser
+namespace NMaltParser.Parser
 {
-    using  core.config;
-    using  core.exception;
-	using  core.feature;
-	using  core.feature.system;
-	using  core.helper;
-    using  core.io.dataformat;
-	using  core.options;
-	using  core.plugin;
-	using  core.propagation;
-    using  core.symbol;
-	using  core.syntaxgraph;
-	using  guide;
-
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

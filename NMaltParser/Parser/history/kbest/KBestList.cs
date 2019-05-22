@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Parser.History.Action;
 
-namespace org.maltparser.parser.history.kbest
+namespace NMaltParser.Parser.History.KBest
 {
-
-	using  core.exception;
-	using  action;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// 

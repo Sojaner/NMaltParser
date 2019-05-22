@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Parser.History.Container;
 
-namespace org.maltparser.parser.transition
+namespace NMaltParser.Parser.Transition
 {
-    using  core.helper;
-	using  core.symbol;
-	using  history.container;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// 

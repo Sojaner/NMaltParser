@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Text;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.syntaxgraph.feature
+namespace NMaltParser.Core.SyntaxGraph.Feature
 {
-    using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  io.dataformat;
-    using  symbol;
-    using  node;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

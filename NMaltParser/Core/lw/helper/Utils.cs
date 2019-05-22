@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.lw.helper
+namespace NMaltParser.Core.LW.Helper
 {
-    using  io.dataformat;
-    using  symbol;
-	using  syntaxgraph;
-	using  syntaxgraph.node;
-
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

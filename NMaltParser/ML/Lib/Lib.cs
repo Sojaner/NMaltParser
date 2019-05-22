@@ -1,24 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser;
+using NMaltParser.Parser.Guide.Instance;
+using NMaltParser.Parser.History.Action;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.ml.lib
+namespace NMaltParser.ML.Lib
 {
-
-
-
-
-	using  core.exception;
-	using  core.feature;
-	using  core.feature.function;
-	using  core.feature.value;
-    using  core.syntaxgraph;
-	using  parser;
-	using  parser.guide.instance;
-	using  parser.history.action;
-
-	public abstract class Lib : LearningMethod
+    public abstract class Lib : LearningMethod
 	{
 		public enum Verbostity
 		{

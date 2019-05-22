@@ -1,11 +1,9 @@
 ﻿using System.IO;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.parser
+namespace NMaltParser.Parser
 {
-
-	using  core.exception;
-
-	public class Diagnostics
+    public class Diagnostics
 	{
 	//	protected final boolean diagnostics;
 		protected internal readonly StreamWriter diaWriter;

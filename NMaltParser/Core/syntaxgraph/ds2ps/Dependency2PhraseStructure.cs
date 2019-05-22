@@ -1,4 +1,4 @@
-﻿namespace org.maltparser.core.syntaxgraph.ds2ps
+﻿namespace NMaltParser.Core.SyntaxGraph.Ds2PS
 {
 	/// 
 	/// 

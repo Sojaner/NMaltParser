@@ -1,18 +1,16 @@
 ﻿using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Feature.Value;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser.History.Action;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.parser.guide.instance
+namespace NMaltParser.Parser.Guide.Instance
 {
-
-
-	using  core.exception;
-	using  core.feature;
-    using  core.feature.value;
-	using  core.syntaxgraph;
-	using  history.action;
-
-	/// <summary>
+    /// <summary>
 	/// The feature divide model is used for divide the training instances into several models according to
 	/// a divide feature. Usually this strategy decrease the training and classification time, but can also decrease 
 	/// the accuracy of the parser.  

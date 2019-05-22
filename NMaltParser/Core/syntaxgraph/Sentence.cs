@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Pool;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.syntaxgraph
+namespace NMaltParser.Core.SyntaxGraph
 {
-    using  helper;
-	using  pool;
-	using  symbol;
-	using  node;
-
     /// 
 	/// 
 	/// <summary>

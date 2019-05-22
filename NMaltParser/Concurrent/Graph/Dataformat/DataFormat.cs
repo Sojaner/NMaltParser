@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Helper;
 
-namespace org.maltparser.concurrent.graph.dataformat
+namespace NMaltParser.Concurrent.Graph.DataFormat
 {
-    using  core.helper;
-
     /// 
 	/// <summary>
 	/// @author Johan Hall

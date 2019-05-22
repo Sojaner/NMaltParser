@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.core.syntaxgraph.reader
+namespace NMaltParser.Core.SyntaxGraph.Reader
 {
-
-	using  helper;
-	using  symbol;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

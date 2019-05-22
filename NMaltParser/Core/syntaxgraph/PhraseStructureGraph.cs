@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Pool;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Edge;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.syntaxgraph
+namespace NMaltParser.Core.SyntaxGraph
 {
-
-	using  exception;
-	using  pool;
-	using  symbol;
-	using  edge;
-    using  node;
-
     /// 
 	/// 
 	/// <summary>
@@ -18,8 +16,8 @@ namespace org.maltparser.core.syntaxgraph
 	/// </summary>
 	public class PhraseStructureGraph : Sentence, PhraseStructure
 	{
-		protected internal readonly ObjectPoolList<Edge> edgePool;
-		protected internal readonly SortedSet<Edge> graphEdges;
+		protected internal readonly ObjectPoolList<Edge.Edge> edgePool;
+		protected internal readonly SortedSet<Edge.Edge> graphEdges;
 		protected internal readonly SortedDictionary<int, NonTerminal> nonTerminalNodes;
 		protected internal readonly ObjectPoolList<NonTerminal> nonTerminalPool;
 		protected internal readonly Root root;
@@ -32,14 +30,14 @@ namespace org.maltparser.core.syntaxgraph
 			root = new Root();
 			root.BelongsToGraph = this;
 
-			graphEdges = new SortedSet<Edge>();
+			graphEdges = new SortedSet<Edge.Edge>();
 			edgePool = new ObjectPoolListAnonymousInnerClass(this);
 
 			nonTerminalNodes = new SortedDictionary<int, NonTerminal>();
 			nonTerminalPool = new ObjectPoolListAnonymousInnerClass2(this);
 		}
 
-		private class ObjectPoolListAnonymousInnerClass : ObjectPoolList<Edge>
+		private class ObjectPoolListAnonymousInnerClass : ObjectPoolList<Edge.Edge>
 		{
 			private readonly PhraseStructureGraph outerInstance;
 
@@ -48,13 +46,13 @@ namespace org.maltparser.core.syntaxgraph
 				this.outerInstance = outerInstance;
 			}
 
-			protected internal override Edge create()
+			protected internal override Edge.Edge create()
 			{
 				return new GraphEdge();
 			}
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void resetObject(org.maltparser.core.syntaxgraph.edge.Edge o) throws org.maltparser.core.exception.MaltChainedException
-			public void resetObject(Edge o)
+			public void resetObject(Edge.Edge o)
 			{
 				o.clear();
 			}
@@ -180,7 +178,7 @@ namespace org.maltparser.core.syntaxgraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge addPhraseStructureEdge(org.maltparser.core.syntaxgraph.node.PhraseStructureNode parent, org.maltparser.core.syntaxgraph.node.PhraseStructureNode child) throws org.maltparser.core.exception.MaltChainedException
-		public virtual Edge addPhraseStructureEdge(PhraseStructureNode parent, PhraseStructureNode child)
+		public virtual Edge.Edge addPhraseStructureEdge(PhraseStructureNode parent, PhraseStructureNode child)
 		{
 			if (parent == null || child == null)
 			{
@@ -188,9 +186,9 @@ namespace org.maltparser.core.syntaxgraph
 			}
 			else if (parent is NonTerminalNode && !child.Root)
 			{
-				Edge e = edgePool.checkOut();
+				Edge.Edge e = edgePool.checkOut();
 				e.BelongsToGraph = this;
-				e.setEdge((Node)parent, (Node)child, Edge_Fields.PHRASE_STRUCTURE_EDGE);
+				e.setEdge((Node.Node)parent, (Node.Node)child, Edge_Fields.PHRASE_STRUCTURE_EDGE);
 				graphEdges.Add(e);
 				return e;
 			}
@@ -210,7 +208,7 @@ namespace org.maltparser.core.syntaxgraph
 			}
 			else if (parent is NonTerminalNode && !child.Root)
 			{
-				foreach (Edge e in graphEdges)
+				foreach (Edge.Edge e in graphEdges)
 				{
 					if (e.Source == parent && e.Target == child)
 					{
@@ -231,7 +229,7 @@ namespace org.maltparser.core.syntaxgraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge addSecondaryEdge(org.maltparser.core.syntaxgraph.node.ComparableNode source, org.maltparser.core.syntaxgraph.node.ComparableNode target) throws org.maltparser.core.exception.MaltChainedException
-		public virtual Edge addSecondaryEdge(ComparableNode source, ComparableNode target)
+		public virtual Edge.Edge addSecondaryEdge(ComparableNode source, ComparableNode target)
 		{
 			if (source == null || target == null)
 			{
@@ -239,9 +237,9 @@ namespace org.maltparser.core.syntaxgraph
 			}
 			else if (!target.Root)
 			{
-				Edge e = edgePool.checkOut();
+				Edge.Edge e = edgePool.checkOut();
 				e.BelongsToGraph = this;
-				e.setEdge((Node)source, (Node)target, Edge_Fields.SECONDARY_EDGE);
+				e.setEdge((Node.Node)source, (Node.Node)target, Edge_Fields.SECONDARY_EDGE);
 				graphEdges.Add(e);
 				return e;
 			}
@@ -258,10 +256,10 @@ namespace org.maltparser.core.syntaxgraph
 			}
 			else if (!target.Root)
 			{
-				IEnumerator<Edge> ie = ((Node)target).IncomingEdgeIterator;
+				IEnumerator<Edge.Edge> ie = ((Node.Node)target).IncomingEdgeIterator;
 				while (ie.MoveNext())
 				{
-					Edge e = ie.Current;
+					Edge.Edge e = ie.Current;
 					if (e.Source == source)
 					{
 //JAVA TO C# CONVERTER TODO TASK: .NET enumerators are read-only:
@@ -278,7 +276,7 @@ namespace org.maltparser.core.syntaxgraph
 			return graphEdges.Count;
 		}
 
-		public virtual SortedSet<Edge> Edges
+		public virtual SortedSet<Edge.Edge> Edges
 		{
 			get
 			{
@@ -374,10 +372,10 @@ namespace org.maltparser.core.syntaxgraph
 
 			sb.Append(node.ToString().Trim());
 			sb.Append('\n');
-			IEnumerator<Edge> ie = ((Node)node).OutgoingEdgeIterator;
+			IEnumerator<Edge.Edge> ie = ((Node.Node)node).OutgoingEdgeIterator;
 			while (ie.MoveNext())
 			{
-				Edge e = ie.Current;
+				Edge.Edge e = ie.Current;
 				if (e.Target is TokenNode)
 				{
 					sb.Append("   T");

@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Helper;
 
-namespace org.maltparser.core.lw.parser
+namespace NMaltParser.Core.LW.Parser
 {
-
-	using  org.maltparser.core.helper;
-
     /// <summary>
 	/// @author Johan Hall
 	/// 
@@ -155,7 +153,7 @@ namespace org.maltparser.core.lw.parser
 		{
 			get
 			{
-				return Collections.synchronizedSet(new HashSet<string>(preLoadedObjects.Keys));
+				return Collections.synchronizedSet(new Core.Helper.HashSet<string>(preLoadedObjects.Keys));
 			}
 		}
 

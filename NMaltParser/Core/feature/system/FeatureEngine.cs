@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Plugin;
 
-namespace org.maltparser.core.feature.system
+namespace NMaltParser.Core.Feature.System
 {
-    using  function;
-	using  helper;
-    using  plugin;
-
     /// 
 	/// 
 	/// <summary>
@@ -27,10 +25,10 @@ namespace org.maltparser.core.feature.system
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.feature.function.Function newFunction(String functionName, org.maltparser.core.feature.FeatureRegistry registry) throws org.maltparser.core.exception.MaltChainedException
-		public virtual Function newFunction(string functionName, FeatureRegistry registry)
+		public virtual Function.Function newFunction(string functionName, FeatureRegistry registry)
 		{
 			int i = 0;
-			Function func = null;
+			Function.Function func = null;
 			while (true)
 			{
 				FunctionDescription funcDesc = get(functionName + "~~" + i);
@@ -62,7 +60,7 @@ namespace org.maltparser.core.feature.system
 //ORIGINAL LINE: public void load(org.maltparser.core.plugin.PluginLoader plugins) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void load(PluginLoader plugins)
 		{
-			 foreach (Plugin plugin in plugins)
+			 foreach (Plugin.Plugin plugin in plugins)
 			 {
 				URL url = null;
 				try

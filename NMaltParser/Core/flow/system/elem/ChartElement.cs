@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Text;
+using NMaltParser.Core.Flow.Item;
+using NMaltParser.Core.Plugin;
 
-namespace org.maltparser.core.flow.system.elem
+namespace NMaltParser.Core.Flow.System.Elem
 {
-    using  item;
-	using  plugin;
-
     /// 
 	/// 
 	/// <summary>

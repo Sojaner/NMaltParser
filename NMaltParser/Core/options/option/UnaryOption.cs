@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace org.maltparser.core.options.option
+namespace NMaltParser.Core.Options.Option
 {
     /// <summary>
 	/// An unary option is an option that doesn't need a value to the 

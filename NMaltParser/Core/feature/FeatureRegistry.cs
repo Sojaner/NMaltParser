@@ -1,11 +1,10 @@
 ﻿using System;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.core.feature
+namespace NMaltParser.Core.Feature
 {
-	using  io.dataformat;
-	using  symbol;
-
-	public interface FeatureRegistry
+    public interface FeatureRegistry
 	{
 		object get(Type key);
 		void put(Type key, object value);

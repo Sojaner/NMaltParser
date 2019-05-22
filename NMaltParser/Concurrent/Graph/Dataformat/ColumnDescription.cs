@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace org.maltparser.concurrent.graph.dataformat
+namespace NMaltParser.Concurrent.Graph.DataFormat
 {
 
 	/// 

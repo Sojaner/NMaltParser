@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Pool;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Parser.History.Action;
+using NMaltParser.Parser.History.Container;
 
-namespace org.maltparser.parser.history
+namespace NMaltParser.Parser.History
 {
-    using  core.helper;
-	using  core.pool;
-	using  core.symbol;
-	using  action;
-    using  container;
-
     /// 
 	/// <summary>
 	/// @author Johan Hall

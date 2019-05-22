@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Propagation.Spec;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Edge;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.propagation
+namespace NMaltParser.Core.Propagation
 {
-
-	using  exception;
-	using  io.dataformat;
-    using  spec;
-	using  symbol;
-    using  syntaxgraph.edge;
-	using  syntaxgraph.node;
-
-	/// <summary>
+    /// <summary>
 	/// A propagation object propagate a column value from one node to a column in another node based on the propagation specification. 
 	/// 
 	/// @author Johan Hall

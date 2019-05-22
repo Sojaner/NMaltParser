@@ -1,10 +1,8 @@
-﻿using System;
+﻿using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.io.dataformat
+namespace NMaltParser.Core.IO.DataFormat
 {
-	using  exception;
-
-	/// <summary>
+    /// <summary>
 	///  DataFormatException extends the MaltChainedException class and is thrown by classes
 	///  within the dataformat package.
 	/// 
@@ -29,7 +27,7 @@ namespace org.maltparser.core.io.dataformat
 		/// </summary>
 		/// <param name="message">	the message </param>
 		/// <param name="cause">		the cause to the exception </param>
-		public DataFormatException(string message, Exception cause) : base(message, cause)
+		public DataFormatException(string message, System.Exception cause) : base(message, cause)
 		{
 		}
 	}

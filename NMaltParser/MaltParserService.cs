@@ -1,21 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Flow;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Options;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.Symbol.Hash;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Edge;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Parser;
+using NMaltParser.Utilities;
 
-namespace org.maltparser
+namespace NMaltParser
 {
-
-	using  core.exception;
-	using  core.flow;
-	using  core.io.dataformat;
-    using  core.options;
-	using  core.symbol;
-    using  core.symbol.hash;
-	using  core.syntaxgraph;
-    using  core.syntaxgraph.edge;
-	using  core.syntaxgraph.node;
-	using  parser;
-
-	/// <summary>
+    /// <summary>
 	/// The purpose of MaltParserService is to easily write third-party programs that uses MaltParser. 
 	/// 
 	///  There are two ways to call the MaltParserService:

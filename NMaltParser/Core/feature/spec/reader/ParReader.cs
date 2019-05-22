@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
 
-namespace org.maltparser.core.feature.spec.reader
+namespace NMaltParser.Core.Feature.Spec.Reader
 {
     /// 
 	/// 

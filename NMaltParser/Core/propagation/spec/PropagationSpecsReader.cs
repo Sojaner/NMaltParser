@@ -1,4 +1,4 @@
-﻿namespace org.maltparser.core.propagation.spec
+﻿namespace NMaltParser.Core.Propagation.Spec
 {
     /// <summary>
 	/// @author Johan Hall

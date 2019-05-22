@@ -1,10 +1,9 @@
 ﻿using System;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.parser.guide
+namespace NMaltParser.Parser.Guide
 {
-	using  core.exception;
-
-	/// <summary>
+    /// <summary>
 	///  GuideException extends the MaltChainedException class and is thrown by classes
 	///  within the guide package.
 	/// 

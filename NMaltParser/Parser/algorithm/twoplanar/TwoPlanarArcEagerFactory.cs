@@ -1,8 +1,9 @@
-﻿namespace org.maltparser.parser.algorithm.twoplanar
+﻿using NMaltParser.Parser.Guide;
+using NMaltParser.Parser.History;
+
+namespace NMaltParser.Parser.Algorithm.TwoPlanar
 {
-    using  guide;
-	using  history;
-	/// <summary>
+    /// <summary>
 	/// @author Carlos Gomez Rodriguez
 	/// 
 	/// </summary>

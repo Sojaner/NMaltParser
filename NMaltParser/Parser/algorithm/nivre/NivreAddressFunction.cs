@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Text;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
 
-namespace org.maltparser.parser.algorithm.nivre
+namespace NMaltParser.Parser.Algorithm.Nivre
 {
-    using  core.feature.function;
-	using  core.feature.value;
-
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// 

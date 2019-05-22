@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Feature.Spec.Reader;
+using NMaltParser.Core.Helper;
 
-namespace org.maltparser.core.feature.spec
+namespace NMaltParser.Core.Feature.Spec
 {
-
-	using  org.maltparser.core.exception;
-	using  org.maltparser.core.feature.spec.reader;
-	using  org.maltparser.core.feature.spec.reader;
-	using  org.maltparser.core.helper;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -106,7 +102,7 @@ namespace org.maltparser.core.feature.spec
 			try
 			{
 				Type clazz = Type.GetType("org.maltparser.core.feature.spec.reader." + urlSuffix + "Reader");
-				specReader = (FeatureSpecReader)System.Activator.CreateInstance(clazz);
+				specReader = (FeatureSpecReader)global::System.Activator.CreateInstance(clazz);
 			}
 			catch (InstantiationException e)
 			{
@@ -156,7 +152,7 @@ namespace org.maltparser.core.feature.spec
 			try
 			{
 				Type clazz = Type.GetType("org.maltparser.core.feature.spec.reader." + urlSuffix + "Reader");
-				specReader = (FeatureSpecReader)System.Activator.CreateInstance(clazz);
+				specReader = (FeatureSpecReader)global::System.Activator.CreateInstance(clazz);
 			}
 			catch (InstantiationException e)
 			{

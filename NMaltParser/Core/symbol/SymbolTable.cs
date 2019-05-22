@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace org.maltparser.core.symbol
+namespace NMaltParser.Core.Symbol
 {
     public interface SymbolTable : Table
 	{

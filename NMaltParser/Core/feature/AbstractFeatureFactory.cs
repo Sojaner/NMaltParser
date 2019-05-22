@@ -1,12 +1,10 @@
-﻿namespace org.maltparser.core.feature
+﻿namespace NMaltParser.Core.Feature
 {
-    using  function;
-
-	public interface AbstractFeatureFactory
+    public interface AbstractFeatureFactory
 	{
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.feature.function.Function makeFunction(String subFunctionName, FeatureRegistry registry) throws org.maltparser.core.exception.MaltChainedException;
-		Function makeFunction(string subFunctionName, FeatureRegistry registry);
+		Function.Function makeFunction(string subFunctionName, FeatureRegistry registry);
 	}
 
 }

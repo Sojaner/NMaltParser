@@ -1,17 +1,17 @@
 ﻿using System.Text;
+using NMaltParser.Core.Config;
+using NMaltParser.Core.Flow;
+using NMaltParser.Core.Flow.Item;
+using NMaltParser.Core.Flow.Spec;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Options;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Ds2PS;
 
-namespace org.maltparser.core.syntaxgraph
+namespace NMaltParser.Core.SyntaxGraph
 {
-	using  config;
-    using  flow;
-    using  flow.item;
-	using  flow.spec;
-	using  helper;
-	using  io.dataformat;
-    using  options;
-	using  symbol;
-	using  ds2ps;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

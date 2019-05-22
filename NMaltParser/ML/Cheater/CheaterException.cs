@@ -1,10 +1,9 @@
 ﻿using System;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.ml.cheater
+namespace NMaltParser.ML.Cheater
 {
-	using  core.exception;
-
-	/// <summary>
+    /// <summary>
 	///  CheaterException extends the MaltChainedException class and is thrown by classes
 	///  within the cheater package.
 	/// 

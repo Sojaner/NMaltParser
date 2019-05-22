@@ -1,8 +1,8 @@
-﻿namespace org.maltparser.core.syntaxgraph.edge
+﻿using NMaltParser.Core.Exception;
+
+namespace NMaltParser.Core.SyntaxGraph.Edge
 {
-	using  exception;
-	using  node;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -20,17 +20,17 @@
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void setEdge(org.maltparser.core.syntaxgraph.node.Node source, org.maltparser.core.syntaxgraph.node.Node target, int type) throws org.maltparser.core.exception.MaltChainedException;
-		void setEdge(Node source, Node target, int type);
+		void setEdge(Node.Node source, Node.Node target, int type);
 		/// <summary>
 		/// Returns the source node of the edge.
 		/// </summary>
 		/// <returns> the source node of the edge. </returns>
-		Node Source {get;}
+		Node.Node Source {get;}
 		/// <summary>
 		/// Returns the target node of the edge.
 		/// </summary>
 		/// <returns> the target node of the edge. </returns>
-		Node Target {get;}
+		Node.Node Target {get;}
 		/// <summary>
 		/// Returns the edge type (DEPENDENCY_EDGE, PHRASE_STRUCTURE_EDGE or SECONDARY_EDGE).
 		/// </summary>

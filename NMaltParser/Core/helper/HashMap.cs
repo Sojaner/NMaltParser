@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.helper
+namespace NMaltParser.Core.Helper
 {
 	/*
 	 * Copyright 2009 Google Inc.

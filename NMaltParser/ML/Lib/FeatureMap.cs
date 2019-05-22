@@ -1,12 +1,9 @@
 ﻿using System;
+using NMaltParser.Core.Helper;
 
-namespace org.maltparser.ml.lib
+namespace NMaltParser.ML.Lib
 {
-
-
-	using  core.helper;
-
-	/// <summary>
+    /// <summary>
 	/// The purpose of the feature map is to map MaltParser's column based features together with the symbol code from the symbol table to 
 	/// unique indices suitable for liblinear and libsvm.  A feature column position are combined together with the symbol code in a 
 	/// 64-bit key (Long), where 16 bits are reserved for the position and 48 bits are reserved for the symbol code.  

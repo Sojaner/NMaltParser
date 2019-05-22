@@ -1,10 +1,8 @@
-﻿using System;
+﻿using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.propagation
+namespace NMaltParser.Core.Propagation
 {
-	using  exception;
-
-	/// <summary>
+    /// <summary>
 	///  PropagationException extends the MaltChainedException class and is thrown by classes
 	///  within the propagation package.
 	/// 
@@ -26,7 +24,7 @@ namespace org.maltparser.core.propagation
 		/// </summary>
 		/// <param name="message">	the message </param>
 		/// <param name="cause">		the cause to the exception </param>
-		public PropagationException(string message, Exception cause) : base(message, cause)
+		public PropagationException(string message, System.Exception cause) : base(message, cause)
 		{
 		}
 	}

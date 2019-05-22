@@ -1,9 +1,8 @@
 ﻿using System.Text;
 
-namespace org.maltparser.core.feature.value
+namespace NMaltParser.Core.Feature.Value
 {
-	using  function;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -15,7 +14,7 @@ namespace org.maltparser.core.feature.value
 		protected internal string symbol;
 		protected internal double value;
 
-		public SingleFeatureValue(Function function) : base(function)
+		public SingleFeatureValue(Function.Function function) : base(function)
 		{
 			IndexCode = 0;
 			Symbol = null;

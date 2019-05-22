@@ -1,8 +1,9 @@
-﻿namespace org.maltparser.parser.algorithm.nivre
+﻿using NMaltParser.Parser.Guide;
+using NMaltParser.Parser.History;
+
+namespace NMaltParser.Parser.Algorithm.Nivre
 {
-    using  guide;
-	using  history;
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

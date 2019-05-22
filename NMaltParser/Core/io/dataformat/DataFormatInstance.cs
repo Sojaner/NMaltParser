@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.core.io.dataformat
+namespace NMaltParser.Core.IO.DataFormat
 {
-    using  symbol;
-
     /// 
 	/// 
 	/// <summary>

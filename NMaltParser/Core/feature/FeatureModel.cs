@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Spec;
+using NMaltParser.Core.Feature.System;
 
-namespace org.maltparser.core.feature
+namespace NMaltParser.Core.Feature
 {
-    using  function;
-    using  spec;
-    using  system;
-
-
     /// 
 	/// 
 	/// <summary>
@@ -254,7 +252,7 @@ namespace org.maltparser.core.feature
 //ORIGINAL LINE: protected void identifyFeatureFunction(java.util.Stack<Object> objects) throws org.maltparser.core.exception.MaltChainedException
 		protected internal virtual void identifyFeatureFunction(Stack<object> objects)
 		{
-			Function function = featureEngine.newFunction(objects.Peek().ToString(), registry);
+			Function.Function function = featureEngine.newFunction(objects.Peek().ToString(), registry);
 			if (function != null)
 			{
 				objects.Pop();
@@ -280,7 +278,7 @@ namespace org.maltparser.core.feature
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: protected void initializeFunction(org.maltparser.core.feature.function.Function function, java.util.Stack<Object> objects) throws org.maltparser.core.exception.MaltChainedException
-		protected internal virtual void initializeFunction(Function function, Stack<object> objects)
+		protected internal virtual void initializeFunction(Function.Function function, Stack<object> objects)
 		{
 			Type[] paramTypes = function.ParameterTypes;
 			object[] arguments = new object[paramTypes.Length];

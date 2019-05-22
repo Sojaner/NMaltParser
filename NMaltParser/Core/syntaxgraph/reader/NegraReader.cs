@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.syntaxgraph.reader
+namespace NMaltParser.Core.SyntaxGraph.Reader
 {
-
-	using  exception;
-	using  io.dataformat;
-    using  symbol;
-	using  edge;
-	using  node;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -284,7 +282,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 											}
 											nonterminals[index] = parent;
 										}
-										Edge e = phraseStructure.addPhraseStructureEdge(parent, child);
+										Edge.Edge e = phraseStructure.addPhraseStructureEdge(parent, child);
 										syntaxGraph.addLabel(e, edgelabelTableName.ToString(), edgelabelSymbol.ToString());
 									}
 									else if (column.Category == ColumnDescription.SECONDARY_EDGE_LABEL && child != null)
@@ -315,7 +313,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 													nonterminals[index] = parent;
 												}
 											}
-											Edge e = phraseStructure.addSecondaryEdge(parent, child);
+											Edge.Edge e = phraseStructure.addSecondaryEdge(parent, child);
 											e.addLabel(symbolTables.getSymbolTable(column.Name), edgelabelSymbol.ToString());
 											secedgecounter++;
 										}
@@ -376,7 +374,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 											nonterminals[index] = parent;
 										}
 
-										Edge e = phraseStructure.addPhraseStructureEdge(parent, child);
+										Edge.Edge e = phraseStructure.addPhraseStructureEdge(parent, child);
 										syntaxGraph.addLabel(e, edgelabelTableName.ToString(), edgelabelSymbol.ToString());
 									}
 									else if (column.Category == ColumnDescription.SECONDARY_EDGE_LABEL && child != null)
@@ -407,7 +405,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 													nonterminals[index] = parent;
 												}
 											}
-											Edge e = phraseStructure.addSecondaryEdge(parent, child);
+											Edge.Edge e = phraseStructure.addSecondaryEdge(parent, child);
 											e.addLabel(symbolTables.getSymbolTable(column.Name), edgelabelSymbol.ToString());
 											secedgecounter++;
 										}

@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using NMaltParser.Concurrent.Graph.DataFormat;
+using NMaltParser.Core.Config;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.LW.Graph;
+using NMaltParser.Core.Options;
+using NMaltParser.Core.Propagation;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.Symbol.Parse;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser;
 
-namespace org.maltparser.core.lw.parser
+namespace NMaltParser.Core.LW.Parser
 {
-
-	using  org.maltparser.concurrent.graph.dataformat;
-	using  config;
-    using  feature;
-	using  io.dataformat;
-	using  graph;
-    using  options;
-	using  propagation;
-	using  symbol;
-	using  symbol.parse;
-	using  syntaxgraph;
-	using  org.maltparser.parser;
-
     /// <summary>
 	///  A lightweight version of org.maltparser.parser.SingleMalt. This class can only perform parsing and is used by 
 	///  the concurrent MaltParser model. 

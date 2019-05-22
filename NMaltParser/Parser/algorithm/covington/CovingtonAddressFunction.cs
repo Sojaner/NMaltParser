@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
 
-namespace org.maltparser.parser.algorithm.covington
+namespace NMaltParser.Parser.Algorithm.Covington
 {
-    using  core.feature.function;
-	using  core.feature.value;
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

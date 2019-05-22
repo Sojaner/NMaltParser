@@ -1,10 +1,10 @@
-﻿namespace org.maltparser.parser.guide.decision
-{
-    using  core.feature;
-    using  core.syntaxgraph;
-	using  instance;
-    using  history.action;
+﻿using NMaltParser.Core.Feature;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser.Guide.Instance;
+using NMaltParser.Parser.History.Action;
 
+namespace NMaltParser.Parser.Guide.Decision
+{
     /// 
 	/// <summary>
 	/// @author Johan Hall

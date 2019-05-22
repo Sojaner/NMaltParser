@@ -1,9 +1,8 @@
-﻿using System;
+﻿using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.plugin
+namespace NMaltParser.Core.Plugin
 {
-	using  exception;
-	/// <summary>
+    /// <summary>
 	///  PluginException extends the MaltChainedException class and is thrown by classes
 	///  within the plugin package.
 	/// 
@@ -26,7 +25,7 @@ namespace org.maltparser.core.plugin
 		/// Creates a PluginException object with a message
 		/// </summary>
 		/// <param name="message">	the message </param>
-		public PluginException(string message, Exception cause) : base(message, cause)
+		public PluginException(string message, System.Exception cause) : base(message, cause)
 		{
 		}
 	}

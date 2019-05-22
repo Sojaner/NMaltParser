@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace org.maltparser.core.options.option
+namespace NMaltParser.Core.Options.Option
 {
     /// <summary>
 	/// An integer option is an option that can only contain an integer value.  

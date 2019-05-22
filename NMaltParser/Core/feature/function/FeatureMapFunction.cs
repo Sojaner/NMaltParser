@@ -1,4 +1,4 @@
-﻿namespace org.maltparser.core.feature.function
+﻿namespace NMaltParser.Core.Feature.Function
 {
 	/// 
 	/// 

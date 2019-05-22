@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.parser.algorithm.planar
+namespace NMaltParser.Parser.Algorithm.Planar
 {
-    using  core.syntaxgraph;
-	using  core.syntaxgraph.node;
-	/// <summary>
+    /// <summary>
 	/// @author Carlos Gomez Rodriguez
 	/// 
 	/// </summary>

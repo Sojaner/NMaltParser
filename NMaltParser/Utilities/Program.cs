@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NMaltParser
+namespace NMaltParser.Utilities
 {
     class Program
     {

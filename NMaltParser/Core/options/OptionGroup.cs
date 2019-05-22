@@ -1,13 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace org.maltparser.core.options
+namespace NMaltParser.Core.Options
 {
-
-	using  option;
-
-
-	/// <summary>
+    /// <summary>
 	/// An option group categories a group of options.
 	/// 
 	/// @author Johan Hall
@@ -17,7 +13,7 @@ namespace org.maltparser.core.options
 	public class OptionGroup
 	{
 		private readonly string name;
-		private readonly Dictionary<string, Option> options;
+		private readonly Dictionary<string, Option.Option> options;
 
 		public static int toStringSetting = 0;
 		public const int WITHGROUPNAME = 0;
@@ -30,7 +26,7 @@ namespace org.maltparser.core.options
 		public OptionGroup(string name)
 		{
 			this.name = name;
-			options = new Dictionary<string, Option>();
+			options = new Dictionary<string, Option.Option>();
 		}
 
 		/// <summary>
@@ -61,7 +57,7 @@ namespace org.maltparser.core.options
 		/// <exception cref="OptionException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void addOption(org.maltparser.core.options.option.Option option) throws OptionException
-		public virtual void addOption(Option option)
+		public virtual void addOption(Option.Option option)
 		{
 			if (ReferenceEquals(option.Name, null) || option.Name.Equals(""))
 			{
@@ -82,7 +78,7 @@ namespace org.maltparser.core.options
 		/// </summary>
 		/// <param name="optionname">	an option name
 		/// @return	an option, <i>null</i> if the option name can't be found </param>
-		public virtual Option getOption(string optionname)
+		public virtual Option.Option getOption(string optionname)
 		{
 			return options[optionname];
 		}
@@ -92,7 +88,7 @@ namespace org.maltparser.core.options
 		/// 
 		/// @return	a list of options
 		/// </summary>
-		public virtual ICollection<Option> OptionList
+		public virtual ICollection<Option.Option> OptionList
 		{
 			get
 			{

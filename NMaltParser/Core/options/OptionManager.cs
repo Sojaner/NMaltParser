@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Options.Option;
+using NMaltParser.Core.Plugin;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.options
+namespace NMaltParser.Core.Options
 {
-
-
-
-	using  exception;
-	using  option;
-    using  plugin;
-
-
     /// <summary>
 	///  Option Manager is the management class for all option handling. All queries and manipulations of an option or an option value
 	///   should go through this class. 
@@ -100,7 +96,7 @@ namespace org.maltparser.core.options
 //ORIGINAL LINE: public Object getOptionValue(int containerIndex, String optiongroup, String optionname) throws org.maltparser.core.exception.MaltChainedException
 		public virtual object getOptionValue(int containerIndex, string optiongroup, string optionname)
 		{
-			Option option = optionDescriptions.getOption(optiongroup, optionname);
+			Option.Option option = optionDescriptions.getOption(optiongroup, optionname);
 
 			if (containerIndex == DEFAULTVALUE)
 			{
@@ -118,7 +114,7 @@ namespace org.maltparser.core.options
 //ORIGINAL LINE: public Object getOptionDefaultValue(String optiongroup, String optionname) throws org.maltparser.core.exception.MaltChainedException
 		public virtual object getOptionDefaultValue(string optiongroup, string optionname)
 		{
-			Option option = optionDescriptions.getOption(optiongroup, optionname);
+			Option.Option option = optionDescriptions.getOption(optiongroup, optionname);
 			return option.DefaultValueObject;
 		}
 
@@ -126,7 +122,7 @@ namespace org.maltparser.core.options
 //ORIGINAL LINE: public Object getOptionValueNoDefault(int containerIndex, String optiongroup, String optionname) throws org.maltparser.core.exception.MaltChainedException
 		public virtual object getOptionValueNoDefault(int containerIndex, string optiongroup, string optionname)
 		{
-			Option option = optionDescriptions.getOption(optiongroup, optionname);
+			Option.Option option = optionDescriptions.getOption(optiongroup, optionname);
 
 			if (containerIndex == DEFAULTVALUE)
 			{
@@ -148,7 +144,7 @@ namespace org.maltparser.core.options
 //ORIGINAL LINE: public String getOptionValueString(int containerIndex, String optiongroup, String optionname) throws org.maltparser.core.exception.MaltChainedException
 		public virtual string getOptionValueString(int containerIndex, string optiongroup, string optionname)
 		{
-			Option option = optionDescriptions.getOption(optiongroup, optionname);
+			Option.Option option = optionDescriptions.getOption(optiongroup, optionname);
 			string value = optionValues.getOptionValueString(containerIndex, option);
 			if (ReferenceEquals(value, null))
 			{
@@ -168,7 +164,7 @@ namespace org.maltparser.core.options
 //ORIGINAL LINE: public void addLegalValue(String optiongroup, String optionname, String value, String desc, String target) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void addLegalValue(string optiongroup, string optionname, string value, string desc, string target)
 		{
-			Option option = optionDescriptions.getOption(optiongroup, optionname);
+			Option.Option option = optionDescriptions.getOption(optiongroup, optionname);
 			if (option != null)
 			{
 				if (option is EnumOption)
@@ -212,7 +208,7 @@ namespace org.maltparser.core.options
 //ORIGINAL LINE: public void overloadOptionValue(int containerIndex, int containerType, String optiongroup, String optionname, String value) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void overloadOptionValue(int containerIndex, int containerType, string optiongroup, string optionname, string value)
 		{
-			Option option = optionDescriptions.getOption(optiongroup, optionname);
+			Option.Option option = optionDescriptions.getOption(optiongroup, optionname);
 			if (ReferenceEquals(value, null))
 			{
 				throw new OptionException("The option value is missing. ");
@@ -280,7 +276,7 @@ namespace org.maltparser.core.options
 			{
 				StreamReader br = new StreamReader(isr);
 				string line = null;
-				Option option = null;
+				Option.Option option = null;
 				Pattern tabPattern = Pattern.compile("\t");
 				while (!ReferenceEquals((line = br.ReadLine()), null))
 				{
@@ -376,12 +372,12 @@ namespace org.maltparser.core.options
 			try
 			{
 				StreamWriter bw = new StreamWriter(osw);
-				ISet<Option> optionToSave = optionDescriptions.SaveOptionSet;
+				ISet<Option.Option> optionToSave = optionDescriptions.SaveOptionSet;
 
 				object value = null;
 				foreach (int? index in optionValues.OptionContainerIndices)
 				{
-					foreach (Option option in optionToSave)
+					foreach (Option.Option option in optionToSave)
 					{
 						value = optionValues.getOptionValue(index.Value, option);
 						if (value == null)
@@ -436,10 +432,10 @@ namespace org.maltparser.core.options
 			try
 			{
 				StreamWriter bw = new StreamWriter(osw);
-				ISet<Option> optionToSave = optionDescriptions.SaveOptionSet;
+				ISet<Option.Option> optionToSave = optionDescriptions.SaveOptionSet;
 
 				object value = null;
-				foreach (Option option in optionToSave)
+				foreach (Option.Option option in optionToSave)
 				{
 					value = optionValues.getOptionValue(containerIndex, option);
 					if (value == null)
@@ -501,7 +497,7 @@ namespace org.maltparser.core.options
 			oldFlags["lsv"] = "lv";
 			while (i < args.Length)
 			{
-				Option option = null;
+				Option.Option option = null;
 				string value = null;
 				/* Recognizes
 				 * --optiongroup-optionname=value
@@ -682,7 +678,7 @@ namespace org.maltparser.core.options
 						throw new OptionException("The option name is missing. ");
 					}
 
-					Option option = optionDescriptions.getOption(groupname, optionname);
+					Option.Option option = optionDescriptions.getOption(groupname, optionname);
 
 					if (option is UnaryOption)
 					{
@@ -722,7 +718,7 @@ namespace org.maltparser.core.options
 						continue;
 					}
 					sb.Append(groupname + "\n");
-					foreach (Option option in optionDescriptions.getOptionGroupList(groupname))
+					foreach (Option.Option option in optionDescriptions.getOptionGroupList(groupname))
 					{
 						int nSpaces = reservedSpaceForOptionName - option.Name.Length;
 						if (nSpaces <= 1)
@@ -742,7 +738,7 @@ namespace org.maltparser.core.options
 						continue;
 					}
 					sb.Append(groupname + "\n");
-					foreach (Option option in optionDescriptions.getOptionGroupList(groupname))
+					foreach (Option.Option option in optionDescriptions.getOptionGroupList(groupname))
 					{
 						string value = optionValues.getOptionValueString(containerIndex, option);
 						int nSpaces = reservedSpaceForOptionName - option.Name.Length;

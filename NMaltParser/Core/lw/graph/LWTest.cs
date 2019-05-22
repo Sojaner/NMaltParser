@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using NMaltParser.Concurrent.Graph.DataFormat;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.Symbol.Hash;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Edge;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.lw.graph
+namespace NMaltParser.Core.LW.Graph
 {
-
-	using  org.maltparser.concurrent.graph.dataformat;
-    using  exception;
-	using  symbol;
-	using  symbol.hash;
-	using  syntaxgraph;
-	using  syntaxgraph.edge;
-	using  syntaxgraph.node;
-
-
-	public class LWTest
+    public class LWTest
 	{
 		private const string IGNORE_COLUMN_SIGN = "_";
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:

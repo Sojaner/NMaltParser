@@ -1,8 +1,9 @@
-﻿namespace org.maltparser.parser.algorithm.stack
+﻿using NMaltParser.Parser.Guide;
+using NMaltParser.Parser.History;
+
+namespace NMaltParser.Parser.Algorithm.Stack
 {
-    using  guide;
-	using  history;
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

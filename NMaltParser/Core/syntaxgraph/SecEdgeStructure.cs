@@ -1,8 +1,8 @@
-﻿namespace org.maltparser.core.syntaxgraph
+﻿using NMaltParser.Core.SyntaxGraph.Node;
+
+namespace NMaltParser.Core.SyntaxGraph
 {
-    using  edge;
-	using  node;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -11,7 +11,7 @@
 	{
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge addSecondaryEdge(org.maltparser.core.syntaxgraph.node.ComparableNode source, org.maltparser.core.syntaxgraph.node.ComparableNode target) throws org.maltparser.core.exception.MaltChainedException;
-		Edge addSecondaryEdge(ComparableNode source, ComparableNode target);
+		Edge.Edge addSecondaryEdge(ComparableNode source, ComparableNode target);
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void removeSecondaryEdge(org.maltparser.core.syntaxgraph.node.ComparableNode source, org.maltparser.core.syntaxgraph.node.ComparableNode target) throws org.maltparser.core.exception.MaltChainedException;
 		void removeSecondaryEdge(ComparableNode source, ComparableNode target);

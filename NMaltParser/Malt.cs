@@ -1,4 +1,4 @@
-﻿namespace org.maltparser
+﻿namespace NMaltParser
 {
 
 	/// <summary>

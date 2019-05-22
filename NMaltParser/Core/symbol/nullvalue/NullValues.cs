@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Helper;
 
-namespace org.maltparser.core.symbol.nullvalue
+namespace NMaltParser.Core.Symbol.NullValue
 {
-    using  helper;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

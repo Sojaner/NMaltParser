@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Edge;
+using NMaltParser.Core.SyntaxGraph.HeadRules;
 
-namespace org.maltparser.core.syntaxgraph.node
+namespace NMaltParser.Core.SyntaxGraph.Node
 {
-
-
-	using  exception;
-	using  helper;
-	using  symbol;
-	using  edge;
-	using  headrules;
-
-
     public class Root : GraphNode, DependencyNode, PhraseStructureNode, NonTerminalNode
 	{
 		protected internal readonly SortedSet<DependencyNode> leftDependents;
@@ -36,18 +32,18 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void addIncomingEdge(org.maltparser.core.syntaxgraph.edge.Edge in) throws org.maltparser.core.exception.MaltChainedException
-		public override void addIncomingEdge(Edge @in)
+		public override void addIncomingEdge(Edge.Edge @in)
 		{
 			throw new SyntaxGraphException("It is not allowed for a root node to have an incoming edge");
 		}
 
-		public override void removeIncomingEdge(Edge @in)
+		public override void removeIncomingEdge(Edge.Edge @in)
 		{
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void addOutgoingEdge(org.maltparser.core.syntaxgraph.edge.Edge out) throws org.maltparser.core.exception.MaltChainedException
-		public override void addOutgoingEdge(Edge @out)
+		public override void addOutgoingEdge(Edge.Edge @out)
 		{
 			base.addOutgoingEdge(@out);
 			if (@out.Target != null)
@@ -73,7 +69,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void removeOutgoingEdge(org.maltparser.core.syntaxgraph.edge.Edge out) throws org.maltparser.core.exception.MaltChainedException
-		public override void removeOutgoingEdge(Edge @out)
+		public override void removeOutgoingEdge(Edge.Edge @out)
 		{
 			base.removeOutgoingEdge(@out);
 			if (@out.Target != null)
@@ -199,7 +195,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge getParentEdge() throws org.maltparser.core.exception.MaltChainedException
-		public virtual Edge ParentEdge
+		public virtual Edge.Edge ParentEdge
 		{
 			get
 			{
@@ -332,14 +328,14 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public TokenNode getLexicalHead(org.maltparser.core.syntaxgraph.headrules.HeadRules headRules) throws org.maltparser.core.exception.MaltChainedException
-		public virtual TokenNode getLexicalHead(HeadRules headRules)
+		public virtual TokenNode getLexicalHead(HeadRules.HeadRules headRules)
 		{
 			return identifyHead(headRules);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public PhraseStructureNode getHeadChild(org.maltparser.core.syntaxgraph.headrules.HeadRules headRules) throws org.maltparser.core.exception.MaltChainedException
-		public virtual PhraseStructureNode getHeadChild(HeadRules headRules)
+		public virtual PhraseStructureNode getHeadChild(HeadRules.HeadRules headRules)
 		{
 			return identifyHeadChild(headRules);
 		}
@@ -366,7 +362,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private PhraseStructureNode identifyHeadChild(org.maltparser.core.syntaxgraph.headrules.HeadRules headRules) throws org.maltparser.core.exception.MaltChainedException
-		private PhraseStructureNode identifyHeadChild(HeadRules headRules)
+		private PhraseStructureNode identifyHeadChild(HeadRules.HeadRules headRules)
 		{
 			PhraseStructureNode headChild = (headRules == null)?null:headRules.getHeadChild(this);
 			if (headChild == null)
@@ -392,7 +388,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public TokenNode identifyHead(org.maltparser.core.syntaxgraph.headrules.HeadRules headRules) throws org.maltparser.core.exception.MaltChainedException
-		public virtual TokenNode identifyHead(HeadRules headRules)
+		public virtual TokenNode identifyHead(HeadRules.HeadRules headRules)
 		{
 			PhraseStructureNode headChild = identifyHeadChild(headRules);
 			TokenNode lexicalHead = null;
@@ -517,7 +513,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge getHeadEdge() throws org.maltparser.core.exception.MaltChainedException
-		public virtual Edge HeadEdge
+		public virtual Edge.Edge HeadEdge
 		{
 			get
 			{
@@ -604,7 +600,7 @@ namespace org.maltparser.core.syntaxgraph.node
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public java.util.Set<org.maltparser.core.syntaxgraph.edge.Edge> getHeadEdges() throws org.maltparser.core.exception.MaltChainedException
-		public virtual ISet<Edge> HeadEdges
+		public virtual ISet<Edge.Edge> HeadEdges
 		{
 			get
 			{

@@ -1,11 +1,9 @@
 ﻿using System.Text;
+using NMaltParser.Core.Options;
 
-namespace org.maltparser.core.helper
+namespace NMaltParser.Core.Helper
 {
-
-	using  options;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

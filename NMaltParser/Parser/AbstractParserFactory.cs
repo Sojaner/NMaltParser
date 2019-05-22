@@ -1,10 +1,11 @@
-﻿namespace org.maltparser.parser
+﻿using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature;
+using NMaltParser.Parser.Guide;
+using NMaltParser.Parser.History;
+
+namespace NMaltParser.Parser
 {
-	using  core.exception;
-	using  core.feature;
-	using  guide;
-	using  history;
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Flow.Item;
+using NMaltParser.Core.Flow.Spec;
 
-namespace org.maltparser.core.flow
+namespace NMaltParser.Core.Flow
 {
-    using  item;
-	using  spec;
-
     /// 
 	/// 
 	/// <summary>

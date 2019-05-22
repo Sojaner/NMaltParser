@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace org.maltparser.core.options.option
+namespace NMaltParser.Core.Options.Option
 {
     /// <summary>
 	/// A string option is an option that contains a string value. 

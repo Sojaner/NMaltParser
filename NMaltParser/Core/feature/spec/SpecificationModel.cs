@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace org.maltparser.core.feature.spec
+namespace NMaltParser.Core.Feature.Spec
 {
     /// 
 	/// 

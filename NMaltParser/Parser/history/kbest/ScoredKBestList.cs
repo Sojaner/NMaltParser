@@ -1,7 +1,8 @@
-﻿namespace org.maltparser.parser.history.kbest
+﻿using NMaltParser.Parser.History.Action;
+
+namespace NMaltParser.Parser.History.KBest
 {
-    using  action;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// 

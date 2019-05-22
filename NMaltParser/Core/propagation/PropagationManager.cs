@@ -1,11 +1,11 @@
-﻿namespace org.maltparser.core.propagation
-{
-    using  spec;
-    using  symbol;
-	using  syntaxgraph.edge;
-	using  io.dataformat;
+﻿using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Propagation.Spec;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Edge;
 
-	public class PropagationManager
+namespace NMaltParser.Core.Propagation
+{
+    public class PropagationManager
 	{
 		private readonly PropagationSpecs propagationSpecs;
 		private Propagations propagations;

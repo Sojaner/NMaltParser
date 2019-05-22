@@ -1,10 +1,8 @@
-﻿using System;
+﻿using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.options
+namespace NMaltParser.Core.Options
 {
-	using  exception;
-
-	/// <summary>
+    /// <summary>
 	///  OptionException extends the MaltChainedException class and is thrown by classes
 	///  within the options package.
 	/// 
@@ -28,7 +26,7 @@ namespace org.maltparser.core.options
 		/// </summary>
 		/// <param name="message">	the message </param>
 		/// <param name="cause">		the cause to the exception </param>
-		public OptionException(string message, Exception cause) : base(message, cause)
+		public OptionException(string message, System.Exception cause) : base(message, cause)
 		{
 		}
 	}

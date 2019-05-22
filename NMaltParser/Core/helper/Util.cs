@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.helper
+namespace NMaltParser.Core.Helper
 {
-    using  exception;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -229,7 +229,7 @@ namespace org.maltparser.core.helper
 			{
 				c.Dispose();
 			}
-			catch (Exception)
+			catch (System.Exception)
 			{
 			}
 		}

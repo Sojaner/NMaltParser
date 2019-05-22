@@ -1,9 +1,10 @@
-﻿namespace org.maltparser.core.feature.function
+﻿using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature.Value;
+using NMaltParser.Core.Symbol;
+
+namespace NMaltParser.Core.Feature.Function
 {
-	using  exception;
-	using  value;
-	using  symbol;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

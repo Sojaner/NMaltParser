@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace org.maltparser.core.io.dataformat
+namespace NMaltParser.Core.IO.DataFormat
 {
 	/// <summary>
 	///  DataFormatEntry is used for storing information about one column in a data format. 

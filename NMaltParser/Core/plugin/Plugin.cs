@@ -1,11 +1,9 @@
 ﻿using System.Text;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.plugin
+namespace NMaltParser.Core.Plugin
 {
-
-	using  exception;
-
-	/// <summary>
+    /// <summary>
 	/// The class Plugin contains information about a plug-in that comply to the the MaltParser Plugin Standard.
 	/// 
 	/// 

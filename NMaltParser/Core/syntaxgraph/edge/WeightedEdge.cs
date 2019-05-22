@@ -1,9 +1,8 @@
 ﻿using System.Text;
 
-namespace org.maltparser.core.syntaxgraph.edge
+namespace NMaltParser.Core.SyntaxGraph.Edge
 {
-    using  node;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -18,13 +17,13 @@ namespace org.maltparser.core.syntaxgraph.edge
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public WeightedEdge(org.maltparser.core.syntaxgraph.node.Node source, org.maltparser.core.syntaxgraph.node.Node target, int type) throws org.maltparser.core.exception.MaltChainedException
-		public WeightedEdge(Node source, Node target, int type) : base(source, target, type)
+		public WeightedEdge(Node.Node source, Node.Node target, int type) : base(source, target, type)
 		{
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public WeightedEdge(org.maltparser.core.syntaxgraph.node.Node source, org.maltparser.core.syntaxgraph.node.Node target, int type, System.Nullable<double> weight) throws org.maltparser.core.exception.MaltChainedException
-		public WeightedEdge(Node source, Node target, int type, double? weight) : base(source, target, type)
+		public WeightedEdge(Node.Node source, Node.Node target, int type, double? weight) : base(source, target, type)
 		{
 			Weight = weight.Value;
 		}

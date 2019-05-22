@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser;
+using NMaltParser.Parser.Guide.Instance;
+using NMaltParser.Parser.History.Action;
 
-namespace org.maltparser.ml.cheater
+namespace NMaltParser.ML.Cheater
 {
-    using  core.feature;
-	using  core.feature.function;
-	using  core.feature.value;
-    using  core.syntaxgraph;
-	using  parser;
-	using  parser.guide.instance;
-	using  parser.history.action;
-
-	public class Cheater : LearningMethod
+    public class Cheater : LearningMethod
 	{
 		public enum Verbostity
 		{

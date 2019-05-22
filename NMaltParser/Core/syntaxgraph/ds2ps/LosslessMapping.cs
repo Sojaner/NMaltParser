@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Edge;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.syntaxgraph.ds2ps
+namespace NMaltParser.Core.SyntaxGraph.Ds2PS
 {
-
-	using  exception;
-	using  helper;
-	using  io.dataformat;
-    using  symbol;
-    using  edge;
-	using  headrules;
-	using  node;
-
     /// 
 	/// 
 	/// <summary>
@@ -32,7 +29,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 		private readonly char LABEL_ELEMENT_SEPARATOR = '~';
 		private readonly char QUESTIONMARK = '?';
 		private string optionString;
-		private HeadRules headRules;
+		private HeadRules.HeadRules headRules;
 		private DataFormatInstance dependencyDataFormatInstance;
 		private DataFormatInstance phraseStructuretDataFormatInstance;
 		private SymbolTableHandler symbolTableHandler;
@@ -108,7 +105,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void update(org.maltparser.core.syntaxgraph.MappablePhraseStructureGraph graph, org.maltparser.core.syntaxgraph.edge.Edge e, Object arg) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void update(MappablePhraseStructureGraph graph, Edge e, object arg)
+		public virtual void update(MappablePhraseStructureGraph graph, Edge.Edge e, object arg)
 		{
 			if (lockUpdate == false)
 			{
@@ -128,7 +125,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 				{
 					if (e.Labeled && e.LabelSet.size() == 4)
 					{
-						updatePhraseStructureGraph(graph, (Edge)e, false);
+						updatePhraseStructureGraph(graph, (Edge.Edge)e, false);
 					}
 				}
 			}
@@ -141,7 +138,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 			if (graph.nTokenNode() == 1 && graph.nNonTerminals() == 0)
 			{
 				// Special case when the root dominates direct a single terminal node
-				Edge e = graph.addDependencyEdge(graph.DependencyRoot, graph.getDependencyNode(1));
+				Edge.Edge e = graph.addDependencyEdge(graph.DependencyRoot, graph.getDependencyNode(1));
 				e.addLabel(graph.SymbolTables.getSymbolTable(DEPREL), graph.getDefaultRootEdgeLabelSymbol(graph.SymbolTables.getSymbolTable(DEPREL)));
 				e.addLabel(graph.SymbolTables.getSymbolTable(HEADREL), graph.getDefaultRootEdgeLabelSymbol(graph.SymbolTables.getSymbolTable(HEADREL)));
 				e.addLabel(graph.SymbolTables.getSymbolTable(PHRASE), "*");
@@ -290,7 +287,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private void labelDependencyEdge(org.maltparser.core.syntaxgraph.MappablePhraseStructureGraph graph, org.maltparser.core.syntaxgraph.edge.Edge e, org.maltparser.core.syntaxgraph.node.PhraseStructureNode top) throws org.maltparser.core.exception.MaltChainedException
-		private void labelDependencyEdge(MappablePhraseStructureGraph graph, Edge e, PhraseStructureNode top)
+		private void labelDependencyEdge(MappablePhraseStructureGraph graph, Edge.Edge e, PhraseStructureNode top)
 		{
 			if (e == null)
 			{
@@ -463,7 +460,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void updatePhraseStructureGraph(org.maltparser.core.syntaxgraph.MappablePhraseStructureGraph graph, org.maltparser.core.syntaxgraph.edge.Edge depEdge, boolean attachHeadSpineToRoot) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void updatePhraseStructureGraph(MappablePhraseStructureGraph graph, Edge depEdge, bool attachHeadSpineToRoot)
+		public virtual void updatePhraseStructureGraph(MappablePhraseStructureGraph graph, Edge.Edge depEdge, bool attachHeadSpineToRoot)
 		{
 			PhraseStructureNode dependentSpine = (PhraseStructureNode)depEdge.Target;
 
@@ -531,7 +528,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 							}
 						}
 						lockUpdate = true;
-						Edge e = graph.addPhraseStructureEdge(dependentSpine, child);
+						Edge.Edge e = graph.addPhraseStructureEdge(dependentSpine, child);
 						if (empty_label != 2 && es != j && !ReferenceEquals(edgeSpineLabel, null) && e != null)
 						{
 							e.addLabel(graph.SymbolTables.addSymbolTable(EDGELABEL), edgeSpineLabel.Substring(es, j - es));
@@ -604,7 +601,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 				if (headSpine != null)
 				{
 					lockUpdate = true;
-					Edge e = graph.addPhraseStructureEdge(headSpine, dependentSpine);
+					Edge.Edge e = graph.addPhraseStructureEdge(headSpine, dependentSpine);
 					if (depEdge.hasLabel(graph.SymbolTables.getSymbolTable(DEPREL)) && !depEdge.getLabelSymbol(graph.SymbolTables.getSymbolTable(DEPREL)).Equals(EMPTY_LABEL) & e != null)
 					{
 						e.addLabel(graph.SymbolTables.addSymbolTable(EDGELABEL), depEdge.getLabelSymbol(graph.SymbolTables.getSymbolTable(DEPREL)));
@@ -616,7 +613,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 			{
 					headSpine = graph.PhraseStructureRoot;
 					lockUpdate = true;
-					Edge e = graph.addPhraseStructureEdge(headSpine, dependentSpine);
+					Edge.Edge e = graph.addPhraseStructureEdge(headSpine, dependentSpine);
 					if (depEdge.hasLabel(graph.SymbolTables.getSymbolTable(DEPREL)) && !depEdge.getLabelSymbol(graph.SymbolTables.getSymbolTable(DEPREL)).Equals(EMPTY_LABEL) & e != null)
 					{
 						e.addLabel(graph.SymbolTables.addSymbolTable(EDGELABEL), depEdge.getLabelSymbol(graph.SymbolTables.getSymbolTable(DEPREL)));
@@ -639,12 +636,12 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 			}
 		}
 
-		public virtual HeadRules getHeadRules()
+		public virtual HeadRules.HeadRules getHeadRules()
 		{
 			return headRules;
 		}
 
-		public virtual void setHeadRules(HeadRules headRules)
+		public virtual void setHeadRules(HeadRules.HeadRules headRules)
 		{
 			this.headRules = headRules;
 		}
@@ -655,7 +652,7 @@ namespace org.maltparser.core.syntaxgraph.ds2ps
 		{
 			if (!ReferenceEquals(headRulesURL, null) && headRulesURL.Length > 0 && !headRulesURL.Equals("*"))
 			{
-				headRules = new HeadRules(SystemLogger.logger(), phraseStructuretDataFormatInstance, symbolTableHandler);
+				headRules = new HeadRules.HeadRules(SystemLogger.logger(), phraseStructuretDataFormatInstance, symbolTableHandler);
 				headRules.parseHeadRules(headRulesURL);
 			}
 		}

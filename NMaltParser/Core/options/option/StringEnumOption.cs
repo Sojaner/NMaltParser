@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.options.option
+namespace NMaltParser.Core.Options.Option
 {
-
-	using  exception;
-
-	/// <summary>
+    /// <summary>
 	/// A string enum type option is an option that can only contain string value that corresponds to another string.
 	/// 
 	/// @author Johan Hall

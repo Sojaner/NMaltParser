@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Feature.Value;
+using NMaltParser.ML.Lib;
+using NMaltParser.Parser.History.Action;
 
-namespace org.maltparser.core.lw.parser
+namespace NMaltParser.Core.LW.Parser
 {
-    using  feature;
-	using  feature.value;
-    using  ml.lib;
-    using  org.maltparser.parser.history.action;
-
-	/// <summary>
+    /// <summary>
 	/// A lightweight version of org.maltparser.ml.lib.{Lib,LibLinear,LibSvm} and can only predict the next transition.
 	/// 
 	/// @author Johan Hall

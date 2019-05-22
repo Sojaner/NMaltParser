@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Text;
 
-namespace org.maltparser.core.feature.system
+namespace NMaltParser.Core.Feature.System
 {
-    using  function;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -27,7 +26,7 @@ namespace org.maltparser.core.feature.system
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.feature.function.Function newFunction(org.maltparser.core.feature.FeatureRegistry registry) throws org.maltparser.core.exception.MaltChainedException
-		public virtual Function newFunction(FeatureRegistry registry)
+		public virtual Function.Function newFunction(FeatureRegistry registry)
 		{
 			if (hasFactory)
 			{
@@ -44,12 +43,12 @@ namespace org.maltparser.core.feature.system
 			}
 //JAVA TO C# CONVERTER WARNING: Java wildcard generics have no direct equivalent in .NET:
 //ORIGINAL LINE: Constructor<?>[] constructors = functionClass.getConstructors();
-			System.Reflection.ConstructorInfo<object>[] constructors = functionClass.GetConstructors();
+			global::System.Reflection.ConstructorInfo<object>[] constructors = functionClass.GetConstructors();
 			if (constructors.Length == 0)
 			{
 				try
 				{
-					return (Function)Activator.CreateInstance(functionClass);
+					return (Function.Function)Activator.CreateInstance(functionClass);
 				}
 				catch (InstantiationException e)
 				{
@@ -67,7 +66,7 @@ namespace org.maltparser.core.feature.system
 			{
 				try
 				{
-					return (Function)Activator.CreateInstance(functionClass);
+					return (Function.Function)Activator.CreateInstance(functionClass);
 				}
 				catch (InstantiationException e)
 				{
@@ -98,7 +97,7 @@ namespace org.maltparser.core.feature.system
 			}
 			try
 			{
-				return (Function)constructors[0].newInstance(arguments);
+				return (Function.Function)constructors[0].newInstance(arguments);
 			}
 			catch (InstantiationException e)
 			{

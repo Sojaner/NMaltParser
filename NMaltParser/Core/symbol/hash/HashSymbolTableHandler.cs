@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using NMaltParser.Core.Helper;
 
-namespace org.maltparser.core.symbol.hash
+namespace NMaltParser.Core.Symbol.Hash
 {
-    using  helper;
-
-
-	public class HashSymbolTableHandler : SymbolTableHandler
+    public class HashSymbolTableHandler : SymbolTableHandler
 	{
 		private readonly IDictionary<string, HashSymbolTable> symbolTables;
 

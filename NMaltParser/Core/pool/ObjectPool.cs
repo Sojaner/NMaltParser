@@ -1,4 +1,4 @@
-﻿namespace org.maltparser.core.pool
+﻿namespace NMaltParser.Core.Pool
 {
     public abstract class ObjectPool<T>
 	{

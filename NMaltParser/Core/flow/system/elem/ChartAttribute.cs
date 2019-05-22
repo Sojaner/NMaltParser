@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace org.maltparser.core.flow.system.elem
+namespace NMaltParser.Core.Flow.System.Elem
 {
     /// 
 	/// 

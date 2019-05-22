@@ -1,9 +1,8 @@
-﻿using System;
+﻿using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.flow
+namespace NMaltParser.Core.Flow
 {
-	using  exception;
-	/// <summary>
+    /// <summary>
 	///  FlowException extends the MaltChainedException class and is thrown by classes
 	///  within the flow package.
 	/// 
@@ -25,7 +24,7 @@ namespace org.maltparser.core.flow
 		/// </summary>
 		/// <param name="message">	the message </param>
 		/// <param name="cause">		the cause to the exception </param>
-		public FlowException(string message, Exception cause) : base(message, cause)
+		public FlowException(string message, global::System.Exception cause) : base(message, cause)
 		{
 		}
 	}

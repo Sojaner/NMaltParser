@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Text;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
 
-namespace org.maltparser.parser.algorithm.planar
+namespace NMaltParser.Parser.Algorithm.Planar
 {
-    using  core.feature.function;
-	using  core.feature.value;
-
-	/// 
+    /// 
 	/// <summary>
 	/// @author Carlos Gomez Rodriguez
 	/// 

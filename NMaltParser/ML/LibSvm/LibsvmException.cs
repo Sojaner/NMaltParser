@@ -1,10 +1,9 @@
 ﻿using System;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.ml.libsvm
+namespace NMaltParser.ML.LibSvm
 {
-	using  core.exception;
-
-	/// <summary>
+    /// <summary>
 	///  LibsvmException extends the MaltChainedException class and is thrown by classes
 	///  within the libsvm package.
 	/// 

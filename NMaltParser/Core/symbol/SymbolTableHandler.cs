@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace org.maltparser.core.symbol
+namespace NMaltParser.Core.Symbol
 {
     public interface SymbolTableHandler : TableHandler
 	{

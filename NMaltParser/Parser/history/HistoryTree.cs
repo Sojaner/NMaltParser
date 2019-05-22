@@ -1,10 +1,10 @@
 ﻿using System.Text;
+using NMaltParser.Core.Pool;
+using NMaltParser.Parser.History.Action;
 
-namespace org.maltparser.parser.history
+namespace NMaltParser.Parser.History
 {
-    using  core.pool;
-	using  action;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// </summary>

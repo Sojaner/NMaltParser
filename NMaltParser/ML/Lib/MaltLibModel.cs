@@ -1,4 +1,4 @@
-﻿namespace org.maltparser.ml.lib
+﻿namespace NMaltParser.ML.Lib
 {
 	public interface MaltLibModel
 	{

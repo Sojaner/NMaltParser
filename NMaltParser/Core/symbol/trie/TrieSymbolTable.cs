@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Symbol.NullValue;
 
-namespace org.maltparser.core.symbol.trie
+namespace NMaltParser.Core.Symbol.Trie
 {
-    using  nullvalue;
-
     /// 
 	/// <summary>
 	/// @author Johan Hall

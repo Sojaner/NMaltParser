@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.syntaxgraph
+namespace NMaltParser.Core.SyntaxGraph
 {
-
-	using  exception;
-	using  node;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

@@ -1,12 +1,12 @@
-﻿namespace org.maltparser.parser
-{
-	using  core.config;
-	using  core.io.dataformat;
-    using  core.feature;
-	using  core.propagation;
-	using  core.syntaxgraph;
+﻿using NMaltParser.Core.Config;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Propagation;
+using NMaltParser.Core.SyntaxGraph;
 
-	/// <summary>
+namespace NMaltParser.Parser
+{
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

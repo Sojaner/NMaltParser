@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Concurrent.Graph.DataFormat;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.concurrent.graph
+namespace NMaltParser.Concurrent.Graph
 {
-
-	using  dataformat;
-    using  core.exception;
-	using  core.symbol;
-	using  core.syntaxgraph;
-	using  core.syntaxgraph.node;
-
-	/// <summary>
+    /// <summary>
 	/// Immutable and tread-safe dependency graph implementation.
 	/// 
 	/// @author Johan Hall

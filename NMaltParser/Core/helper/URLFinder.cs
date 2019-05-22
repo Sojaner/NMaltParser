@@ -1,13 +1,10 @@
 ﻿using System;
 using System.IO;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Plugin;
 
-namespace org.maltparser.core.helper
+namespace NMaltParser.Core.Helper
 {
-
-
-	using  exception;
-	using  plugin;
-
     /// 
 	/// 
 	/// <summary>
@@ -72,7 +69,7 @@ namespace org.maltparser.core.helper
 				}
 				else
 				{
-					 foreach (Plugin plugin in PluginLoader.instance())
+					 foreach (Plugin.Plugin plugin in PluginLoader.instance())
 					 {
 						URL url = null;
 						if (!fileString.StartsWith("/", StringComparison.Ordinal))

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Concurrent.Graph.DataFormat;
 
-namespace org.maltparser.concurrent.graph
+namespace NMaltParser.Concurrent.Graph
 {
-
-	using  dataformat;
-
     /// <summary>
 	/// Immutable and tread-safe dependency node implementation.
 	/// 

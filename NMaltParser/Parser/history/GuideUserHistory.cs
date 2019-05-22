@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
+using NMaltParser.Parser.History.Action;
+using NMaltParser.Parser.History.Container;
 
-namespace org.maltparser.parser.history
+namespace NMaltParser.Parser.History
 {
-    using  action;
-	using  container;
-
     /// 
 	/// <summary>
 	/// @author Johan Hall

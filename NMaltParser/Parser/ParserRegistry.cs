@@ -1,13 +1,12 @@
 ﻿using System;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.parser
+namespace NMaltParser.Parser
 {
-	using  core.feature;
-    using  core.helper;
-	using  core.io.dataformat;
-	using  core.symbol;
-
-	public class ParserRegistry : FeatureRegistry
+    public class ParserRegistry : FeatureRegistry
 	{
 		private AbstractFeatureFactory abstractParserFactory;
 		private AlgoritmInterface algorithm;

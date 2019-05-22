@@ -1,11 +1,9 @@
 ﻿using System;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.ml.lib
+namespace NMaltParser.ML.Lib
 {
-	using  core.exception;
-
-
-	/// <summary>
+    /// <summary>
 	///  LibException extends the MaltChainedException class and is thrown by classes
 	///  within the lib package.
 	/// 

@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Propagation.Spec;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Edge;
 
-namespace org.maltparser.core.propagation
+namespace NMaltParser.Core.Propagation
 {
-    using  io.dataformat;
-	using  spec;
-    using  symbol;
-	using  syntaxgraph.edge;
-
-	public class Propagations
+    public class Propagations
 	{
 		private readonly List<Propagation> propagations;
 

@@ -1,11 +1,9 @@
 ﻿using System.Text;
+using NMaltParser.Core.Helper;
 
-namespace org.maltparser.core.pool
+namespace NMaltParser.Core.Pool
 {
-    using  helper;
-
-
-	public abstract class ObjectPoolSet<T> : ObjectPool<T>
+    public abstract class ObjectPoolSet<T> : ObjectPool<T>
 	{
 		private readonly HashSet<T> available;
 		private readonly HashSet<T> inuse;

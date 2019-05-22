@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace org.maltparser.core.exception
+namespace NMaltParser.Core.Exception
 {
 	/// <summary>
 	/// MaltChainedException handles a chain of MaltParser specific exception. 
@@ -9,10 +9,10 @@ namespace org.maltparser.core.exception
 	/// @author Johan Hall
 	/// 
 	/// </summary>
-	public class MaltChainedException : Exception
+	public class MaltChainedException : System.Exception
 	{
 		public const long serialVersionUID = 8045568022124816379L;
-		private readonly Exception cause;
+		private readonly System.Exception cause;
 
 		/// <summary>
 		/// Creates a MaltChainedException instance with a message
@@ -27,7 +27,7 @@ namespace org.maltparser.core.exception
 		/// </summary>
 		/// <param name="message">	a message string </param>
 		/// <param name="cause">		a cause </param>
-		public MaltChainedException(string message, Exception cause) : base(message)
+		public MaltChainedException(string message, System.Exception cause) : base(message)
 		{
 			this.cause = cause;
 		}
@@ -36,7 +36,7 @@ namespace org.maltparser.core.exception
 		/* (non-Javadoc)
 		 * @see java.lang.Throwable#getCause()
 		 */
-		public virtual Exception Cause
+		public virtual System.Exception Cause
 		{
 			get
 			{
@@ -55,7 +55,7 @@ namespace org.maltparser.core.exception
 	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 	//ORIGINAL LINE: final StringBuilder sb = new StringBuilder();
 				StringBuilder sb = new StringBuilder();
-				Exception t = this;
+				System.Exception t = this;
     
 				while (t != null)
 				{

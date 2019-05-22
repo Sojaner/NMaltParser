@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Text;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Feature;
 
-namespace org.maltparser.core.feature.map
+namespace NMaltParser.Core.Feature.Map
 {
-    using  function;
-    using  value;
-    using  io.dataformat;
-    using  symbol;
-
     /// 
 	/// 
 	/// <summary>
@@ -15,7 +15,7 @@ namespace org.maltparser.core.feature.map
 	/// </summary>
 	public sealed class SuffixFeature : FeatureMapFunction
 	{
-		public static readonly Type[] paramTypes = new Type[] {typeof(org.maltparser.core.syntaxgraph.feature.InputColumnFeature), typeof(Integer)};
+		public static readonly Type[] paramTypes = new Type[] {typeof(InputColumnFeature), typeof(Integer)};
 		private FeatureFunction parentFeature;
 		private readonly MultipleFeatureValue multipleFeatureValue;
 		private readonly SymbolTableHandler tableHandler;

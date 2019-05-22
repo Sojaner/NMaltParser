@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Text;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.core.feature.map
+namespace NMaltParser.Core.Feature.Map
 {
-    using  function;
-    using  value;
-    using  io.dataformat;
-    using  symbol;
-
     /// 
 	/// 
 	/// <summary>

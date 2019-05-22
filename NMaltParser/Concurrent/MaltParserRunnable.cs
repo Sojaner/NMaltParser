@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.concurrent
+namespace NMaltParser.Concurrent
 {
-
-	using  core.exception;
-
-	public class MaltParserRunnable : ThreadStart
+    public class MaltParserRunnable : ThreadStart
 	{
 		private readonly IList<string[]> inputSentences;
 		private IList<string[]> outputSentences;

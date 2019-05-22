@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Edge;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.lw.graph
+namespace NMaltParser.Core.LW.Graph
 {
-    using  symbol;
-	using  syntaxgraph;
-	using  syntaxgraph.edge;
-	using  syntaxgraph.node;
-
-	/// <summary>
+    /// <summary>
 	/// A lightweight version of pseudo projectivity and this class can only perform deprojectivizing. The class is based on 
 	/// the more complex class org.maltparser.transform.pseudo.PseudoProjectivity.
 	/// 

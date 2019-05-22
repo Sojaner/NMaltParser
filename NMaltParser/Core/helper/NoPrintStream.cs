@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace org.maltparser.core.helper
+namespace NMaltParser.Core.Helper
 {
 	/// 
 	/// 

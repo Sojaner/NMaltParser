@@ -1,11 +1,10 @@
-﻿namespace org.maltparser.concurrent
+﻿using NMaltParser.Core.Exception;
+using NMaltParser.Core.LW.Helper;
+using NMaltParser.Core.Options;
+
+namespace NMaltParser.Concurrent
 {
-
-	using  core.exception;
-	using  core.lw.helper;
-	using  core.options;
-
-	/// <summary>
+    /// <summary>
 	/// The purpose of ConcurrentMaltParserService is to provide an interface to MaltParser that makes it easier to parse sentences from 
 	/// other programs. ConcurrentMaltParserService is hopefully thread-safe and can be used in a multi threaded environment. This class 
 	/// replace the old interface org.maltparser.MaltParserService when you want to load a MaltParser model and then use it 

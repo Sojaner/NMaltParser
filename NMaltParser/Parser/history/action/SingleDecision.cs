@@ -1,8 +1,9 @@
-﻿namespace org.maltparser.parser.history.action
+﻿using NMaltParser.Parser.History.Container;
+using NMaltParser.Parser.History.KBest;
+
+namespace NMaltParser.Parser.History.Action
 {
-    using  container;
-    using  kbest;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// @since 1.1

@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.syntaxgraph.writer
+namespace NMaltParser.Core.SyntaxGraph.Writer
 {
-    using  io.dataformat;
-    using  symbol;
-    using  node;
-
     /// 
 	/// 
 	/// <summary>

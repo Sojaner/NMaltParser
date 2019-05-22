@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Config;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser;
+using NMaltParser.Parser.Guide.Instance;
+using NMaltParser.Parser.History.Action;
+using NMaltParser.Parser.History.KBest;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.ml.liblinear
+namespace NMaltParser.ML.LibLinear
 {
-    using  core.config;
-    using  core.exception;
-	using  core.feature;
-	using  core.feature.function;
-	using  core.feature.value;
-    using  core.helper;
-	using  core.syntaxgraph;
-	using  parser;
-	using  parser.guide.instance;
-	using  parser.history.action;
-	using  parser.history.kbest;
-
-
     public class Liblinear : LearningMethod
 	{
 		public const string LIBLINEAR_VERSION = "1.51";

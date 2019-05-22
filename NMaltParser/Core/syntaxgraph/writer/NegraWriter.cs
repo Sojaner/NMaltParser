@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.syntaxgraph.writer
+namespace NMaltParser.Core.SyntaxGraph.Writer
 {
-
-	using  exception;
-	using  io.dataformat;
-    using  symbol;
-    using  edge;
-	using  node;
-
     /// 
 	/// 
 	/// <summary>
@@ -263,7 +261,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 						}
 					}
 					SymbolTable table = symbolTables.getSymbolTable(column.Name);
-					foreach (Edge e in terminal.IncomingSecondaryEdges)
+					foreach (Edge.Edge e in terminal.IncomingSecondaryEdges)
 					{
 						if (e.hasLabel(table))
 						{
@@ -341,7 +339,7 @@ namespace org.maltparser.core.syntaxgraph.writer
 	//					writer.write(Integer.toString(nonTerminal.getParent().getIndex()+START_ID_OF_NONTERMINALS-1));
 						writer.Write(Convert.ToString(nonTerminalIndexMap.get(nonTerminal.Parent.Index)));
 					}
-					foreach (Edge e in nonTerminal.IncomingSecondaryEdges)
+					foreach (Edge.Edge e in nonTerminal.IncomingSecondaryEdges)
 					{
 						if (e.hasLabel(symbolTables.getSymbolTable("SECEDGELABEL")))
 						{

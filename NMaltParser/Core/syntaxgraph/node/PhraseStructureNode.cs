@@ -1,15 +1,13 @@
-﻿namespace org.maltparser.core.syntaxgraph.node
+﻿using NMaltParser.Core.Symbol;
+
+namespace NMaltParser.Core.SyntaxGraph.Node
 {
-    using  symbol;
-	using  edge;
-
-
-	public interface PhraseStructureNode : ComparableNode
+    public interface PhraseStructureNode : ComparableNode
 	{
 		PhraseStructureNode Parent {get;}
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge getParentEdge() throws org.maltparser.core.exception.MaltChainedException;
-		Edge ParentEdge {get;}
+		Edge.Edge ParentEdge {get;}
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public String getParentEdgeLabelSymbol(org.maltparser.core.symbol.SymbolTable table) throws org.maltparser.core.exception.MaltChainedException;
 		string getParentEdgeLabelSymbol(SymbolTable table);

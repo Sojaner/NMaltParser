@@ -1,15 +1,10 @@
 ﻿using System.Collections.Generic;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.core.syntaxgraph.node
+namespace NMaltParser.Core.SyntaxGraph.Node
 {
-
-	using  exception;
-	using  symbol;
-	using  edge;
-
-
-
-	public interface DependencyNode : ComparableNode
+    public interface DependencyNode : ComparableNode
 	{
 		/// <summary>
 		/// Returns <i>true</i> if the node has at most one head, otherwise <i>false</i>.
@@ -26,7 +21,7 @@ namespace org.maltparser.core.syntaxgraph.node
 		ISet<DependencyNode> Heads {get;}
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public java.util.Set<org.maltparser.core.syntaxgraph.edge.Edge> getHeadEdges() throws org.maltparser.core.exception.MaltChainedException;
-		ISet<Edge> HeadEdges {get;}
+		ISet<Edge.Edge> HeadEdges {get;}
 
 
 		/// <summary>
@@ -59,7 +54,7 @@ namespace org.maltparser.core.syntaxgraph.node
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge getHeadEdge() throws org.maltparser.core.exception.MaltChainedException;
-		Edge HeadEdge {get;}
+		Edge.Edge HeadEdge {get;}
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public boolean hasAncestorInside(int left, int right) throws org.maltparser.core.exception.MaltChainedException;
 		bool hasAncestorInside(int left, int right);

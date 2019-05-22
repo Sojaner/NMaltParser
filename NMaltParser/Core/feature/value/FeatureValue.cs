@@ -1,10 +1,8 @@
 ﻿using System.Text;
 
-namespace org.maltparser.core.feature.value
+namespace NMaltParser.Core.Feature.Value
 {
-	using  function;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -14,7 +12,7 @@ namespace org.maltparser.core.feature.value
 	{
 		protected internal bool nullValue;
 
-		public FeatureValue(Function function) : base(function)
+		public FeatureValue(Function.Function function) : base(function)
 		{
 			NullValue = true;
 		}

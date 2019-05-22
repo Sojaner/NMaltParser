@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.plugin
+namespace NMaltParser.Core.Plugin
 {
-	using  exception;
-
-	/// <summary>
+    /// <summary>
 	/// Loads MaltParser plug-ins and makes new instances of classes within these plug-ins. 
 	/// 
 	/// @author Johan Hall

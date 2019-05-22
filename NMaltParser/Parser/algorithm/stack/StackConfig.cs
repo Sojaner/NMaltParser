@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.parser.algorithm.stack
+namespace NMaltParser.Parser.Algorithm.Stack
 {
-    using  core.syntaxgraph;
-	using  core.syntaxgraph.node;
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

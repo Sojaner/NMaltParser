@@ -1,19 +1,17 @@
 ﻿using System;
 using System.IO;
+using NMaltParser.Core.Config;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Flow;
+using NMaltParser.Core.Flow.Item;
+using NMaltParser.Core.Flow.Spec;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Options;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.syntaxgraph
+namespace NMaltParser.Core.SyntaxGraph
 {
-
-	using  config;
-	using  exception;
-	using  flow;
-	using  flow.item;
-	using  flow.spec;
-	using  io.dataformat;
-	using  options;
-	using  node;
-
-	public class GraphAnalyzerChartItem : ChartItem
+    public class GraphAnalyzerChartItem : ChartItem
 	{
 		private string idName;
 		private string sourceName;

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace org.maltparser.core.options.option
+namespace NMaltParser.Core.Options.Option
 {
     /// <summary>
 	/// An enumerate option is an option that can only contain string value, which is in the legal value set.

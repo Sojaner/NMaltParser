@@ -1,8 +1,9 @@
-﻿namespace org.maltparser.parser.algorithm.planar
+﻿using NMaltParser.Parser.Guide;
+using NMaltParser.Parser.History;
+
+namespace NMaltParser.Parser.Algorithm.Planar
 {
-    using  guide;
-	using  history;
-	/// <summary>
+    /// <summary>
 	/// @author Carlos Gomez Rodriguez
 	/// 
 	/// </summary>

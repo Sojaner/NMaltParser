@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace org.maltparser.core.options.option
+namespace NMaltParser.Core.Options.Option
 {
     /// <summary>
 	/// A boolean option is an option that can only contain a boolean value (true or false). 

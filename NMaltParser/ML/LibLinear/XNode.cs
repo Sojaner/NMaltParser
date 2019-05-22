@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace org.maltparser.ml.liblinear
+namespace NMaltParser.ML.LibLinear
 {
 	public class XNode : IComparable<XNode>
 	{

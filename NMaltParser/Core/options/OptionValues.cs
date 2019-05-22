@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace org.maltparser.core.options
+namespace NMaltParser.Core.Options
 {
-
-	using  option;
-
-	/// <summary>
+    /// <summary>
 	/// OptionValues contain a number of option containers, which contains the option values (the instance of 
 	/// options).
 	/// 
@@ -35,7 +32,7 @@ namespace org.maltparser.core.options
 		/// <exception cref="OptionException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public Object getOptionValue(int containerIndex, org.maltparser.core.options.option.Option option) throws OptionException
-		public virtual object getOptionValue(int containerIndex, Option option)
+		public virtual object getOptionValue(int containerIndex, Option.Option option)
 		{
 			OptionContainer oc = optionContainers[containerIndex];
 			if (oc == null)
@@ -54,7 +51,7 @@ namespace org.maltparser.core.options
 		/// <exception cref="OptionException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public String getOptionValueString(int containerIndex, org.maltparser.core.options.option.Option option) throws OptionException
-		public virtual string getOptionValueString(int containerIndex, Option option)
+		public virtual string getOptionValueString(int containerIndex, Option.Option option)
 		{
 			OptionContainer oc = optionContainers[containerIndex];
 			if (oc == null)
@@ -72,7 +69,7 @@ namespace org.maltparser.core.options
 		/// <exception cref="OptionException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public Object getOptionValue(org.maltparser.core.options.option.Option option) throws OptionException
-		public virtual object getOptionValue(Option option)
+		public virtual object getOptionValue(Option.Option option)
 		{
 			if (optionContainers.Count == 0)
 			{
@@ -121,7 +118,7 @@ namespace org.maltparser.core.options
 		/// <exception cref="OptionException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: protected boolean addOptionValue(int containerType, int containerIndex, org.maltparser.core.options.option.Option option, Object value) throws OptionException
-		protected internal virtual bool addOptionValue(int containerType, int containerIndex, Option option, object value)
+		protected internal virtual bool addOptionValue(int containerType, int containerIndex, Option.Option option, object value)
 		{
 			if (option == null)
 			{

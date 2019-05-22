@@ -1,7 +1,7 @@
-﻿namespace org.maltparser.core.io.dataformat
-{
-    using  helper;
+﻿using NMaltParser.Core.Helper;
 
+namespace NMaltParser.Core.IO.DataFormat
+{
     public class DataFormatManager
 	{
 		private DataFormatSpecification inputDataFormatSpec;

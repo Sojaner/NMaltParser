@@ -1,19 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser;
+using NMaltParser.Parser.History;
+using NMaltParser.Parser.History.Action;
+using NMaltParser.Parser.History.Container;
 
-namespace org.maltparser.core.lw.parser
+namespace NMaltParser.Core.LW.Parser
 {
-
-	using  exception;
-	using  feature;
-    using  org.maltparser.core.helper;
-	using  symbol;
-    using  syntaxgraph;
-	using  org.maltparser.parser;
-    using  org.maltparser.parser.history;
-	using  org.maltparser.parser.history.action;
-    using  org.maltparser.parser.history.container;
-
     /// <summary>
 	/// A lightweight version of org.maltparser.parser.DeterministicParser. This class also implements a lightweight version of 
 	/// org.maltparser.parser.history.History and reduces the need of org.maltparser.parser.ParserState. 

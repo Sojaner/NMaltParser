@@ -1,12 +1,11 @@
 ﻿using System;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Options;
+using NMaltParser.Utilities;
 
-namespace org.maltparser
+namespace NMaltParser
 {
-
-	using  core.exception;
-	using  core.helper;
-    using  core.options;
-
     /// <summary>
 	/// MaltConsoleEngine controls the MaltParser system using the console version. 
 	/// 

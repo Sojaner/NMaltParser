@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Flow.System.Elem;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Plugin;
 
-namespace org.maltparser.core.flow.system
+namespace NMaltParser.Core.Flow.System
 {
-    using  feature;
-	using  elem;
-	using  helper;
-	using  plugin;
-
     /// 
 	/// 
 	/// <summary>
@@ -37,7 +36,7 @@ namespace org.maltparser.core.flow.system
 //ORIGINAL LINE: public void load(org.maltparser.core.plugin.PluginLoader plugins) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void load(PluginLoader plugins)
 		{
-			 foreach (Plugin plugin in plugins)
+			 foreach (Plugin.Plugin plugin in plugins)
 			 {
 				URL url = null;
 				try

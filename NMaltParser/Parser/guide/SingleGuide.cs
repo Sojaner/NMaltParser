@@ -1,15 +1,12 @@
 ﻿using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser.Guide.Decision;
+using NMaltParser.Parser.History.Action;
 
-namespace org.maltparser.parser.guide
+namespace NMaltParser.Parser.Guide
 {
-
-	using  core.exception;
-	using  core.feature;
-    using  core.syntaxgraph;
-	using  decision;
-    using  history.action;
-
-
     /// <summary>
 	/// The guide is used by a parsing algorithm to predict the next parser action during parsing and to
 	/// add a instance to the training instance set during learning.

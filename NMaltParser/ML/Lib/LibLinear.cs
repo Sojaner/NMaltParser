@@ -1,13 +1,12 @@
 ﻿using System;
 using System.IO;
+using NMaltParser.Core.Config;
+using NMaltParser.Core.Helper;
+using NMaltParser.Parser.Guide.Instance;
 
-namespace org.maltparser.ml.lib
+namespace NMaltParser.ML.Lib
 {
-    using  core.config;
-    using  core.helper;
-    using  parser.guide.instance;
-
-	public class LibLinear : Lib
+    public class LibLinear : Lib
 	{
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:

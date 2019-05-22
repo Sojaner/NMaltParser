@@ -1,4 +1,4 @@
-﻿namespace org.maltparser.parser.history.action
+﻿namespace NMaltParser.Parser.History.Action
 {
 	/// 
 	/// <summary>

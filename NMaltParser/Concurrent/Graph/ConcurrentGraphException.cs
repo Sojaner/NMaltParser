@@ -1,10 +1,9 @@
 ﻿using System;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.concurrent.graph
+namespace NMaltParser.Concurrent.Graph
 {
-	using  core.exception;
-
-	/// <summary>
+    /// <summary>
 	///  ConcurrentGraphException extends the MaltChainedException class and is thrown by classes
 	///  within the graph package.
 	/// 

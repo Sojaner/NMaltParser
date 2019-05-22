@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace org.maltparser.core.symbol.trie
+namespace NMaltParser.Core.Symbol.Trie
 {
 
 	/// 

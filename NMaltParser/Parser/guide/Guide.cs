@@ -1,7 +1,8 @@
-﻿namespace org.maltparser.parser.guide
+﻿using NMaltParser.Core.SyntaxGraph;
+
+namespace NMaltParser.Parser.Guide
 {
-    using  core.syntaxgraph;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// @since 1.1

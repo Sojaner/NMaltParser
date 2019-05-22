@@ -1,11 +1,11 @@
 ﻿using System;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.syntaxgraph.feature
+namespace NMaltParser.Core.SyntaxGraph.Feature
 {
-    using  org.maltparser.core.feature.function;
-	using  org.maltparser.core.feature.value;
-	using  node;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

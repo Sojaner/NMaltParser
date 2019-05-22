@@ -1,10 +1,11 @@
-﻿namespace org.maltparser.parser
+﻿using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser.History;
+using NMaltParser.Parser.History.Action;
+
+namespace NMaltParser.Parser
 {
-    using  core.symbol;
-	using  core.syntaxgraph;
-	using  history;
-    using  history.action;
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>
@@ -27,7 +28,7 @@
 			TransitionSystem.initTableHandlers(decisionSettings, symbolTableHandler);
 			int kBestSize = ((int?)manager.getOptionValue("guide", "kbest")).Value;
 			string classitem_separator = manager.getOptionValue("guide", "classitem_separator").ToString();
-			history = new History(decisionSettings, classitem_separator, TransitionSystem.TableHandlers, kBestSize);
+			history = new History.History(decisionSettings, classitem_separator, TransitionSystem.TableHandlers, kBestSize);
 			TransitionSystem.initTransitionSystem(history);
 			config = factory.makeParserConfiguration();
 		}

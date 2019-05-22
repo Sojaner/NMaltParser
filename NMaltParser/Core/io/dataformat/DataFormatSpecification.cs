@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.core.io.dataformat
+namespace NMaltParser.Core.IO.DataFormat
 {
-    using  helper;
-    using  symbol;
-
     /// 
 	/// 
 	/// <summary>
@@ -24,7 +23,7 @@ namespace org.maltparser.core.io.dataformat
 		private string dataFormatName;
 		private DataStructure dataStructure;
 		private readonly IDictionary<string, DataFormatEntry> entries;
-		private readonly HashSet<Dependency> dependencies;
+		private readonly Helper.HashSet<Dependency> dependencies;
 	//	private final HashSet<SyntaxGraphReader> supportedReaders;
 	//	private final HashSet<SyntaxGraphWriter> supportedWriters;
 
@@ -32,7 +31,7 @@ namespace org.maltparser.core.io.dataformat
 		{
 			entries = new LinkedHashMap<string, DataFormatEntry>();
 	//		entryPositionCounter = 0;
-			dependencies = new HashSet<Dependency>();
+			dependencies = new Helper.HashSet<Dependency>();
 	//		supportedReaders = new HashSet<SyntaxGraphReader>();
 	//		supportedWriters = new HashSet<SyntaxGraphWriter>();
 		}
@@ -60,7 +59,7 @@ namespace org.maltparser.core.io.dataformat
 			parseDataFormatXMLfile(url);
 		}
 
-		public virtual HashSet<Dependency> Dependencies
+		public virtual Helper.HashSet<Dependency> Dependencies
 		{
 			get
 			{

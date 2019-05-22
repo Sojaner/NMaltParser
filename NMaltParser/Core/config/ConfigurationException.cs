@@ -1,10 +1,8 @@
-﻿using System;
+﻿using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.config
+namespace NMaltParser.Core.Config
 {
-	using  exception;
-
-	/// <summary>
+    /// <summary>
 	///  ConfigurationException extends the MaltChainedException class and is thrown by classes
 	///  within the configuration package.
 	/// 
@@ -28,7 +26,7 @@ namespace org.maltparser.core.config
 		/// </summary>
 		/// <param name="message">	the message </param>
 		/// <param name="cause">		the cause to the exception </param>
-		public ConfigurationException(string message, Exception cause) : base(message, cause)
+		public ConfigurationException(string message, System.Exception cause) : base(message, cause)
 		{
 		}
 	}

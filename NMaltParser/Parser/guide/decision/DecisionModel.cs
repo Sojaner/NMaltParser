@@ -1,8 +1,9 @@
-﻿namespace org.maltparser.parser.guide.decision
+﻿using NMaltParser.Core.Feature;
+using NMaltParser.Parser.History.Action;
+
+namespace NMaltParser.Parser.Guide.Decision
 {
-    using  core.feature;
-    using  history.action;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// 

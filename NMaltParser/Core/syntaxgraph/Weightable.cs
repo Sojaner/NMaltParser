@@ -1,4 +1,4 @@
-﻿namespace org.maltparser.core.syntaxgraph
+﻿namespace NMaltParser.Core.SyntaxGraph
 {
 	/// 
 	/// 

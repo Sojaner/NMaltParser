@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.syntaxgraph.reader
+namespace NMaltParser.Core.SyntaxGraph.Reader
 {
-
-	using  exception;
-	using  io.dataformat;
-    using  symbol;
-	using  edge;
-	using  node;
-
     /// 
 	/// 
 	/// <summary>
@@ -296,7 +293,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 				}
 
 				terminalCounter++;
-				Edge e = null;
+				Edge.Edge e = null;
 
 				if (parent != null)
 				{
@@ -373,7 +370,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			else
 			{
 				PhraseStructureNode nt;
-				Edge e = null;
+				Edge.Edge e = null;
 				if (parent == null)
 				{
 					nt = phraseStructure.PhraseStructureRoot;

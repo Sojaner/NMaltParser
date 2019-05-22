@@ -1,10 +1,8 @@
-﻿using System;
+﻿using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.symbol
+namespace NMaltParser.Core.Symbol
 {
-	using  exception;
-
-	/// <summary>
+    /// <summary>
 	///  SymbolException extends the MaltChainedException class and is thrown by classes
 	///  within the symbol package.
 	/// 
@@ -27,7 +25,7 @@ namespace org.maltparser.core.symbol
 		/// </summary>
 		/// <param name="message">	the message </param>
 		/// <param name="cause">		the cause to the exception </param>
-		public SymbolException(string message, Exception cause) : base(message, cause)
+		public SymbolException(string message, System.Exception cause) : base(message, cause)
 		{
 		}
 	}

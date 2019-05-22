@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.syntaxgraph.node
+namespace NMaltParser.Core.SyntaxGraph.Node
 {
-
-	using  exception;
-	using  edge;
-
-	public interface ComparableNode : Element, IComparable<ComparableNode>
+    public interface ComparableNode : Element, IComparable<ComparableNode>
 	{
 		/// <summary>
 		/// Returns the index of the node.
@@ -104,14 +101,14 @@ namespace org.maltparser.core.syntaxgraph.node
 		/// <returns> a sorted set of incoming secondary edges. </returns>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public java.util.SortedSet<org.maltparser.core.syntaxgraph.edge.Edge> getIncomingSecondaryEdges() throws org.maltparser.core.exception.MaltChainedException;
-		SortedSet<Edge> IncomingSecondaryEdges {get;}
+		SortedSet<Edge.Edge> IncomingSecondaryEdges {get;}
 		/// <summary>
 		/// Returns a sorted set of outgoing secondary edges.
 		/// </summary>
 		/// <returns> a sorted set of outgoing secondary edges. </returns>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public java.util.SortedSet<org.maltparser.core.syntaxgraph.edge.Edge> getOutgoingSecondaryEdges() throws org.maltparser.core.exception.MaltChainedException;
-		SortedSet<Edge> OutgoingSecondaryEdges {get;}
+		SortedSet<Edge.Edge> OutgoingSecondaryEdges {get;}
 	}
 
 }

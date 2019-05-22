@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Feature.Value;
+using NMaltParser.Core.Helper;
+using NMaltParser.Parser.History.Action;
 
-namespace org.maltparser.core.lw.parser
+namespace NMaltParser.Core.LW.Parser
 {
-
-	using  exception;
-	using  feature;
-    using  feature.value;
-	using  org.maltparser.core.helper;
-	using  org.maltparser.parser.history.action;
-
     /// <summary>
 	/// A lightweight version of the decision models, the guide model and the instance models located in org.maltparser.parser.guide.{decision,instance} and
 	/// can only be used in parsing mode. It is also limited to predict at most two decisions.

@@ -1,17 +1,14 @@
 ﻿using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.syntaxgraph.reader
+namespace NMaltParser.Core.SyntaxGraph.Reader
 {
-
-
-	using  exception;
-	using  io.dataformat;
-    using  symbol;
-	using  edge;
-	using  node;
-
     /// 
 	/// 
 	/// <summary>
@@ -208,7 +205,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 									child = phraseStructure.getNonTerminalNode(childid - START_ID_OF_NONTERMINALS + 1);
 								}
 
-								Edge e = phraseStructure.addPhraseStructureEdge(parent, child);
+								Edge.Edge e = phraseStructure.addPhraseStructureEdge(parent, child);
 								SortedDictionary<string, SymbolTable> inputTables = dataFormatInstance.getPhraseStructureEdgeLabelSymbolTables(phraseStructure.SymbolTables);
 								foreach (string name in inputTables.Keys)
 								{
@@ -388,7 +385,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 							{
 								if (phraseStructure.nTokenNode() == 1 && phraseStructure.nNonTerminals() == 0 && ((NonTerminalNode)phraseStructure.PhraseStructureRoot).nChildren() == 0)
 								{
-									Edge e = phraseStructure.addPhraseStructureEdge(phraseStructure.PhraseStructureRoot, phraseStructure.getTokenNode(1));
+									Edge.Edge e = phraseStructure.addPhraseStructureEdge(phraseStructure.PhraseStructureRoot, phraseStructure.getTokenNode(1));
 									SortedDictionary<string, SymbolTable> inputTables = dataFormatInstance.getPhraseStructureEdgeLabelSymbolTables(phraseStructure.SymbolTables);
 									foreach (string name in inputTables.Keys)
 									{

@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using NMaltParser.Concurrent.Graph;
+using NMaltParser.Concurrent.Graph.DataFormat;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Feature.System;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.LW.Graph;
+using NMaltParser.Core.LW.Parser;
+using NMaltParser.Core.Options;
+using NMaltParser.Core.Plugin;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.Symbol.Hash;
+using NMaltParser.Core.Symbol.Parse;
 
-namespace org.maltparser.concurrent
+namespace NMaltParser.Concurrent
 {
-
-	using  graph;
-	using  graph.dataformat;
-	using  core.exception;
-	using  core.feature;
-	using  core.feature.system;
-	using  core.io.dataformat;
-    using  org.maltparser.core.lw.graph;
-    using  org.maltparser.core.lw.parser;
-    using  core.options;
-	using  core.plugin;
-	using  core.symbol;
-	using  core.symbol.hash;
-	using  core.symbol.parse;
-
-	/// <summary>
+    /// <summary>
 	/// A concurrent MaltParser model that can be used to parse sentences in both a single threaded or multi threaded 
 	/// environment. To create an object of ConcurrentMaltParserModel use the static methods in ConcurrentMaltParserService.
 	/// 

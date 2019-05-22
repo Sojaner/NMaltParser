@@ -1,7 +1,8 @@
-﻿namespace org.maltparser.parser.history.container
+﻿using NMaltParser.Core.Symbol;
+
+namespace NMaltParser.Parser.History.Container
 {
-    using  core.symbol;
-	/// 
+    /// 
 	/// <summary>
 	/// @author Johan Hall
 	/// 

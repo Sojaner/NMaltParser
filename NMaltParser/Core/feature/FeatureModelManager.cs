@@ -1,9 +1,9 @@
-﻿namespace org.maltparser.core.feature
-{
-    using  spec;
-    using  system;
+﻿using NMaltParser.Core.Feature.Spec;
+using NMaltParser.Core.Feature.System;
 
-	/// 
+namespace NMaltParser.Core.Feature
+{
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

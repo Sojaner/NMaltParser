@@ -1,10 +1,8 @@
-﻿using System;
+﻿using NMaltParser.Core.Exception;
 
-namespace org.maltparser.core.syntaxgraph
+namespace NMaltParser.Core.SyntaxGraph
 {
-	using  exception;
-
-	/// <summary>
+    /// <summary>
 	///  GraphException extends the MaltChainedException class and is thrown by classes
 	///  within the graph package.
 	/// 
@@ -28,7 +26,7 @@ namespace org.maltparser.core.syntaxgraph
 		/// </summary>
 		/// <param name="message">	the message </param>
 		/// <param name="cause">		the cause to the exception </param>
-		public SyntaxGraphException(string message, Exception cause) : base(message, cause)
+		public SyntaxGraphException(string message, System.Exception cause) : base(message, cause)
 		{
 		}
 	}

@@ -1,4 +1,4 @@
-﻿namespace org.maltparser.core.syntaxgraph.node
+﻿namespace NMaltParser.Core.SyntaxGraph.Node
 {
 	public interface TerminalNode : PhraseStructureNode
 	{

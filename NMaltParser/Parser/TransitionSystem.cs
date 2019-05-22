@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.Propagation;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Edge;
+using NMaltParser.Parser.History;
+using NMaltParser.Parser.History.Action;
+using NMaltParser.Parser.History.Container;
+using NMaltParser.Parser.Transition;
 
-namespace org.maltparser.parser
+namespace NMaltParser.Parser
 {
-
-	using  core.exception;
-	using  core.helper;
-	using  core.propagation;
-	using  core.symbol;
-    using  core.syntaxgraph;
-    using  core.syntaxgraph.edge;
-	using  history;
-	using  history.action;
-	using  history.container;
-	using  transition;
-
     /// <summary>
 	/// @author Johan Hall
 	/// 

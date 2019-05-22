@@ -1,12 +1,12 @@
-﻿namespace org.maltparser.parser
-{
-	using  core.exception;
-	using  core.feature;
-	using  core.symbol;
-	using  core.syntaxgraph;
-	using  guide;
-    using  history.action;
+﻿using NMaltParser.Core.Exception;
+using NMaltParser.Core.Feature;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Parser.Guide;
+using NMaltParser.Parser.History.Action;
 
+namespace NMaltParser.Parser
+{
     public class DeterministicParserWithDiagnostics : Parser
 	{
 		private readonly Diagnostics diagnostics;

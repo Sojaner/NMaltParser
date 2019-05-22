@@ -1,13 +1,14 @@
-﻿namespace org.maltparser.parser.algorithm.covington
+﻿using NMaltParser.Core.Propagation;
+using NMaltParser.Core.SyntaxGraph;
+using NMaltParser.Core.SyntaxGraph.Edge;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Parser.History;
+using NMaltParser.Parser.History.Action;
+using NMaltParser.Parser.Transition;
+
+namespace NMaltParser.Parser.Algorithm.Covington
 {
-    using  core.propagation;
-	using  core.syntaxgraph;
-	using  core.syntaxgraph.edge;
-	using  core.syntaxgraph.node;
-	using  history;
-	using  history.action;
-    using  transition;
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

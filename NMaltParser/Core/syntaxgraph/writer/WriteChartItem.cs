@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Text;
+using NMaltParser.Core.Config;
+using NMaltParser.Core.Flow;
+using NMaltParser.Core.Flow.Item;
+using NMaltParser.Core.Flow.Spec;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Options;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.core.syntaxgraph.writer
+namespace NMaltParser.Core.SyntaxGraph.Writer
 {
-	using  config;
-    using  flow;
-	using  flow.item;
-	using  flow.spec;
-	using  io.dataformat;
-    using  options;
-	using  symbol;
-
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

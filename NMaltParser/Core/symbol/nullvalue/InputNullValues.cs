@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace org.maltparser.core.symbol.nullvalue
+namespace NMaltParser.Core.Symbol.NullValue
 {
 	/// 
 	/// 

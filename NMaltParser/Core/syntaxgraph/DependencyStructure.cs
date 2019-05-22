@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.syntaxgraph
+namespace NMaltParser.Core.SyntaxGraph
 {
-
-	using  exception;
-	using  symbol;
-	using  edge;
-	using  node;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -42,7 +40,7 @@ namespace org.maltparser.core.syntaxgraph
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge addDependencyEdge(int headIndex, int dependentIndex) throws org.maltparser.core.exception.MaltChainedException;
-		Edge addDependencyEdge(int headIndex, int dependentIndex);
+		Edge.Edge addDependencyEdge(int headIndex, int dependentIndex);
 		/// <summary>
 		/// Replace the head of the dependent with a new head. The labels are not affected.
 		/// </summary>
@@ -52,7 +50,7 @@ namespace org.maltparser.core.syntaxgraph
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge moveDependencyEdge(int newHeadIndex, int dependentIndex) throws org.maltparser.core.exception.MaltChainedException;
-		Edge moveDependencyEdge(int newHeadIndex, int dependentIndex);
+		Edge.Edge moveDependencyEdge(int newHeadIndex, int dependentIndex);
 		/// <summary>
 		/// Remove an edge from the head to the dependent identified by the indices of the dependency nodes. </summary>
 		/// <param name="headIndex"> the index of the head dependency node </param>
@@ -66,7 +64,7 @@ namespace org.maltparser.core.syntaxgraph
 		/// </summary>
 		/// <returns>  the number of edges </returns>
 		int nEdges();
-		SortedSet<Edge> Edges {get;}
+		SortedSet<Edge.Edge> Edges {get;}
 		/// <summary>
 		/// Returns a sorted set of integers {0,s,..n} , where each index i identifies a dependency node. Index 0
 		/// should always be the root dependency node and index s is the first terminal node and index n is the

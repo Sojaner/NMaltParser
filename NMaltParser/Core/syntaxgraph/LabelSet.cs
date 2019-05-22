@@ -1,8 +1,8 @@
-﻿namespace org.maltparser.core.syntaxgraph
-{
+﻿using NMaltParser.Core.Symbol;
 
-	using  symbol;
-	/// 
+namespace NMaltParser.Core.SyntaxGraph
+{
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

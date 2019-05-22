@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Text;
 
-namespace org.maltparser.core.feature.value
+namespace NMaltParser.Core.Feature.Value
 {
-	using  function;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -14,7 +13,7 @@ namespace org.maltparser.core.feature.value
 	{
 		private object address;
 
-		public AddressValue(Function function) : base(function)
+		public AddressValue(Function.Function function) : base(function)
 		{
 			Address = null;
 		}

@@ -5,16 +5,19 @@
 //	This class includes methods to convert Java rectangular arrays (jagged arrays
 //	with inner arrays of the same length).
 //----------------------------------------------------------------------------------------
-internal static class RectangularArrays
+namespace NMaltParser.Utilities
 {
-    public static double[][] RectangularDoubleArray(int size1, int size2)
+    internal static class RectangularArrays
     {
-        double[][] newArray = new double[size1][];
-        for (int array1 = 0; array1 < size1; array1++)
+        public static double[][] RectangularDoubleArray(int size1, int size2)
         {
-            newArray[array1] = new double[size2];
-        }
+            double[][] newArray = new double[size1][];
+            for (int array1 = 0; array1 < size1; array1++)
+            {
+                newArray[array1] = new double[size2];
+            }
 
-        return newArray;
+            return newArray;
+        }
     }
 }

@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
+using NMaltParser.Core.Exception;
+using NMaltParser.Core.Helper;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Node;
+using NMaltParser.Core.SyntaxGraph.Reader;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.syntaxgraph.writer
+namespace NMaltParser.Core.SyntaxGraph.Writer
 {
-
-	using  exception;
-
-	using  helper;
-	using  io.dataformat;
-    using  symbol;
-	using  node;
-    using  reader;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall

@@ -1,4 +1,4 @@
-﻿namespace org.maltparser.core.symbol
+﻿namespace NMaltParser.Core.Symbol
 {
     public interface TableHandler
 	{

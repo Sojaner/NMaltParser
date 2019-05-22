@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace org.maltparser.core.helper
+namespace NMaltParser.Core.Helper
 {
 	/*
 	 * Copyright 2009 Google Inc.

@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using NMaltParser.Core.Exception;
 
-namespace org.maltparser.concurrent.test
+namespace NMaltParser.Concurrent.Test
 {
-
-	using  core.exception;
-
-	/// <summary>
+    /// <summary>
 	/// @author Johan Hall
 	/// 
 	/// </summary>

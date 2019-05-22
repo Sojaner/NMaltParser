@@ -1,10 +1,9 @@
 ﻿using System;
+using NMaltParser.Core.Feature.Function;
+using NMaltParser.Core.Feature.Value;
 
-namespace org.maltparser.core.symbol
+namespace NMaltParser.Core.Symbol
 {
-    using  feature.function;
-    using  feature.value;
-
     public abstract class TableFeature : FeatureFunction, Modifiable
 	{
 		protected internal readonly SingleFeatureValue featureValue;

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using NMaltParser.Core.IO.DataFormat;
+using NMaltParser.Utilities;
 
-namespace org.maltparser.core.syntaxgraph.reader
+namespace NMaltParser.Core.SyntaxGraph.Reader
 {
-    using  io.dataformat;
-    using  edge;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -125,7 +125,7 @@ namespace org.maltparser.core.syntaxgraph.reader
 			syntaxGraph.clear();
 			syntaxGraph.SymbolTables.cleanUp();
 			Element node = null;
-			Edge edge = null;
+			Edge.Edge edge = null;
 
 
 			List<string> tokens = new List<string>();

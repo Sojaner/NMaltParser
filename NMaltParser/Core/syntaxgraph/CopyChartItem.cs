@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Flow;
+using NMaltParser.Core.Flow.Item;
+using NMaltParser.Core.Flow.Spec;
+using NMaltParser.Core.Options;
+using NMaltParser.Core.Symbol;
+using NMaltParser.Core.SyntaxGraph.Node;
 
-namespace org.maltparser.core.syntaxgraph
+namespace NMaltParser.Core.SyntaxGraph
 {
-    using  flow;
-	using  flow.item;
-	using  flow.spec;
-	using  options;
-	using  symbol;
-	using  edge;
-	using  node;
-	/// 
+    /// 
 	/// 
 	/// <summary>
 	/// @author Johan Hall
@@ -171,7 +170,7 @@ namespace org.maltparser.core.syntaxgraph
 					string spartdeprel = snode.getLabelSymbol(partDeprel);
 					if (spartheadindex > 0)
 					{
-						Edge tedge = targetGraph.addDependencyEdge(spartheadindex, snode.Index);
+						Edge.Edge tedge = targetGraph.addDependencyEdge(spartheadindex, snode.Index);
 						tedge.addLabel(deprel, spartdeprel);
 					}
 				}

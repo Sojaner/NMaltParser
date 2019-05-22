@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NMaltParser.Core.Symbol;
 
-namespace org.maltparser.parser.history.container
+namespace NMaltParser.Parser.History.Container
 {
-    using  core.symbol;
-
     /// 
 	/// <summary>
 	/// @author Johan Hall
