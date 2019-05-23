@@ -98,11 +98,11 @@ namespace NMaltParser.Concurrent.Graph
 					ColumnDescription column = dataFormat.getColumnDescription(i);
 					if (!column.Internal)
 					{
-						if (column.Category == ColumnDescription.INPUT)
+						if (column.Category == ColumnDescription.Input)
 						{
 							columns[i] = gnode.getLabelSymbol(sourceGraph.SymbolTables.getSymbolTable(column.Name));
 						}
-						else if (column.Category == ColumnDescription.HEAD)
+						else if (column.Category == ColumnDescription.Head)
 						{
 							if (gnode.hasHead())
 							{
@@ -113,7 +113,7 @@ namespace NMaltParser.Concurrent.Graph
 								columns[i] = Convert.ToString(-1);
 							}
 						}
-						else if (column.Category == ColumnDescription.DEPENDENCY_EDGE_LABEL)
+						else if (column.Category == ColumnDescription.DependencyEdgeLabel)
 						{
 							SymbolTable sourceTable = sourceGraph.SymbolTables.getSymbolTable(column.Name);
 							if (gnode.HeadEdge.hasLabel(sourceTable))

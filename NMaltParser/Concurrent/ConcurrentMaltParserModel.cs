@@ -76,7 +76,7 @@ namespace NMaltParser.Concurrent
 //ORIGINAL LINE: final org.maltparser.core.feature.FeatureModelManager featureModelManager = loadFeatureModelManager(this.optionContainer, mcoModel);
 			FeatureModelManager featureModelManager = loadFeatureModelManager(optionContainer, mcoModel);
 			singleMalt = new LWSingleMalt(optionContainer, dataFormatInstance, mcoModel, null, featureModelManager);
-			concurrentDataFormat = DataFormat.parseDataFormatXMLfile(inputFormatURL);
+			concurrentDataFormat = DataFormat.ParseDataFormatXmLfile(inputFormatURL);
 		}
 
 		/// <summary>

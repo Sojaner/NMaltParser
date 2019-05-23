@@ -110,16 +110,16 @@ namespace NMaltParser.Core.LW.Graph
 			{
 				return labels[columnPosition];
 			}
-			else if (graph.DataFormat.getColumnDescription(columnPosition).Category == ColumnDescription.IGNORE)
+			else if (graph.DataFormat.GetColumnDescription(columnPosition).Category == ColumnDescription.Ignore)
 			{
-				return graph.DataFormat.getColumnDescription(columnPosition).DefaultOutput;
+				return graph.DataFormat.GetColumnDescription(columnPosition).DefaultOutput;
 			}
 			return "";
 		}
 
 		public string getLabel(string columnName)
 		{
-			ColumnDescription column = graph.DataFormat.getColumnDescription(columnName);
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(columnName);
 			if (column != null)
 			{
 				return getLabel(column.Position);
@@ -139,7 +139,7 @@ namespace NMaltParser.Core.LW.Graph
 
 		public bool hasLabel(string columnName)
 		{
-			ColumnDescription column = graph.DataFormat.getColumnDescription(columnName);
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(columnName);
 			if (column != null)
 			{
 				return hasLabel(column.Position);
@@ -158,7 +158,7 @@ namespace NMaltParser.Core.LW.Graph
 			{
 				foreach (int? key in labels.Keys)
 				{
-					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.INPUT)
+					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.Input)
 					{
 						return true;
 					}
@@ -1140,16 +1140,16 @@ namespace NMaltParser.Core.LW.Graph
 				{
 					for (int i = 0; i < columnLabels.Length; i++)
 					{
-						ColumnDescription column = graph.DataFormat.getColumnDescription(i);
-						if (column.Category == ColumnDescription.HEAD)
+						ColumnDescription column = graph.DataFormat.GetColumnDescription(i);
+						if (column.Category == ColumnDescription.Head)
 						{
 							tmpHeadIndex = int.Parse(columnLabels[i]);
 						}
-						else if (column.Category == ColumnDescription.INPUT)
+						else if (column.Category == ColumnDescription.Input)
 						{
 							addLabel(graph.SymbolTables.addSymbolTable(column.Name), columnLabels[i]);
 						}
-						else if (column.Category == ColumnDescription.DEPENDENCY_EDGE_LABEL)
+						else if (column.Category == ColumnDescription.DependencyEdgeLabel)
 						{
 							edgeLabels[column] = columnLabels[i];
 						}
@@ -1182,8 +1182,8 @@ namespace NMaltParser.Core.LW.Graph
 				{
 					for (int i = 0; i < columnLabels.Length; i++)
 					{
-						ColumnDescription column = graph.DataFormat.getColumnDescription(i);
-						if (column.Category == ColumnDescription.INPUT)
+						ColumnDescription column = graph.DataFormat.GetColumnDescription(i);
+						if (column.Category == ColumnDescription.Input)
 						{
 							addLabel(graph.SymbolTables.addSymbolTable(column.Name), columnLabels[i]);
 						}
@@ -1203,7 +1203,7 @@ namespace NMaltParser.Core.LW.Graph
 //ORIGINAL LINE: public void addLabel(org.maltparser.core.symbol.SymbolTable table, String symbol) throws org.maltparser.core.exception.MaltChainedException
 		public void addLabel(SymbolTable table, string symbol)
 		{
-			ColumnDescription column = graph.DataFormat.getColumnDescription(table.Name);
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(table.Name);
 			table.addSymbol(symbol);
 			labels[column.Position] = symbol;
 		}
@@ -1246,7 +1246,7 @@ namespace NMaltParser.Core.LW.Graph
 //ORIGINAL LINE: public boolean hasLabel(org.maltparser.core.symbol.SymbolTable table) throws org.maltparser.core.exception.MaltChainedException
 		public bool hasLabel(SymbolTable table)
 		{
-			ColumnDescription column = graph.DataFormat.getColumnDescription(table.Name);
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(table.Name);
 			return labels.ContainsKey(column.Position);
 		}
 
@@ -1261,7 +1261,7 @@ namespace NMaltParser.Core.LW.Graph
 //ORIGINAL LINE: public String getLabelSymbol(org.maltparser.core.symbol.SymbolTable table) throws org.maltparser.core.exception.MaltChainedException
 		public string getLabelSymbol(SymbolTable table)
 		{
-			ColumnDescription column = graph.DataFormat.getColumnDescription(table.Name);
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(table.Name);
 			return labels[column.Position];
 		}
 
@@ -1276,7 +1276,7 @@ namespace NMaltParser.Core.LW.Graph
 //ORIGINAL LINE: public int getLabelCode(org.maltparser.core.symbol.SymbolTable table) throws org.maltparser.core.exception.MaltChainedException
 		public int getLabelCode(SymbolTable table)
 		{
-			ColumnDescription column = graph.DataFormat.getColumnDescription(table.Name);
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(table.Name);
 			return table.getSymbolStringToCode(labels[column.Position]);
 		}
 
@@ -1299,7 +1299,7 @@ namespace NMaltParser.Core.LW.Graph
 			{
 				ISet<SymbolTable> labelTypes = new System.Collections.Generic.HashSet<SymbolTable>();
 				SymbolTableHandler symbolTableHandler = BelongsToGraph.SymbolTables;
-				SortedSet<ColumnDescription> selectedColumns = graph.DataFormat.getSelectedColumnDescriptions(labels.Keys);
+				SortedSet<ColumnDescription> selectedColumns = graph.DataFormat.GetSelectedColumnDescriptions(labels.Keys);
 				foreach (ColumnDescription column in selectedColumns)
 				{
 					try
@@ -1326,7 +1326,7 @@ namespace NMaltParser.Core.LW.Graph
 			{
 				SymbolTableHandler symbolTableHandler = BelongsToGraph.SymbolTables;
 				LabelSet labelSet = new LabelSet();
-				SortedSet<ColumnDescription> selectedColumns = graph.DataFormat.getSelectedColumnDescriptions(labels.Keys);
+				SortedSet<ColumnDescription> selectedColumns = graph.DataFormat.GetSelectedColumnDescriptions(labels.Keys);
 				foreach (ColumnDescription column in selectedColumns)
 				{
 					try
@@ -1349,7 +1349,7 @@ namespace NMaltParser.Core.LW.Graph
 //ORIGINAL LINE: public void removeLabel(org.maltparser.core.symbol.SymbolTable table) throws org.maltparser.core.exception.MaltChainedException
 		public void removeLabel(SymbolTable table)
 		{
-			ColumnDescription column = graph.DataFormat.getColumnDescription(table.Name);
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(table.Name);
 			labels.Remove(column.Position);
 		}
 
@@ -1467,20 +1467,20 @@ namespace NMaltParser.Core.LW.Graph
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final StringBuilder sb = new StringBuilder();
 			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < graph.DataFormat.numberOfColumns(); i++)
+			for (int i = 0; i < graph.DataFormat.NumberOfColumns(); i++)
 			{
-				ColumnDescription column = graph.DataFormat.getColumnDescription(i);
+				ColumnDescription column = graph.DataFormat.GetColumnDescription(i);
 				if (!column.Internal)
 				{
-					if (column.Category == ColumnDescription.HEAD)
+					if (column.Category == ColumnDescription.Head)
 					{
 						sb.Append(HeadIndex);
 					}
-					else if (column.Category == ColumnDescription.INPUT)
+					else if (column.Category == ColumnDescription.Input)
 					{
 						sb.Append(labels[column.Position]);
 					}
-					else if (column.Category == ColumnDescription.DEPENDENCY_EDGE_LABEL)
+					else if (column.Category == ColumnDescription.DependencyEdgeLabel)
 					{
 						if (headEdge != null)
 						{
@@ -1491,7 +1491,7 @@ namespace NMaltParser.Core.LW.Graph
 							sb.Append(column.DefaultOutput);
 						}
 					}
-					else if (column.Category == ColumnDescription.IGNORE)
+					else if (column.Category == ColumnDescription.Ignore)
 					{
 						sb.Append(column.DefaultOutput);
 					}

@@ -82,10 +82,10 @@ namespace NMaltParser.Core.LW.Graph
 				}
 			}
 
-			for (int i = 0; i < dataFormat.numberOfColumns(); i++)
+			for (int i = 0; i < dataFormat.NumberOfColumns(); i++)
 			{
-				ColumnDescription column = dataFormat.getColumnDescription(i);
-				if (!column.Internal && column.Category == ColumnDescription.DEPENDENCY_EDGE_LABEL)
+				ColumnDescription column = dataFormat.GetColumnDescription(i);
+				if (!column.Internal && column.Category == ColumnDescription.DependencyEdgeLabel)
 				{
 					rootLabels.setDefaultRootLabel(symbolTables.getSymbolTable(column.Name), defaultRootLabel);
 				}

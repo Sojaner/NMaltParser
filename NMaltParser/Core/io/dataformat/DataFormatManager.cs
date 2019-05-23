@@ -36,11 +36,11 @@ namespace NMaltParser.Core.IO.DataFormat
 				nameDataFormatSpecs[dataFormat.DataFormatName] = dataFormat;
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.helper.URLFinder f = new org.maltparser.core.helper.URLFinder();
-				URLFinder f = new URLFinder();
+				UrlFinder f = new UrlFinder();
 
 				foreach (Dependency dep in dataFormat.Dependencies)
 				{
-					loadDataFormat(f.findURLinJars(dep.UrlString));
+					loadDataFormat(f.FindUrLinJars(dep.UrlString));
 				}
 			}
 			return dataFormat;

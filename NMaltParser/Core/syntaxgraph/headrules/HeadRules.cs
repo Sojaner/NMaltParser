@@ -42,8 +42,8 @@ namespace NMaltParser.Core.SyntaxGraph.HeadRules
 		{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.helper.URLFinder f = new org.maltparser.core.helper.URLFinder();
-			URLFinder f = new URLFinder();
-			parseHeadRules(f.findURL(fileName));
+			UrlFinder f = new UrlFinder();
+			parseHeadRules(f.FindUrl(fileName));
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:

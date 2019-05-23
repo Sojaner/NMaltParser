@@ -40,8 +40,8 @@ namespace NMaltParser.Core.Flow
 		{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.helper.URLFinder f = new org.maltparser.core.helper.URLFinder();
-			URLFinder f = new URLFinder();
-			load(f.findURL(urlstring));
+			UrlFinder f = new UrlFinder();
+			load(f.FindUrl(urlstring));
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:

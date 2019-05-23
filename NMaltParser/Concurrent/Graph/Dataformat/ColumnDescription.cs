@@ -3,162 +3,147 @@ using System.Text;
 
 namespace NMaltParser.Concurrent.Graph.DataFormat
 {
-
-	/// 
-	/// <summary>
-	/// @author Johan Hall
-	/// 
-	/// </summary>
+	/// <inheritdoc />
+    /// <summary>
+    /// @author Johan Hall
+    /// </summary>
 	public sealed class ColumnDescription : IComparable<ColumnDescription>
 	{
 		// Categories
-		public const int INPUT = 1;
-		public const int HEAD = 2;
-		public const int DEPENDENCY_EDGE_LABEL = 3;
-		public const int PHRASE_STRUCTURE_EDGE_LABEL = 4;
-		public const int PHRASE_STRUCTURE_NODE_LABEL = 5;
-		public const int SECONDARY_EDGE_LABEL = 6;
-		public const int IGNORE = 7;
-		public static readonly string[] categories = new string[] {"", "INPUT", "HEAD", "DEPENDENCY_EDGE_LABEL", "PHRASE_STRUCTURE_EDGE_LABEL", "PHRASE_STRUCTURE_NODE_LABEL", "SECONDARY_EDGE_LABEL", "IGNORE"};
+		public const int Input = 1;
+
+		public const int Head = 2;
+
+		public const int DependencyEdgeLabel = 3;
+
+		public const int PhraseStructureEdgeLabel = 4;
+
+		public const int PhraseStructureNodeLabel = 5;
+
+		public const int SecondaryEdgeLabel = 6;
+
+		public const int Ignore = 7;
+
+		public static readonly string[] Categories = {"", "INPUT", "HEAD", "DEPENDENCY_EDGE_LABEL", "PHRASE_STRUCTURE_EDGE_LABEL", "PHRASE_STRUCTURE_NODE_LABEL", "SECONDARY_EDGE_LABEL", "IGNORE"};
 
 		// Types
-		public const int STRING = 1;
-		public const int INTEGER = 2;
-		public const int BOOLEAN = 3;
-		public const int REAL = 4;
-		public static readonly string[] types = new string[] {"", "STRING", "INTEGER", "BOOLEAN", "REAL"};
+		public const int String = 1;
 
-		private readonly int position;
-		private readonly string name;
-		private readonly int category;
-		private readonly int type;
-		private readonly string defaultOutput;
-		private readonly bool @internal;
+		public const int Integer = 2;
 
-		public ColumnDescription(ColumnDescription columnDescription)
+		public const int Boolean = 3;
+
+		public const int Real = 4;
+
+		public static readonly string[] Types = {"", "STRING", "INTEGER", "BOOLEAN", "REAL"};
+
+        public ColumnDescription(ColumnDescription columnDescription)
 		{
-			position = columnDescription.position;
-			name = columnDescription.name;
-			category = columnDescription.category;
-			type = columnDescription.type;
-			defaultOutput = columnDescription.defaultOutput;
-			@internal = columnDescription.@internal;
+			Position = columnDescription.Position;
+
+			Name = columnDescription.Name;
+
+			Category = columnDescription.Category;
+
+			Type = columnDescription.Type;
+
+			DefaultOutput = columnDescription.DefaultOutput;
+
+			Internal = columnDescription.Internal;
 		}
 
-		public ColumnDescription(int _position, string _name, int _category, int _type, string _defaultOutput, bool _internal)
+		public ColumnDescription(int position, string name, int category, int type, string defaultOutput, bool isInternal)
 		{
-			position = _position;
-			name = _name.ToUpper();
-			category = _category;
-			type = _type;
-			defaultOutput = _defaultOutput;
-			@internal = _internal;
+			Position = position;
+
+			Name = name.ToUpper();
+
+			Category = category;
+
+			Type = type;
+
+			DefaultOutput = defaultOutput;
+
+			Internal = isInternal;
 		}
 
-		public int Position
+        public int Position { get; }
+
+        public string Name { get; }
+
+        public string DefaultOutput { get; }
+
+        public int Category { get; }
+
+        public string CategoryName
 		{
 			get
 			{
-				return position;
-			}
-		}
-
-		public string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
-
-		public string DefaultOutput
-		{
-			get
-			{
-				return defaultOutput;
-			}
-		}
-
-		public int Category
-		{
-			get
-			{
-				return category;
-			}
-		}
-
-		public string CategoryName
-		{
-			get
-			{
-				if (category < 1 || category > 7)
+				if (Category < 1 || Category > 7)
 				{
 					return "";
 				}
-				return categories[category];
+
+				return Categories[Category];
 			}
 		}
 
-		public int Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+        public int Type { get; }
 
-		public string TypeName
+        public string TypeName
 		{
 			get
 			{
-				if (type < 1 || type > 4)
+				if (Type < 1 || Type > 4)
 				{
 					return "";
 				}
-				return types[type];
+
+				return Types[Type];
 			}
 		}
 
-		public bool Internal
+        public bool Internal { get; }
+
+        public int CompareTo(ColumnDescription that)
 		{
-			get
-			{
-				return @internal;
-			}
-		}
+			const int before = -1;
 
-		public int CompareTo(ColumnDescription that)
-		{
-			const int BEFORE = -1;
-			const int EQUAL = 0;
-			const int AFTER = 1;
-			if (this == that)
-			{
-				return EQUAL;
-			}
-			if (position < that.position)
-			{
-				return BEFORE;
-			}
-			if (position > that.position)
-			{
-				return AFTER;
-			}
-			return EQUAL;
-		}
+			const int equal = 0;
 
+			const int after = 1;
 
+			if (Equals(this, that))
+			{
+				return equal;
+			}
 
+			if (Position < that.Position)
+			{
+				return before;
+			}
+
+			return Position > that.Position ? after : equal;
+        }
+        
 		public override int GetHashCode()
 		{
 			const int prime = 31;
+
 			int result = 1;
-			result = prime * result + category;
-			result = prime * result + ((ReferenceEquals(defaultOutput, null)) ? 0 : defaultOutput.GetHashCode());
-			result = prime * result + (@internal ? 1231 : 1237);
-			result = prime * result + ((ReferenceEquals(name, null)) ? 0 : name.GetHashCode());
-			result = prime * result + position;
-			result = prime * result + type;
+
+			result = prime * result + Category;
+
+			result = prime * result + (DefaultOutput?.GetHashCode() ?? 0);
+
+			result = prime * result + (Internal ? 1231 : 1237);
+
+			result = prime * result + (Name?.GetHashCode() ?? 0);
+
+			result = prime * result + Position;
+
+			result = prime * result + Type;
+
 			return result;
 		}
 
@@ -176,116 +161,127 @@ namespace NMaltParser.Concurrent.Graph.DataFormat
 			{
 				return false;
 			}
+
 			ColumnDescription other = (ColumnDescription) obj;
-			if (category != other.category)
+
+			if (Category != other.Category)
 			{
 				return false;
 			}
-			if (ReferenceEquals(defaultOutput, null))
+			if (DefaultOutput == null)
 			{
-				if (!ReferenceEquals(other.defaultOutput, null))
+				if (other.DefaultOutput != null)
 				{
 					return false;
 				}
 			}
-			else if (!defaultOutput.Equals(other.defaultOutput))
+			else if (!DefaultOutput.Equals(other.DefaultOutput))
 			{
 				return false;
 			}
-			if (@internal != other.@internal)
+
+			if (Internal != other.Internal)
 			{
 				return false;
 			}
-			if (ReferenceEquals(name, null))
+
+			if (Name == null)
 			{
-				if (!ReferenceEquals(other.name, null))
+				if (other.Name != null)
 				{
 					return false;
 				}
 			}
-			else if (!name.Equals(other.name))
+			else if (!Name.Equals(other.Name))
 			{
 				return false;
 			}
-			if (position != other.position)
+
+			if (Position != other.Position)
 			{
 				return false;
 			}
-			if (type != other.type)
-			{
-				return false;
-			}
-			return true;
-		}
+
+			return Type == other.Type;
+        }
 
 		public override string ToString()
 		{
-//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-//ORIGINAL LINE: final StringBuilder sb = new StringBuilder();
 			StringBuilder sb = new StringBuilder();
-			sb.Append(name);
+
+			sb.Append(Name);
+
 			sb.Append('\t');
-			sb.Append(category);
+
+			sb.Append(Category);
+
 			sb.Append('\t');
-			sb.Append(type);
-			if (!ReferenceEquals(defaultOutput, null))
+
+			sb.Append(Type);
+
+			if (DefaultOutput != null)
 			{
 				sb.Append('\t');
-				sb.Append(defaultOutput);
+
+				sb.Append(DefaultOutput);
 			}
+
 			sb.Append('\t');
-			sb.Append(@internal);
+
+			sb.Append(Internal);
+
 			return sb.ToString();
 		}
 
-		public static int getCategory(string categoryName)
+		public static int GetCategory(string categoryName)
 		{
 			if (categoryName.Equals("INPUT"))
 			{
-				return INPUT;
+				return Input;
 			}
 			else if (categoryName.Equals("HEAD"))
 			{
-				return HEAD;
+				return Head;
 			}
 			else if (categoryName.Equals("OUTPUT"))
 			{
-				return DEPENDENCY_EDGE_LABEL;
+				return DependencyEdgeLabel;
 			}
 			else if (categoryName.Equals("DEPENDENCY_EDGE_LABEL"))
 			{
-				return DEPENDENCY_EDGE_LABEL;
+				return DependencyEdgeLabel;
 			}
 			else if (categoryName.Equals("IGNORE"))
 			{
-				return IGNORE;
+				return Ignore;
 			}
+
 			return -1;
 		}
 
-		public static int getType(string typeName)
+		public static int GetType(string typeName)
 		{
 			if (typeName.Equals("STRING"))
 			{
-				return STRING;
+				return String;
 			}
 			else if (typeName.Equals("INTEGER"))
 			{
-				return INTEGER;
+				return Integer;
 			}
 			else if (typeName.Equals("BOOLEAN"))
 			{
-				return BOOLEAN;
+				return Boolean;
 			}
 			else if (typeName.Equals("REAL"))
 			{
-				return REAL;
+				return Real;
 			}
 			else if (typeName.Equals("ECHO"))
 			{
-				// ECHO is removed, but if it occurs in the data format file it will be interpreted as an integer instead.
-				return INTEGER;
+				return Integer;
 			}
+
 			return -1;
 		}
 	}

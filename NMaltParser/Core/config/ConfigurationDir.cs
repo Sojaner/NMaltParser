@@ -128,13 +128,13 @@ namespace NMaltParser.Core.Config
 			string outputFormatName = OptionManager.instance().getOptionValue(containerIndex, "output", "format").ToString().Trim();
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.helper.URLFinder f = new org.maltparser.core.helper.URLFinder();
-			URLFinder f = new URLFinder();
+			UrlFinder f = new UrlFinder();
 
 			if (configDirectory != null && configDirectory.exists())
 			{
 				if (outputFormatName.Length == 0 || inputFormatName.Equals(outputFormatName))
 				{
-					URL inputFormatURL = f.findURLinJars(inputFormatName);
+					URL inputFormatURL = f.FindUrLinJars(inputFormatName);
 					if (inputFormatURL != null)
 					{
 						outputFormatName = inputFormatName = copyToConfig(inputFormatURL);
@@ -146,7 +146,7 @@ namespace NMaltParser.Core.Config
 				}
 				else
 				{
-					URL inputFormatURL = f.findURLinJars(inputFormatName);
+					URL inputFormatURL = f.FindUrLinJars(inputFormatName);
 					if (inputFormatURL != null)
 					{
 						inputFormatName = copyToConfig(inputFormatURL);
@@ -155,7 +155,7 @@ namespace NMaltParser.Core.Config
 					{
 						inputFormatName = copyToConfig(inputFormatName);
 					}
-					URL outputFormatURL = f.findURLinJars(outputFormatName);
+					URL outputFormatURL = f.FindUrLinJars(outputFormatName);
 					if (inputFormatURL != null)
 					{
 						outputFormatName = copyToConfig(outputFormatURL);
@@ -185,16 +185,16 @@ namespace NMaltParser.Core.Config
 				}
 				catch (FileNotFoundException)
 				{
-					outputFormatURL = f.findURL(outputFormatName);
+					outputFormatURL = f.FindUrl(outputFormatName);
 				}
 				catch (IOException)
 				{
-					outputFormatURL = f.findURL(outputFormatName);
+					outputFormatURL = f.FindUrl(outputFormatName);
 				}
 			}
 			else
 			{
-				outputFormatURL = f.findURL(outputFormatName);
+				outputFormatURL = f.FindUrl(outputFormatName);
 			}
 			dataFormatManager = new DataFormatManager(inputFormatURL, outputFormatURL);
 
@@ -215,7 +215,7 @@ namespace NMaltParser.Core.Config
 					ISet<Dependency> deps = dataFormatManager.InputDataFormatSpec.Dependencies;
 					foreach (Dependency dep in deps)
 					{
-						URL depFormatURL = f.findURLinJars(dep.UrlString);
+						URL depFormatURL = f.FindUrLinJars(dep.UrlString);
 						if (depFormatURL != null)
 						{
 							copyToConfig(depFormatURL);
@@ -591,8 +591,8 @@ namespace NMaltParser.Core.Config
 		{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.helper.URLFinder f = new org.maltparser.core.helper.URLFinder();
-			URLFinder f = new URLFinder();
-			URL url = f.findURL(fileUrl);
+			UrlFinder f = new UrlFinder();
+			URL url = f.FindUrl(fileUrl);
 			if (url == null)
 			{
 				throw new ConfigurationException("The file or URL '" + fileUrl + "' could not be found. ");
@@ -878,7 +878,7 @@ namespace NMaltParser.Core.Config
 				StringBuilder sb = new StringBuilder();
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.helper.URLFinder f = new org.maltparser.core.helper.URLFinder();
-				URLFinder f = new URLFinder();
+				UrlFinder f = new UrlFinder();
 
 				for (IEnumerator<JarEntry> entries = jar.entries(); entries.MoveNext();)
 				{
@@ -912,7 +912,7 @@ namespace NMaltParser.Core.Config
 				if (!ReferenceEquals(versioning.FeatureModelXML, null) && versioning.FeatureModelXML.StartsWith("/appdata", StringComparison.Ordinal))
 				{
 					int index = versioning.FeatureModelXML.LastIndexOf('/');
-					BufferedInputStream bis = new BufferedInputStream(f.findURLinJars(versioning.FeatureModelXML).openStream());
+					BufferedInputStream bis = new BufferedInputStream(f.FindUrLinJars(versioning.FeatureModelXML).openStream());
 					tempJar.putNextEntry(new JarEntry(versioning.NewConfigName + "/" + versioning.FeatureModelXML.Substring(index + 1)));
 					int n = 0;
 					while ((n = bis.read(buffer, 0, BUFFER)) != -1)
@@ -924,7 +924,7 @@ namespace NMaltParser.Core.Config
 				if (!ReferenceEquals(versioning.InputFormatXML, null) && versioning.InputFormatXML.StartsWith("/appdata", StringComparison.Ordinal))
 				{
 					int index = versioning.InputFormatXML.LastIndexOf('/');
-					BufferedInputStream bis = new BufferedInputStream(f.findURLinJars(versioning.InputFormatXML).openStream());
+					BufferedInputStream bis = new BufferedInputStream(f.FindUrLinJars(versioning.InputFormatXML).openStream());
 					tempJar.putNextEntry(new JarEntry(versioning.NewConfigName + "/" + versioning.InputFormatXML.Substring(index + 1)));
 					int n = 0;
 					while ((n = bis.read(buffer, 0, BUFFER)) != -1)

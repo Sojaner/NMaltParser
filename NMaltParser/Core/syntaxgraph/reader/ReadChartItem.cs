@@ -310,7 +310,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 			{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.helper.URLFinder f = new org.maltparser.core.helper.URLFinder();
-				URLFinder f = new URLFinder();
+				UrlFinder f = new UrlFinder();
 				reader = Activator.CreateInstance(syntaxGraphReader);
 				if (ReferenceEquals(inputFile, null) || inputFile.Length == 0 || inputFile.Equals("/dev/stdin"))
 				{
@@ -324,7 +324,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 				else
 				{
 					reader.NIterations = iterations;
-					reader.open(f.findURL(inputFile), inputCharSet);
+					reader.open(f.FindUrl(inputFile), inputCharSet);
 				}
 				reader.DataFormatInstance = inputDataFormatInstance;
 				reader.Options = readerOptions;

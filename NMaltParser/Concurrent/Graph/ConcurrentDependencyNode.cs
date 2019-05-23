@@ -89,11 +89,11 @@ namespace NMaltParser.Concurrent.Graph
 				for (int i = 0; i < _labels.Length; i++)
 				{
 					int columnCategory = graph.DataFormat.getColumnDescription(i).Category;
-					if (columnCategory == ColumnDescription.HEAD)
+					if (columnCategory == ColumnDescription.Head)
 					{
 						tmpHeadIndex = int.Parse(_labels[i]);
 					}
-					else if (columnCategory == ColumnDescription.INPUT || columnCategory == ColumnDescription.DEPENDENCY_EDGE_LABEL)
+					else if (columnCategory == ColumnDescription.Input || columnCategory == ColumnDescription.DependencyEdgeLabel)
 					{
 						labels[i] = _labels[i];
 					}
@@ -137,7 +137,7 @@ namespace NMaltParser.Concurrent.Graph
 			{
 				return labels[columnPosition];
 			}
-			else if (graph.DataFormat.getColumnDescription(columnPosition).Category == ColumnDescription.IGNORE)
+			else if (graph.DataFormat.getColumnDescription(columnPosition).Category == ColumnDescription.Ignore)
 			{
 				return graph.DataFormat.getColumnDescription(columnPosition).DefaultOutput;
 			}
@@ -214,7 +214,7 @@ namespace NMaltParser.Concurrent.Graph
 			{
 				foreach (int? key in labels.Keys)
 				{
-					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.INPUT)
+					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.Input)
 					{
 						return true;
 					}
@@ -233,7 +233,7 @@ namespace NMaltParser.Concurrent.Graph
 			{
 				foreach (int? key in labels.Keys)
 				{
-					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.DEPENDENCY_EDGE_LABEL)
+					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.DependencyEdgeLabel)
 					{
 						return true;
 					}
@@ -265,7 +265,7 @@ namespace NMaltParser.Concurrent.Graph
 				SortedDictionary<ColumnDescription, string> nodeLabels = Collections.synchronizedSortedMap(new SortedDictionary<ColumnDescription, string>());
 				foreach (int? key in labels.Keys)
 				{
-					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.INPUT)
+					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.Input)
 					{
 						nodeLabels[graph.DataFormat.getColumnDescription(key)] = labels[key];
 					}
@@ -285,7 +285,7 @@ namespace NMaltParser.Concurrent.Graph
 				SortedDictionary<ColumnDescription, string> edgeLabels = Collections.synchronizedSortedMap(new SortedDictionary<ColumnDescription, string>());
 				foreach (int? key in labels.Keys)
 				{
-					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.DEPENDENCY_EDGE_LABEL)
+					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.DependencyEdgeLabel)
 					{
 						edgeLabels[graph.DataFormat.getColumnDescription(key)] = labels[key];
 					}
@@ -1223,15 +1223,15 @@ namespace NMaltParser.Concurrent.Graph
 				ColumnDescription column = graph.DataFormat.getColumnDescription(i);
 				if (!column.Internal)
 				{
-					if (column.Category == ColumnDescription.HEAD)
+					if (column.Category == ColumnDescription.Head)
 					{
 						sb.Append(headIndex);
 					}
-					else if (column.Category == ColumnDescription.INPUT || column.Category == ColumnDescription.DEPENDENCY_EDGE_LABEL)
+					else if (column.Category == ColumnDescription.Input || column.Category == ColumnDescription.DependencyEdgeLabel)
 					{
 						sb.Append(labels[column.Position]);
 					}
-					else if (column.Category == ColumnDescription.IGNORE)
+					else if (column.Category == ColumnDescription.Ignore)
 					{
 						sb.Append(column.DefaultOutput);
 					}

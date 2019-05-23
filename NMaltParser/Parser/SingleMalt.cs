@@ -662,8 +662,8 @@ namespace NMaltParser.Parser
 
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.helper.URLFinder f = new org.maltparser.core.helper.URLFinder();
-					URLFinder f = new URLFinder();
-					featureModelFileName = configDir.copyToConfig(f.findURLinJars(featureModelFileName));
+					UrlFinder f = new UrlFinder();
+					featureModelFileName = configDir.copyToConfig(f.FindUrLinJars(featureModelFileName));
 				}
 				else
 				{

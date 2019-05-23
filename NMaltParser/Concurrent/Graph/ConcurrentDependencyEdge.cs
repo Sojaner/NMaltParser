@@ -47,7 +47,7 @@ namespace NMaltParser.Concurrent.Graph
 			{
 				foreach (int? i in _labels.Keys)
 				{
-					if (dataFormat.getColumnDescription(i).Category == ColumnDescription.DEPENDENCY_EDGE_LABEL)
+					if (dataFormat.getColumnDescription(i).Category == ColumnDescription.DependencyEdgeLabel)
 					{
 						labels[i] = _labels[i];
 					}
@@ -90,7 +90,7 @@ namespace NMaltParser.Concurrent.Graph
 			{
 				return labels[column.Position];
 			}
-			else if (column.Category == ColumnDescription.IGNORE)
+			else if (column.Category == ColumnDescription.Ignore)
 			{
 				return column.DefaultOutput;
 			}
@@ -111,7 +111,7 @@ namespace NMaltParser.Concurrent.Graph
 				{
 					return labels[column.Position];
 				}
-				else if (column.Category == ColumnDescription.IGNORE)
+				else if (column.Category == ColumnDescription.Ignore)
 				{
 					return column.DefaultOutput;
 				}

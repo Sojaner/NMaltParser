@@ -84,7 +84,7 @@ namespace NMaltParser.Core.LW.Graph
 			{
 				return labels[column];
 			}
-			else if (column.Category == ColumnDescription.IGNORE)
+			else if (column.Category == ColumnDescription.Ignore)
 			{
 				return column.DefaultOutput;
 			}
@@ -132,7 +132,7 @@ namespace NMaltParser.Core.LW.Graph
 		public void addLabel(SymbolTable table, string symbol)
 		{
 			LWDependencyGraph graph = (LWDependencyGraph)BelongsToGraph;
-			ColumnDescription column = graph.DataFormat.getColumnDescription(table.Name);
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(table.Name);
 			table.addSymbol(symbol);
 			labels[column] = symbol;
 		}
@@ -180,7 +180,7 @@ namespace NMaltParser.Core.LW.Graph
 				return false;
 			}
 			LWDependencyGraph graph = (LWDependencyGraph)BelongsToGraph;
-			ColumnDescription column = graph.DataFormat.getColumnDescription(table.Name);
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(table.Name);
 			return labels.ContainsKey(column);
 		}
 
@@ -196,7 +196,7 @@ namespace NMaltParser.Core.LW.Graph
 		public string getLabelSymbol(SymbolTable table)
 		{
 			LWDependencyGraph graph = (LWDependencyGraph)BelongsToGraph;
-			ColumnDescription column = graph.DataFormat.getColumnDescription(table.Name);
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(table.Name);
 			return labels[column];
 		}
 
@@ -212,7 +212,7 @@ namespace NMaltParser.Core.LW.Graph
 		public int getLabelCode(SymbolTable table)
 		{
 			LWDependencyGraph graph = (LWDependencyGraph)BelongsToGraph;
-			ColumnDescription column = graph.DataFormat.getColumnDescription(table.Name);
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(table.Name);
 			return table.getSymbolStringToCode(labels[column]);
 		}
 
@@ -276,7 +276,7 @@ namespace NMaltParser.Core.LW.Graph
 		public void removeLabel(SymbolTable table)
 		{
 			LWDependencyGraph graph = (LWDependencyGraph)BelongsToGraph;
-			ColumnDescription column = graph.DataFormat.getColumnDescription(table.Name);
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(table.Name);
 			labels.Remove(column);
 		}
 

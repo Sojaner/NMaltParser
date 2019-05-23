@@ -50,8 +50,8 @@ namespace NMaltParser.Core.IO.DataFormat
 		{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.helper.URLFinder f = new org.maltparser.core.helper.URLFinder();
-			URLFinder f = new URLFinder();
-			URL url = f.findURL(fileName);
+			UrlFinder f = new UrlFinder();
+			URL url = f.FindUrl(fileName);
 			if (url == null)
 			{
 				throw new DataFormatException("The data format specifcation file '" + fileName + "'cannot be found. ");

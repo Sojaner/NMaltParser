@@ -10,7 +10,7 @@ namespace NMaltParser.Core.Helper
 	/// <summary>
 	/// @author Johan Hall
 	/// </summary>
-	public class URLFinder
+	public class UrlFinder
 	{
 		/// <summary>
 		/// Search for a file according the following priority:
@@ -26,27 +26,25 @@ namespace NMaltParser.Core.Helper
 		/// <param name="fileString">	the file string to convert into an URL. </param>
 		/// <returns> an URL object, if the file string is found, otherwise <b>null</b> </returns>
 		/// <exception cref="MaltChainedException"> </exception>
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: public java.net.URL findURL(String fileString) throws org.maltparser.core.exception.MaltChainedException
-		public virtual URL findURL(string fileString)
+		public virtual Uri FindUrl(string fileString)
 		{
-			File specFile = new File(fileString);
+			FileInfo specFile = new FileInfo(fileString);
 
 			try
 			{
-				if (specFile.exists())
+				if (specFile.Exists)
 				{
 					// found the file in the file system
-					return new URL("file:///" + specFile.AbsolutePath);
+					return new Uri("file:///" + specFile.FullName);
 				}
 				else if (fileString.StartsWith("http:", StringComparison.Ordinal) || fileString.StartsWith("file:", StringComparison.Ordinal) || fileString.StartsWith("ftp:", StringComparison.Ordinal) || fileString.StartsWith("jar:", StringComparison.Ordinal))
 				{
 					// the input string is an URL string starting with http, file, ftp or jar
-					return new URL(fileString);
+					return new Uri(fileString);
 				}
 				else
 				{
-					return findURLinJars(fileString);
+					return FindUrLinJars(fileString);
 				}
 			}
 			catch (MalformedURLException e)
@@ -57,7 +55,7 @@ namespace NMaltParser.Core.Helper
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public java.net.URL findURLinJars(String fileString) throws org.maltparser.core.exception.MaltChainedException
-		public virtual URL findURLinJars(string fileString)
+		public virtual Uri FindUrLinJars(string fileString)
 		{
 			try
 			{
@@ -71,28 +69,23 @@ namespace NMaltParser.Core.Helper
 				{
 					 foreach (Plugin.Plugin plugin in PluginLoader.instance())
 					 {
-						URL url = null;
-						if (!fileString.StartsWith("/", StringComparison.Ordinal))
-						{
-							url = new URL("jar:" + plugin.Url + "!/" + fileString);
-						}
-						else
-						{
-							url = new URL("jar:" + plugin.Url + "!" + fileString);
-						}
+                         Uri url = !fileString.StartsWith("/", StringComparison.Ordinal) ? new Uri("jar:" + plugin.Url + "!/" + fileString) : new Uri("jar:" + plugin.Url + "!" + fileString);
 
 						try
 						{
-							Stream @is = url.openStream();
-							@is.Close();
+							Stream stream = url.openStream();
+
+							stream.Close();
 						}
 						catch (IOException)
 						{
 							continue;
 						}
+
 						// found the input string in one of the plugins
 						return url;
 					 }
+
 					// could not convert the input string into an URL
 					return null;
 				}

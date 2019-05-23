@@ -52,20 +52,20 @@ namespace NMaltParser.Core.LW.Graph
 				Edge edge = null;
 				for (int j = 0; j < items.Length; j++)
 				{
-					ColumnDescription column = dataFormat.getColumnDescription(j);
+					ColumnDescription column = dataFormat.GetColumnDescription(j);
 
-					if (column.Category == ColumnDescription.INPUT && node != null)
+					if (column.Category == ColumnDescription.Input && node != null)
 					{
 						oldGraph.addLabel(node, column.Name, items[j]);
 					}
-					else if (column.Category == ColumnDescription.HEAD)
+					else if (column.Category == ColumnDescription.Head)
 					{
-						if (column.Category != ColumnDescription.IGNORE && !items[j].Equals(IGNORE_COLUMN_SIGN))
+						if (column.Category != ColumnDescription.Ignore && !items[j].Equals(IGNORE_COLUMN_SIGN))
 						{
 							edge = oldGraph.addDependencyEdge(int.Parse(items[j]), i + 1);
 						}
 					}
-					else if (column.Category == ColumnDescription.DEPENDENCY_EDGE_LABEL && edge != null)
+					else if (column.Category == ColumnDescription.DependencyEdgeLabel && edge != null)
 					{
 						oldGraph.addLabel(edge, column.Name, items[j]);
 					}
@@ -86,7 +86,7 @@ namespace NMaltParser.Core.LW.Graph
 
 			try
 			{
-				DataFormat dataFormat = DataFormat.parseDataFormatXMLfile("/appdata/dataformat/conllx.xml");
+				DataFormat dataFormat = DataFormat.ParseDataFormatXmLFile("/appdata/dataformat/conllx.xml");
 				reader = new StreamReader(new FileStream(inFile, FileMode.Open, FileAccess.Read), charSet);
 				int sentenceCounter = 0;
 				while (true)
