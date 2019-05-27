@@ -257,7 +257,7 @@ namespace NMaltParser.Concurrent.Graph
 
             for (int i = 1; i < nodes.Length; i++)
             {
-                if (nodes[i].hasHead())
+                if (nodes[i].HasHead())
                 {
                     n++;
                 }
@@ -275,7 +275,7 @@ namespace NMaltParser.Concurrent.Graph
         {
             get
             {
-                return factory.Get<SortedSet<ConcurrentDependencyEdge>>("Edges", () =>
+                return factory.Get<SortedSet<ConcurrentDependencyEdge>>(() =>
                 {
                     SortedSet<ConcurrentDependencyEdge> sortedSet = new SortedSet<ConcurrentDependencyEdge>();
 
@@ -304,7 +304,7 @@ namespace NMaltParser.Concurrent.Graph
         {
             get
             {
-                return factory.Get<SortedSet<int>>("DependencyIndices", () =>
+                return factory.Get<SortedSet<int>>(() =>
                 {
                     SortedSet<int> sortedSet = new SortedSet<int>();
 
@@ -327,7 +327,7 @@ namespace NMaltParser.Concurrent.Graph
         {
             get
             {
-                return factory.Get<SortedSet<int>>("TokenIndices", () =>
+                return factory.Get<SortedSet<int>>(() =>
                 {
                     SortedSet<int> sortedSet = new SortedSet<int>();
 
@@ -353,7 +353,7 @@ namespace NMaltParser.Concurrent.Graph
                 return false;
             }
 
-            return nodes[index].hasHead() && nodes[index].HeadLabeled;
+            return nodes[index].HasHead() && nodes[index].HeadLabeled;
         }
 
         /// <summary>
@@ -474,7 +474,7 @@ namespace NMaltParser.Concurrent.Graph
 
         internal IList<ConcurrentDependencyNode> GetListOfLeftDependents(int nodeIndex)
         {
-            return factory.Get<IList<ConcurrentDependencyNode>>("LeftDependents", () =>
+            return factory.Get<IList<ConcurrentDependencyNode>>(() =>
             {
                 IList<ConcurrentDependencyNode> leftDependents = new List<ConcurrentDependencyNode>();
 
@@ -492,67 +492,92 @@ namespace NMaltParser.Concurrent.Graph
 
         internal SortedSet<ConcurrentDependencyNode> GetSortedSetOfLeftDependents(int nodeIndex)
         {
-            SortedSet<ConcurrentDependencyNode> leftDependents = Collections.SynchronizedSortedSet(new SortedSet<ConcurrentDependencyNode>());
-            for (int i = 1; i < nodeIndex; i++)
-            {
-                if (nodeIndex == nodes[i].HeadIndex)
+            return factory.Get<SortedSet<ConcurrentDependencyNode>>(() => {
+
+                SortedSet<ConcurrentDependencyNode> leftDependents = new SortedSet<ConcurrentDependencyNode>();
+
+                for (int i = 1; i < nodeIndex; i++)
                 {
-                    leftDependents.Add(nodes[i]);
+                    if (nodeIndex == nodes[i].HeadIndex)
+                    {
+                        leftDependents.Add(nodes[i]);
+                    }
                 }
-            }
-            return leftDependents;
+
+                return leftDependents;
+            });
         }
 
         internal IList<ConcurrentDependencyNode> GetListOfRightDependents(int nodeIndex)
         {
-            IList<ConcurrentDependencyNode> rightDependents = Collections.synchronizedList(new List<ConcurrentDependencyNode>());
-            for (int i = nodeIndex + 1; i < nodes.Length; i++)
-            {
-                if (nodeIndex == nodes[i].HeadIndex)
+            return factory.Get<IList<ConcurrentDependencyNode>>(() => {
+
+                IList<ConcurrentDependencyNode> rightDependents = new List<ConcurrentDependencyNode>();
+
+                for (int i = nodeIndex + 1; i < nodes.Length; i++)
                 {
-                    rightDependents.Add(nodes[i]);
+                    if (nodeIndex == nodes[i].HeadIndex)
+                    {
+                        rightDependents.Add(nodes[i]);
+                    }
                 }
-            }
-            return rightDependents;
+
+                return rightDependents;
+            });
         }
 
         internal SortedSet<ConcurrentDependencyNode> GetSortedSetOfRightDependents(int nodeIndex)
         {
-            SortedSet<ConcurrentDependencyNode> rightDependents = Collections.SynchronizedSortedSet(new SortedSet<ConcurrentDependencyNode>());
-            for (int i = nodeIndex + 1; i < nodes.Length; i++)
-            {
-                if (nodeIndex == nodes[i].HeadIndex)
+            return factory.Get<SortedSet<ConcurrentDependencyNode>>(() => {
+
+                SortedSet<ConcurrentDependencyNode> rightDependents = new SortedSet<ConcurrentDependencyNode>();
+
+                for (int i = nodeIndex + 1; i < nodes.Length; i++)
                 {
-                    rightDependents.Add(nodes[i]);
+                    if (nodeIndex == nodes[i].HeadIndex)
+                    {
+                        rightDependents.Add(nodes[i]);
+                    }
                 }
-            }
-            return rightDependents;
+
+                return rightDependents;
+            });
         }
 
         internal IList<ConcurrentDependencyNode> GetListOfDependents(int nodeIndex)
         {
-            IList<ConcurrentDependencyNode> dependents = Collections.synchronizedList(new List<ConcurrentDependencyNode>());
-            for (int i = 1; i < nodes.Length; i++)
-            {
-                if (nodeIndex == nodes[i].HeadIndex)
+            return factory.Get<IList<ConcurrentDependencyNode>>(() => {
+
+                IList<ConcurrentDependencyNode> dependents = new List<ConcurrentDependencyNode>();
+
+                for (int i = 1; i < nodes.Length; i++)
                 {
-                    dependents.Add(nodes[i]);
+                    if (nodeIndex == nodes[i].HeadIndex)
+                    {
+                        dependents.Add(nodes[i]);
+                    }
                 }
-            }
-            return dependents;
+
+                return dependents;
+            });
         }
 
         internal SortedSet<ConcurrentDependencyNode> GetSortedSetOfDependents(int nodeIndex)
         {
-            SortedSet<ConcurrentDependencyNode> dependents = Collections.SynchronizedSortedSet(new SortedSet<ConcurrentDependencyNode>());
-            for (int i = 1; i < nodes.Length; i++)
-            {
-                if (nodeIndex == nodes[i].HeadIndex)
+            return factory.Get<SortedSet<ConcurrentDependencyNode>>(() => {
+
+                SortedSet<ConcurrentDependencyNode> dependents = new SortedSet<ConcurrentDependencyNode>();
+
+                for (int i = 1; i < nodes.Length; i++)
                 {
-                    dependents.Add(nodes[i]);
+                    if (nodeIndex == nodes[i].HeadIndex)
+                    {
+                        dependents.Add(nodes[i]);
+                    }
                 }
-            }
-            return dependents;
+
+                return dependents;
+            });
         }
 
         internal int GetRank(int nodeIndex)
@@ -570,7 +595,7 @@ namespace NMaltParser.Concurrent.Graph
 
             for (int i = 1; i < nodes.Length; i++)
             {
-                if (nodes[i].hasHead())
+                if (nodes[i].HasHead())
                 {
                     int hcIndex = FindComponent(nodes[i].Head.Index, components);
 
@@ -601,7 +626,7 @@ namespace NMaltParser.Concurrent.Graph
 
             for (int i = 1; i < nodes.Length; i++)
             {
-                if (nodes[i].hasHead())
+                if (nodes[i].HasHead())
                 {
                     int hcIndex = FindComponent(nodes[i].Head.Index, components);
 
@@ -632,7 +657,7 @@ namespace NMaltParser.Concurrent.Graph
 
             for (int i = 1; i < nodes.Length; i++)
             {
-                if (nodes[i].hasHead())
+                if (nodes[i].HasHead())
                 {
                     int hcIndex = FindComponent(nodes[i].Head.Index, components);
 
@@ -648,16 +673,17 @@ namespace NMaltParser.Concurrent.Graph
             return components;
         }
 
-        private int FindComponent(int xIndex, int[] components)
+        private static int FindComponent(int xIndex, IList<int> components)
         {
             if (xIndex != components[xIndex])
             {
                 components[xIndex] = FindComponent(components[xIndex], components);
             }
+
             return components[xIndex];
         }
 
-        private int Link(int xIndex, int yIndex, int[] components, int[] ranks)
+        private static void Link(int xIndex, int yIndex, IList<int> components, IList<int> ranks)
         {
             if (ranks[xIndex] > ranks[yIndex])
             {
@@ -671,17 +697,19 @@ namespace NMaltParser.Concurrent.Graph
                 {
                     ranks[yIndex]++;
                 }
-                return yIndex;
             }
-            return xIndex;
         }
 
         public override int GetHashCode()
         {
             const int prime = 31;
+
             int result = 1;
+
             result = prime * result + ((DataFormat == null) ? 0 : DataFormat.GetHashCode());
+
             result = prime * result + Arrays.HashCode(nodes);
+
             return result;
         }
 
@@ -691,15 +719,19 @@ namespace NMaltParser.Concurrent.Graph
             {
                 return true;
             }
+
             if (obj == null)
             {
                 return false;
             }
+
             if (GetType() != obj.GetType())
             {
                 return false;
             }
+
             ConcurrentDependencyGraph other = (ConcurrentDependencyGraph)obj;
+
             if (DataFormat == null)
             {
                 if (other.DataFormat != null)
@@ -711,11 +743,8 @@ namespace NMaltParser.Concurrent.Graph
             {
                 return false;
             }
-            if (!Arrays.Equals(nodes, other.nodes))
-            {
-                return false;
-            }
-            return true;
+
+            return Arrays.Equals(nodes, other.nodes);
         }
 
         public override string ToString()

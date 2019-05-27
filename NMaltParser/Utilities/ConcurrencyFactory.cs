@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Runtime.CompilerServices;
 
 namespace NMaltParser.Utilities
 {
@@ -7,9 +8,9 @@ namespace NMaltParser.Utilities
     {
         private readonly ConcurrentDictionary<string, object> dictionary = new ConcurrentDictionary<string, object>();
 
-        public T Get<T>(string name, Func<object> func)
+        public T Get<T>(Func<object> func, [CallerMemberName] string methodName = null, [CallerFilePath] string filePath = null, [CallerLineNumber] int lineNumber = 0)
         {
-            return (T) dictionary.GetOrAdd(name, new Lazy<object>(func, true));
+            return (T) dictionary.GetOrAdd($"{methodName}@{filePath}:{lineNumber}", new Lazy<object>(func, true));
         }
     }
 }

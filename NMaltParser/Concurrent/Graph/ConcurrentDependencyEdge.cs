@@ -84,7 +84,7 @@ namespace NMaltParser.Concurrent.Graph
         /// <returns> an edge label. An empty string is returned if the label is not found. </returns>
         public string GetLabel(string columnName)
         {
-            ColumnDescription column = Source.DataFormat.getColumnDescription(columnName);
+            ColumnDescription column = Source.DataFormat.GetColumnDescription(columnName);
 
             if (column != null)
             {

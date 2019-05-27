@@ -25,5 +25,14 @@ namespace NMaltParser.Utilities
         }
 
         public static int HashCode<T>(IEnumerable<T> array) where T:class => array?.Aggregate(1, (current, element) => 31 * current + (element?.GetHashCode() ?? 0)) ?? 0;
+
+        public static bool Equals<T>(T[] array1, T[] array2) where T:IEquatable<T>
+        {
+            Span<T> span1 = array1;
+
+            Span<T> span2 = array2;
+
+            return span1.SequenceEqual(span2);
+        }
     }
 }

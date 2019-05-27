@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using NMaltParser.Concurrent.Graph.DataFormat;
+using NMaltParser.Utilities;
 
 namespace NMaltParser.Concurrent.Graph
 {
@@ -10,105 +11,105 @@ namespace NMaltParser.Concurrent.Graph
 	/// 
 	/// @author Johan Hall
 	/// </summary>
-	public sealed class ConcurrentDependencyNode : IComparable<ConcurrentDependencyNode>
+	public sealed class ConcurrentDependencyNode : IComparable<ConcurrentDependencyNode>, IEquatable<ConcurrentDependencyNode>
 	{
-		private readonly ConcurrentDependencyGraph graph;
-		private readonly int index;
-		private readonly SortedDictionary<int, string> labels;
-		private readonly int headIndex;
+        private readonly ConcurrencyFactory factory = new ConcurrencyFactory();
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: protected ConcurrentDependencyNode(ConcurrentDependencyNode node) throws ConcurrentGraphException
-		protected internal ConcurrentDependencyNode(ConcurrentDependencyNode node) : this(node.graph, node)
+        private readonly ConcurrentDependencyGraph graph;
+
+        private readonly SortedDictionary<int, string> labels;
+
+        internal ConcurrentDependencyNode(ConcurrentDependencyNode node) : this(node.graph, node)
 		{
 		}
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: protected ConcurrentDependencyNode(ConcurrentDependencyGraph _graph, ConcurrentDependencyNode node) throws ConcurrentGraphException
-		protected internal ConcurrentDependencyNode(ConcurrentDependencyGraph _graph, ConcurrentDependencyNode node)
+        internal ConcurrentDependencyNode(ConcurrentDependencyGraph graph, ConcurrentDependencyNode node)
 		{
-			if (_graph == null)
-			{
-				throw new ConcurrentGraphException("The graph node must belong to a dependency graph.");
-			}
-			graph = _graph;
-			index = node.index;
+            this.graph = graph ?? throw new ConcurrentGraphException("The graph node must belong to a dependency graph.");
+
+			Index = node.Index;
+
 			labels = new SortedDictionary<int, string>(node.labels);
-			headIndex = node.headIndex;
+
+			HeadIndex = node.HeadIndex;
 		}
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: protected ConcurrentDependencyNode(ConcurrentDependencyGraph _graph, int _index, java.util.SortedMap<int, String> _labels, int _headIndex) throws ConcurrentGraphException
-		protected internal ConcurrentDependencyNode(ConcurrentDependencyGraph _graph, int _index, SortedDictionary<int, string> _labels, int _headIndex)
+        internal ConcurrentDependencyNode(ConcurrentDependencyGraph graph, int index, IDictionary<int, string> labels, int headIndex)
 		{
-			if (_graph == null)
-			{
-				throw new ConcurrentGraphException("The graph node must belong to a dependency graph.");
-			}
-			if (_index < 0)
+            if (index < 0)
 			{
 				throw new ConcurrentGraphException("Not allowed to have negative node index");
 			}
-			if (_headIndex < -1)
-			{
-				throw new ConcurrentGraphException("Not allowed to have head index less than -1.");
-			}
-			if (_index == 0 && _headIndex != -1)
-			{
-				throw new ConcurrentGraphException("Not allowed to add head to a root node.");
-			}
-			if (_index == _headIndex)
-			{
-				throw new ConcurrentGraphException("Not allowed to add head to itself");
-			}
-			graph = _graph;
-			index = _index;
-			labels = new SortedDictionary<int, string>(_labels);
-			headIndex = _headIndex;
-		}
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: protected ConcurrentDependencyNode(ConcurrentDependencyGraph _graph, int _index, String[] _labels) throws ConcurrentGraphException
-		protected internal ConcurrentDependencyNode(ConcurrentDependencyGraph _graph, int _index, string[] _labels)
-		{
-			if (_graph == null)
-			{
-				throw new ConcurrentGraphException("The graph node must belong to a dependency graph.");
-			}
-			if (_index < 0)
-			{
-				throw new ConcurrentGraphException("Not allowed to have negative node index");
-			}
-			graph = _graph;
-			index = _index;
-			labels = new SortedDictionary<int, string>();
-
-			int tmpHeadIndex = -1;
-			if (_labels != null)
-			{
-				for (int i = 0; i < _labels.Length; i++)
-				{
-					int columnCategory = graph.DataFormat.getColumnDescription(i).Category;
-					if (columnCategory == ColumnDescription.Head)
-					{
-						tmpHeadIndex = int.Parse(_labels[i]);
-					}
-					else if (columnCategory == ColumnDescription.Input || columnCategory == ColumnDescription.DependencyEdgeLabel)
-					{
-						labels[i] = _labels[i];
-					}
-				}
-			}
-			headIndex = tmpHeadIndex;
 			if (headIndex < -1)
 			{
 				throw new ConcurrentGraphException("Not allowed to have head index less than -1.");
 			}
+
 			if (index == 0 && headIndex != -1)
 			{
 				throw new ConcurrentGraphException("Not allowed to add head to a root node.");
 			}
+
 			if (index == headIndex)
+			{
+				throw new ConcurrentGraphException("Not allowed to add head to itself");
+			}
+
+			this.graph = graph ?? throw new ConcurrentGraphException("The graph node must belong to a dependency graph.");
+
+			Index = index;
+
+			this.labels = new SortedDictionary<int, string>(labels);
+
+			HeadIndex = headIndex;
+		}
+
+        internal ConcurrentDependencyNode(ConcurrentDependencyGraph graph, int index, IReadOnlyList<string> labels)
+		{
+            if (index < 0)
+			{
+				throw new ConcurrentGraphException("Not allowed to have negative node index");
+			}
+
+			this.graph = graph ?? throw new ConcurrentGraphException("The graph node must belong to a dependency graph.");
+
+			Index = index;
+
+			this.labels = new SortedDictionary<int, string>();
+
+			int tmpHeadIndex = -1;
+
+			if (labels != null)
+			{
+				for (int i = 0; i < labels.Count; i++)
+				{
+					int columnCategory = this.graph.DataFormat.GetColumnDescription(i).Category;
+
+					if (columnCategory == ColumnDescription.Head)
+					{
+						tmpHeadIndex = int.Parse(labels[i]);
+					}
+					else if (columnCategory == ColumnDescription.Input || columnCategory == ColumnDescription.DependencyEdgeLabel)
+					{
+						this.labels[i] = labels[i];
+					}
+				}
+			}
+
+			HeadIndex = tmpHeadIndex;
+
+			if (HeadIndex < -1)
+			{
+				throw new ConcurrentGraphException("Not allowed to have head index less than -1.");
+			}
+
+			if (Index == 0 && HeadIndex != -1)
+			{
+				throw new ConcurrentGraphException("Not allowed to add head to a root node.");
+			}
+
+			if (Index == HeadIndex)
 			{
 				throw new ConcurrentGraphException("Not allowed to add head to itself");
 			}
@@ -118,29 +119,24 @@ namespace NMaltParser.Concurrent.Graph
 		/// Returns the index of the node.
 		/// </summary>
 		/// <returns> the index of the node. </returns>
-		public int Index
-		{
-			get
-			{
-				return index;
-			}
-		}
+		public int Index { get; }
 
-		/// <summary>
+        /// <summary>
 		/// Returns a label
 		/// </summary>
 		/// <param name="columnPosition"> the column position of the column that describes the label </param>
 		/// <returns> a label. An empty string is returned if the label is not found. </returns>
-		public string getLabel(int columnPosition)
+		public string GetLabel(int columnPosition)
 		{
 			if (labels.ContainsKey(columnPosition))
 			{
 				return labels[columnPosition];
 			}
-			else if (graph.DataFormat.getColumnDescription(columnPosition).Category == ColumnDescription.Ignore)
+			else if (graph.DataFormat.GetColumnDescription(columnPosition).Category == ColumnDescription.Ignore)
 			{
-				return graph.DataFormat.getColumnDescription(columnPosition).DefaultOutput;
+				return graph.DataFormat.GetColumnDescription(columnPosition).DefaultOutput;
 			}
+
 			return "";
 		}
 
@@ -149,57 +145,51 @@ namespace NMaltParser.Concurrent.Graph
 		/// </summary>
 		/// <param name="columnName"> the name of the column that describes the label. </param>
 		/// <returns> a label. An empty string is returned if the label is not found. </returns>
-		public string getLabel(string columnName)
+		public string GetLabel(string columnName)
 		{
-			ColumnDescription column = graph.DataFormat.getColumnDescription(columnName);
-			if (column != null)
-			{
-				return getLabel(column.Position);
-			}
-			return "";
-		}
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(columnName);
+
+			return column != null ? GetLabel(column.Position) : "";
+        }
 
 		/// <summary>
 		/// Returns a label
 		/// </summary>
 		/// <param name="column"> a column description that describes the label </param>
 		/// <returns> a label described by the column description. An empty string is returned if the label is not found.  </returns>
-		public string getLabel(ColumnDescription column)
+		public string GetLabel(ColumnDescription column)
 		{
-			return getLabel(column.Position);
+			return GetLabel(column.Position);
 		}
 
 		/// <summary>
-		/// Returns <i>true</i> if the label exists, otherwise <i>false<i/>
+		/// Returns <i>true</i> if the label exists, otherwise <i>false</i>
 		/// </summary>
 		/// <param name="columnPosition"> the column position of the column that describes the label </param>
-		/// <returns> <i>true</i> if the label exists, otherwise <i>false<i/> </returns>
-		public bool hasLabel(int columnPosition)
+		/// <returns> <i>true</i> if the label exists, otherwise <i>false</i> </returns>
+		public bool HasLabel(int columnPosition)
 		{
 			return labels.ContainsKey(columnPosition);
 		}
 
 		/// <summary>
-		/// Returns <i>true</i> if the label exists, otherwise <i>false<i/>
+		/// Returns <i>true</i> if the label exists, otherwise <i>false</i>
 		/// </summary>
 		/// <param name="columnName"> the name of the column that describes the label. </param>
-		/// <returns> <i>true</i> if the label exists, otherwise <i>false<i/> </returns>
-		public bool hasLabel(string columnName)
+		/// <returns> <i>true</i> if the label exists, otherwise <i>false</i> </returns>
+		public bool HasLabel(string columnName)
 		{
-			ColumnDescription column = graph.DataFormat.getColumnDescription(columnName);
-			if (column != null)
-			{
-				return hasLabel(column.Position);
-			}
-			return false;
-		}
+			ColumnDescription column = graph.DataFormat.GetColumnDescription(columnName);
+
+			return column != null && HasLabel(column.Position);
+        }
 
 		/// <summary>
-		/// Returns <i>true</i> if the label exists, otherwise <i>false<i/>
+		/// Returns <i>true</i> if the label exists, otherwise <i>false</i>
 		/// </summary>
 		/// <param name="column"> a column description that describes the label </param>
-		/// <returns> <i>true</i> if the label exists, otherwise <i>false<i/> </returns>
-		public bool hasLabel(ColumnDescription column)
+		/// <returns> <i>true</i> if the label exists, otherwise <i>false</i> </returns>
+		public bool HasLabel(ColumnDescription column)
 		{
 			return labels.ContainsKey(column.Position);
 		}
@@ -212,13 +202,14 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				foreach (int? key in labels.Keys)
+				foreach (int key in labels.Keys)
 				{
-					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.Input)
+					if (graph.DataFormat.GetColumnDescription(key).Category == ColumnDescription.Input)
 					{
 						return true;
 					}
 				}
+
 				return false;
 			}
 		}
@@ -231,13 +222,14 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				foreach (int? key in labels.Keys)
+				foreach (int key in labels.Keys)
 				{
-					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.DependencyEdgeLabel)
+					if (graph.DataFormat.GetColumnDescription(key).Category == ColumnDescription.DependencyEdgeLabel)
 					{
 						return true;
 					}
 				}
+
 				return false;
 			}
 		}
@@ -246,32 +238,31 @@ namespace NMaltParser.Concurrent.Graph
 		/// Returns the index of the head node
 		/// </summary>
 		/// <returns> the index of the head node </returns>
-		public int HeadIndex
-		{
-			get
-			{
-				return headIndex;
-			}
-		}
+		public int HeadIndex { get; }
 
-		/// <summary>
+        /// <summary>
 		/// Returns a sorted map that maps column descriptions to node labels
 		/// </summary>
 		/// <returns> a sorted map that maps column descriptions to node labels </returns>
 		public SortedDictionary<ColumnDescription, string> NodeLabels
 		{
 			get
-			{
-				SortedDictionary<ColumnDescription, string> nodeLabels = Collections.synchronizedSortedMap(new SortedDictionary<ColumnDescription, string>());
-				foreach (int? key in labels.Keys)
-				{
-					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.Input)
-					{
-						nodeLabels[graph.DataFormat.getColumnDescription(key)] = labels[key];
-					}
-				}
-				return nodeLabels;
-			}
+            {
+                return factory.Get<SortedDictionary<ColumnDescription, string>>(() =>
+                {
+                    SortedDictionary<ColumnDescription, string> nodeLabels = new SortedDictionary<ColumnDescription, string>();
+
+                    foreach (int key in labels.Keys)
+                    {
+                        if (graph.DataFormat.GetColumnDescription(key).Category == ColumnDescription.Input)
+                        {
+                            nodeLabels[graph.DataFormat.GetColumnDescription(key)] = labels[key];
+                        }
+                    }
+
+                    return nodeLabels;
+                });
+            }
 		}
 
 		/// <summary>
@@ -281,62 +272,49 @@ namespace NMaltParser.Concurrent.Graph
 		public SortedDictionary<ColumnDescription, string> EdgeLabels
 		{
 			get
-			{
-				SortedDictionary<ColumnDescription, string> edgeLabels = Collections.synchronizedSortedMap(new SortedDictionary<ColumnDescription, string>());
-				foreach (int? key in labels.Keys)
-				{
-					if (graph.DataFormat.getColumnDescription(key).Category == ColumnDescription.DependencyEdgeLabel)
-					{
-						edgeLabels[graph.DataFormat.getColumnDescription(key)] = labels[key];
-					}
-				}
-				return edgeLabels;
-			}
+            {
+                return factory.Get<SortedDictionary<ColumnDescription, string>>(() =>
+                {
+                    SortedDictionary<ColumnDescription, string> edgeLabels = new SortedDictionary<ColumnDescription, string>();
+
+                    foreach (int key in labels.Keys)
+                    {
+                        if (graph.DataFormat.GetColumnDescription(key).Category == ColumnDescription.DependencyEdgeLabel)
+                        {
+                            edgeLabels[graph.DataFormat.GetColumnDescription(key)] = labels[key];
+                        }
+                    }
+
+                    return edgeLabels;
+                });
+            }
 		}
 
 		/// <summary>
 		/// Returns the predecessor dependency node in the linear order of the token nodes.
 		/// </summary>
 		/// <returns> the predecessor dependency node in the linear order of the token nodes. </returns>
-		public ConcurrentDependencyNode Predecessor
-		{
-			get
-			{
-				return index > 1 ? graph.GetDependencyNode(index - 1) : null;
-			}
-		}
+		public ConcurrentDependencyNode Predecessor => Index > 1 ? graph.GetDependencyNode(Index - 1) : null;
 
-		/// <summary>
+        /// <summary>
 		/// Returns the successor dependency node in the linear order of the token nodes.
 		/// </summary>
 		/// <returns> the successor dependency node in the linear order of the token nodes. </returns>
-		public ConcurrentDependencyNode Successor
-		{
-			get
-			{
-				return graph.GetDependencyNode(index + 1);
-			}
-		}
+		public ConcurrentDependencyNode Successor => graph.GetDependencyNode(Index + 1);
 
-		/// <summary>
+        /// <summary>
 		/// Returns <i>true</i> if the node is a root node, otherwise <i>false</i>.
 		/// </summary>
 		/// <returns> <i>true</i> if the node is a root node, otherwise <i>false</i>. </returns>
-		public bool Root
-		{
-			get
-			{
-				return index == 0;
-			}
-		}
+		public bool Root => Index == 0;
 
-		/// <summary>
+        /// <summary>
 		/// Returns <i>true</i> if the node has at most one head, otherwise <i>false</i>.
 		/// 
 		/// Note: this method will always return true because the concurrent dependency graph implementation only supports one or zero head.
 		/// </summary>
 		/// <returns> <i>true</i> if the node has at most one head, otherwise <i>false</i>. </returns>
-		public bool hasAtMostOneHead()
+		public bool HasAtMostOneHead()
 		{
 			return true;
 		}
@@ -345,36 +323,36 @@ namespace NMaltParser.Concurrent.Graph
 		/// Returns <i>true</i> if the node has one or more head(s), otherwise <i>false</i>.
 		/// </summary>
 		/// <returns> <i>true</i> if the node has one or more head(s), otherwise <i>false</i>. </returns>
-		public bool hasHead()
+		public bool HasHead()
 		{
-			return headIndex != -1;
+			return HeadIndex != -1;
 		}
 
 		/// <summary>
 		/// Returns <i>true</i> if the node has one or more dependents, otherwise <i>false</i>.
 		/// </summary>
 		/// <returns> <i>true</i> if the node has one or more dependents, otherwise <i>false</i>. </returns>
-		public bool hasDependent()
+		public bool HasDependent()
 		{
-			return graph.HasDependent(index);
+			return graph.HasDependent(Index);
 		}
 
 		/// <summary>
 		/// Returns <i>true</i> if the node has one or more left dependents, otherwise <i>false</i>.
 		/// </summary>
 		/// <returns> <i>true</i> if the node has one or more left dependents, otherwise <i>false</i>. </returns>
-		public bool hasLeftDependent()
+		public bool HasLeftDependent()
 		{
-			return graph.HasLeftDependent(index);
+			return graph.HasLeftDependent(Index);
 		}
 
 		/// <summary>
 		/// Returns <i>true</i> if the node has one or more right dependents, otherwise <i>false</i>.
 		/// </summary>
 		/// <returns> <i>true</i> if the node has one or more right dependents, otherwise <i>false</i>. </returns>
-		public bool hasRightDependent()
+		public bool HasRightDependent()
 		{
-			return graph.HasRightDependent(index);
+			return graph.HasRightDependent(Index);
 		}
 
 
@@ -387,41 +365,43 @@ namespace NMaltParser.Concurrent.Graph
 		public SortedSet<ConcurrentDependencyNode> Heads
 		{
 			get
-			{
-				SortedSet<ConcurrentDependencyNode> heads = Collections.synchronizedSortedSet(new SortedSet<ConcurrentDependencyNode>());
-				ConcurrentDependencyNode head = Head;
-				if (head != null)
-				{
-					heads.Add(head);
-				}
-				return heads;
-			}
+            {
+                return factory.Get<SortedSet<ConcurrentDependencyNode>>(() =>
+                {
+                    SortedSet<ConcurrentDependencyNode> heads = new SortedSet<ConcurrentDependencyNode>();
+
+                    ConcurrentDependencyNode head = Head;
+
+                    if (head != null)
+                    {
+                        heads.Add(head);
+                    }
+
+                    return heads;
+                });
+            }
 		}
 
 		/// <summary>
 		/// Returns the head dependency node if it exists, otherwise <i>null</i>. 
 		/// </summary>
 		/// <returns> the head dependency node if it exists, otherwise <i>null</i>. </returns>
-		public ConcurrentDependencyNode Head
-		{
-			get
-			{
-				return graph.GetDependencyNode(headIndex);
-			}
-		}
+		public ConcurrentDependencyNode Head => graph.GetDependencyNode(HeadIndex);
 
-		/// <summary>
+        /// <summary>
 		/// Returns the left dependent at the position <i>leftDependentIndex</i>, where <i>leftDependentIndex==0</i> equals the left most dependent.
 		/// </summary>
 		/// <param name="leftDependentIndex"> the index of the left dependent </param>
 		/// <returns> the left dependent at the position <i>leftDependentIndex</i>, where <i>leftDependentIndex==0</i> equals the left most dependent </returns>
-		public ConcurrentDependencyNode getLeftDependent(int leftDependentIndex)
+		public ConcurrentDependencyNode GetLeftDependent(int leftDependentIndex)
 		{
-			IList<ConcurrentDependencyNode> leftDependents = graph.GetListOfLeftDependents(index);
+			IList<ConcurrentDependencyNode> leftDependents = graph.GetListOfLeftDependents(Index);
+
 			if (leftDependentIndex >= 0 && leftDependentIndex < leftDependents.Count)
 			{
 				return leftDependents[leftDependentIndex];
 			}
+
 			return null;
 		}
 
@@ -429,39 +409,21 @@ namespace NMaltParser.Concurrent.Graph
 		/// Return the number of left dependents
 		/// </summary>
 		/// <returns> the number of left dependents </returns>
-		public int LeftDependentCount
-		{
-			get
-			{
-				return graph.GetListOfLeftDependents(index).Count;
-			}
-		}
+		public int LeftDependentCount => graph.GetListOfLeftDependents(Index).Count;
 
-		/// <summary>
+        /// <summary>
 		/// Returns a sorted set of left dependents.
 		/// </summary>
 		/// <returns> a sorted set of left dependents. </returns>
-		public SortedSet<ConcurrentDependencyNode> LeftDependents
-		{
-			get
-			{
-				return graph.GetSortedSetOfLeftDependents(index);
-			}
-		}
+		public SortedSet<ConcurrentDependencyNode> LeftDependents => graph.GetSortedSetOfLeftDependents(Index);
 
-		/// <summary>
+        /// <summary>
 		/// Returns a list of left dependents.
 		/// </summary>
 		/// <returns> a list of left dependents. </returns>
-		public IList<ConcurrentDependencyNode> ListOfLeftDependents
-		{
-			get
-			{
-				return graph.GetListOfLeftDependents(index);
-			}
-		}
+		public IList<ConcurrentDependencyNode> ListOfLeftDependents => graph.GetListOfLeftDependents(Index);
 
-		/// <summary>
+        /// <summary>
 		/// Returns the left sibling if it exists, otherwise <code>null</code>
 		/// </summary>
 		/// <returns> the left sibling if it exists, otherwise <code>null</code> </returns>
@@ -469,58 +431,57 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				if (headIndex == -1)
+				if (HeadIndex == -1)
 				{
 					return null;
 				}
     
-				int nodeDepedentPosition = 0;
+				int nodeDependentPosition = 0;
+
 				IList<ConcurrentDependencyNode> headDependents = Head.ListOfDependents;
+
 				for (int i = 0; i < headDependents.Count; i++)
 				{
-					if (headDependents[i].Index == index)
+					if (headDependents[i].Index == Index)
 					{
-						nodeDepedentPosition = i;
+						nodeDependentPosition = i;
+
 						break;
 					}
 				}
     
-				return (nodeDepedentPosition > 0) ? headDependents[nodeDepedentPosition - 1] : null;
+				return (nodeDependentPosition > 0) ? headDependents[nodeDependentPosition - 1] : null;
 			}
 		}
 
 		/// <summary>
-		/// Returns the left sibling at the same side of head as the node it self. If not found <code>null</code is returned
+		/// Returns the left sibling at the same side of head as the node it self. If not found <code>null</code> is returned
 		/// </summary>
-		/// <returns> the left sibling at the same side of head as the node it self. If not found <code>null</code is returned </returns>
+		/// <returns> the left sibling at the same side of head as the node it self. If not found <code>null</code> is returned </returns>
 		public ConcurrentDependencyNode SameSideLeftSibling
 		{
 			get
 			{
-				if (headIndex == -1)
+				if (HeadIndex == -1)
 				{
 					return null;
 				}
-    
-				IList<ConcurrentDependencyNode> headDependents;
-				if (index < headIndex)
-				{
-					headDependents = Head.ListOfLeftDependents;
-				}
-				else
-				{ //(index > headIndex)
-					headDependents = Head.ListOfRightDependents;
-				}
-				int nodeDepedentPosition = 0;
+
+                IList<ConcurrentDependencyNode> headDependents = Index < HeadIndex ? Head.ListOfLeftDependents : Head.ListOfRightDependents;
+
+				int nodeDependentPosition = 0;
+
 				for (int i = 0; i < headDependents.Count; i++)
 				{
-					if (headDependents[i].Index == index)
+					if (headDependents[i].Index == Index)
 					{
-						nodeDepedentPosition = i;
+						nodeDependentPosition = i;
+
 						break;
 					}
 				}
-				return (nodeDepedentPosition > 0) ? headDependents[nodeDepedentPosition - 1] : null;
+
+				return (nodeDependentPosition > 0) ? headDependents[nodeDependentPosition - 1] : null;
 			}
 		}
 
@@ -532,7 +493,8 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				IList<ConcurrentDependencyNode> leftDependents = graph.GetListOfLeftDependents(index);
+				IList<ConcurrentDependencyNode> leftDependents = graph.GetListOfLeftDependents(Index);
+
 				return (leftDependents.Count > 0) ? leftDependents[leftDependents.Count - 1] : null;
 			}
 		}
@@ -545,7 +507,8 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				IList<ConcurrentDependencyNode> leftDependents = graph.GetListOfLeftDependents(index);
+				IList<ConcurrentDependencyNode> leftDependents = graph.GetListOfLeftDependents(Index);
+
 				return (leftDependents.Count > 0) ? leftDependents[0] : null;
 			}
 		}
@@ -555,13 +518,15 @@ namespace NMaltParser.Concurrent.Graph
 		/// </summary>
 		/// <param name="rightDependentIndex"> the index of the right dependent </param>
 		/// <returns> the right dependent at the position <i>rightDependentIndex</i>, where <i>rightDependentIndex==0</i> equals the right most dependent </returns>
-		public ConcurrentDependencyNode getRightDependent(int rightDependentIndex)
+		public ConcurrentDependencyNode GetRightDependent(int rightDependentIndex)
 		{
-			IList<ConcurrentDependencyNode> rightDependents = graph.GetListOfRightDependents(index);
+			IList<ConcurrentDependencyNode> rightDependents = graph.GetListOfRightDependents(Index);
+
 			if (rightDependentIndex >= 0 && rightDependentIndex < rightDependents.Count)
 			{
 				return rightDependents[rightDependents.Count - 1 - rightDependentIndex];
 			}
+
 			return null;
 		}
 
@@ -569,39 +534,21 @@ namespace NMaltParser.Concurrent.Graph
 		/// Return the number of right dependents
 		/// </summary>
 		/// <returns> the number of right dependents </returns>
-		public int RightDependentCount
-		{
-			get
-			{
-				return graph.GetListOfRightDependents(index).Count;
-			}
-		}
+		public int RightDependentCount => graph.GetListOfRightDependents(Index).Count;
 
-		/// <summary>
+        /// <summary>
 		/// Returns a sorted set of right dependents.
 		/// </summary>
 		/// <returns> a sorted set of right dependents. </returns>
-		public SortedSet<ConcurrentDependencyNode> RightDependents
-		{
-			get
-			{
-				return graph.GetSortedSetOfRightDependents(index);
-			}
-		}
+		public SortedSet<ConcurrentDependencyNode> RightDependents => graph.GetSortedSetOfRightDependents(Index);
 
-		/// <summary>
+        /// <summary>
 		/// Returns a list of right dependents.
 		/// </summary>
 		/// <returns> a list of right dependents. </returns>
-		public IList<ConcurrentDependencyNode> ListOfRightDependents
-		{
-			get
-			{
-				return graph.GetListOfRightDependents(index);
-			}
-		}
+		public IList<ConcurrentDependencyNode> ListOfRightDependents => graph.GetListOfRightDependents(Index);
 
-		/// <summary>
+        /// <summary>
 		/// Returns the right sibling if it exists, otherwise <code>null</code>
 		/// </summary>
 		/// <returns> the right sibling if it exists, otherwise <code>null</code> </returns>
@@ -609,59 +556,57 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				if (headIndex == -1)
+				if (HeadIndex == -1)
 				{
 					return null;
 				}
     
 				IList<ConcurrentDependencyNode> headDependents = Head.ListOfDependents;
-				int nodeDepedentPosition = headDependents.Count - 1;
+
+				int nodeDependentPosition = headDependents.Count - 1;
+
 				for (int i = headDependents.Count - 1; i >= 0 ; i--)
 				{
-					if (headDependents[i].Index == index)
+					if (headDependents[i].Index == Index)
 					{
-						nodeDepedentPosition = i;
+						nodeDependentPosition = i;
+
 						break;
 					}
 				}
     
-				return (nodeDepedentPosition < headDependents.Count - 1) ? headDependents[nodeDepedentPosition + 1] : null;
+				return (nodeDependentPosition < headDependents.Count - 1) ? headDependents[nodeDependentPosition + 1] : null;
 			}
 		}
 
 		/// <summary>
-		/// Returns the right sibling at the same side of head as the node it self. If not found <code>null</code is returned
+		/// Returns the right sibling at the same side of head as the node it self. If not found <code>null</code> is returned
 		/// </summary>
-		/// <returns> the right sibling at the same side of head as the node it self. If not found <code>null</code is returned </returns>
+		/// <returns> the right sibling at the same side of head as the node it self. If not found <code>null</code> is returned </returns>
 		public ConcurrentDependencyNode SameSideRightSibling
 		{
 			get
 			{
-				if (headIndex == -1)
+				if (HeadIndex == -1)
 				{
 					return null;
 				}
-    
-				IList<ConcurrentDependencyNode> headDependents;
-				if (index < headIndex)
-				{
-					headDependents = Head.ListOfLeftDependents;
-				}
-				else
-				{
-					headDependents = Head.ListOfRightDependents;
-				}
-				int nodeDepedentPosition = headDependents.Count - 1;
+
+                IList<ConcurrentDependencyNode> headDependents = Index < HeadIndex ? Head.ListOfLeftDependents : Head.ListOfRightDependents;
+
+				int nodeDependentPosition = headDependents.Count - 1;
+
 				for (int i = headDependents.Count - 1; i >= 0 ; i--)
 				{
-					if (headDependents[i].Index == index)
+					if (headDependents[i].Index == Index)
 					{
-						nodeDepedentPosition = i;
+						nodeDependentPosition = i;
+
 						break;
 					}
 				}
     
-				return (nodeDepedentPosition < headDependents.Count - 1) ? headDependents[nodeDepedentPosition + 1] : null;
+				return (nodeDependentPosition < headDependents.Count - 1) ? headDependents[nodeDependentPosition + 1] : null;
 			}
 		}
 
@@ -673,7 +618,8 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				IList<ConcurrentDependencyNode> rightDependents = graph.GetListOfRightDependents(index);
+				IList<ConcurrentDependencyNode> rightDependents = graph.GetListOfRightDependents(Index);
+
 				return (rightDependents.Count > 0) ? rightDependents[0] : null;
 			}
 		}
@@ -686,7 +632,8 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				IList<ConcurrentDependencyNode> rightDependents = graph.GetListOfRightDependents(index);
+				IList<ConcurrentDependencyNode> rightDependents = graph.GetListOfRightDependents(Index);
+
 				return (rightDependents.Count > 0) ? rightDependents[rightDependents.Count - 1] : null;
 			}
 		}
@@ -695,68 +642,42 @@ namespace NMaltParser.Concurrent.Graph
 		/// Returns a sorted set of dependents.
 		/// </summary>
 		/// <returns> a sorted set of dependents. </returns>
-		public SortedSet<ConcurrentDependencyNode> Dependents
-		{
-			get
-			{
-				return graph.GetSortedSetOfDependents(index);
-			}
-		}
+		public SortedSet<ConcurrentDependencyNode> Dependents => graph.GetSortedSetOfDependents(Index);
 
-		/// <summary>
+        /// <summary>
 		/// Returns a list of dependents.
 		/// </summary>
 		/// <returns> a list of dependents. </returns>
-		public IList<ConcurrentDependencyNode> ListOfDependents
-		{
-			get
-			{
-				return graph.GetListOfDependents(index);
-			}
-		}
+		public IList<ConcurrentDependencyNode> ListOfDependents => graph.GetListOfDependents(Index);
 
-		/// <summary>
+        /// <summary>
 		/// Returns the in degree of the node (number of incoming edges).
 		/// </summary>
 		/// <returns> the in degree of the node (number of incoming edges). </returns>
-		public int InDegree
-		{
-			get
-			{
-				if (hasHead())
-				{
-					return 1;
-				}
-				return 0;
-			}
-		}
+		public int InDegree => HasHead() ? 1 : 0;
 
-		/// <summary>
+        /// <summary>
 		/// Returns the out degree of the node (number of outgoing edges).
 		/// </summary>
 		/// <returns> the out degree of the node (number of outgoing edges). </returns>
-		public int OutDegree
-		{
-			get
-			{
-				return graph.GetListOfDependents(index).Count;
-			}
-		}
+		public int OutDegree => graph.GetListOfDependents(Index).Count;
 
-		public ConcurrentDependencyNode Ancestor
+        public ConcurrentDependencyNode Ancestor
 		{
 			get
 			{
-				if (!hasHead())
+				if (!HasHead())
 				{
 					return this;
 				}
     
 				ConcurrentDependencyNode tmp = this;
-				while (tmp.hasHead())
+
+				while (tmp.HasHead())
 				{
 					tmp = tmp.Head;
 				}
+
 				return tmp;
 			}
 		}
@@ -765,35 +686,41 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				if (!hasHead())
+				if (!HasHead())
 				{
 					return null;
 				}
     
 				ConcurrentDependencyNode tmp = this;
-				while (tmp.hasHead() && !tmp.Root)
+
+				while (tmp.HasHead() && !tmp.Root)
 				{
 					tmp = tmp.Head;
 				}
+
 				return tmp;
 			}
 		}
 
-		public bool hasAncestorInside(int left, int right)
+		public bool HasAncestorInside(int left, int right)
 		{
-			if (index == 0)
+			if (Index == 0)
 			{
 				return false;
 			}
+
 			ConcurrentDependencyNode tmp = this;
+
 			if (tmp.Head != null)
 			{
 				tmp = tmp.Head;
+
 				if (tmp.Index >= left && tmp.Index <= right)
 				{
 					return true;
 				}
 			}
+
 			return false;
 		}
 
@@ -805,32 +732,35 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				if (headIndex > 0)
+				if (HeadIndex > 0)
 				{
-	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-	//ORIGINAL LINE: final ConcurrentDependencyNode head = getHead();
 					ConcurrentDependencyNode head = Head;
-					if (headIndex < index)
+
+					if (HeadIndex < Index)
 					{
 						ConcurrentDependencyNode terminals = head;
-						ConcurrentDependencyNode tmp = null;
-						while (true)
+
+                        while (true)
 						{
-							if (terminals == null || terminals.Successor == null)
+							if (terminals?.Successor == null)
 							{
 								return false;
 							}
-							if (terminals.Successor == this)
+
+							if (terminals.Successor.Equals(this))
 							{
 								break;
 							}
-							tmp = terminals = terminals.Successor;
-							while (tmp != this && tmp != head)
+
+							ConcurrentDependencyNode tmp = terminals = terminals.Successor;
+
+							while (!tmp.Equals(this) && !tmp.Equals(head))
 							{
-								if (!tmp.hasHead())
+								if (!tmp.HasHead())
 								{
 									return false;
 								}
+
 								tmp = tmp.Head;
 							}
 						}
@@ -838,29 +768,33 @@ namespace NMaltParser.Concurrent.Graph
 					else
 					{
 						ConcurrentDependencyNode terminals = this;
-						ConcurrentDependencyNode tmp = null;
-						while (true)
+
+                        while (true)
 						{
-							if (terminals == null || terminals.Successor == null)
+							if (terminals?.Successor == null)
 							{
 								return false;
 							}
-							if (terminals.Successor == head)
+							if (terminals.Successor.Equals(head))
 							{
 								break;
 							}
-							tmp = terminals = terminals.Successor;
-							while (tmp != this && tmp != head)
+
+							ConcurrentDependencyNode tmp = terminals = terminals.Successor;
+
+							while (!tmp.Equals(this) && !tmp.Equals(head))
 							{
-								if (!tmp.hasHead())
+								if (!tmp.HasHead())
 								{
 									return false;
 								}
+
 								tmp = tmp.Head;
 							}
 						}
 					}
 				}
+
 				return true;
 			}
 		}
@@ -873,12 +807,16 @@ namespace NMaltParser.Concurrent.Graph
 			get
 			{
 				ConcurrentDependencyNode tmp = this;
+
 				int depth = 0;
-				while (tmp.hasHead())
+
+				while (tmp.HasHead())
 				{
 					depth++;
+
 					tmp = tmp.Head;
 				}
+
 				return depth;
 			}
 		}
@@ -892,32 +830,34 @@ namespace NMaltParser.Concurrent.Graph
 			get
 			{
 				ConcurrentDependencyNode candidate = null;
-				IList<ConcurrentDependencyNode> dependents = graph.GetListOfDependents(index);
-				for (int i = 0; i < dependents.Count; i++)
-				{
-	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-	//ORIGINAL LINE: final ConcurrentDependencyNode dep = dependents.get(i);
-					ConcurrentDependencyNode dep = dependents[i];
-					if (candidate == null || dep.Index < candidate.Index)
-					{
-						candidate = dep;
-					}
-	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-	//ORIGINAL LINE: final ConcurrentDependencyNode tmp = dep.getLeftmostProperDescendant();
-					ConcurrentDependencyNode tmp = dep.LeftmostProperDescendant;
-					if (tmp == null)
-					{
-						continue;
-					}
-					if (candidate == null || tmp.Index < candidate.Index)
-					{
-						candidate = tmp;
-					}
-					if (candidate.Index == 1)
-					{
-						return candidate;
-					}
-				}
+
+				IList<ConcurrentDependencyNode> dependents = graph.GetListOfDependents(Index);
+
+				foreach (ConcurrentDependencyNode dep in dependents)
+                {
+                    if (candidate == null || dep.Index < candidate.Index)
+                    {
+                        candidate = dep;
+                    }
+
+                    ConcurrentDependencyNode tmp = dep.LeftmostProperDescendant;
+
+                    if (tmp == null)
+                    {
+                        continue;
+                    }
+
+                    if (candidate == null || tmp.Index < candidate.Index)
+                    {
+                        candidate = tmp;
+                    }
+
+                    if (candidate.Index == 1)
+                    {
+                        return candidate;
+                    }
+                }
+
 				return candidate;
 			}
 		}
@@ -931,28 +871,27 @@ namespace NMaltParser.Concurrent.Graph
 			get
 			{
 				ConcurrentDependencyNode candidate = null;
-				IList<ConcurrentDependencyNode> dependents = graph.GetListOfDependents(index);
-				for (int i = 0; i < dependents.Count; i++)
-				{
-	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-	//ORIGINAL LINE: final ConcurrentDependencyNode dep = dependents.get(i);
-					ConcurrentDependencyNode dep = dependents[i];
-					if (candidate == null || dep.Index > candidate.Index)
-					{
-						candidate = dep;
-					}
-	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-	//ORIGINAL LINE: final ConcurrentDependencyNode tmp = dep.getRightmostProperDescendant();
-					ConcurrentDependencyNode tmp = dep.RightmostProperDescendant;
-					if (tmp == null)
-					{
-						continue;
-					}
-					if (candidate == null || tmp.Index > candidate.Index)
-					{
-						candidate = tmp;
-					}
-				}
+
+				IList<ConcurrentDependencyNode> dependents = graph.GetListOfDependents(Index);
+
+				foreach (ConcurrentDependencyNode dep in dependents)
+                {
+                    if (candidate == null || dep.Index > candidate.Index)
+                    {
+                        candidate = dep;
+                    }
+
+                    ConcurrentDependencyNode tmp = dep.RightmostProperDescendant;
+
+                    if (tmp == null)
+                    {
+                        continue;
+                    }
+                    if (candidate == null || tmp.Index > candidate.Index)
+                    {
+                        candidate = tmp;
+                    }
+                }
 				return candidate;
 			}
 		}
@@ -966,7 +905,8 @@ namespace NMaltParser.Concurrent.Graph
 			get
 			{
 				ConcurrentDependencyNode node = LeftmostProperDescendant;
-				return (node != null)?node.Index:-1;
+
+				return node?.Index ?? -1;
 			}
 		}
 
@@ -979,7 +919,8 @@ namespace NMaltParser.Concurrent.Graph
 			get
 			{
 				ConcurrentDependencyNode node = RightmostProperDescendant;
-				return (node != null)?node.Index:-1;
+
+				return node?.Index ?? -1;
 			}
 		}
 
@@ -992,32 +933,34 @@ namespace NMaltParser.Concurrent.Graph
 			get
 			{
 				ConcurrentDependencyNode candidate = this;
-				IList<ConcurrentDependencyNode> dependents = graph.GetListOfDependents(index);
-				for (int i = 0; i < dependents.Count; i++)
-				{
-	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-	//ORIGINAL LINE: final ConcurrentDependencyNode dep = dependents.get(i);
-					ConcurrentDependencyNode dep = dependents[i];
-					if (dep.Index < candidate.Index)
-					{
-						candidate = dep;
-					}
-	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-	//ORIGINAL LINE: final ConcurrentDependencyNode tmp = dep.getLeftmostDescendant();
-					ConcurrentDependencyNode tmp = dep.LeftmostDescendant;
-					if (tmp == null)
-					{
-						continue;
-					}
-					if (tmp.Index < candidate.Index)
-					{
-						candidate = tmp;
-					}
-					if (candidate.Index == 1)
-					{
-						return candidate;
-					}
-				}
+
+				IList<ConcurrentDependencyNode> dependents = graph.GetListOfDependents(Index);
+
+				foreach (ConcurrentDependencyNode dep in dependents)
+                {
+                    if (dep.Index < candidate.Index)
+                    {
+                        candidate = dep;
+                    }
+
+                    ConcurrentDependencyNode tmp = dep.LeftmostDescendant;
+
+                    if (tmp == null)
+                    {
+                        continue;
+                    }
+
+                    if (tmp.Index < candidate.Index)
+                    {
+                        candidate = tmp;
+                    }
+
+                    if (candidate.Index == 1)
+                    {
+                        return candidate;
+                    }
+                }
+
 				return candidate;
 			}
 		}
@@ -1031,28 +974,29 @@ namespace NMaltParser.Concurrent.Graph
 			get
 			{
 				ConcurrentDependencyNode candidate = this;
-				IList<ConcurrentDependencyNode> dependents = graph.GetListOfDependents(index);
-				for (int i = 0; i < dependents.Count; i++)
-				{
-	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-	//ORIGINAL LINE: final ConcurrentDependencyNode dep = dependents.get(i);
-					ConcurrentDependencyNode dep = dependents[i];
-					if (dep.Index > candidate.Index)
-					{
-						candidate = dep;
-					}
-	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-	//ORIGINAL LINE: final ConcurrentDependencyNode tmp = dep.getRightmostDescendant();
-					ConcurrentDependencyNode tmp = dep.RightmostDescendant;
-					if (tmp == null)
-					{
-						continue;
-					}
-					if (tmp.Index > candidate.Index)
-					{
-						candidate = tmp;
-					}
-				}
+
+				IList<ConcurrentDependencyNode> dependents = graph.GetListOfDependents(Index);
+
+				foreach (ConcurrentDependencyNode dep in dependents)
+                {
+                    if (dep.Index > candidate.Index)
+                    {
+                        candidate = dep;
+                    }
+
+                    ConcurrentDependencyNode tmp = dep.RightmostDescendant;
+
+                    if (tmp == null)
+                    {
+                        continue;
+                    }
+
+                    if (tmp.Index > candidate.Index)
+                    {
+                        candidate = tmp;
+                    }
+                }
+
 				return candidate;
 			}
 		}
@@ -1066,7 +1010,8 @@ namespace NMaltParser.Concurrent.Graph
 			get
 			{
 				ConcurrentDependencyNode node = LeftmostDescendant;
-				return (node != null)?node.Index:Index;
+
+				return node?.Index ?? Index;
 			}
 		}
 
@@ -1079,126 +1024,117 @@ namespace NMaltParser.Concurrent.Graph
 			get
 			{
 				ConcurrentDependencyNode node = RightmostDescendant;
-				return (node != null)?node.Index:Index;
+
+				return node?.Index ?? Index;
 			}
 		}
 
-		public ConcurrentDependencyNode findComponent()
+		public ConcurrentDependencyNode FindComponent()
 		{
-			return graph.FindComponent(index);
+			return graph.FindComponent(Index);
 		}
 
-		public int Rank
-		{
-			get
-			{
-				return graph.GetRank(index);
-			}
-		}
+		public int Rank => graph.GetRank(Index);
+        
+		public ConcurrentDependencyEdge HeadEdge => !HasHead() ? null : new ConcurrentDependencyEdge(graph.DataFormat, Head, this, labels);
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: public ConcurrentDependencyEdge getHeadEdge() throws ConcurrentGraphException
-		public ConcurrentDependencyEdge HeadEdge
+        public SortedSet<ConcurrentDependencyEdge> HeadEdges
 		{
 			get
-			{
-				if (!hasHead())
-				{
-					return null;
-				}
-				return new ConcurrentDependencyEdge(graph.DataFormat, Head, this, labels);
-			}
+            {
+                return factory.Get<SortedSet<ConcurrentDependencyEdge>>(() =>
+                {
+                    SortedSet<ConcurrentDependencyEdge> edges = new SortedSet<ConcurrentDependencyEdge>();
+
+                    if (HasHead())
+                    {
+                        edges.Add(new ConcurrentDependencyEdge(graph.DataFormat, Head, this, labels));
+                    }
+
+                    return edges;
+                });
+            }
 		}
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: public java.util.SortedSet<ConcurrentDependencyEdge> getHeadEdges() throws ConcurrentGraphException
-		public SortedSet<ConcurrentDependencyEdge> HeadEdges
-		{
-			get
-			{
-				SortedSet<ConcurrentDependencyEdge> edges = Collections.synchronizedSortedSet(new SortedSet<ConcurrentDependencyEdge>());
-				if (hasHead())
-				{
-					edges.Add(new ConcurrentDependencyEdge(graph.DataFormat, Head, this, labels));
-				}
-				return edges;
-			}
-		}
+		public bool HeadEdgeLabeled => EdgeLabels.Count > 0;
 
-		public bool HeadEdgeLabeled
-		{
-			get
-			{
-				return EdgeLabels.Count > 0;
-			}
-		}
-
-		public int nHeadEdgeLabels()
+        public int NHeadEdgeLabels()
 		{
 			return EdgeLabels.Count;
 		}
 
-		public DataFormat DataFormat
-		{
-			get
-			{
-				return graph.DataFormat;
-			}
-		}
+		public DataFormat.DataFormat DataFormat => graph.DataFormat;
 
-		public int CompareTo(ConcurrentDependencyNode that)
+        public int CompareTo(ConcurrentDependencyNode that)
 		{
-			const int BEFORE = -1;
-			const int EQUAL = 0;
-			const int AFTER = 1;
-			if (this == that)
+			const int before = -1;
+
+			const int equal = 0;
+
+			const int after = 1;
+
+			if (Equals(that))
 			{
-				return EQUAL;
+				return equal;
 			}
-			if (index < that.Index)
+
+			if (Index < that.Index)
 			{
-				return BEFORE;
+				return before;
 			}
-			if (index > that.Index)
-			{
-				return AFTER;
-			}
-			return EQUAL;
-		}
+
+			return Index > that.Index ? after : equal;
+        }
 
 		public override int GetHashCode()
 		{
 			const int prime = 31;
+
 			int result = 1;
-			result = prime * result + headIndex;
-			result = prime * result + index;
+
+			result = prime * result + HeadIndex;
+
+			result = prime * result + Index;
+
 			result = prime * result + ((labels == null) ? 0 : labels.GetHashCode());
+
 			return result;
 		}
 
-		public override bool Equals(object obj)
+        public bool Equals(ConcurrentDependencyNode other)
+        {
+            return Equals((object)other);
+        }
+
+        public override bool Equals(object obj)
 		{
 			if (this == obj)
 			{
 				return true;
 			}
+
 			if (obj == null)
 			{
 				return false;
 			}
+
 			if (GetType() != obj.GetType())
 			{
 				return false;
 			}
+
 			ConcurrentDependencyNode other = (ConcurrentDependencyNode) obj;
-			if (headIndex != other.headIndex)
+
+			if (HeadIndex != other.HeadIndex)
 			{
 				return false;
 			}
-			if (index != other.index)
+
+			if (Index != other.Index)
 			{
 				return false;
 			}
+
 			if (labels == null)
 			{
 				if (other.labels != null)
@@ -1210,22 +1146,23 @@ namespace NMaltParser.Concurrent.Graph
 			{
 				return false;
 			}
+
 			return true;
 		}
 
 		public override string ToString()
 		{
-//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-//ORIGINAL LINE: final StringBuilder sb = new StringBuilder();
 			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < graph.DataFormat.numberOfColumns(); i++)
+
+			for (int i = 0; i < graph.DataFormat.NumberOfColumns(); i++)
 			{
-				ColumnDescription column = graph.DataFormat.getColumnDescription(i);
+				ColumnDescription column = graph.DataFormat.GetColumnDescription(i);
+
 				if (!column.Internal)
 				{
 					if (column.Category == ColumnDescription.Head)
 					{
-						sb.Append(headIndex);
+						sb.Append(HeadIndex);
 					}
 					else if (column.Category == ColumnDescription.Input || column.Category == ColumnDescription.DependencyEdgeLabel)
 					{
@@ -1235,10 +1172,13 @@ namespace NMaltParser.Concurrent.Graph
 					{
 						sb.Append(column.DefaultOutput);
 					}
+
 					sb.Append('\t');
 				}
 			}
+
 			sb.Length = (sb.Length > 0)?sb.Length - 1:0;
+
 			return sb.ToString();
 		}
 	}
