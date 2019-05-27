@@ -9,7 +9,7 @@ namespace NMaltParser.Parser.Algorithm.Stack
 	/// </summary>
 	public class StackProjFactory : StackFactory
 	{
-		public StackProjFactory(DependencyParserConfig _manager) : base(_manager)
+		public StackProjFactory(IDependencyParserConfig _manager) : base(_manager)
 		{
 		}
 

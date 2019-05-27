@@ -354,13 +354,13 @@ namespace NMaltParser.ML.Lib
 			const int prime = 31;
 			long temp = BitConverter.DoubleToInt64Bits(bias);
 			int result = prime * 1 + (int)(temp ^ ((long)((ulong)temp >> 32)));
-			result = prime * result + Arrays.GetHashCode(labels);
+			result = prime * result + Arrays.HashCode(labels);
 			result = prime * result + nr_class;
 			result = prime * result + nr_feature;
 			result = prime * result + ((solverType == null) ? 0 : solverType.GetHashCode());
 			for (int i = 0; i < w.Length; i++)
 			{
-				result = prime * result + Arrays.GetHashCode(w[i]);
+				result = prime * result + Arrays.HashCode(w[i]);
 			}
 			return result;
 		}

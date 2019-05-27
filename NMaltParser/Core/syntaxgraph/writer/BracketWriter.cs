@@ -98,13 +98,13 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void writeSentence(org.maltparser.core.syntaxgraph.TokenStructure syntaxGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void writeSentence(TokenStructure syntaxGraph)
+		public virtual void writeSentence(ITokenStructure syntaxGraph)
 		{
 			if (syntaxGraph == null || dataFormatInstance == null)
 			{
 				return;
 			}
-			if (syntaxGraph is PhraseStructure && syntaxGraph.hasTokens())
+			if (syntaxGraph is PhraseStructure && syntaxGraph.HasTokens())
 			{
 	//			PhraseStructure phraseStructure = ((PhraseStructure) syntaxGraph);
 				if (format == PennWriterFormat.PRETTY)

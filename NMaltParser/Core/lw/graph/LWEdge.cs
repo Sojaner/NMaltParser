@@ -291,7 +291,7 @@ namespace NMaltParser.Core.LW.Graph
 		/// Returns the graph (structure) in which the graph element belongs to. 
 		/// </summary>
 		/// <returns> the graph (structure) in which the graph element belongs to.  </returns>
-		public LabeledStructure BelongsToGraph
+		public ILabeledStructure BelongsToGraph
 		{
 			get
 			{

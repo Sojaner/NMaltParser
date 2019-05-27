@@ -16,7 +16,7 @@ namespace NMaltParser.Parser
 		private readonly FeatureModel featureModel;
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public DeterministicParser(DependencyParserConfig manager, org.maltparser.core.symbol.SymbolTableHandler symbolTableHandler) throws org.maltparser.core.exception.MaltChainedException
-		public DeterministicParser(DependencyParserConfig manager, SymbolTableHandler symbolTableHandler) : base(manager,symbolTableHandler)
+		public DeterministicParser(IDependencyParserConfig manager, SymbolTableHandler symbolTableHandler) : base(manager,symbolTableHandler)
 		{
 			registry.Algorithm = this;
 			Guide = new SingleGuide(this, ClassifierGuide_GuideMode.CLASSIFY);
@@ -33,7 +33,7 @@ namespace NMaltParser.Parser
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.DependencyStructure parse(org.maltparser.core.syntaxgraph.DependencyStructure parseDependencyGraph) throws org.maltparser.core.exception.MaltChainedException
-		public override DependencyStructure parse(DependencyStructure parseDependencyGraph)
+		public override IDependencyStructure Parse(IDependencyStructure parseDependencyGraph)
 		{
 			parserState.clear();
 			parserState.initialize(parseDependencyGraph);
@@ -50,7 +50,7 @@ namespace NMaltParser.Parser
 			}
 	//		copyEdges(currentParserConfiguration.getDependencyGraph(), parseDependencyGraph);
 	//		copyDynamicInput(currentParserConfiguration.getDependencyGraph(), parseDependencyGraph);
-			parseDependencyGraph.linkAllTreesToRoot();
+			parseDependencyGraph.LinkAllTreesToRoot();
 			return parseDependencyGraph;
 		}
 
@@ -80,7 +80,7 @@ namespace NMaltParser.Parser
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void terminate() throws org.maltparser.core.exception.MaltChainedException
-		public override void terminate()
+		public override void Terminate()
 		{
 		}
 	}

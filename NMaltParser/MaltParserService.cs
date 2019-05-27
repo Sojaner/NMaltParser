@@ -141,7 +141,7 @@ namespace NMaltParser
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.DependencyStructure parse(String[] tokens) throws org.maltparser.core.exception.MaltChainedException
-		public virtual DependencyStructure parse(string[] tokens)
+		public virtual IDependencyStructure parse(string[] tokens)
 		{
 			if (!initialized)
 			{
@@ -152,12 +152,12 @@ namespace NMaltParser
 				throw new MaltChainedException("Nothing to parse. ");
 			}
 
-			DependencyStructure outputGraph = new DependencyGraph(singleMalt.SymbolTables);
+			IDependencyStructure outputGraph = new DependencyGraph(singleMalt.SymbolTables);
 
 			for (int i = 0; i < tokens.Length; i++)
 			{
 				IEnumerator<ColumnDescription> columns = dataFormatInstance.GetEnumerator();
-				DependencyNode node = outputGraph.addDependencyNode(i + 1);
+				DependencyNode node = outputGraph.AddDependencyNode(i + 1);
 				string[] items = tokens[i].Split("\t", true);
 				for (int j = 0; j < items.Length; j++)
 				{
@@ -168,14 +168,14 @@ namespace NMaltParser
 						ColumnDescription column = columns.next();
 						if (column.Category == ColumnDescription.INPUT && node != null)
 						{
-							outputGraph.addLabel(node, column.Name, items[j]);
+							outputGraph.AddLabel(node, column.Name, items[j]);
 						}
 					}
 				}
 			}
-			outputGraph.setDefaultRootEdgeLabel(outputGraph.SymbolTables.getSymbolTable("DEPREL"), "ROOT");
+			outputGraph.SetDefaultRootEdgeLabel(outputGraph.SymbolTables.getSymbolTable("DEPREL"), "ROOT");
 			// Invoke parse with the output graph
-			singleMalt.parse(outputGraph);
+			singleMalt.Parse(outputGraph);
 			return outputGraph;
 		}
 
@@ -188,7 +188,7 @@ namespace NMaltParser
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.DependencyStructure toDependencyStructure(String[] tokens) throws org.maltparser.core.exception.MaltChainedException
-		public virtual DependencyStructure toDependencyStructure(string[] tokens)
+		public virtual IDependencyStructure toDependencyStructure(string[] tokens)
 		{
 			if (!initialized)
 			{
@@ -198,12 +198,12 @@ namespace NMaltParser
 			{
 				throw new MaltChainedException("Nothing to convert. ");
 			}
-			DependencyStructure outputGraph = new DependencyGraph(singleMalt.SymbolTables);
+			IDependencyStructure outputGraph = new DependencyGraph(singleMalt.SymbolTables);
 
 			for (int i = 0; i < tokens.Length; i++)
 			{
 				IEnumerator<ColumnDescription> columns = dataFormatInstance.GetEnumerator();
-				DependencyNode node = outputGraph.addDependencyNode(i + 1);
+				DependencyNode node = outputGraph.AddDependencyNode(i + 1);
 				string[] items = tokens[i].Split("\t", true);
 				Edge edge = null;
 				for (int j = 0; j < items.Length; j++)
@@ -215,23 +215,23 @@ namespace NMaltParser
 						ColumnDescription column = columns.next();
 						if (column.Category == ColumnDescription.INPUT && node != null)
 						{
-							outputGraph.addLabel(node, column.Name, items[j]);
+							outputGraph.AddLabel(node, column.Name, items[j]);
 						}
 						else if (column.Category == ColumnDescription.HEAD)
 						{
 							if (column.Category != ColumnDescription.IGNORE && !items[j].Equals("_"))
 							{
-								edge = ((DependencyStructure)outputGraph).addDependencyEdge(int.Parse(items[j]), i + 1);
+								edge = ((IDependencyStructure)outputGraph).AddDependencyEdge(int.Parse(items[j]), i + 1);
 							}
 						}
 						else if (column.Category == ColumnDescription.DEPENDENCY_EDGE_LABEL && edge != null)
 						{
-							outputGraph.addLabel(edge, column.Name, items[j]);
+							outputGraph.AddLabel(edge, column.Name, items[j]);
 						}
 					}
 				}
 			}
-			outputGraph.setDefaultRootEdgeLabel(outputGraph.SymbolTables.getSymbolTable("DEPREL"), "ROOT");
+			outputGraph.SetDefaultRootEdgeLabel(outputGraph.SymbolTables.getSymbolTable("DEPREL"), "ROOT");
 			return outputGraph;
 		}
 
@@ -259,7 +259,7 @@ namespace NMaltParser
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.DependencyStructure toDependencyStructure(String[] tokens, org.maltparser.core.io.dataformat.DataFormatSpecification dataFormatSpecification) throws org.maltparser.core.exception.MaltChainedException
-		public virtual DependencyStructure toDependencyStructure(string[] tokens, DataFormatSpecification dataFormatSpecification)
+		public virtual IDependencyStructure toDependencyStructure(string[] tokens, DataFormatSpecification dataFormatSpecification)
 		{
 			// Creates a symbol table handler
 			SymbolTableHandler symbolTables = new HashSymbolTableHandler();
@@ -272,12 +272,12 @@ namespace NMaltParser
 			{
 				throw new MaltChainedException("Nothing to convert. ");
 			}
-			DependencyStructure outputGraph = new DependencyGraph(symbolTables);
+			IDependencyStructure outputGraph = new DependencyGraph(symbolTables);
 
 			for (int i = 0; i < tokens.Length; i++)
 			{
 				IEnumerator<ColumnDescription> columns = dataFormatInstance.GetEnumerator();
-				DependencyNode node = outputGraph.addDependencyNode(i + 1);
+				DependencyNode node = outputGraph.AddDependencyNode(i + 1);
 				string[] items = tokens[i].Split("\t", true);
 				Edge edge = null;
 				for (int j = 0; j < items.Length; j++)
@@ -289,23 +289,23 @@ namespace NMaltParser
 						ColumnDescription column = columns.next();
 						if (column.Category == ColumnDescription.INPUT && node != null)
 						{
-							outputGraph.addLabel(node, column.Name, items[j]);
+							outputGraph.AddLabel(node, column.Name, items[j]);
 						}
 						else if (column.Category == ColumnDescription.HEAD)
 						{
 							if (column.Category != ColumnDescription.IGNORE && !items[j].Equals("_"))
 							{
-								edge = ((DependencyStructure)outputGraph).addDependencyEdge(int.Parse(items[j]), i + 1);
+								edge = ((IDependencyStructure)outputGraph).AddDependencyEdge(int.Parse(items[j]), i + 1);
 							}
 						}
 						else if (column.Category == ColumnDescription.DEPENDENCY_EDGE_LABEL && edge != null)
 						{
-							outputGraph.addLabel(edge, column.Name, items[j]);
+							outputGraph.AddLabel(edge, column.Name, items[j]);
 						}
 					}
 				}
 			}
-			outputGraph.setDefaultRootEdgeLabel(outputGraph.SymbolTables.getSymbolTable("DEPREL"), "ROOT");
+			outputGraph.SetDefaultRootEdgeLabel(outputGraph.SymbolTables.getSymbolTable("DEPREL"), "ROOT");
 			return outputGraph;
 		}
 
@@ -318,7 +318,7 @@ namespace NMaltParser
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.DependencyStructure toDependencyStructure(String[] tokens, String dataFormatFileName) throws org.maltparser.core.exception.MaltChainedException
-		public virtual DependencyStructure toDependencyStructure(string[] tokens, string dataFormatFileName)
+		public virtual IDependencyStructure toDependencyStructure(string[] tokens, string dataFormatFileName)
 		{
 			return toDependencyStructure(tokens, readDataFormatSpecification(dataFormatFileName));
 		}
@@ -333,7 +333,7 @@ namespace NMaltParser
 //ORIGINAL LINE: public String[] parseTokens(String[] tokens) throws org.maltparser.core.exception.MaltChainedException
 		public virtual string[] parseTokens(string[] tokens)
 		{
-			DependencyStructure outputGraph = parse(tokens);
+			IDependencyStructure outputGraph = parse(tokens);
 			StringBuilder sb = new StringBuilder();
 			string[] outputTokens = new string[tokens.Length];
 			SymbolTable deprelTable = outputGraph.SymbolTables.getSymbolTable("DEPREL");
@@ -342,7 +342,7 @@ namespace NMaltParser
 				sb.Length = 0;
 				if (index <= tokens.Length)
 				{
-					DependencyNode node = outputGraph.getDependencyNode(index.Value);
+					DependencyNode node = outputGraph.GetDependencyNode(index.Value);
 					sb.Append(tokens[index - 1]);
 					sb.Append('\t');
 					sb.Append(node.Head.Index);
@@ -353,7 +353,7 @@ namespace NMaltParser
 					}
 					else
 					{
-						sb.Append(outputGraph.getDefaultRootEdgeLabelSymbol(deprelTable));
+						sb.Append(outputGraph.GetDefaultRootEdgeLabelSymbol(deprelTable));
 					}
 					outputTokens[index - 1] = sb.ToString();
 				}

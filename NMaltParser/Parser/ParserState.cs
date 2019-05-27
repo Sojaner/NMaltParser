@@ -19,7 +19,7 @@ namespace NMaltParser.Parser
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public ParserState(DependencyParserConfig manager, org.maltparser.core.symbol.SymbolTableHandler symbolTableHandler, AbstractParserFactory factory) throws org.maltparser.core.exception.MaltChainedException
-		public ParserState(DependencyParserConfig manager, SymbolTableHandler symbolTableHandler, AbstractParserFactory factory)
+		public ParserState(IDependencyParserConfig manager, SymbolTableHandler symbolTableHandler, AbstractParserFactory factory)
 		{
 			this.factory = factory;
 			historyStructure = new HistoryList();
@@ -68,7 +68,7 @@ namespace NMaltParser.Parser
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void initialize(org.maltparser.core.syntaxgraph.DependencyStructure dependencyStructure) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void initialize(DependencyStructure dependencyStructure)
+		public virtual void initialize(IDependencyStructure dependencyStructure)
 		{
 			config.clear();
 			config.DependencyGraph = dependencyStructure;

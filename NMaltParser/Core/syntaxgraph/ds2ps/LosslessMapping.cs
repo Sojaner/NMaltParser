@@ -135,15 +135,15 @@ namespace NMaltParser.Core.SyntaxGraph.Ds2PS
 //ORIGINAL LINE: public void updateDependenyGraph(org.maltparser.core.syntaxgraph.MappablePhraseStructureGraph graph, org.maltparser.core.syntaxgraph.node.PhraseStructureNode top) throws org.maltparser.core.exception.MaltChainedException
 		public virtual void updateDependenyGraph(MappablePhraseStructureGraph graph, PhraseStructureNode top)
 		{
-			if (graph.nTokenNode() == 1 && graph.nNonTerminals() == 0)
+			if (graph.NTokenNode() == 1 && graph.nNonTerminals() == 0)
 			{
 				// Special case when the root dominates direct a single terminal node
-				Edge.Edge e = graph.addDependencyEdge(graph.DependencyRoot, graph.getDependencyNode(1));
-				e.addLabel(graph.SymbolTables.getSymbolTable(DEPREL), graph.getDefaultRootEdgeLabelSymbol(graph.SymbolTables.getSymbolTable(DEPREL)));
-				e.addLabel(graph.SymbolTables.getSymbolTable(HEADREL), graph.getDefaultRootEdgeLabelSymbol(graph.SymbolTables.getSymbolTable(HEADREL)));
+				Edge.Edge e = graph.addDependencyEdge(graph.DependencyRoot, graph.GetDependencyNode(1));
+				e.addLabel(graph.SymbolTables.getSymbolTable(DEPREL), graph.GetDefaultRootEdgeLabelSymbol(graph.SymbolTables.getSymbolTable(DEPREL)));
+				e.addLabel(graph.SymbolTables.getSymbolTable(HEADREL), graph.GetDefaultRootEdgeLabelSymbol(graph.SymbolTables.getSymbolTable(HEADREL)));
 				e.addLabel(graph.SymbolTables.getSymbolTable(PHRASE), "*");
 	//			e.addLabel(graph.getSymbolTables().getSymbolTable(PHRASE), graph.getDefaultRootEdgeLabelSymbol(graph.getSymbolTables().getSymbolTable(PHRASE)));
-				e.addLabel(graph.SymbolTables.getSymbolTable(ATTACH), graph.getDefaultRootEdgeLabelSymbol(graph.SymbolTables.getSymbolTable(ATTACH)));
+				e.addLabel(graph.SymbolTables.getSymbolTable(ATTACH), graph.GetDefaultRootEdgeLabelSymbol(graph.SymbolTables.getSymbolTable(ATTACH)));
 			}
 			else
 			{
@@ -232,14 +232,14 @@ namespace NMaltParser.Core.SyntaxGraph.Ds2PS
 		{
 			foreach (int index in graph.TokenIndices)
 			{
-				PhraseStructureNode top = (PhraseStructureNode)graph.getTokenNode(index);
+				PhraseStructureNode top = (PhraseStructureNode)graph.GetTokenNode(index);
 
-				while (top != null && top.Parent != null && graph.getTokenNode(index) == ((NonTerminalNode)top.Parent).getLexicalHead(headRules))
+				while (top != null && top.Parent != null && graph.GetTokenNode(index) == ((NonTerminalNode)top.Parent).getLexicalHead(headRules))
 				{
 					top = top.Parent;
 				}
 				lockUpdate = true;
-				labelDependencyEdge(graph, graph.getTokenNode(index).HeadEdge, top);
+				labelDependencyEdge(graph, graph.GetTokenNode(index).HeadEdge, top);
 				lockUpdate = false;
 			}
 		}
@@ -331,7 +331,7 @@ namespace NMaltParser.Core.SyntaxGraph.Ds2PS
 			}
 			else
 			{
-				string deprelDefaultRootLabel = graph.getDefaultRootEdgeLabelSymbol(symbolTables.getSymbolTable(DEPREL));
+				string deprelDefaultRootLabel = graph.GetDefaultRootEdgeLabelSymbol(symbolTables.getSymbolTable(DEPREL));
 				if (!ReferenceEquals(deprelDefaultRootLabel, null))
 				{
 					e.addLabel(symbolTables.getSymbolTable(DEPREL), deprelDefaultRootLabel);
@@ -373,7 +373,7 @@ namespace NMaltParser.Core.SyntaxGraph.Ds2PS
 					{
 						if (tmp.Parent.Root)
 						{
-							string deprelDefaultRootLabel = graph.getDefaultRootEdgeLabelSymbol(symbolTables.getSymbolTable(PHRASE));
+							string deprelDefaultRootLabel = graph.GetDefaultRootEdgeLabelSymbol(symbolTables.getSymbolTable(PHRASE));
 							if (!ReferenceEquals(deprelDefaultRootLabel, null))
 							{
 								phrase.Append(deprelDefaultRootLabel);
@@ -427,7 +427,7 @@ namespace NMaltParser.Core.SyntaxGraph.Ds2PS
 
 			if (!graph.PhraseStructureRoot.Labeled)
 			{
-				graph.PhraseStructureRoot.addLabel(graph.SymbolTables.addSymbolTable(CAT), graph.getDefaultRootEdgeLabelSymbol(graph.SymbolTables.getSymbolTable(PHRASE)));
+				graph.PhraseStructureRoot.addLabel(graph.SymbolTables.addSymbolTable(CAT), graph.GetDefaultRootEdgeLabelSymbol(graph.SymbolTables.getSymbolTable(PHRASE)));
 
 			}
 		}
@@ -620,7 +620,7 @@ namespace NMaltParser.Core.SyntaxGraph.Ds2PS
 					}
 					else
 					{
-						e.addLabel(graph.SymbolTables.addSymbolTable(EDGELABEL), graph.getDefaultRootEdgeLabelSymbol(graph.SymbolTables.getSymbolTable(DEPREL)));
+						e.addLabel(graph.SymbolTables.addSymbolTable(EDGELABEL), graph.GetDefaultRootEdgeLabelSymbol(graph.SymbolTables.getSymbolTable(DEPREL)));
 					}
 					lockUpdate = false;
 					// Recursively attach the dependent spines to target node. 

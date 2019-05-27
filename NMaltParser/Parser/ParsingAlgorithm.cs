@@ -13,120 +13,85 @@ namespace NMaltParser.Parser
 	/// </summary>
 	public abstract class ParsingAlgorithm : AlgoritmInterface
 	{
-		protected internal readonly DependencyParserConfig manager;
-		protected internal readonly ParserRegistry registry;
-		protected internal ClassifierGuide classifierGuide;
-		protected internal readonly ParserState parserState;
-		protected internal ParserConfiguration currentParserConfiguration;
-
 		/// <summary>
 		/// Creates a parsing algorithm
 		/// </summary>
-		/// <param name="_manager"> a reference to the single malt configuration </param>
+		/// <param name="manager"> a reference to the single malt configuration </param>
 		/// <param name="symbolTableHandler"> a reference to the symbol table handler </param>
 		/// <exception cref="MaltChainedException"> </exception>
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: public ParsingAlgorithm(DependencyParserConfig _manager, org.maltparser.core.symbol.SymbolTableHandler symbolTableHandler) throws org.maltparser.core.exception.MaltChainedException
-		public ParsingAlgorithm(DependencyParserConfig _manager, SymbolTableHandler symbolTableHandler)
+        protected ParsingAlgorithm(IDependencyParserConfig manager, SymbolTableHandler symbolTableHandler)
 		{
-			manager = _manager;
-			registry = new ParserRegistry();
-			registry.SymbolTableHandler = symbolTableHandler;
-			registry.DataFormatInstance = manager.DataFormatInstance;
-			registry.setAbstractParserFeatureFactory(manager.ParserFactory);
-			parserState = new ParserState(manager, symbolTableHandler, manager.ParserFactory);
+			Manager = manager;
+
+            ParserRegistry = new ParserRegistry
+            {
+                SymbolTableHandler = symbolTableHandler,
+
+                DataFormatInstance = Manager.DataFormatInstance
+            };
+
+            ParserRegistry.setAbstractParserFeatureFactory(Manager.ParserFactory);
+
+            ParserState = new ParserState(Manager, symbolTableHandler, Manager.ParserFactory);
 		}
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: public abstract void terminate() throws org.maltparser.core.exception.MaltChainedException;
-		public abstract void terminate();
+		public abstract void Terminate();
 
-		public virtual ParserRegistry ParserRegistry
-		{
-			get
-			{
-				return registry;
-			}
-		}
+		public ParserRegistry ParserRegistry { get; }
 
-		/// <summary>
+        /// <summary>
 		/// Returns the classifier guide.
 		/// </summary>
 		/// <returns> the classifier guide </returns>
-		public virtual ClassifierGuide Guide
-		{
-			get
-			{
-				return classifierGuide;
-			}
-			set
-			{
-				classifierGuide = value;
-			}
-		}
+		public ClassifierGuide Guide
+        {
+            get;
+            set;
+        }
 
 
 		/// <summary>
 		/// Returns the current active parser configuration
 		/// </summary>
 		/// <returns> the current active parser configuration </returns>
-		public virtual ParserConfiguration CurrentParserConfiguration
+		public ParserConfiguration CurrentParserConfiguration
 		{
-			get
-			{
-				return currentParserConfiguration;
-			}
-			set
-			{
-				currentParserConfiguration = value;
-			}
-		}
+			get;
+            set;
+        }
 
 
 		/// <summary>
 		/// Returns the parser state
 		/// </summary>
 		/// <returns> the parser state </returns>
-		public virtual ParserState ParserState
-		{
-			get
-			{
-				return parserState;
-			}
-		}
+		public ParserState ParserState { get; }
 
 
-		/// <summary>
-		/// Returns the single malt configuration
-		/// </summary>
-		/// <returns> the single malt configuration </returns>
-		public virtual DependencyParserConfig Manager
-		{
-			get
-			{
-				return manager;
-			}
-		}
+        /// <summary>
+        /// Returns the single malt configuration
+        /// </summary>
+        /// <returns> the single malt configuration </returns>
+        public IDependencyParserConfig Manager { get; }
 
 
-		/// <summary>
+        /// <summary>
 		/// Copies the edges of the source dependency structure to the target dependency structure
 		/// </summary>
 		/// <param name="source"> a source dependency structure </param>
 		/// <param name="target"> a target dependency structure </param>
 		/// <exception cref="MaltChainedException"> </exception>
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: protected void copyEdges(org.maltparser.core.syntaxgraph.DependencyStructure source, org.maltparser.core.syntaxgraph.DependencyStructure target) throws org.maltparser.core.exception.MaltChainedException
-		protected internal virtual void copyEdges(DependencyStructure source, DependencyStructure target)
+		protected internal virtual void CopyEdges(IDependencyStructure source, IDependencyStructure target)
 		{
 			foreach (int index in source.TokenIndices)
 			{
-				DependencyNode snode = source.getDependencyNode(index);
+				DependencyNode sNode = source.GetDependencyNode(index);
 
-				if (snode.hasHead())
+				if (sNode.hasHead())
 				{
-					Edge s = snode.HeadEdge;
-					Edge t = target.addDependencyEdge(s.Source.Index, s.Target.Index);
+					Edge s = sNode.HeadEdge;
+
+					Edge t = target.AddDependencyEdge(s.Source.Index, s.Target.Index);
 
 					foreach (SymbolTable table in s.LabelTypes)
 					{
@@ -135,24 +100,23 @@ namespace NMaltParser.Parser
 				}
 			}
 		}
-
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: protected void copyDynamicInput(org.maltparser.core.syntaxgraph.DependencyStructure source, org.maltparser.core.syntaxgraph.DependencyStructure target) throws org.maltparser.core.exception.MaltChainedException
-		protected internal virtual void copyDynamicInput(DependencyStructure source, DependencyStructure target)
+        
+		protected internal virtual void CopyDynamicInput(IDependencyStructure source, IDependencyStructure target)
 		{
 			foreach (int index in source.TokenIndices)
 			{
-				DependencyNode snode = source.getDependencyNode(index);
-				DependencyNode tnode = target.getDependencyNode(index);
-				foreach (SymbolTable table in snode.LabelTypes)
+				DependencyNode sNode = source.GetDependencyNode(index);
+
+				DependencyNode tNode = target.GetDependencyNode(index);
+
+				foreach (SymbolTable table in sNode.LabelTypes)
 				{
-					if (!tnode.hasLabel(table))
+					if (!tNode.hasLabel(table))
 					{
-						tnode.addLabel(table,snode.getLabelSymbol(table));
+						tNode.addLabel(table,sNode.getLabelSymbol(table));
 					}
 				}
 			}
 		}
 	}
-
 }

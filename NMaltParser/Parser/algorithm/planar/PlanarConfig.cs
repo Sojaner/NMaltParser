@@ -37,7 +37,7 @@ namespace NMaltParser.Parser.Algorithm.Planar
 
 		private readonly Stack<DependencyNode> stack;
 		private readonly Stack<DependencyNode> input;
-		private DependencyStructure dependencyGraph;
+		private IDependencyStructure dependencyGraph;
 
 
 		//root handling: explicitly create links to dummy root or not?
@@ -72,7 +72,7 @@ namespace NMaltParser.Parser.Algorithm.Planar
 			}
 		}
 
-		public virtual DependencyStructure DependencyStructure
+		public virtual IDependencyStructure DependencyStructure
 		{
 			get
 			{
@@ -122,7 +122,7 @@ namespace NMaltParser.Parser.Algorithm.Planar
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void setDependencyGraph(org.maltparser.core.syntaxgraph.DependencyStructure source) throws org.maltparser.core.exception.MaltChainedException
-		public override DependencyStructure DependencyGraph
+		public override IDependencyStructure DependencyGraph
 		{
 			set
 			{
@@ -168,12 +168,12 @@ namespace NMaltParser.Parser.Algorithm.Planar
 				for (int i = 0, n = sourceStack.Count; i < n; i++)
 				{
 //JAVA TO C# CONVERTER TODO TASK: There is no direct .NET Stack equivalent to Java Stack methods based on internal indexing:
-					stack.Push(dependencyGraph.getDependencyNode(sourceStack.get(i).Index));
+					stack.Push(dependencyGraph.GetDependencyNode(sourceStack.get(i).Index));
 				}
 				for (int i = 0, n = sourceInput.Count; i < n; i++)
 				{
 //JAVA TO C# CONVERTER TODO TASK: There is no direct .NET Stack equivalent to Java Stack methods based on internal indexing:
-					input.Push(dependencyGraph.getDependencyNode(sourceInput.get(i).Index));
+					input.Push(dependencyGraph.GetDependencyNode(sourceInput.get(i).Index));
 				}
 			}
 			else
@@ -183,7 +183,7 @@ namespace NMaltParser.Parser.Algorithm.Planar
 				{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.syntaxgraph.node.DependencyNode node = dependencyGraph.getDependencyNode(i);
-					DependencyNode node = dependencyGraph.getDependencyNode(i);
+					DependencyNode node = dependencyGraph.GetDependencyNode(i);
 					if (node != null && !node.hasHead())
 					{
 						input.Push(node);
@@ -201,7 +201,7 @@ namespace NMaltParser.Parser.Algorithm.Planar
 			{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.syntaxgraph.node.DependencyNode node = dependencyGraph.getDependencyNode(i);
-				DependencyNode node = dependencyGraph.getDependencyNode(i);
+				DependencyNode node = dependencyGraph.GetDependencyNode(i);
 				if (node != null && !node.hasHead())
 				{
 					input.Push(node);
@@ -355,7 +355,7 @@ namespace NMaltParser.Parser.Algorithm.Planar
 			{
 				return false;
 			}
-			if (dependencyGraph.nEdges() != that.DependencyGraph.nEdges())
+			if (dependencyGraph.NEdges() != that.DependencyGraph.NEdges())
 			{
 				return false;
 			}
@@ -387,7 +387,7 @@ namespace NMaltParser.Parser.Algorithm.Planar
 			sb.Append(", ");
 			sb.Append(input.Count);
 			sb.Append(", ");
-			sb.Append(dependencyGraph.nEdges());
+			sb.Append(dependencyGraph.NEdges());
 			return sb.ToString();
 		}
 	}

@@ -14,14 +14,14 @@ namespace NMaltParser.Parser.Algorithm.Nivre
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public ArcStandardOracle(org.maltparser.parser.DependencyParserConfig manager, org.maltparser.parser.history.GuideUserHistory history) throws org.maltparser.core.exception.MaltChainedException
-		public ArcStandardOracle(DependencyParserConfig manager, GuideUserHistory history) : base(manager, history)
+		public ArcStandardOracle(IDependencyParserConfig manager, GuideUserHistory history) : base(manager, history)
 		{
 			GuideName = "ArcStandard";
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.parser.history.action.GuideUserAction predict(org.maltparser.core.syntaxgraph.DependencyStructure gold, org.maltparser.parser.ParserConfiguration config) throws org.maltparser.core.exception.MaltChainedException
-		public override GuideUserAction predict(DependencyStructure gold, ParserConfiguration config)
+		public override GuideUserAction predict(IDependencyStructure gold, ParserConfiguration config)
 		{
 			NivreConfig nivreConfig = (NivreConfig)config;
 			DependencyNode stackPeek = nivreConfig.Stack.Peek();
@@ -32,13 +32,13 @@ namespace NMaltParser.Parser.Algorithm.Nivre
 			{
 				return updateActionContainers(ArcStandard.SHIFT, null);
 			}
-			if (!stackPeek.Root && gold.getTokenNode(stackPeekIndex).Head.Index == inputPeekIndex)
+			if (!stackPeek.Root && gold.GetTokenNode(stackPeekIndex).Head.Index == inputPeekIndex)
 			{
-				return updateActionContainers(ArcStandard.LEFTARC, gold.getTokenNode(stackPeekIndex).HeadEdge.LabelSet);
+				return updateActionContainers(ArcStandard.LEFTARC, gold.GetTokenNode(stackPeekIndex).HeadEdge.LabelSet);
 			}
-			else if (gold.getTokenNode(inputPeekIndex).Head.Index == stackPeekIndex && checkRightDependent(gold, nivreConfig.DependencyGraph, inputPeekIndex))
+			else if (gold.GetTokenNode(inputPeekIndex).Head.Index == stackPeekIndex && checkRightDependent(gold, nivreConfig.DependencyGraph, inputPeekIndex))
 			{
-				return updateActionContainers(ArcStandard.RIGHTARC, gold.getTokenNode(inputPeekIndex).HeadEdge.LabelSet);
+				return updateActionContainers(ArcStandard.RIGHTARC, gold.GetTokenNode(inputPeekIndex).HeadEdge.LabelSet);
 			}
 			else
 			{
@@ -48,15 +48,15 @@ namespace NMaltParser.Parser.Algorithm.Nivre
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean checkRightDependent(org.maltparser.core.syntaxgraph.DependencyStructure gold, org.maltparser.core.syntaxgraph.DependencyStructure parseDependencyGraph, int inputPeekIndex) throws org.maltparser.core.exception.MaltChainedException
-		private bool checkRightDependent(DependencyStructure gold, DependencyStructure parseDependencyGraph, int inputPeekIndex)
+		private bool checkRightDependent(IDependencyStructure gold, IDependencyStructure parseDependencyGraph, int inputPeekIndex)
 		{
-			if (gold.getTokenNode(inputPeekIndex).RightmostDependent == null)
+			if (gold.GetTokenNode(inputPeekIndex).RightmostDependent == null)
 			{
 				return true;
 			}
-			else if (parseDependencyGraph.getTokenNode(inputPeekIndex).RightmostDependent != null)
+			else if (parseDependencyGraph.GetTokenNode(inputPeekIndex).RightmostDependent != null)
 			{
-				if (gold.getTokenNode(inputPeekIndex).RightmostDependent.Index == parseDependencyGraph.getTokenNode(inputPeekIndex).RightmostDependent.Index)
+				if (gold.GetTokenNode(inputPeekIndex).RightmostDependent.Index == parseDependencyGraph.GetTokenNode(inputPeekIndex).RightmostDependent.Index)
 				{
 					return true;
 				}
@@ -66,7 +66,7 @@ namespace NMaltParser.Parser.Algorithm.Nivre
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void finalizeSentence(org.maltparser.core.syntaxgraph.DependencyStructure dependencyGraph) throws org.maltparser.core.exception.MaltChainedException
-		public override void finalizeSentence(DependencyStructure dependencyGraph)
+		public override void finalizeSentence(IDependencyStructure dependencyGraph)
 		{
 
 		}

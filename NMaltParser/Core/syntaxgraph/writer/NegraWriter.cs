@@ -81,9 +81,9 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void writeSentence(org.maltparser.core.syntaxgraph.TokenStructure syntaxGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void writeSentence(TokenStructure syntaxGraph)
+		public virtual void writeSentence(ITokenStructure syntaxGraph)
 		{
-			if (syntaxGraph == null || dataFormatInstance == null || !(syntaxGraph is PhraseStructure) || !syntaxGraph.hasTokens())
+			if (syntaxGraph == null || dataFormatInstance == null || !(syntaxGraph is PhraseStructure) || !syntaxGraph.HasTokens())
 			{
 				return;
 			}
@@ -198,7 +198,7 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 				{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.syntaxgraph.node.PhraseStructureNode terminal = phraseStructure.getTokenNode(index);
-					PhraseStructureNode terminal = phraseStructure.getTokenNode(index);
+					PhraseStructureNode terminal = phraseStructure.GetTokenNode(index);
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final java.util.Iterator<org.maltparser.core.io.dataformat.ColumnDescription> columns = dataFormatInstance.iterator();
 					IEnumerator<ColumnDescription> columns = dataFormatInstance.GetEnumerator();

@@ -13,9 +13,9 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 	{
 		public abstract OracleGuide makeOracleGuide(GuideUserHistory history);
 		public abstract TransitionSystem makeTransitionSystem();
-		protected internal readonly DependencyParserConfig manager;
+		protected internal readonly IDependencyParserConfig manager;
 
-		public TwoPlanarFactory(DependencyParserConfig _manager)
+		public TwoPlanarFactory(IDependencyParserConfig _manager)
 		{
 			manager = _manager;
 		}

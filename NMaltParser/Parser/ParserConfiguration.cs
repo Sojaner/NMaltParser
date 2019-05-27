@@ -41,7 +41,7 @@ namespace NMaltParser.Parser
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public abstract void setDependencyGraph(org.maltparser.core.syntaxgraph.DependencyStructure dependencyStructure) throws org.maltparser.core.exception.MaltChainedException;
-		public abstract DependencyStructure DependencyGraph {set;get;}
+		public abstract IDependencyStructure DependencyGraph {set;get;}
 		/// <summary>
 		/// Returns true if the parser configuration is in a terminal state, otherwise false.
 		/// </summary>

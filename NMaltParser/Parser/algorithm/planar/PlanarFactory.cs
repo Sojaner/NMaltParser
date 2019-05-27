@@ -13,9 +13,9 @@ namespace NMaltParser.Parser.Algorithm.Planar
 	{
 		public abstract OracleGuide makeOracleGuide(GuideUserHistory history);
 		public abstract TransitionSystem makeTransitionSystem();
-		protected internal readonly DependencyParserConfig manager;
+		protected internal readonly IDependencyParserConfig manager;
 
-		public PlanarFactory(DependencyParserConfig _manager)
+		public PlanarFactory(IDependencyParserConfig _manager)
 		{
 			manager = _manager;
 		}

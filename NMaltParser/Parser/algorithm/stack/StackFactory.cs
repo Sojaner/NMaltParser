@@ -13,9 +13,9 @@ namespace NMaltParser.Parser.Algorithm.Stack
 	{
 		public abstract OracleGuide makeOracleGuide(GuideUserHistory history);
 		public abstract TransitionSystem makeTransitionSystem();
-		protected internal readonly DependencyParserConfig manager;
+		protected internal readonly IDependencyParserConfig manager;
 
-		public StackFactory(DependencyParserConfig _manager)
+		public StackFactory(IDependencyParserConfig _manager)
 		{
 			manager = _manager;
 		}

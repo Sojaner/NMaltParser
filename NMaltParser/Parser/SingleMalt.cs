@@ -21,9 +21,9 @@ namespace NMaltParser.Parser
 	/// @author Johan Hall
 	/// 
 	/// </summary>
-	public class SingleMalt : DependencyParserConfig
+	public class SingleMalt : IDependencyParserConfig
 	{
-		public static readonly Type[] paramTypes = new Type[] {typeof(DependencyParserConfig)};
+		public static readonly Type[] paramTypes = new Type[] {typeof(IDependencyParserConfig)};
 		public const int LEARN = 0;
 		public const int PARSE = 1;
 		protected internal ConfigurationDir configDir;
@@ -244,27 +244,27 @@ namespace NMaltParser.Parser
 		{
 			if (mode == LEARN)
 			{
-				if (arguments.Length < 2 || !(arguments[0] is DependencyStructure) || !(arguments[1] is DependencyStructure))
+				if (arguments.Length < 2 || !(arguments[0] is IDependencyStructure) || !(arguments[1] is IDependencyStructure))
 				{
 					throw new MaltChainedException("The single malt learn task must be supplied with at least two dependency structures. ");
 				}
-				DependencyStructure systemGraph = (DependencyStructure)arguments[0];
-				DependencyStructure goldGraph = (DependencyStructure)arguments[1];
-				if (systemGraph.hasTokens() && Guide != null)
+				IDependencyStructure systemGraph = (IDependencyStructure)arguments[0];
+				IDependencyStructure goldGraph = (IDependencyStructure)arguments[1];
+				if (systemGraph.HasTokens() && Guide != null)
 				{
 					Guide.finalizeSentence(((Trainer)Algorithm).parse(goldGraph, systemGraph));
 				}
 			}
 			else if (mode == PARSE)
 			{
-				if (arguments.Length < 1 || !(arguments[0] is DependencyStructure))
+				if (arguments.Length < 1 || !(arguments[0] is IDependencyStructure))
 				{
 					throw new MaltChainedException("The single malt parse task must be supplied with at least one input terminal structure and one output dependency structure. ");
 				}
-				DependencyStructure processGraph = (DependencyStructure)arguments[0];
-				if (processGraph.hasTokens())
+				IDependencyStructure processGraph = (IDependencyStructure)arguments[0];
+				if (processGraph.HasTokens())
 				{
-					parser.parse(processGraph);
+					parser.Parse(processGraph);
 	//				((Parser)getAlgorithm()).parse(processGraph);
 				}
 			}
@@ -272,20 +272,20 @@ namespace NMaltParser.Parser
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void parse(org.maltparser.core.syntaxgraph.DependencyStructure graph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void parse(DependencyStructure graph)
+		public virtual void Parse(IDependencyStructure graph)
 		{
-			if (graph.hasTokens())
+			if (graph.HasTokens())
 			{
 	//			((Parser)getAlgorithm()).parse(graph);
-				parser.parse(graph);
+				parser.Parse(graph);
 			}
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void oracleParse(org.maltparser.core.syntaxgraph.DependencyStructure goldGraph, org.maltparser.core.syntaxgraph.DependencyStructure oracleGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void oracleParse(DependencyStructure goldGraph, DependencyStructure oracleGraph)
+		public virtual void OracleParse(IDependencyStructure goldGraph, IDependencyStructure oracleGraph)
 		{
-			if (oracleGraph.hasTokens())
+			if (oracleGraph.HasTokens())
 			{
 				if (Guide != null)
 				{
@@ -315,7 +315,7 @@ namespace NMaltParser.Parser
 	//		if (getAlgorithm() instanceof Trainer) {
 	//			((Trainer)getAlgorithm()).terminate();
 	//		}
-			Algorithm.terminate();
+			Algorithm.Terminate();
 			if (Guide != null)
 			{
 				Guide.terminate();

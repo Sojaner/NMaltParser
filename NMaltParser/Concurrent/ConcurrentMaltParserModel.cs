@@ -106,7 +106,7 @@ namespace NMaltParser.Concurrent
 			string[] outputTokens = new string[tokens.Length];
 			for (int i = 0; i < outputTokens.Length; i++)
 			{
-				outputTokens[i] = outputGraph.getDependencyNode(i + 1).ToString();
+				outputTokens[i] = outputGraph.GetDependencyNode(i + 1).ToString();
 			}
 			return outputTokens;
 		}
@@ -122,7 +122,7 @@ namespace NMaltParser.Concurrent
 
 			LWDependencyGraph parseGraph = new LWDependencyGraph(concurrentDataFormat, new ParseSymbolTableHandler(parentSymbolTableHandler), tokens, defaultRootLabel, false);
 
-			singleMalt.parse(parseGraph);
+			singleMalt.Parse(parseGraph);
 			if (markingStrategy != 0 || coveredRoot)
 			{
 				(new LWDeprojectivizer()).deprojectivize(parseGraph, markingStrategy);

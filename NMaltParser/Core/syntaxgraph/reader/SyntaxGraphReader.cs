@@ -54,7 +54,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public boolean readSentence(org.maltparser.core.syntaxgraph.TokenStructure syntaxGraph) throws org.maltparser.core.exception.MaltChainedException;
-		bool readSentence(TokenStructure syntaxGraph);
+		bool readSentence(ITokenStructure syntaxGraph);
 		/// <summary>
 		/// Reads the end of the file, after all sentences have been processed, 
 		/// </summary>

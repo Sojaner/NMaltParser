@@ -46,7 +46,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 
 		private Stack<DependencyNode> input;
 
-		private DependencyStructure dependencyGraph;
+		private IDependencyStructure dependencyGraph;
 
 		//root handling: explicitly create links to dummy root or not?
 		private int rootHandling;
@@ -163,7 +163,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 			}
 		}
 
-		public virtual DependencyStructure DependencyStructure
+		public virtual IDependencyStructure DependencyStructure
 		{
 			get
 			{
@@ -227,7 +227,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void setDependencyGraph(org.maltparser.core.syntaxgraph.DependencyStructure source) throws org.maltparser.core.exception.MaltChainedException
-		public override DependencyStructure DependencyGraph
+		public override IDependencyStructure DependencyGraph
 		{
 			set
 			{
@@ -272,17 +272,17 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 				for (int i = 0, n = sourceActiveStack.Count; i < n; i++)
 				{
 //JAVA TO C# CONVERTER TODO TASK: There is no direct .NET Stack equivalent to Java Stack methods based on internal indexing:
-					ActiveStack.Push(dependencyGraph.getDependencyNode(sourceActiveStack.get(i).Index));
+					ActiveStack.Push(dependencyGraph.GetDependencyNode(sourceActiveStack.get(i).Index));
 				}
 				for (int i = 0, n = sourceInactiveStack.Count ; i < n ; i++)
 				{
 //JAVA TO C# CONVERTER TODO TASK: There is no direct .NET Stack equivalent to Java Stack methods based on internal indexing:
-					InactiveStack.Push(dependencyGraph.getDependencyNode(sourceInactiveStack.get(i).Index));
+					InactiveStack.Push(dependencyGraph.GetDependencyNode(sourceInactiveStack.get(i).Index));
 				}
 				for (int i = 0, n = sourceInput.Count; i < n; i++)
 				{
 //JAVA TO C# CONVERTER TODO TASK: There is no direct .NET Stack equivalent to Java Stack methods based on internal indexing:
-					input.Push(dependencyGraph.getDependencyNode(sourceInput.get(i).Index));
+					input.Push(dependencyGraph.GetDependencyNode(sourceInput.get(i).Index));
 				}
 			}
 			else
@@ -293,7 +293,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 				{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.syntaxgraph.node.DependencyNode node = dependencyGraph.getDependencyNode(i);
-					DependencyNode node = dependencyGraph.getDependencyNode(i);
+					DependencyNode node = dependencyGraph.GetDependencyNode(i);
 					if (node != null)
 					{
 						input.Push(node);
@@ -312,7 +312,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 			{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.syntaxgraph.node.DependencyNode node = dependencyGraph.getDependencyNode(i);
-				DependencyNode node = dependencyGraph.getDependencyNode(i);
+				DependencyNode node = dependencyGraph.GetDependencyNode(i);
 				if (node != null)
 				{
 					input.Push(node);
@@ -415,7 +415,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 			{
 				return false;
 			}
-			if (dependencyGraph.nEdges() != that.DependencyGraph.nEdges())
+			if (dependencyGraph.NEdges() != that.DependencyGraph.NEdges())
 			{
 				return false;
 			}
@@ -457,7 +457,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 			sb.Append(", ");
 			sb.Append(input.Count);
 			sb.Append(", ");
-			sb.Append(dependencyGraph.nEdges());
+			sb.Append(dependencyGraph.NEdges());
 			return sb.ToString();
 		}
 	}

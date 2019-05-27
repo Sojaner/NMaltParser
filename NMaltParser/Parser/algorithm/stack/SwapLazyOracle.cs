@@ -17,7 +17,7 @@ namespace NMaltParser.Parser.Algorithm.Stack
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public SwapLazyOracle(org.maltparser.parser.DependencyParserConfig manager, org.maltparser.parser.history.GuideUserHistory history) throws org.maltparser.core.exception.MaltChainedException
-		public SwapLazyOracle(DependencyParserConfig manager, GuideUserHistory history) : base(manager, history)
+		public SwapLazyOracle(IDependencyParserConfig manager, GuideUserHistory history) : base(manager, history)
 		{
 			GuideName = "swaplazy";
 			swapArray = new List<int>();
@@ -25,7 +25,7 @@ namespace NMaltParser.Parser.Algorithm.Stack
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.parser.history.action.GuideUserAction predict(org.maltparser.core.syntaxgraph.DependencyStructure gold, org.maltparser.parser.ParserConfiguration configuration) throws org.maltparser.core.exception.MaltChainedException
-		public override GuideUserAction predict(DependencyStructure gold, ParserConfiguration configuration)
+		public override GuideUserAction predict(IDependencyStructure gold, ParserConfiguration configuration)
 		{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final StackConfig config = (StackConfig)configuration;
@@ -63,13 +63,13 @@ namespace NMaltParser.Parser.Algorithm.Stack
 				{
 					return updateActionContainers(NonProjective.SWAP, null);
 				}
-				else if (!left.Root && gold.getTokenNode(leftIndex).Head.Index == rightIndex && nodeComplete(gold, config.DependencyGraph, leftIndex))
+				else if (!left.Root && gold.GetTokenNode(leftIndex).Head.Index == rightIndex && nodeComplete(gold, config.DependencyGraph, leftIndex))
 				{
-					return updateActionContainers(NonProjective.LEFTARC, gold.getTokenNode(leftIndex).HeadEdge.LabelSet);
+					return updateActionContainers(NonProjective.LEFTARC, gold.GetTokenNode(leftIndex).HeadEdge.LabelSet);
 				}
-				else if (gold.getTokenNode(rightIndex).Head.Index == leftIndex && nodeComplete(gold, config.DependencyGraph, rightIndex))
+				else if (gold.GetTokenNode(rightIndex).Head.Index == leftIndex && nodeComplete(gold, config.DependencyGraph, rightIndex))
 				{
-					return updateActionContainers(NonProjective.RIGHTARC, gold.getTokenNode(rightIndex).HeadEdge.LabelSet);
+					return updateActionContainers(NonProjective.RIGHTARC, gold.GetTokenNode(rightIndex).HeadEdge.LabelSet);
 				}
 				else
 				{
@@ -78,14 +78,14 @@ namespace NMaltParser.Parser.Algorithm.Stack
 			}
 		}
 
-		private bool nodeComplete(DependencyStructure gold, DependencyStructure parseDependencyGraph, int nodeIndex)
+		private bool nodeComplete(IDependencyStructure gold, IDependencyStructure parseDependencyGraph, int nodeIndex)
 		{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.syntaxgraph.node.DependencyNode goldNode = gold.getTokenNode(nodeIndex);
-			DependencyNode goldNode = gold.getTokenNode(nodeIndex);
+			DependencyNode goldNode = gold.GetTokenNode(nodeIndex);
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.syntaxgraph.node.DependencyNode parseNode = parseDependencyGraph.getTokenNode(nodeIndex);
-			DependencyNode parseNode = parseDependencyGraph.getTokenNode(nodeIndex);
+			DependencyNode parseNode = parseDependencyGraph.GetTokenNode(nodeIndex);
 			if (goldNode.hasLeftDependent())
 			{
 				if (!parseNode.hasLeftDependent())
@@ -113,7 +113,7 @@ namespace NMaltParser.Parser.Algorithm.Stack
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean necessarySwap(org.maltparser.core.syntaxgraph.DependencyStructure gold, org.maltparser.core.syntaxgraph.DependencyStructure parse, org.maltparser.core.syntaxgraph.node.DependencyNode node, java.util.Stack<org.maltparser.core.syntaxgraph.node.DependencyNode> input) throws org.maltparser.core.exception.MaltChainedException
-		private bool necessarySwap(DependencyStructure gold, DependencyStructure parse, DependencyNode node, Stack<DependencyNode> input)
+		private bool necessarySwap(IDependencyStructure gold, IDependencyStructure parse, DependencyNode node, Stack<DependencyNode> input)
 		{
 			DependencyNode left = node;
 			int index = input.Count - 1;
@@ -130,15 +130,15 @@ namespace NMaltParser.Parser.Algorithm.Stack
 				{
 					return false;
 				}
-				if (gold.getDependencyNode(node.Index).Head.Index == right.Index)
+				if (gold.GetDependencyNode(node.Index).Head.Index == right.Index)
 				{
 					return !leftComplete(gold, node);
 				}
-				if (gold.getDependencyNode(right.Index).Head.Index == node.Index)
+				if (gold.GetDependencyNode(right.Index).Head.Index == node.Index)
 				{
-					if (gold.getDependencyNode(right.Index).hasRightDependent())
+					if (gold.GetDependencyNode(right.Index).hasRightDependent())
 					{
-						  rc = gold.getDependencyNode(right.Index).RightmostProperDescendantIndex;
+						  rc = gold.GetDependencyNode(right.Index).RightmostProperDescendantIndex;
 					}
 					else
 					{
@@ -162,7 +162,7 @@ namespace NMaltParser.Parser.Algorithm.Stack
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean projectiveInterval(org.maltparser.core.syntaxgraph.DependencyStructure parse, org.maltparser.core.syntaxgraph.node.DependencyNode left, org.maltparser.core.syntaxgraph.node.DependencyNode right) throws org.maltparser.core.exception.MaltChainedException
-		private bool projectiveInterval(DependencyStructure parse, DependencyNode left, DependencyNode right)
+		private bool projectiveInterval(IDependencyStructure parse, DependencyNode left, DependencyNode right)
 		{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final int l = swapArray.get(left.getIndex());
@@ -183,7 +183,7 @@ namespace NMaltParser.Parser.Algorithm.Stack
 					{
 						if (swapArray[j] == i)
 						{
-							node = parse.getDependencyNode(j);
+							node = parse.GetDependencyNode(j);
 							break;
 						}
 					}
@@ -202,11 +202,11 @@ namespace NMaltParser.Parser.Algorithm.Stack
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean leftComplete(org.maltparser.core.syntaxgraph.DependencyStructure gold, org.maltparser.core.syntaxgraph.node.DependencyNode right) throws org.maltparser.core.exception.MaltChainedException
-		private bool leftComplete(DependencyStructure gold, DependencyNode right)
+		private bool leftComplete(IDependencyStructure gold, DependencyNode right)
 		{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.syntaxgraph.node.DependencyNode goldNode = gold.getDependencyNode(right.getIndex());
-			DependencyNode goldNode = gold.getDependencyNode(right.Index);
+			DependencyNode goldNode = gold.GetDependencyNode(right.Index);
 			if (!goldNode.hasLeftDependent())
 			{
 				return true;
@@ -224,7 +224,7 @@ namespace NMaltParser.Parser.Algorithm.Stack
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void finalizeSentence(org.maltparser.core.syntaxgraph.DependencyStructure dependencyGraph) throws org.maltparser.core.exception.MaltChainedException
-		public override void finalizeSentence(DependencyStructure dependencyGraph)
+		public override void finalizeSentence(IDependencyStructure dependencyGraph)
 		{
 			swapArrayActive = false;
 		}
@@ -238,7 +238,7 @@ namespace NMaltParser.Parser.Algorithm.Stack
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private void createSwapArray(org.maltparser.core.syntaxgraph.DependencyStructure goldDependencyGraph) throws org.maltparser.core.exception.MaltChainedException
-		private void createSwapArray(DependencyStructure goldDependencyGraph)
+		private void createSwapArray(IDependencyStructure goldDependencyGraph)
 		{
 			swapArray.Clear();
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':

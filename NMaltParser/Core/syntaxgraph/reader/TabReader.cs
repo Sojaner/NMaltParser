@@ -116,13 +116,13 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public boolean readSentence(org.maltparser.core.syntaxgraph.TokenStructure syntaxGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual bool readSentence(TokenStructure syntaxGraph)
+		public virtual bool readSentence(ITokenStructure syntaxGraph)
 		{
 			if (syntaxGraph == null || dataFormatInstance == null)
 			{
 				return false;
 			}
-			syntaxGraph.clear();
+			syntaxGraph.Clear();
 			syntaxGraph.SymbolTables.cleanUp();
 			Element node = null;
 			Edge.Edge edge = null;
@@ -157,17 +157,17 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 
 				if (token[0] == '#')
 				{
-					syntaxGraph.addComment(token, terminalCounter + 1);
+					syntaxGraph.AddComment(token, terminalCounter + 1);
 					continue;
 				}
 				string[] columns = token.Split("\t", true);
 				if (columns[0].Contains("-") || columns[0].Contains("."))
 				{
-					syntaxGraph.addComment(token, terminalCounter + 1);
+					syntaxGraph.AddComment(token, terminalCounter + 1);
 					continue;
 				}
 				terminalCounter++;
-				node = syntaxGraph.addTokenNode(terminalCounter);
+				node = syntaxGraph.AddTokenNode(terminalCounter);
 
 				IEnumerator<ColumnDescription> columnDescriptions = dataFormatInstance.GetEnumerator();
 				for (int j = 0; j < columns.Length; j++)
@@ -177,15 +177,15 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 
 					if (columnDescription.Category == ColumnDescription.INPUT && node != null)
 					{
-						syntaxGraph.addLabel(node, columnDescription.Name, columns[j]);
+						syntaxGraph.AddLabel(node, columnDescription.Name, columns[j]);
 					}
 					else if (columnDescription.Category == ColumnDescription.HEAD)
 					{
-						if (syntaxGraph is DependencyStructure)
+						if (syntaxGraph is IDependencyStructure)
 						{
 							if (columnDescription.Category != ColumnDescription.IGNORE && !columns[j].Equals(IGNORE_COLUMN_SIGN))
 							{
-								edge = ((DependencyStructure)syntaxGraph).addDependencyEdge(int.Parse(columns[j]), terminalCounter);
+								edge = ((IDependencyStructure)syntaxGraph).AddDependencyEdge(int.Parse(columns[j]), terminalCounter);
 							}
 						}
 						else
@@ -196,12 +196,12 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 					}
 					else if (columnDescription.Category == ColumnDescription.DEPENDENCY_EDGE_LABEL && edge != null)
 					{
-						syntaxGraph.addLabel(edge, columnDescription.Name, columns[j]);
+						syntaxGraph.AddLabel(edge, columnDescription.Name, columns[j]);
 					}
 				}
 			}
 
-			if (!syntaxGraph.hasTokens())
+			if (!syntaxGraph.HasTokens())
 			{
 				return false;
 			}

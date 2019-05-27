@@ -15,7 +15,7 @@ namespace NMaltParser.Parser.Guide
 	/// </summary>
 	public class SingleGuide : ClassifierGuide
 	{
-		private readonly DependencyParserConfig configuration;
+		private readonly IDependencyParserConfig configuration;
 		private readonly ClassifierGuide_GuideMode guideMode;
 		private readonly FeatureModel featureModel2;
 		private DecisionModel decisionModel = null;
@@ -67,7 +67,7 @@ namespace NMaltParser.Parser.Guide
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void finalizeSentence(org.maltparser.core.syntaxgraph.DependencyStructure dependencyGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void finalizeSentence(DependencyStructure dependencyGraph)
+		public virtual void finalizeSentence(IDependencyStructure dependencyGraph)
 		{
 			if (decisionModel != null)
 			{
@@ -165,7 +165,7 @@ namespace NMaltParser.Parser.Guide
 			}
 		}
 
-		public virtual DependencyParserConfig Configuration
+		public virtual IDependencyParserConfig Configuration
 		{
 			get
 			{
@@ -214,7 +214,7 @@ namespace NMaltParser.Parser.Guide
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public static java.net.URL findURL(String specModelFileName, org.maltparser.parser.DependencyParserConfig config) throws org.maltparser.core.exception.MaltChainedException
-		public static URL findURL(string specModelFileName, DependencyParserConfig config)
+		public static URL findURL(string specModelFileName, IDependencyParserConfig config)
 		{
 			URL url = null;
 			File specFile = config.getFile(specModelFileName);

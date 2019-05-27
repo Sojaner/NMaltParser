@@ -85,7 +85,7 @@ namespace NMaltParser.Core.LW.Parser
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.DependencyStructure parse(org.maltparser.core.syntaxgraph.DependencyStructure parseDependencyGraph) throws org.maltparser.core.exception.MaltChainedException
-		public DependencyStructure parse(DependencyStructure parseDependencyGraph)
+		public IDependencyStructure parse(IDependencyStructure parseDependencyGraph)
 		{
 			config.clear();
 			config.DependencyGraph = parseDependencyGraph;
@@ -100,7 +100,7 @@ namespace NMaltParser.Core.LW.Parser
 				}
 				transitionSystem.apply(action, config);
 			}
-			parseDependencyGraph.linkAllTreesToRoot();
+			parseDependencyGraph.LinkAllTreesToRoot();
 			return parseDependencyGraph;
 		}
 
@@ -148,7 +148,7 @@ namespace NMaltParser.Core.LW.Parser
 			}
 		}
 
-		public DependencyParserConfig Manager
+		public IDependencyParserConfig Manager
 		{
 			get
 			{

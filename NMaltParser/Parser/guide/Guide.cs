@@ -15,7 +15,7 @@ namespace NMaltParser.Parser.Guide
 	//	public void addInstance(GuideDecision decision) throws MaltChainedException;
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void finalizeSentence(org.maltparser.core.syntaxgraph.DependencyStructure dependencyGraph) throws org.maltparser.core.exception.MaltChainedException;
-		void finalizeSentence(DependencyStructure dependencyGraph);
+		void finalizeSentence(IDependencyStructure dependencyGraph);
 	//	public void noMoreInstances() throws MaltChainedException;
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void terminate() throws org.maltparser.core.exception.MaltChainedException;
@@ -24,7 +24,7 @@ namespace NMaltParser.Parser.Guide
 	//	public void predict(GuideDecision decision) throws MaltChainedException;
 	//	public boolean predictFromKBestList(GuideDecision decision) throws MaltChainedException;
 
-		DependencyParserConfig Configuration {get;}
+		IDependencyParserConfig Configuration {get;}
 	//	public GuideMode getGuideMode();
 	//	public GuideHistory getHistory();
 	//	public FeatureModelManager getFeatureModelManager();

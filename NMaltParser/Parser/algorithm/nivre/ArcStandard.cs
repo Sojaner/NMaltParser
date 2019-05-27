@@ -42,12 +42,12 @@ namespace NMaltParser.Parser.Algorithm.Nivre
 			switch (transActionContainer.ActionCode)
 			{
 			case LEFTARC:
-				e = nivreConfig.DependencyStructure.addDependencyEdge(input.Peek().Index, stack.Peek().Index);
+				e = nivreConfig.DependencyStructure.AddDependencyEdge(input.Peek().Index, stack.Peek().Index);
 				addEdgeLabels(e);
 				stack.Pop();
 				break;
 			case RIGHTARC:
-				e = nivreConfig.DependencyStructure.addDependencyEdge(stack.Peek().Index, input.Peek().Index);
+				e = nivreConfig.DependencyStructure.AddDependencyEdge(stack.Peek().Index, input.Peek().Index);
 				addEdgeLabels(e);
 				input.Pop();
 				if (!stack.Peek().Root)

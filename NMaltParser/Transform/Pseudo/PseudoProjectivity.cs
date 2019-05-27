@@ -172,7 +172,7 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private void initProjectivization(org.maltparser.core.syntaxgraph.DependencyStructure pdg) throws org.maltparser.core.exception.MaltChainedException
-		private void initProjectivization(DependencyStructure pdg)
+		private void initProjectivization(IDependencyStructure pdg)
 		{
 			nodeLifted.Clear();
 			nodeTrace.Clear();
@@ -190,15 +190,15 @@ namespace NMaltParser.Transform.Pseudo
 				isCoveredRoot_Renamed.Add(false);
 				if (ppliftedSymbolTable != null && index != 0)
 				{
-					pdg.getDependencyNode(index).HeadEdge.LabelSet.put(ppliftedSymbolTable, ppliftedSymbolTable.getSymbolStringToCode("#false#"));
+					pdg.GetDependencyNode(index).HeadEdge.LabelSet.put(ppliftedSymbolTable, ppliftedSymbolTable.getSymbolStringToCode("#false#"));
 				}
 				if (pppathSymbolTable != null && index != 0)
 				{
-					pdg.getDependencyNode(index).HeadEdge.LabelSet.put(pppathSymbolTable, pppathSymbolTable.getSymbolStringToCode("#false#"));
+					pdg.GetDependencyNode(index).HeadEdge.LabelSet.put(pppathSymbolTable, pppathSymbolTable.getSymbolStringToCode("#false#"));
 				}
 				if (ppcoveredRootSymbolTable != null && index != 0)
 				{
-					pdg.getDependencyNode(index).HeadEdge.LabelSet.put(ppcoveredRootSymbolTable, ppcoveredRootSymbolTable.getSymbolStringToCode("#false#"));
+					pdg.GetDependencyNode(index).HeadEdge.LabelSet.put(ppcoveredRootSymbolTable, ppcoveredRootSymbolTable.getSymbolStringToCode("#false#"));
 				}
 			}
 			computeRelationLength(pdg);
@@ -206,7 +206,7 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void projectivize(org.maltparser.core.syntaxgraph.DependencyStructure pdg) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void projectivize(DependencyStructure pdg)
+		public virtual void projectivize(IDependencyStructure pdg)
 		{
 			id++;
 			if (!pdg.Tree)
@@ -235,7 +235,7 @@ namespace NMaltParser.Transform.Pseudo
 							nodeLifted[deepestNonProjectiveNode.Index] = true;
 							setHeadDeprel(deepestNonProjectiveNode, deepestNonProjectiveNode.Head);
 							Path = deepestNonProjectiveNode.Head;
-							pdg.moveDependencyEdge(pdg.getDependencyNode(deepestNonProjectiveNode.Head.Head.Index).Index, deepestNonProjectiveNode.Index);
+							pdg.MoveDependencyEdge(pdg.GetDependencyNode(deepestNonProjectiveNode.Head.Head.Index).Index, deepestNonProjectiveNode.Index);
 						}
 					}
 					deattachCoveredRootsForProjectivization(pdg);
@@ -247,7 +247,7 @@ namespace NMaltParser.Transform.Pseudo
 				{
 					foreach (int index in pdg.TokenIndices)
 					{
-						attachCoveredRoots(pdg, pdg.getTokenNode(index));
+						attachCoveredRoots(pdg, pdg.GetTokenNode(index));
 					}
 				}
 				if (markingStrategy != PseudoProjectiveEncoding.NONE)
@@ -265,7 +265,7 @@ namespace NMaltParser.Transform.Pseudo
 						nodeLifted[deepestNonProjectiveNode.Index] = true;
 						setHeadDeprel(deepestNonProjectiveNode, deepestNonProjectiveNode.Head);
 						Path = deepestNonProjectiveNode.Head;
-						pdg.moveDependencyEdge(pdg.getDependencyNode(deepestNonProjectiveNode.Head.Head.Index).Index, deepestNonProjectiveNode.Index);
+						pdg.MoveDependencyEdge(pdg.GetDependencyNode(deepestNonProjectiveNode.Head.Head.Index).Index, deepestNonProjectiveNode.Index);
 					}
 				}
 			}
@@ -275,54 +275,54 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void mergeArclabels(org.maltparser.core.syntaxgraph.DependencyStructure pdg) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void mergeArclabels(DependencyStructure pdg)
+		public virtual void mergeArclabels(IDependencyStructure pdg)
 		{
 			assignPseudoProjectiveDeprelsForMerge(pdg);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void splitArclabels(org.maltparser.core.syntaxgraph.DependencyStructure pdg) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void splitArclabels(DependencyStructure pdg)
+		public virtual void splitArclabels(IDependencyStructure pdg)
 		{
 			int pathLabelIndex = -1, movedLabelIndex = -1, coveredArcLabelIndex;
 			string label;
 			initDeprojeciviztion(pdg);
 			foreach (int index in pdg.TokenIndices)
 			{
-				if (pdg.getTokenNode(index).HeadEdge.hasLabel(deprelSymbolTable))
+				if (pdg.GetTokenNode(index).HeadEdge.hasLabel(deprelSymbolTable))
 				{
-					label = deprelSymbolTable.getSymbolCodeToString(pdg.getTokenNode(index).HeadEdge.getLabelCode(deprelSymbolTable));
+					label = deprelSymbolTable.getSymbolCodeToString(pdg.GetTokenNode(index).HeadEdge.getLabelCode(deprelSymbolTable));
 					if (!ReferenceEquals(label, null) && (pathLabelIndex = label.IndexOf("%", StringComparison.Ordinal)) != -1)
 					{
 						label = label.Substring(0, pathLabelIndex);
-						setLabel(pdg.getTokenNode(index), label);
-						pdg.getTokenNode(index).HeadEdge.addLabel(pppathSymbolTable, pppathSymbolTable.getSymbolStringToCode("#true#"));
+						setLabel(pdg.GetTokenNode(index), label);
+						pdg.GetTokenNode(index).HeadEdge.addLabel(pppathSymbolTable, pppathSymbolTable.getSymbolStringToCode("#true#"));
 					}
 					if (!ReferenceEquals(label, null) && (movedLabelIndex = label.IndexOf("|", StringComparison.Ordinal)) != -1 && label.IndexOf("|null", StringComparison.Ordinal) == -1)
 					{
 						if (movedLabelIndex + 1 < label.Length)
 						{
-							pdg.getTokenNode(index).HeadEdge.addLabel(ppliftedSymbolTable, ppliftedSymbolTable.getSymbolStringToCode(label.Substring(movedLabelIndex + 1)));
+							pdg.GetTokenNode(index).HeadEdge.addLabel(ppliftedSymbolTable, ppliftedSymbolTable.getSymbolStringToCode(label.Substring(movedLabelIndex + 1)));
 						}
 						else
 						{
-							pdg.getTokenNode(index).HeadEdge.addLabel(ppliftedSymbolTable, ppliftedSymbolTable.getSymbolStringToCode("#true#"));
+							pdg.GetTokenNode(index).HeadEdge.addLabel(ppliftedSymbolTable, ppliftedSymbolTable.getSymbolStringToCode("#true#"));
 						}
 						label = label.Substring(0, movedLabelIndex);
-						setLabel(pdg.getTokenNode(index), label);
+						setLabel(pdg.GetTokenNode(index), label);
 					}
 				}
 			}
 			foreach (int index in pdg.TokenIndices)
 			{
-				if (pdg.getTokenNode(index).HeadEdge.hasLabel(deprelSymbolTable))
+				if (pdg.GetTokenNode(index).HeadEdge.hasLabel(deprelSymbolTable))
 				{
-					label = deprelSymbolTable.getSymbolCodeToString(pdg.getTokenNode(index).HeadEdge.getLabelCode(deprelSymbolTable));
+					label = deprelSymbolTable.getSymbolCodeToString(pdg.GetTokenNode(index).HeadEdge.getLabelCode(deprelSymbolTable));
 					if ((coveredArcLabelIndex = label.IndexOf("|null", StringComparison.Ordinal)) != -1)
 					{
 						label = label.Substring(0, coveredArcLabelIndex);
-						setLabel(pdg.getTokenNode(index), label);
-						pdg.getTokenNode(index).HeadEdge.addLabel(ppcoveredRootSymbolTable, ppcoveredRootSymbolTable.getSymbolStringToCode("#true#"));
+						setLabel(pdg.GetTokenNode(index), label);
+						pdg.GetTokenNode(index).HeadEdge.addLabel(ppcoveredRootSymbolTable, ppcoveredRootSymbolTable.getSymbolStringToCode("#true#"));
 					}
 				}
 			}
@@ -352,37 +352,37 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private void deattachCoveredRootsForProjectivization(org.maltparser.core.syntaxgraph.DependencyStructure pdg) throws org.maltparser.core.exception.MaltChainedException
-		private void deattachCoveredRootsForProjectivization(DependencyStructure pdg)
+		private void deattachCoveredRootsForProjectivization(IDependencyStructure pdg)
 		{
 			foreach (int index in pdg.TokenIndices)
 			{
-				if (isCoveredRoot(pdg.getTokenNode(index)))
+				if (isCoveredRoot(pdg.GetTokenNode(index)))
 				{
-					pdg.moveDependencyEdge(pdg.DependencyRoot.Index, pdg.getTokenNode(index).Index);
+					pdg.MoveDependencyEdge(pdg.DependencyRoot.Index, pdg.GetTokenNode(index).Index);
 				}
 			}
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean attachCoveredRoots(org.maltparser.core.syntaxgraph.DependencyStructure pdg, org.maltparser.core.syntaxgraph.node.DependencyNode deepest) throws org.maltparser.core.exception.MaltChainedException
-		private bool attachCoveredRoots(DependencyStructure pdg, DependencyNode deepest)
+		private bool attachCoveredRoots(IDependencyStructure pdg, DependencyNode deepest)
 		{
 			int i;
 			bool foundCoveredRoot = false;
 			DependencyNode coveredRootHead;
 			for (i = Math.Min(deepest.Index, deepest.Head.Index) + 1; i < Math.Max(deepest.Index, deepest.Head.Index); i++)
 			{
-				int leftMostIndex = pdg.getDependencyNode(i).LeftmostProperDescendantIndex;
+				int leftMostIndex = pdg.GetDependencyNode(i).LeftmostProperDescendantIndex;
 				if (leftMostIndex == -1)
 				{
 					leftMostIndex = i;
 				}
-				int rightMostIndex = pdg.getDependencyNode(i).RightmostProperDescendantIndex;
+				int rightMostIndex = pdg.GetDependencyNode(i).RightmostProperDescendantIndex;
 				if (rightMostIndex == -1)
 				{
 					rightMostIndex = i;
 				}
-				if (!nodeLifted[i] && pdg.getDependencyNode(i).Head.Root && !deepest.Head.Root && Math.Min(deepest.Index, deepest.Head.Index) < leftMostIndex && rightMostIndex < Math.Max(deepest.Index, deepest.Head.Index))
+				if (!nodeLifted[i] && pdg.GetDependencyNode(i).Head.Root && !deepest.Head.Root && Math.Min(deepest.Index, deepest.Head.Index) < leftMostIndex && rightMostIndex < Math.Max(deepest.Index, deepest.Head.Index))
 				{
 					if (rootAttachment == CoveredRootAttachment.LEFT)
 					{
@@ -410,8 +410,8 @@ namespace NMaltParser.Transform.Pseudo
 					{
 						coveredRootHead = deepest.Head;
 					}
-					pdg.moveDependencyEdge(coveredRootHead.Index, pdg.getDependencyNode(i).Index);
-					CoveredRoot = pdg.getDependencyNode(i);
+					pdg.MoveDependencyEdge(coveredRootHead.Index, pdg.GetDependencyNode(i).Index);
+					CoveredRoot = pdg.GetDependencyNode(i);
 					foundCoveredRoot = true;
 				}
 			}
@@ -428,14 +428,14 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private org.maltparser.core.syntaxgraph.node.DependencyNode getDeepestNonProjectiveNode(org.maltparser.core.syntaxgraph.DependencyStructure pdg) throws org.maltparser.core.exception.MaltChainedException
-		private DependencyNode getDeepestNonProjectiveNode(DependencyStructure pdg)
+		private DependencyNode getDeepestNonProjectiveNode(IDependencyStructure pdg)
 		{
 			DependencyNode deepestNonProjectiveNode = null;
 			foreach (int index in pdg.DependencyIndices)
 			{
-				if (!pdg.getDependencyNode(index).Projective && (deepestNonProjectiveNode == null || pdg.getDependencyNode(index).DependencyNodeDepth > pdg.getDependencyNode(deepestNonProjectiveNode.Index).DependencyNodeDepth))
+				if (!pdg.GetDependencyNode(index).Projective && (deepestNonProjectiveNode == null || pdg.GetDependencyNode(index).DependencyNodeDepth > pdg.GetDependencyNode(deepestNonProjectiveNode.Index).DependencyNodeDepth))
 				{
-					deepestNonProjectiveNode = pdg.getDependencyNode(index);
+					deepestNonProjectiveNode = pdg.GetDependencyNode(index);
 				}
 			}
 
@@ -444,15 +444,15 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private org.maltparser.core.syntaxgraph.node.DependencyNode getShortestNonProjectiveNode(org.maltparser.core.syntaxgraph.DependencyStructure pdg) throws org.maltparser.core.exception.MaltChainedException
-		private DependencyNode getShortestNonProjectiveNode(DependencyStructure pdg)
+		private DependencyNode getShortestNonProjectiveNode(IDependencyStructure pdg)
 		{
 			DependencyNode shortestNonProjectiveNode = null;
 			foreach (int index in pdg.DependencyIndices)
 			{
-				if (!pdg.getDependencyNode(index).Projective && (shortestNonProjectiveNode == null || nodeRelationLength[index] < nodeRelationLength[shortestNonProjectiveNode.Index]))
+				if (!pdg.GetDependencyNode(index).Projective && (shortestNonProjectiveNode == null || nodeRelationLength[index] < nodeRelationLength[shortestNonProjectiveNode.Index]))
 				{
 	//					|| (nodeRelationLength.get(index) == nodeRelationLength.get(shortestNonProjectiveNode.getIndex())))) {
-					shortestNonProjectiveNode = pdg.getDependencyNode(index);
+					shortestNonProjectiveNode = pdg.GetDependencyNode(index);
 				}
 			}
 			return shortestNonProjectiveNode;
@@ -461,23 +461,23 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private void computeRelationLength(org.maltparser.core.syntaxgraph.DependencyStructure pdg) throws org.maltparser.core.exception.MaltChainedException
-		private void computeRelationLength(DependencyStructure pdg)
+		private void computeRelationLength(IDependencyStructure pdg)
 		{
 			nodeRelationLength.Add(0);
 			foreach (int index in pdg.TokenIndices)
 			{
-				nodeRelationLength.Add(Math.Abs(pdg.getDependencyNode(index).Index - pdg.getDependencyNode(index).Head.Index));
+				nodeRelationLength.Add(Math.Abs(pdg.GetDependencyNode(index).Index - pdg.GetDependencyNode(index).Head.Index));
 			}
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private void assignPseudoProjectiveDeprels(org.maltparser.core.syntaxgraph.DependencyStructure pdg) throws org.maltparser.core.exception.MaltChainedException
-		private void assignPseudoProjectiveDeprels(DependencyStructure pdg)
+		private void assignPseudoProjectiveDeprels(IDependencyStructure pdg)
 		{
 			int newLabelCode;
 			foreach (int index in pdg.TokenIndices)
 			{
-				if (!isCoveredRoot(pdg.getDependencyNode(index)))
+				if (!isCoveredRoot(pdg.GetDependencyNode(index)))
 				{
 					if (markingStrategy == PseudoProjectiveEncoding.HEAD || markingStrategy == PseudoProjectiveEncoding.PATH || markingStrategy == PseudoProjectiveEncoding.HEADPATH)
 					{
@@ -491,19 +491,19 @@ namespace NMaltParser.Transform.Pseudo
 							{
 								newLabelCode = ppliftedSymbolTable.getSymbolStringToCode("#false#");
 							}
-							pdg.getDependencyNode(index).HeadEdge.addLabel(ppliftedSymbolTable, newLabelCode);
+							pdg.GetDependencyNode(index).HeadEdge.addLabel(ppliftedSymbolTable, newLabelCode);
 						}
 						else
 						{
 							if (nodeLifted[index])
 							{
-								newLabelCode = ppliftedSymbolTable.addSymbol(deprelSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(headDeprel[index].Index).HeadEdge.getLabelCode(deprelSymbolTable)));
+								newLabelCode = ppliftedSymbolTable.addSymbol(deprelSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(headDeprel[index].Index).HeadEdge.getLabelCode(deprelSymbolTable)));
 							}
 							else
 							{
 								newLabelCode = ppliftedSymbolTable.getSymbolStringToCode("#false#");
 							}
-							pdg.getDependencyNode(index).HeadEdge.addLabel(ppliftedSymbolTable, newLabelCode);
+							pdg.GetDependencyNode(index).HeadEdge.addLabel(ppliftedSymbolTable, newLabelCode);
 						}
 					}
 
@@ -517,13 +517,13 @@ namespace NMaltParser.Transform.Pseudo
 						{
 							newLabelCode = pppathSymbolTable.getSymbolStringToCode("#false#");
 						}
-						pdg.getDependencyNode(index).HeadEdge.addLabel(pppathSymbolTable, newLabelCode);
+						pdg.GetDependencyNode(index).HeadEdge.addLabel(pppathSymbolTable, newLabelCode);
 					}
 
 				}
 				else if (!(rootAttachment == CoveredRootAttachment.NONE || rootAttachment == CoveredRootAttachment.IGNORE))
 				{
-					pdg.getDependencyNode(index).HeadEdge.addLabel(ppcoveredRootSymbolTable, ppcoveredRootSymbolTable.getSymbolStringToCode("#true#"));
+					pdg.GetDependencyNode(index).HeadEdge.addLabel(ppcoveredRootSymbolTable, ppcoveredRootSymbolTable.getSymbolStringToCode("#true#"));
 				}
 			}
 		}
@@ -538,25 +538,25 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private void assignPseudoProjectiveDeprelsForMerge(org.maltparser.core.syntaxgraph.DependencyStructure pdg) throws org.maltparser.core.exception.MaltChainedException
-		private void assignPseudoProjectiveDeprelsForMerge(DependencyStructure pdg)
+		private void assignPseudoProjectiveDeprelsForMerge(IDependencyStructure pdg)
 		{
 			List<string> originalDeprel = new List<string>();
 			string newLabel;
 			originalDeprel.Add(null);
 			foreach (int index in pdg.TokenIndices)
 			{
-				originalDeprel.Add(deprelSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)));
+				originalDeprel.Add(deprelSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)));
 			}
 			foreach (int index in pdg.TokenIndices)
 			{
 				newLabel = null;
-				if (!isCoveredRoot(pdg.getDependencyNode(index)))
+				if (!isCoveredRoot(pdg.GetDependencyNode(index)))
 				{
 					if (markingStrategy == PseudoProjectiveEncoding.HEAD)
 					{
 						if (nodeLifted[index])
 						{
-							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|"
+							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|"
 									+ originalDeprel[headDeprel[index].Index];
 							// } else {
 							// newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).getHeadEdge().getLabelCode(deprelSymbolTable));
@@ -566,73 +566,73 @@ namespace NMaltParser.Transform.Pseudo
 					{
 						if (nodeLifted[index] && nodePath[index])
 						{
-							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|%";
+							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|%";
 						}
 						else if (nodeLifted[index] && !nodePath[index])
 						{
-							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|";
+							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|";
 						}
 						else if (!nodeLifted[index] && nodePath[index])
 						{
-							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "%";
+							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "%";
 						}
 					}
 					else if (markingStrategy == PseudoProjectiveEncoding.HEADPATH)
 					{
 						if (nodeLifted[index] && nodePath[index])
 						{
-							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|"
+							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|"
 									+ originalDeprel[headDeprel[index].Index] + "%";
 						}
 						else if (nodeLifted[index] && !nodePath[index])
 						{
-							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|"
+							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|"
 									+ originalDeprel[headDeprel[index].Index];
 						}
 						else if (!nodeLifted[index] && nodePath[index])
 						{
-							newLabel = originalDeprel[pdg.getDependencyNode(index).Index] + "%";
+							newLabel = originalDeprel[pdg.GetDependencyNode(index).Index] + "%";
 						}
 					}
 					else if (markingStrategy == PseudoProjectiveEncoding.TRACE)
 					{
 						if (nodeLifted[index])
 						{
-							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|";
+							newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|";
 						}
 					}
 				}
 				else if (!(rootAttachment == CoveredRootAttachment.NONE || rootAttachment == CoveredRootAttachment.IGNORE))
 				{
-					newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|null";
+					newLabel = deprelSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(deprelSymbolTable)) + "|null";
 				}
 				if (!ReferenceEquals(newLabel, null))
 				{
-					setLabel(pdg.getDependencyNode(index), newLabel);
+					setLabel(pdg.GetDependencyNode(index), newLabel);
 				}
 			}
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void deprojectivize(org.maltparser.core.syntaxgraph.DependencyStructure pdg) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void deprojectivize(DependencyStructure pdg)
+		public virtual void deprojectivize(IDependencyStructure pdg)
 		{
 			initDeprojeciviztion(pdg);
 
 			foreach (int index in pdg.TokenIndices)
 			{
-				if (pdg.getDependencyNode(index).HeadEdge.hasLabel(deprelSymbolTable))
+				if (pdg.GetDependencyNode(index).HeadEdge.hasLabel(deprelSymbolTable))
 				{
-					if (pdg.getDependencyNode(index).HeadEdge.hasLabel(pppathSymbolTable) && pppathSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(pppathSymbolTable)).Equals("#true#"))
+					if (pdg.GetDependencyNode(index).HeadEdge.hasLabel(pppathSymbolTable) && pppathSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(pppathSymbolTable)).Equals("#true#"))
 					{
-						Path = pdg.getDependencyNode(index);
+						Path = pdg.GetDependencyNode(index);
 					}
-					if (pdg.getDependencyNode(index).HeadEdge.hasLabel(ppliftedSymbolTable) && !ppliftedSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(ppliftedSymbolTable)).Equals("#false#"))
+					if (pdg.GetDependencyNode(index).HeadEdge.hasLabel(ppliftedSymbolTable) && !ppliftedSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(ppliftedSymbolTable)).Equals("#false#"))
 					{
 						nodeLifted[index] = true;
-						if (!ppliftedSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(ppliftedSymbolTable)).Equals("#true#"))
+						if (!ppliftedSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(ppliftedSymbolTable)).Equals("#true#"))
 						{
-							synacticHeadDeprel[index] = ppliftedSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(ppliftedSymbolTable));
+							synacticHeadDeprel[index] = ppliftedSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(ppliftedSymbolTable));
 						}
 					}
 				}
@@ -652,7 +652,7 @@ namespace NMaltParser.Transform.Pseudo
 			}
 		}
 
-		private void initDeprojeciviztion(DependencyStructure pdg)
+		private void initDeprojeciviztion(IDependencyStructure pdg)
 		{
 			nodeLifted.Clear();
 			nodePath.Clear();
@@ -667,15 +667,15 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private void deattachCoveredRootsForDeprojectivization(org.maltparser.core.syntaxgraph.DependencyStructure pdg) throws org.maltparser.core.exception.MaltChainedException
-		private void deattachCoveredRootsForDeprojectivization(DependencyStructure pdg)
+		private void deattachCoveredRootsForDeprojectivization(IDependencyStructure pdg)
 		{
 			foreach (int index in pdg.TokenIndices)
 			{
-				if (pdg.getDependencyNode(index).HeadEdge.hasLabel(deprelSymbolTable))
+				if (pdg.GetDependencyNode(index).HeadEdge.hasLabel(deprelSymbolTable))
 				{
-					if (pdg.getDependencyNode(index).HeadEdge.hasLabel(ppcoveredRootSymbolTable) && ppcoveredRootSymbolTable.getSymbolCodeToString(pdg.getDependencyNode(index).HeadEdge.getLabelCode(ppcoveredRootSymbolTable)).Equals("#true#"))
+					if (pdg.GetDependencyNode(index).HeadEdge.hasLabel(ppcoveredRootSymbolTable) && ppcoveredRootSymbolTable.getSymbolCodeToString(pdg.GetDependencyNode(index).HeadEdge.getLabelCode(ppcoveredRootSymbolTable)).Equals("#true#"))
 					{
-						pdg.moveDependencyEdge(pdg.DependencyRoot.Index, pdg.getDependencyNode(index).Index);
+						pdg.MoveDependencyEdge(pdg.DependencyRoot.Index, pdg.GetDependencyNode(index).Index);
 					}
 				}
 			}
@@ -686,13 +686,13 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean needsDeprojectivizeWithHead(org.maltparser.core.syntaxgraph.DependencyStructure pdg) throws org.maltparser.core.exception.MaltChainedException
-		private bool needsDeprojectivizeWithHead(DependencyStructure pdg)
+		private bool needsDeprojectivizeWithHead(IDependencyStructure pdg)
 		{
 			foreach (int index in pdg.DependencyIndices)
 			{
 				if (nodeLifted[index])
 				{
-					DependencyNode node = pdg.getDependencyNode(index);
+					DependencyNode node = pdg.GetDependencyNode(index);
 					if (breadthFirstSearchSortedByDistanceForHead(pdg, node.Head, node, synacticHeadDeprel[index]) != null)
 					{
 						return true;
@@ -704,7 +704,7 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean deprojectivizeWithHead(org.maltparser.core.syntaxgraph.DependencyStructure pdg, org.maltparser.core.syntaxgraph.node.DependencyNode node) throws org.maltparser.core.exception.MaltChainedException
-		private bool deprojectivizeWithHead(DependencyStructure pdg, DependencyNode node)
+		private bool deprojectivizeWithHead(IDependencyStructure pdg, DependencyNode node)
 		{
 			bool success = true, childSuccess = false;
 			int i, childAttempts = 2;
@@ -716,7 +716,7 @@ namespace NMaltParser.Transform.Pseudo
 				possibleSyntacticHead = breadthFirstSearchSortedByDistanceForHead(pdg, node.Head, node, syntacticHeadDeprel);
 				if (possibleSyntacticHead != null)
 				{
-					pdg.moveDependencyEdge(possibleSyntacticHead.Index, node.Index);
+					pdg.MoveDependencyEdge(possibleSyntacticHead.Index, node.Index);
 					nodeLifted[node.Index] = false;
 				}
 				else
@@ -755,7 +755,7 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private org.maltparser.core.syntaxgraph.node.DependencyNode breadthFirstSearchSortedByDistanceForHead(org.maltparser.core.syntaxgraph.DependencyStructure dg, org.maltparser.core.syntaxgraph.node.DependencyNode start, org.maltparser.core.syntaxgraph.node.DependencyNode avoid, String syntacticHeadDeprel) throws org.maltparser.core.exception.MaltChainedException
-		private DependencyNode breadthFirstSearchSortedByDistanceForHead(DependencyStructure dg, DependencyNode start, DependencyNode avoid, string syntacticHeadDeprel)
+		private DependencyNode breadthFirstSearchSortedByDistanceForHead(IDependencyStructure dg, DependencyNode start, DependencyNode avoid, string syntacticHeadDeprel)
 		{
 			DependencyNode dependent;
 			string dependentDeprel;
@@ -778,7 +778,7 @@ namespace NMaltParser.Transform.Pseudo
 		}
 
 
-		private List<DependencyNode> findAllDependentsVectorSortedByDistanceToPProjNode(DependencyStructure dg, DependencyNode governor, DependencyNode avoid, bool percentOnly)
+		private List<DependencyNode> findAllDependentsVectorSortedByDistanceToPProjNode(IDependencyStructure dg, DependencyNode governor, DependencyNode avoid, bool percentOnly)
 		{
 			List<DependencyNode> output = new List<DependencyNode>();
 			SortedSet<DependencyNode> dependents = new SortedSet<DependencyNode>();
@@ -832,7 +832,7 @@ namespace NMaltParser.Transform.Pseudo
 			return output;
 		}
 
-		private List<DependencyNode> findAllDependentsVectorSortedByDistanceToPProjNode2(DependencyStructure dg, DependencyNode governor, DependencyNode avoid, bool percentOnly)
+		private List<DependencyNode> findAllDependentsVectorSortedByDistanceToPProjNode2(IDependencyStructure dg, DependencyNode governor, DependencyNode avoid, bool percentOnly)
 		{
 			int i, j;
 			List<DependencyNode> dependents = new List<DependencyNode>();
@@ -891,7 +891,7 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean deprojectivizeWithPath(org.maltparser.core.syntaxgraph.DependencyStructure pdg, org.maltparser.core.syntaxgraph.node.DependencyNode node) throws org.maltparser.core.exception.MaltChainedException
-		private bool deprojectivizeWithPath(DependencyStructure pdg, DependencyNode node)
+		private bool deprojectivizeWithPath(IDependencyStructure pdg, DependencyNode node)
 		{
 			bool success = true, childSuccess = false;
 			int i, childAttempts = 2;
@@ -901,7 +901,7 @@ namespace NMaltParser.Transform.Pseudo
 				possibleSyntacticHead = breadthFirstSearchSortedByDistanceForPath(pdg, node.Head, node);
 				if (possibleSyntacticHead != null)
 				{
-					pdg.moveDependencyEdge(possibleSyntacticHead.Index, node.Index);
+					pdg.MoveDependencyEdge(possibleSyntacticHead.Index, node.Index);
 					nodeLifted[node.Index] = false;
 				}
 				else
@@ -914,7 +914,7 @@ namespace NMaltParser.Transform.Pseudo
 				possibleSyntacticHead = breadthFirstSearchSortedByDistanceForPath(pdg, node.Head, node);
 				if (possibleSyntacticHead != null)
 				{
-					pdg.moveDependencyEdge(possibleSyntacticHead.Index, node.Index);
+					pdg.MoveDependencyEdge(possibleSyntacticHead.Index, node.Index);
 					nodeLifted[node.Index] = false;
 				}
 				else
@@ -951,7 +951,7 @@ namespace NMaltParser.Transform.Pseudo
 			return childSuccess && success;
 		}
 
-		private DependencyNode breadthFirstSearchSortedByDistanceForPath(DependencyStructure dg, DependencyNode start, DependencyNode avoid)
+		private DependencyNode breadthFirstSearchSortedByDistanceForPath(IDependencyStructure dg, DependencyNode start, DependencyNode avoid)
 		{
 			DependencyNode dependent;
 			List<DependencyNode> nodes = new List<DependencyNode>(), newNodes;
@@ -970,7 +970,7 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean deprojectivizeWithHeadAndPath(org.maltparser.core.syntaxgraph.DependencyStructure pdg, org.maltparser.core.syntaxgraph.node.DependencyNode node) throws org.maltparser.core.exception.MaltChainedException
-		private bool deprojectivizeWithHeadAndPath(DependencyStructure pdg, DependencyNode node)
+		private bool deprojectivizeWithHeadAndPath(IDependencyStructure pdg, DependencyNode node)
 		{
 			bool success = true, childSuccess = false;
 			int i, childAttempts = 2;
@@ -980,7 +980,7 @@ namespace NMaltParser.Transform.Pseudo
 				possibleSyntacticHead = breadthFirstSearchSortedByDistanceForHeadAndPath(pdg, node.Head, node, synacticHeadDeprel[node.Index]);
 				if (possibleSyntacticHead != null)
 				{
-					pdg.moveDependencyEdge(possibleSyntacticHead.Index, node.Index);
+					pdg.MoveDependencyEdge(possibleSyntacticHead.Index, node.Index);
 					nodeLifted[node.Index] = false;
 				}
 				else
@@ -993,7 +993,7 @@ namespace NMaltParser.Transform.Pseudo
 				possibleSyntacticHead = breadthFirstSearchSortedByDistanceForHeadAndPath(pdg, node.Head, node, synacticHeadDeprel[node.Index]);
 				if (possibleSyntacticHead != null)
 				{
-					pdg.moveDependencyEdge(possibleSyntacticHead.Index, node.Index);
+					pdg.MoveDependencyEdge(possibleSyntacticHead.Index, node.Index);
 					nodeLifted[node.Index] = false;
 				}
 				else
@@ -1032,7 +1032,7 @@ namespace NMaltParser.Transform.Pseudo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private org.maltparser.core.syntaxgraph.node.DependencyNode breadthFirstSearchSortedByDistanceForHeadAndPath(org.maltparser.core.syntaxgraph.DependencyStructure dg, org.maltparser.core.syntaxgraph.node.DependencyNode start, org.maltparser.core.syntaxgraph.node.DependencyNode avoid, String syntacticHeadDeprelCode) throws org.maltparser.core.exception.MaltChainedException
-		private DependencyNode breadthFirstSearchSortedByDistanceForHeadAndPath(DependencyStructure dg, DependencyNode start, DependencyNode avoid, string syntacticHeadDeprelCode)
+		private DependencyNode breadthFirstSearchSortedByDistanceForHeadAndPath(IDependencyStructure dg, DependencyNode start, DependencyNode avoid, string syntacticHeadDeprelCode)
 		{
 			DependencyNode dependent;
 			List<DependencyNode> nodes = new List<DependencyNode>(), newNodes = null, secondChance = new List<DependencyNode>();

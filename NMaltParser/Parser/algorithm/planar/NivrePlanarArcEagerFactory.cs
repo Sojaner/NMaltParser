@@ -9,7 +9,7 @@ namespace NMaltParser.Parser.Algorithm.Planar
 	/// </summary>
 	public class NivrePlanarArcEagerFactory : PlanarFactory
 	{
-		public NivrePlanarArcEagerFactory(DependencyParserConfig _manager) : base(_manager)
+		public NivrePlanarArcEagerFactory(IDependencyParserConfig _manager) : base(_manager)
 		{
 		}
 

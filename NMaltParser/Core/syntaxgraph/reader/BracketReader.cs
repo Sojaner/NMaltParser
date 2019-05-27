@@ -135,13 +135,13 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public boolean readSentence(org.maltparser.core.syntaxgraph.TokenStructure syntaxGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual bool readSentence(TokenStructure syntaxGraph)
+		public virtual bool readSentence(ITokenStructure syntaxGraph)
 		{
 			if (syntaxGraph == null || dataFormatInstance == null)
 			{
 				return false;
 			}
-			syntaxGraph.clear();
+			syntaxGraph.Clear();
 			int brackets = 0;
 			try
 			{
@@ -285,7 +285,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 			}
 			if (index == -1)
 			{
-				TokenNode t = phraseStructure.addTokenNode(terminalCounter);
+				TokenNode t = phraseStructure.AddTokenNode(terminalCounter);
 				if (t == null)
 				{
 					close();

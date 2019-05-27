@@ -9,7 +9,7 @@ namespace NMaltParser.Parser.Algorithm.Stack
 	/// </summary>
 	public class StackSwapLazyFactory : StackFactory
 	{
-		public StackSwapLazyFactory(DependencyParserConfig _manager) : base(_manager)
+		public StackSwapLazyFactory(IDependencyParserConfig _manager) : base(_manager)
 		{
 		}
 

@@ -9,7 +9,7 @@ namespace NMaltParser.Parser.Algorithm.Nivre
 	/// </summary>
 	public class NivreArcEagerFactory : NivreFactory
 	{
-		public NivreArcEagerFactory(DependencyParserConfig _manager) : base(_manager)
+		public NivreArcEagerFactory(IDependencyParserConfig _manager) : base(_manager)
 		{
 		}
 

@@ -144,7 +144,7 @@ namespace NMaltParser.Core.LW.Helper
 //ORIGINAL LINE: public static String[] toStringArray(org.maltparser.core.syntaxgraph.DependencyGraph graph, org.maltparser.core.io.dataformat.DataFormatInstance dataFormatInstance, org.maltparser.core.symbol.SymbolTableHandler symbolTables) throws org.maltparser.core.exception.MaltChainedException
 		public static string[] toStringArray(DependencyGraph graph, DataFormatInstance dataFormatInstance, SymbolTableHandler symbolTables)
 		{
-			string[] tokens = new string[graph.nTokenNode()];
+			string[] tokens = new string[graph.NTokenNode()];
 			StringBuilder sb = new StringBuilder();
 			IEnumerator<ColumnDescription> columns = dataFormatInstance.GetEnumerator();
 			foreach (int? index in graph.TokenIndices)
@@ -153,7 +153,7 @@ namespace NMaltParser.Core.LW.Helper
 				if (index <= tokens.Length)
 				{
 					ColumnDescription column = null;
-					TokenNode node = graph.getTokenNode(index.Value);
+					TokenNode node = graph.GetTokenNode(index.Value);
 					while (columns.MoveNext())
 					{
 						column = columns.Current;

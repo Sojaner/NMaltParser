@@ -13,9 +13,9 @@ namespace NMaltParser.Parser.Algorithm.Nivre
 	{
 		public abstract OracleGuide makeOracleGuide(GuideUserHistory history);
 		public abstract TransitionSystem makeTransitionSystem();
-		protected internal readonly DependencyParserConfig manager;
+		protected internal readonly IDependencyParserConfig manager;
 
-		public NivreFactory(DependencyParserConfig _manager)
+		public NivreFactory(IDependencyParserConfig _manager)
 		{
 			manager = _manager;
 		}

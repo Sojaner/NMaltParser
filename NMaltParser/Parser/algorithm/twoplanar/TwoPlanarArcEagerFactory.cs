@@ -9,7 +9,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 	/// </summary>
 	public class TwoPlanarArcEagerFactory : TwoPlanarFactory
 	{
-		public TwoPlanarArcEagerFactory(DependencyParserConfig _manager) : base(_manager)
+		public TwoPlanarArcEagerFactory(IDependencyParserConfig _manager) : base(_manager)
 		{
 		}
 

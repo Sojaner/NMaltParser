@@ -85,24 +85,24 @@ namespace NMaltParser.Core.SyntaxGraph
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.node.PhraseStructureNode addTerminalNode() throws org.maltparser.core.exception.MaltChainedException
 		public virtual PhraseStructureNode addTerminalNode()
 		{
-			return addTokenNode();
+			return AddTokenNode();
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.node.PhraseStructureNode addTerminalNode(int index) throws org.maltparser.core.exception.MaltChainedException
 		public virtual PhraseStructureNode addTerminalNode(int index)
 		{
-			return addTokenNode(index);
+			return AddTokenNode(index);
 		}
 
 		public virtual PhraseStructureNode getTerminalNode(int index)
 		{
-			return getTokenNode(index);
+			return GetTokenNode(index);
 		}
 
 		public virtual int nTerminalNode()
 		{
-			return nTokenNode();
+			return NTokenNode();
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -324,7 +324,7 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void clear() throws org.maltparser.core.exception.MaltChainedException
-		public override void clear()
+		public override void Clear()
 		{
 			edgePool.checkInAll();
 			graphEdges.Clear();
@@ -332,7 +332,7 @@ namespace NMaltParser.Core.SyntaxGraph
 			root.BelongsToGraph = this;
 			nonTerminalPool.checkInAll();
 			nonTerminalNodes.Clear();
-			base.clear();
+			base.Clear();
 		}
 
 		public virtual string toStringTerminalNode(TokenNode node)

@@ -8,7 +8,7 @@ namespace NMaltParser.Core.SyntaxGraph
 	/// <summary>
 	/// @author Johan Hall
 	/// </summary>
-	public abstract class SyntaxGraph : LabeledStructure, Observer
+	public abstract class SyntaxGraph : ILabeledStructure, Observer
 	{
 		protected internal SymbolTableHandler symbolTables;
 		protected internal readonly ObjectPoolList<LabelSet> labelSetPool;
@@ -58,28 +58,28 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void addLabel(Element element, String labelFunction, String label) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void addLabel(Element element, string labelFunction, string label)
+		public virtual void AddLabel(Element element, string labelFunction, string label)
 		{
 			element.addLabel(symbolTables.addSymbolTable(labelFunction), label);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public LabelSet checkOutNewLabelSet() throws org.maltparser.core.exception.MaltChainedException
-		public virtual LabelSet checkOutNewLabelSet()
+		public virtual LabelSet CheckOutNewLabelSet()
 		{
 			return labelSetPool.checkOut();
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void checkInLabelSet(LabelSet labelSet) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void checkInLabelSet(LabelSet labelSet)
+		public virtual void CheckInLabelSet(LabelSet labelSet)
 		{
 			labelSetPool.checkIn(labelSet);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void clear() throws org.maltparser.core.exception.MaltChainedException
-		public virtual void clear()
+		public virtual void Clear()
 		{
 			numberOfComponents = 0;
 			labelSetPool.checkInAll();

@@ -483,7 +483,7 @@ namespace NMaltParser.Core.SyntaxGraph.Node
 					return true;
 				}
     
-				TokenNode terminal = ((TokenStructure)BelongsToGraph).getTokenNode(lcorner);
+				TokenNode terminal = ((ITokenStructure)BelongsToGraph).GetTokenNode(lcorner);
 				while (terminal.Index != rcorner)
 				{
 					PhraseStructureNode tmp = terminal.Parent;
@@ -518,7 +518,7 @@ namespace NMaltParser.Core.SyntaxGraph.Node
 					return true;
 				}
     
-				TokenNode terminal = ((TokenStructure)BelongsToGraph).getTokenNode(lcorner);
+				TokenNode terminal = ((ITokenStructure)BelongsToGraph).GetTokenNode(lcorner);
 				while (terminal.Index != rcorner)
 				{
 					if (terminal.Parent != null && terminal.Parent.Root)

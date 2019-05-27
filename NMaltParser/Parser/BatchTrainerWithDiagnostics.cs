@@ -16,7 +16,7 @@ namespace NMaltParser.Parser
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public BatchTrainerWithDiagnostics(DependencyParserConfig manager, org.maltparser.core.symbol.SymbolTableHandler symbolTableHandler) throws org.maltparser.core.exception.MaltChainedException
-		public BatchTrainerWithDiagnostics(DependencyParserConfig manager, SymbolTableHandler symbolTableHandler) : base(manager,symbolTableHandler)
+		public BatchTrainerWithDiagnostics(IDependencyParserConfig manager, SymbolTableHandler symbolTableHandler) : base(manager,symbolTableHandler)
 		{
 			diagnostics = new Diagnostics(manager.getOptionValue("singlemalt", "diafile").ToString());
 			registry.Algorithm = this;
@@ -38,7 +38,7 @@ namespace NMaltParser.Parser
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.DependencyStructure parse(org.maltparser.core.syntaxgraph.DependencyStructure goldDependencyGraph, org.maltparser.core.syntaxgraph.DependencyStructure parseDependencyGraph) throws org.maltparser.core.exception.MaltChainedException
-		public override DependencyStructure parse(DependencyStructure goldDependencyGraph, DependencyStructure parseDependencyGraph)
+		public override IDependencyStructure parse(IDependencyStructure goldDependencyGraph, IDependencyStructure parseDependencyGraph)
 		{
 			parserState.clear();
 			parserState.initialize(parseDependencyGraph);
@@ -72,8 +72,8 @@ namespace NMaltParser.Parser
 
 				parserState.apply(action);
 			}
-			copyEdges(currentParserConfiguration.DependencyGraph, parseDependencyGraph);
-			parseDependencyGraph.linkAllTreesToRoot();
+			CopyEdges(currentParserConfiguration.DependencyGraph, parseDependencyGraph);
+			parseDependencyGraph.LinkAllTreesToRoot();
 			oracleGuide.finalizeSentence(parseDependencyGraph);
 
 			diagnostics.writeToDiaFile("\n");
@@ -96,7 +96,7 @@ namespace NMaltParser.Parser
 		}
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void terminate() throws org.maltparser.core.exception.MaltChainedException
-		public override void terminate()
+		public override void Terminate()
 		{
 			diagnostics.closeDiaWriter();
 		}

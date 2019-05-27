@@ -58,27 +58,27 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void deprojectivize(org.maltparser.core.syntaxgraph.DependencyStructure pdg, int markingStrategy) throws org.maltparser.core.exception.MaltChainedException
-		public void deprojectivize(DependencyStructure pdg, int markingStrategy)
+		public void deprojectivize(IDependencyStructure pdg, int markingStrategy)
 		{
 			SymbolTable deprelSymbolTable = pdg.SymbolTables.getSymbolTable("DEPREL");
 			SymbolTable ppliftedSymbolTable = pdg.SymbolTables.getSymbolTable("PPLIFTED");
 			SymbolTable pppathSymbolTable = pdg.SymbolTables.getSymbolTable("PPPATH");
 
-			bool[] nodeLifted = new bool[pdg.nDependencyNode()];
+			bool[] nodeLifted = new bool[pdg.NDependencyNode()];
 			Arrays.fill(nodeLifted, false);
-			bool[] nodePath = new bool[pdg.nDependencyNode()];
+			bool[] nodePath = new bool[pdg.NDependencyNode()];
 			Arrays.fill(nodePath, false);
-			string[] synacticHeadDeprel = new string[pdg.nDependencyNode()];
+			string[] synacticHeadDeprel = new string[pdg.NDependencyNode()];
 			Arrays.fill(synacticHeadDeprel, null);
 
 			foreach (int index in pdg.TokenIndices)
 			{
-				Edge e = pdg.getDependencyNode(index).HeadEdge;
+				Edge e = pdg.GetDependencyNode(index).HeadEdge;
 				if (e.hasLabel(deprelSymbolTable))
 				{
 					if (e.hasLabel(pppathSymbolTable) && pppathSymbolTable.getSymbolCodeToString(e.getLabelCode(pppathSymbolTable)).Equals("#true#"))
 					{
-						nodePath[pdg.getDependencyNode(index).Index] = true;
+						nodePath[pdg.GetDependencyNode(index).Index] = true;
 					}
 					if (e.hasLabel(ppliftedSymbolTable) && !ppliftedSymbolTable.getSymbolCodeToString(e.getLabelCode(ppliftedSymbolTable)).Equals("#false#"))
 					{
@@ -108,17 +108,17 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private void deattachCoveredRootsForDeprojectivization(org.maltparser.core.syntaxgraph.DependencyStructure pdg, org.maltparser.core.symbol.SymbolTable deprelSymbolTable) throws org.maltparser.core.exception.MaltChainedException
-		private void deattachCoveredRootsForDeprojectivization(DependencyStructure pdg, SymbolTable deprelSymbolTable)
+		private void deattachCoveredRootsForDeprojectivization(IDependencyStructure pdg, SymbolTable deprelSymbolTable)
 		{
 			SymbolTable ppcoveredRootSymbolTable = pdg.SymbolTables.getSymbolTable("PPCOVERED");
 			foreach (int index in pdg.TokenIndices)
 			{
-				Edge e = pdg.getDependencyNode(index).HeadEdge;
+				Edge e = pdg.GetDependencyNode(index).HeadEdge;
 				if (e.hasLabel(deprelSymbolTable))
 				{
 					if (e.hasLabel(ppcoveredRootSymbolTable) && ppcoveredRootSymbolTable.getSymbolCodeToString(e.getLabelCode(ppcoveredRootSymbolTable)).Equals("#true#"))
 					{
-						pdg.moveDependencyEdge(pdg.DependencyRoot.Index, pdg.getDependencyNode(index).Index);
+						pdg.MoveDependencyEdge(pdg.DependencyRoot.Index, pdg.GetDependencyNode(index).Index);
 					}
 				}
 			}
@@ -129,13 +129,13 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean needsDeprojectivizeWithHead(org.maltparser.core.syntaxgraph.DependencyStructure pdg, boolean[] nodeLifted, boolean[] nodePath, String[] synacticHeadDeprel, org.maltparser.core.symbol.SymbolTable deprelSymbolTable) throws org.maltparser.core.exception.MaltChainedException
-		private bool needsDeprojectivizeWithHead(DependencyStructure pdg, bool[] nodeLifted, bool[] nodePath, string[] synacticHeadDeprel, SymbolTable deprelSymbolTable)
+		private bool needsDeprojectivizeWithHead(IDependencyStructure pdg, bool[] nodeLifted, bool[] nodePath, string[] synacticHeadDeprel, SymbolTable deprelSymbolTable)
 		{
 			foreach (int index in pdg.DependencyIndices)
 			{
 				if (nodeLifted[index])
 				{
-					DependencyNode node = pdg.getDependencyNode(index);
+					DependencyNode node = pdg.GetDependencyNode(index);
 					if (breadthFirstSearchSortedByDistanceForHead(pdg, node.Head, node, synacticHeadDeprel[index], nodePath, deprelSymbolTable) != null)
 					{
 						return true;
@@ -147,7 +147,7 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean deprojectivizeWithHead(org.maltparser.core.syntaxgraph.DependencyStructure pdg, org.maltparser.core.syntaxgraph.node.DependencyNode node, boolean[] nodeLifted, boolean[] nodePath, String[] synacticHeadDeprel, org.maltparser.core.symbol.SymbolTable deprelSymbolTable) throws org.maltparser.core.exception.MaltChainedException
-		private bool deprojectivizeWithHead(DependencyStructure pdg, DependencyNode node, bool[] nodeLifted, bool[] nodePath, string[] synacticHeadDeprel, SymbolTable deprelSymbolTable)
+		private bool deprojectivizeWithHead(IDependencyStructure pdg, DependencyNode node, bool[] nodeLifted, bool[] nodePath, string[] synacticHeadDeprel, SymbolTable deprelSymbolTable)
 		{
 			bool success = true, childSuccess = false;
 			int i, childAttempts = 2;
@@ -159,7 +159,7 @@ namespace NMaltParser.Core.LW.Graph
 				possibleSyntacticHead = breadthFirstSearchSortedByDistanceForHead(pdg, node.Head, node, syntacticHeadDeprel, nodePath, deprelSymbolTable);
 				if (possibleSyntacticHead != null)
 				{
-					pdg.moveDependencyEdge(possibleSyntacticHead.Index, node.Index);
+					pdg.MoveDependencyEdge(possibleSyntacticHead.Index, node.Index);
 					nodeLifted[node.Index] = false;
 				}
 				else
@@ -186,7 +186,7 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private org.maltparser.core.syntaxgraph.node.DependencyNode breadthFirstSearchSortedByDistanceForHead(org.maltparser.core.syntaxgraph.DependencyStructure dg, org.maltparser.core.syntaxgraph.node.DependencyNode start, org.maltparser.core.syntaxgraph.node.DependencyNode avoid, String syntacticHeadDeprel, boolean[] nodePath, org.maltparser.core.symbol.SymbolTable deprelSymbolTable) throws org.maltparser.core.exception.MaltChainedException
-		private DependencyNode breadthFirstSearchSortedByDistanceForHead(DependencyStructure dg, DependencyNode start, DependencyNode avoid, string syntacticHeadDeprel, bool[] nodePath, SymbolTable deprelSymbolTable)
+		private DependencyNode breadthFirstSearchSortedByDistanceForHead(IDependencyStructure dg, DependencyNode start, DependencyNode avoid, string syntacticHeadDeprel, bool[] nodePath, SymbolTable deprelSymbolTable)
 		{
 			DependencyNode dependent;
 			string dependentDeprel;
@@ -209,7 +209,7 @@ namespace NMaltParser.Core.LW.Graph
 		}
 
 
-		private IList<DependencyNode> findAllDependentsVectorSortedByDistanceToPProjNode(DependencyStructure dg, DependencyNode governor, DependencyNode avoid, bool percentOnly, bool[] nodePath)
+		private IList<DependencyNode> findAllDependentsVectorSortedByDistanceToPProjNode(IDependencyStructure dg, DependencyNode governor, DependencyNode avoid, bool percentOnly, bool[] nodePath)
 		{
 			IList<DependencyNode> output = new List<DependencyNode>();
 			IList<DependencyNode> dependents = governor.ListOfDependents;
@@ -264,7 +264,7 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean deprojectivizeWithPath(org.maltparser.core.syntaxgraph.DependencyStructure pdg, org.maltparser.core.syntaxgraph.node.DependencyNode node, boolean[] nodeLifted, boolean[] nodePath) throws org.maltparser.core.exception.MaltChainedException
-		private bool deprojectivizeWithPath(DependencyStructure pdg, DependencyNode node, bool[] nodeLifted, bool[] nodePath)
+		private bool deprojectivizeWithPath(IDependencyStructure pdg, DependencyNode node, bool[] nodeLifted, bool[] nodePath)
 		{
 			bool success = true, childSuccess = false;
 			int i, childAttempts = 2;
@@ -274,7 +274,7 @@ namespace NMaltParser.Core.LW.Graph
 				possibleSyntacticHead = breadthFirstSearchSortedByDistanceForPath(pdg, node.Head, node, nodePath);
 				if (possibleSyntacticHead != null)
 				{
-					pdg.moveDependencyEdge(possibleSyntacticHead.Index, node.Index);
+					pdg.MoveDependencyEdge(possibleSyntacticHead.Index, node.Index);
 					nodeLifted[node.Index] = false;
 				}
 				else
@@ -287,7 +287,7 @@ namespace NMaltParser.Core.LW.Graph
 				possibleSyntacticHead = breadthFirstSearchSortedByDistanceForPath(pdg, node.Head, node, nodePath);
 				if (possibleSyntacticHead != null)
 				{
-					pdg.moveDependencyEdge(possibleSyntacticHead.Index, node.Index);
+					pdg.MoveDependencyEdge(possibleSyntacticHead.Index, node.Index);
 					nodeLifted[node.Index] = false;
 				}
 				else
@@ -311,7 +311,7 @@ namespace NMaltParser.Core.LW.Graph
 			return childSuccess && success;
 		}
 
-		private DependencyNode breadthFirstSearchSortedByDistanceForPath(DependencyStructure dg, DependencyNode start, DependencyNode avoid, bool[] nodePath)
+		private DependencyNode breadthFirstSearchSortedByDistanceForPath(IDependencyStructure dg, DependencyNode start, DependencyNode avoid, bool[] nodePath)
 		{
 			DependencyNode dependent;
 			IList<DependencyNode> nodes = new List<DependencyNode>(), newNodes;
@@ -330,7 +330,7 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean deprojectivizeWithHeadAndPath(org.maltparser.core.syntaxgraph.DependencyStructure pdg, org.maltparser.core.syntaxgraph.node.DependencyNode node, boolean[] nodeLifted, boolean[] nodePath, String[] synacticHeadDeprel, org.maltparser.core.symbol.SymbolTable deprelSymbolTable) throws org.maltparser.core.exception.MaltChainedException
-		private bool deprojectivizeWithHeadAndPath(DependencyStructure pdg, DependencyNode node, bool[] nodeLifted, bool[] nodePath, string[] synacticHeadDeprel, SymbolTable deprelSymbolTable)
+		private bool deprojectivizeWithHeadAndPath(IDependencyStructure pdg, DependencyNode node, bool[] nodeLifted, bool[] nodePath, string[] synacticHeadDeprel, SymbolTable deprelSymbolTable)
 		{
 			bool success = true, childSuccess = false;
 			int i, childAttempts = 2;
@@ -340,7 +340,7 @@ namespace NMaltParser.Core.LW.Graph
 				possibleSyntacticHead = breadthFirstSearchSortedByDistanceForHeadAndPath(pdg, node.Head, node, synacticHeadDeprel[node.Index], nodePath, deprelSymbolTable);
 				if (possibleSyntacticHead != null)
 				{
-					pdg.moveDependencyEdge(possibleSyntacticHead.Index, node.Index);
+					pdg.MoveDependencyEdge(possibleSyntacticHead.Index, node.Index);
 					nodeLifted[node.Index] = false;
 				}
 				else
@@ -353,7 +353,7 @@ namespace NMaltParser.Core.LW.Graph
 				possibleSyntacticHead = breadthFirstSearchSortedByDistanceForHeadAndPath(pdg, node.Head, node, synacticHeadDeprel[node.Index], nodePath, deprelSymbolTable);
 				if (possibleSyntacticHead != null)
 				{
-					pdg.moveDependencyEdge(possibleSyntacticHead.Index, node.Index);
+					pdg.MoveDependencyEdge(possibleSyntacticHead.Index, node.Index);
 					nodeLifted[node.Index] = false;
 				}
 				else
@@ -379,7 +379,7 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private org.maltparser.core.syntaxgraph.node.DependencyNode breadthFirstSearchSortedByDistanceForHeadAndPath(org.maltparser.core.syntaxgraph.DependencyStructure dg, org.maltparser.core.syntaxgraph.node.DependencyNode start, org.maltparser.core.syntaxgraph.node.DependencyNode avoid, String syntacticHeadDeprelCode, boolean[] nodePath, org.maltparser.core.symbol.SymbolTable deprelSymbolTable) throws org.maltparser.core.exception.MaltChainedException
-		private DependencyNode breadthFirstSearchSortedByDistanceForHeadAndPath(DependencyStructure dg, DependencyNode start, DependencyNode avoid, string syntacticHeadDeprelCode, bool[] nodePath, SymbolTable deprelSymbolTable)
+		private DependencyNode breadthFirstSearchSortedByDistanceForHeadAndPath(IDependencyStructure dg, DependencyNode start, DependencyNode avoid, string syntacticHeadDeprelCode, bool[] nodePath, SymbolTable deprelSymbolTable)
 		{
 			DependencyNode dependent;
 			IList<DependencyNode> nodes = new List<DependencyNode>(), newNodes = null, secondChance = new List<DependencyNode>();

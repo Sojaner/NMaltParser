@@ -15,7 +15,7 @@ namespace NMaltParser.Core.LW.Graph
 	/// 
 	/// @author Johan Hall
 	/// </summary>
-	public sealed class LWDependencyGraph : DependencyStructure
+	public sealed class LWDependencyGraph : IDependencyStructure
 	{
 		private const string TAB_SIGN = "\t";
 
@@ -165,7 +165,7 @@ namespace NMaltParser.Core.LW.Graph
 
 		protected internal SortedSet<DependencyNode> getSortedSetOfLeftDependents(int nodeIndex)
 		{
-			SortedSet<DependencyNode> leftDependents = Collections.synchronizedSortedSet(new SortedSet<DependencyNode>());
+			SortedSet<DependencyNode> leftDependents = Collections.SynchronizedSortedSet(new SortedSet<DependencyNode>());
 			for (int i = 1; i < nodeIndex; i++)
 			{
 				if (nodeIndex == nodes[i].HeadIndex)
@@ -191,7 +191,7 @@ namespace NMaltParser.Core.LW.Graph
 
 		protected internal SortedSet<DependencyNode> getSortedSetOfRightDependents(int nodeIndex)
 		{
-			SortedSet<DependencyNode> rightDependents = Collections.synchronizedSortedSet(new SortedSet<DependencyNode>());
+			SortedSet<DependencyNode> rightDependents = Collections.SynchronizedSortedSet(new SortedSet<DependencyNode>());
 			for (int i = nodeIndex + 1; i < nodes.Count; i++)
 			{
 				if (nodeIndex == nodes[i].HeadIndex)
@@ -217,7 +217,7 @@ namespace NMaltParser.Core.LW.Graph
 
 		protected internal SortedSet<DependencyNode> getSortedSetOfDependents(int nodeIndex)
 		{
-			SortedSet<DependencyNode> dependents = Collections.synchronizedSortedSet(new SortedSet<DependencyNode>());
+			SortedSet<DependencyNode> dependents = Collections.SynchronizedSortedSet(new SortedSet<DependencyNode>());
 			for (int i = 1; i < nodes.Count; i++)
 			{
 				if (nodeIndex == nodes[i].HeadIndex)
@@ -330,26 +330,26 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public org.maltparser.core.syntaxgraph.node.TokenNode addTokenNode() throws org.maltparser.core.exception.MaltChainedException
-		public TokenNode addTokenNode()
+		public TokenNode AddTokenNode()
 		{
 			throw new LWGraphException("Not implemented in the light-weight dependency graph package");
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public org.maltparser.core.syntaxgraph.node.TokenNode addTokenNode(int index) throws org.maltparser.core.exception.MaltChainedException
-		public TokenNode addTokenNode(int index)
+		public TokenNode AddTokenNode(int index)
 		{
 			throw new LWGraphException("Not implemented in the light-weight dependency graph package");
 		}
 
-		public TokenNode getTokenNode(int index)
+		public TokenNode GetTokenNode(int index)
 		{
 	//		throw new LWGraphException("Not implemented in the light-weight dependency graph package");
 			return null;
 		}
 
 
-		public void addComment(string comment, int at_index)
+		public void AddComment(string comment, int at_index)
 		{
 			List<string> commentList = comments[at_index];
 			if (commentList == null)
@@ -359,17 +359,17 @@ namespace NMaltParser.Core.LW.Graph
 			commentList.Add(comment);
 		}
 
-		public List<string> getComment(int at_index)
+		public List<string> GetComment(int at_index)
 		{
 			return comments[at_index];
 		}
 
-		public bool hasComments()
+		public bool HasComments()
 		{
 			return comments.Count > 0;
 		}
 
-		public int nTokenNode()
+		public int NTokenNode()
 		{
 			return nodes.Count - 1;
 		}
@@ -378,7 +378,7 @@ namespace NMaltParser.Core.LW.Graph
 		{
 			get
 			{
-				SortedSet<int> indices = Collections.synchronizedSortedSet(new SortedSet<int>());
+				SortedSet<int> indices = Collections.SynchronizedSortedSet(new SortedSet<int>());
 				for (int i = 1; i < nodes.Count; i++)
 				{
 					indices.Add(i);
@@ -395,7 +395,7 @@ namespace NMaltParser.Core.LW.Graph
 			}
 		}
 
-		public bool hasTokens()
+		public bool HasTokens()
 		{
 			return nodes.Count > 1;
 		}
@@ -413,7 +413,7 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public void clear() throws org.maltparser.core.exception.MaltChainedException
-		public override void clear()
+		public override void Clear()
 		{
 			nodes.Clear();
 		}
@@ -431,21 +431,21 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public void addLabel(org.maltparser.core.syntaxgraph.Element element, String labelFunction, String label) throws org.maltparser.core.exception.MaltChainedException
-		public override void addLabel(Element element, string labelFunction, string label)
+		public override void AddLabel(Element element, string labelFunction, string label)
 		{
 			element.addLabel(symbolTables.addSymbolTable(labelFunction), label);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public org.maltparser.core.syntaxgraph.LabelSet checkOutNewLabelSet() throws org.maltparser.core.exception.MaltChainedException
-		public override LabelSet checkOutNewLabelSet()
+		public override LabelSet CheckOutNewLabelSet()
 		{
 			throw new LWGraphException("Not implemented in light-weight dependency graph");
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public void checkInLabelSet(org.maltparser.core.syntaxgraph.LabelSet labelSet) throws org.maltparser.core.exception.MaltChainedException
-		public override void checkInLabelSet(LabelSet labelSet)
+		public override void CheckInLabelSet(LabelSet labelSet)
 		{
 			throw new LWGraphException("Not implemented in light-weight dependency graph");
 		}
@@ -466,7 +466,7 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public org.maltparser.core.syntaxgraph.node.DependencyNode addDependencyNode() throws org.maltparser.core.exception.MaltChainedException
-		public DependencyNode addDependencyNode()
+		public DependencyNode AddDependencyNode()
 		{
 			LWNode node = new LWNode(this, nodes.Count);
 			nodes.Add(node);
@@ -475,7 +475,7 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public org.maltparser.core.syntaxgraph.node.DependencyNode addDependencyNode(int index) throws org.maltparser.core.exception.MaltChainedException
-		public DependencyNode addDependencyNode(int index)
+		public DependencyNode AddDependencyNode(int index)
 		{
 			if (index == 0)
 			{
@@ -483,14 +483,14 @@ namespace NMaltParser.Core.LW.Graph
 			}
 			else if (index == nodes.Count)
 			{
-				return addDependencyNode();
+				return AddDependencyNode();
 			}
 			throw new LWGraphException("Not implemented in light-weight dependency graph");
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public org.maltparser.core.syntaxgraph.node.DependencyNode getDependencyNode(int index) throws org.maltparser.core.exception.MaltChainedException
-		public DependencyNode getDependencyNode(int index)
+		public DependencyNode GetDependencyNode(int index)
 		{
 			if (index < 0 || index >= nodes.Count)
 			{
@@ -499,7 +499,7 @@ namespace NMaltParser.Core.LW.Graph
 			return nodes[index];
 		}
 
-		public int nDependencyNode()
+		public int NDependencyNode()
 		{
 			return nodes.Count;
 		}
@@ -514,7 +514,7 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public org.maltparser.core.syntaxgraph.edge.Edge addDependencyEdge(int headIndex, int dependentIndex) throws org.maltparser.core.exception.MaltChainedException
-		public Edge addDependencyEdge(int headIndex, int dependentIndex)
+		public Edge AddDependencyEdge(int headIndex, int dependentIndex)
 		{
 			if (headIndex < 0 && headIndex >= nodes.Count)
 			{
@@ -533,7 +533,7 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public org.maltparser.core.syntaxgraph.edge.Edge moveDependencyEdge(int newHeadIndex, int dependentIndex) throws org.maltparser.core.exception.MaltChainedException
-		public Edge moveDependencyEdge(int newHeadIndex, int dependentIndex)
+		public Edge MoveDependencyEdge(int newHeadIndex, int dependentIndex)
 		{
 			if (newHeadIndex < 0 && newHeadIndex >= nodes.Count)
 			{
@@ -555,7 +555,7 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public void removeDependencyEdge(int headIndex, int dependentIndex) throws org.maltparser.core.exception.MaltChainedException
-		public void removeDependencyEdge(int headIndex, int dependentIndex)
+		public void RemoveDependencyEdge(int headIndex, int dependentIndex)
 		{
 			if (headIndex < 0 && headIndex >= nodes.Count)
 			{
@@ -573,7 +573,7 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public void linkAllTreesToRoot() throws org.maltparser.core.exception.MaltChainedException
-		public void linkAllTreesToRoot()
+		public void LinkAllTreesToRoot()
 		{
 			for (int i = 0; i < nodes.Count; i++)
 			{
@@ -588,7 +588,7 @@ namespace NMaltParser.Core.LW.Graph
 			}
 		}
 
-		public int nEdges()
+		public int NEdges()
 		{
 			int n = 0;
 			for (int i = 1; i < nodes.Count; i++)
@@ -605,7 +605,7 @@ namespace NMaltParser.Core.LW.Graph
 		{
 			get
 			{
-				SortedSet<Edge> edges = Collections.synchronizedSortedSet(new SortedSet<Edge>());
+				SortedSet<Edge> edges = Collections.SynchronizedSortedSet(new SortedSet<Edge>());
 				for (int i = 1; i < nodes.Count; i++)
 				{
 					if (nodes[i].hasHead())
@@ -621,7 +621,7 @@ namespace NMaltParser.Core.LW.Graph
 		{
 			get
 			{
-				SortedSet<int> indices = Collections.synchronizedSortedSet(new SortedSet<int>());
+				SortedSet<int> indices = Collections.SynchronizedSortedSet(new SortedSet<int>());
 				for (int i = 0; i < nodes.Count; i++)
 				{
 					indices.Add(i);
@@ -638,7 +638,7 @@ namespace NMaltParser.Core.LW.Graph
 			}
 		}
 
-		public bool hasLabeledDependency(int index)
+		public bool HasLabeledDependency(int index)
 		{
 			if (index < 0 || index >= nodes.Count)
 			{
@@ -703,7 +703,7 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public int nNonProjectiveEdges() throws org.maltparser.core.exception.MaltChainedException
-		public int nNonProjectiveEdges()
+		public int NNonProjectiveEdges()
 		{
 			int c = 0;
 			for (int i = 1; i < nodes.Count; i++)
@@ -728,28 +728,28 @@ namespace NMaltParser.Core.LW.Graph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public String getDefaultRootEdgeLabelSymbol(org.maltparser.core.symbol.SymbolTable table) throws org.maltparser.core.exception.MaltChainedException
-		public string getDefaultRootEdgeLabelSymbol(SymbolTable table)
+		public string GetDefaultRootEdgeLabelSymbol(SymbolTable table)
 		{
 			return rootLabels.getDefaultRootLabelSymbol(table);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public int getDefaultRootEdgeLabelCode(org.maltparser.core.symbol.SymbolTable table) throws org.maltparser.core.exception.MaltChainedException
-		public int getDefaultRootEdgeLabelCode(SymbolTable table)
+		public int GetDefaultRootEdgeLabelCode(SymbolTable table)
 		{
 			return rootLabels.getDefaultRootLabelCode(table).Value;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public void setDefaultRootEdgeLabel(org.maltparser.core.symbol.SymbolTable table, String defaultRootSymbol) throws org.maltparser.core.exception.MaltChainedException
-		public void setDefaultRootEdgeLabel(SymbolTable table, string defaultRootSymbol)
+		public void SetDefaultRootEdgeLabel(SymbolTable table, string defaultRootSymbol)
 		{
 			rootLabels.setDefaultRootLabel(table, defaultRootSymbol);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: @Override public void setDefaultRootEdgeLabels(String rootLabelOption, java.util.SortedMap<String, org.maltparser.core.symbol.SymbolTable> edgeSymbolTables) throws org.maltparser.core.exception.MaltChainedException
-		public void setDefaultRootEdgeLabels(string rootLabelOption, SortedDictionary<string, SymbolTable> edgeSymbolTables)
+		public void SetDefaultRootEdgeLabels(string rootLabelOption, SortedDictionary<string, SymbolTable> edgeSymbolTables)
 		{
 			rootLabels.setRootLabels(rootLabelOption, edgeSymbolTables);
 		}

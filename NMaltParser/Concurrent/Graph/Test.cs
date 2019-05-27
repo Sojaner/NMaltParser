@@ -20,16 +20,16 @@ namespace NMaltParser.Concurrent.Graph
 		private const string IGNORE_COLUMN_SIGN = "_";
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public static org.maltparser.core.syntaxgraph.DependencyStructure getOldDependencyGraph(org.maltparser.concurrent.graph.dataformat.DataFormat dataFormat, String[] tokens) throws org.maltparser.core.exception.MaltChainedException
-		public static DependencyStructure getOldDependencyGraph(DataFormat dataFormat, string[] tokens)
+		public static IDependencyStructure getOldDependencyGraph(DataFormat dataFormat, string[] tokens)
 		{
-			DependencyStructure oldGraph = new DependencyGraph(new HashSymbolTableHandler());
+			IDependencyStructure oldGraph = new DependencyGraph(new HashSymbolTableHandler());
 			for (int i = 0; i < tokens.Length; i++)
 			{
-				oldGraph.addDependencyNode(i + 1);
+				oldGraph.AddDependencyNode(i + 1);
 			}
 			for (int i = 0; i < tokens.Length; i++)
 			{
-				DependencyNode node = oldGraph.getDependencyNode(i + 1);
+				DependencyNode node = oldGraph.GetDependencyNode(i + 1);
 				string[] items = tokens[i].Split("\t", true);
 				Edge edge = null;
 				for (int j = 0; j < items.Length; j++)
@@ -38,23 +38,23 @@ namespace NMaltParser.Concurrent.Graph
 
 					if (column.Category == ColumnDescription.Input && node != null)
 					{
-						oldGraph.addLabel(node, column.Name, items[j]);
+						oldGraph.AddLabel(node, column.Name, items[j]);
 					}
 					else if (column.Category == ColumnDescription.Head)
 					{
 						if (column.Category != ColumnDescription.Ignore && !items[j].Equals(IGNORE_COLUMN_SIGN))
 						{
-							edge = oldGraph.addDependencyEdge(int.Parse(items[j]), i + 1);
+							edge = oldGraph.AddDependencyEdge(int.Parse(items[j]), i + 1);
 						}
 					}
 					else if (column.Category == ColumnDescription.DependencyEdgeLabel && edge != null)
 					{
-						oldGraph.addLabel(edge, column.Name, items[j]);
+						oldGraph.AddLabel(edge, column.Name, items[j]);
 					}
 				}
 			}
 
-			oldGraph.setDefaultRootEdgeLabel(oldGraph.SymbolTables.getSymbolTable("DEPREL"), "ROOT");
+			oldGraph.SetDefaultRootEdgeLabel(oldGraph.SymbolTables.getSymbolTable("DEPREL"), "ROOT");
 			return oldGraph;
 		}
 
@@ -80,7 +80,7 @@ namespace NMaltParser.Concurrent.Graph
 					}
 					sentenceCounter++;
 					ConcurrentDependencyGraph newGraph = new ConcurrentDependencyGraph(dataFormat, goldTokens);
-					DependencyStructure oldGraph = getOldDependencyGraph(dataFormat, goldTokens);
+					IDependencyStructure oldGraph = getOldDependencyGraph(dataFormat, goldTokens);
 					int newGraphINT;
 					int oldGraphINT;
 					bool newGraphBOOL;
@@ -113,10 +113,10 @@ namespace NMaltParser.Concurrent.Graph
 	//	    			newGraphINT = newGraph.getNode(i).getRightmostDependent() != null ? newGraph.getNode(i).getRightmostDependent().getIndex() : -1;
 	//	    			oldGraphINT = oldGraph.getDependencyNode(i).getRightmostDependent() != null ? oldGraph.getDependencyNode(i).getRightmostDependent	().getIndex() : -1;
 						newGraphINT = newGraph.getDependencyNode(i).findComponent().Index;
-						oldGraphINT = oldGraph.getDependencyNode(i).findComponent().Index;
+						oldGraphINT = oldGraph.GetDependencyNode(i).findComponent().Index;
 
 						newGraphINT = newGraph.getDependencyNode(i).Rank;
-						oldGraphINT = oldGraph.getDependencyNode(i).Rank;
+						oldGraphINT = oldGraph.GetDependencyNode(i).Rank;
 						if (newGraphINT != oldGraphINT)
 						{
 							Console.WriteLine(newGraphINT + "\t" + oldGraphINT);

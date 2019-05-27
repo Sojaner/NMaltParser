@@ -12,7 +12,7 @@ namespace NMaltParser.Core.SyntaxGraph
 	/// <summary>
 	/// @author Johan Hall
 	/// </summary>
-	public class DependencyGraph : Sentence, DependencyStructure
+	public class DependencyGraph : Sentence, IDependencyStructure
 	{
 		private readonly ObjectPoolList<Edge.Edge> edgePool;
 		private readonly SortedSet<Edge.Edge> graphEdges;
@@ -29,7 +29,7 @@ namespace NMaltParser.Core.SyntaxGraph
 			root.BelongsToGraph = this;
 			graphEdges = new SortedSet<Edge.Edge>();
 			edgePool = new ObjectPoolListAnonymousInnerClass(this);
-			clear();
+			Clear();
 		}
 
 		private class ObjectPoolListAnonymousInnerClass : ObjectPoolList<Edge.Edge>
@@ -55,43 +55,43 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.node.DependencyNode addDependencyNode() throws org.maltparser.core.exception.MaltChainedException
-		public virtual DependencyNode addDependencyNode()
+		public virtual DependencyNode AddDependencyNode()
 		{
-			return addTokenNode();
+			return AddTokenNode();
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.node.DependencyNode addDependencyNode(int index) throws org.maltparser.core.exception.MaltChainedException
-		public virtual DependencyNode addDependencyNode(int index)
+		public virtual DependencyNode AddDependencyNode(int index)
 		{
 			if (index == 0)
 			{
 				return root;
 			}
-			return addTokenNode(index);
+			return AddTokenNode(index);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.node.DependencyNode getDependencyNode(int index) throws org.maltparser.core.exception.MaltChainedException
-		public virtual DependencyNode getDependencyNode(int index)
+		public virtual DependencyNode GetDependencyNode(int index)
 		{
 			if (index == 0)
 			{
 				return root;
 			}
-			return getTokenNode(index);
+			return GetTokenNode(index);
 		}
 
-		public virtual int nDependencyNode()
+		public virtual int NDependencyNode()
 		{
-			return nTokenNode() + 1;
+			return NTokenNode() + 1;
 		}
 
 		public virtual int HighestDependencyNodeIndex
 		{
 			get
 			{
-				if (hasTokens())
+				if (HasTokens())
 				{
 					return HighestTokenIndex;
 				}
@@ -101,7 +101,7 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge addDependencyEdge(int headIndex, int dependentIndex) throws org.maltparser.core.exception.MaltChainedException
-		public virtual Edge.Edge addDependencyEdge(int headIndex, int dependentIndex)
+		public virtual Edge.Edge AddDependencyEdge(int headIndex, int dependentIndex)
 		{
 			DependencyNode head = null;
 			DependencyNode dependent = null;
@@ -160,7 +160,7 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.edge.Edge moveDependencyEdge(int newHeadIndex, int dependentIndex) throws org.maltparser.core.exception.MaltChainedException
-		public virtual Edge.Edge moveDependencyEdge(int newHeadIndex, int dependentIndex)
+		public virtual Edge.Edge MoveDependencyEdge(int newHeadIndex, int dependentIndex)
 		{
 			DependencyNode newHead = null;
 			DependencyNode dependent = null;
@@ -191,7 +191,7 @@ namespace NMaltParser.Core.SyntaxGraph
 			Edge.Edge headEdge = dependent.HeadEdge;
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final LabelSet labels = checkOutNewLabelSet();
-			LabelSet labels = checkOutNewLabelSet();
+			LabelSet labels = CheckOutNewLabelSet();
 			foreach (SymbolTable table in headEdge.LabelTypes)
 			{
 				labels.put(table, headEdge.getLabelCode(table));
@@ -201,13 +201,13 @@ namespace NMaltParser.Core.SyntaxGraph
 			headEdge.setEdge((Node.Node)newHead, (Node.Node)dependent, Edge_Fields.DEPENDENCY_EDGE);
 			headEdge.addLabel(labels);
 			labels.clear();
-			checkInLabelSet(labels);
+			CheckInLabelSet(labels);
 			return headEdge;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void removeDependencyEdge(int headIndex, int dependentIndex) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void removeDependencyEdge(int headIndex, int dependentIndex)
+		public virtual void RemoveDependencyEdge(int headIndex, int dependentIndex)
 		{
 			Node.Node head = null;
 			Node.Node dependent = null;
@@ -309,9 +309,9 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public boolean hasLabeledDependency(int index) throws org.maltparser.core.exception.MaltChainedException
-		public virtual bool hasLabeledDependency(int index)
+		public virtual bool HasLabeledDependency(int index)
 		{
-			return (getDependencyNode(index).hasHead() && getDependencyNode(index).HeadEdge.Labeled);
+			return (GetDependencyNode(index).hasHead() && GetDependencyNode(index).HeadEdge.Labeled);
 		}
 
 		public virtual bool Connected
@@ -377,7 +377,7 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public int nNonProjectiveEdges() throws org.maltparser.core.exception.MaltChainedException
-		public virtual int nNonProjectiveEdges()
+		public virtual int NNonProjectiveEdges()
 		{
 			int c = 0;
 			foreach (int i in terminalNodes.Keys)
@@ -390,7 +390,7 @@ namespace NMaltParser.Core.SyntaxGraph
 			return c;
 		}
 
-		public virtual int nEdges()
+		public virtual int NEdges()
 		{
 			return graphEdges.Count;
 		}
@@ -435,7 +435,7 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void linkAllTreesToRoot() throws org.maltparser.core.exception.MaltChainedException
-		public virtual void linkAllTreesToRoot()
+		public virtual void LinkAllTreesToRoot()
 		{
 			foreach (int i in terminalNodes.Keys)
 			{
@@ -462,7 +462,7 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public String getDefaultRootEdgeLabelSymbol(org.maltparser.core.symbol.SymbolTable table) throws org.maltparser.core.exception.MaltChainedException
-		public virtual string getDefaultRootEdgeLabelSymbol(SymbolTable table)
+		public virtual string GetDefaultRootEdgeLabelSymbol(SymbolTable table)
 		{
 			if (rootLabels == null)
 			{
@@ -473,7 +473,7 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public int getDefaultRootEdgeLabelCode(org.maltparser.core.symbol.SymbolTable table) throws org.maltparser.core.exception.MaltChainedException
-		public virtual int getDefaultRootEdgeLabelCode(SymbolTable table)
+		public virtual int GetDefaultRootEdgeLabelCode(SymbolTable table)
 		{
 			if (rootLabels == null)
 			{
@@ -484,7 +484,7 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void setDefaultRootEdgeLabel(org.maltparser.core.symbol.SymbolTable table, String defaultRootSymbol) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void setDefaultRootEdgeLabel(SymbolTable table, string defaultRootSymbol)
+		public virtual void SetDefaultRootEdgeLabel(SymbolTable table, string defaultRootSymbol)
 		{
 			if (rootLabels == null)
 			{
@@ -495,7 +495,7 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void setDefaultRootEdgeLabels(String rootLabelOption, java.util.SortedMap<String, org.maltparser.core.symbol.SymbolTable> edgeSymbolTables) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void setDefaultRootEdgeLabels(string rootLabelOption, SortedDictionary<string, SymbolTable> edgeSymbolTables)
+		public virtual void SetDefaultRootEdgeLabels(string rootLabelOption, SortedDictionary<string, SymbolTable> edgeSymbolTables)
 		{
 			if (rootLabels == null)
 			{
@@ -506,12 +506,12 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void clear() throws org.maltparser.core.exception.MaltChainedException
-		public override void clear()
+		public override void Clear()
 		{
 			edgePool.checkInAll();
 			graphEdges.Clear();
 			root.clear();
-			base.clear();
+			base.Clear();
 			numberOfComponents++;
 		}
 

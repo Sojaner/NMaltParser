@@ -14,9 +14,9 @@ namespace NMaltParser.Parser
 	public abstract class Oracle : OracleGuide
 	{
 		public abstract void terminate();
-		public abstract void finalizeSentence(DependencyStructure dependencyGraph);
-		public abstract GuideUserAction predict(DependencyStructure gold, ParserConfiguration config);
-		private readonly DependencyParserConfig manager;
+		public abstract void finalizeSentence(IDependencyStructure dependencyGraph);
+		public abstract GuideUserAction predict(IDependencyStructure gold, ParserConfiguration config);
+		private readonly IDependencyParserConfig manager;
 		private readonly GuideUserHistory history;
 		private string name;
 		protected internal readonly ActionContainer[] actionContainers;
@@ -25,7 +25,7 @@ namespace NMaltParser.Parser
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public Oracle(DependencyParserConfig manager, org.maltparser.parser.history.GuideUserHistory history) throws org.maltparser.core.exception.MaltChainedException
-		public Oracle(DependencyParserConfig manager, GuideUserHistory history)
+		public Oracle(IDependencyParserConfig manager, GuideUserHistory history)
 		{
 			this.manager = manager;
 			this.history = history;
@@ -66,7 +66,7 @@ namespace NMaltParser.Parser
 			}
 		}
 
-		public virtual DependencyParserConfig Configuration
+		public virtual IDependencyParserConfig Configuration
 		{
 			get
 			{

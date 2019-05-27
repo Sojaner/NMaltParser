@@ -38,11 +38,11 @@ namespace NMaltParser.Parser.Algorithm.Planar
 			switch (transActionContainer.ActionCode)
 			{
 			case LEFTARC:
-				e = planarConfig.DependencyStructure.addDependencyEdge(input.Peek().Index, stack.Peek().Index);
+				e = planarConfig.DependencyStructure.AddDependencyEdge(input.Peek().Index, stack.Peek().Index);
 				addEdgeLabels(e);
 				break;
 			case RIGHTARC:
-				e = planarConfig.DependencyStructure.addDependencyEdge(stack.Peek().Index, input.Peek().Index);
+				e = planarConfig.DependencyStructure.AddDependencyEdge(stack.Peek().Index, input.Peek().Index);
 				addEdgeLabels(e);
 				break;
 			case REDUCE:
@@ -108,7 +108,7 @@ namespace NMaltParser.Parser.Algorithm.Planar
 			PlanarConfig planarConfig = (PlanarConfig)config;
 			DependencyNode stackPeek = planarConfig.Stack.Peek();
 			DependencyNode inputPeek = planarConfig.Input.Peek();
-			DependencyStructure dg = planarConfig.DependencyGraph;
+			IDependencyStructure dg = planarConfig.DependencyGraph;
 			//int rootHandling = planarConfig.getRootHandling();
 			bool singleHeadConstraint = planarConfig.requiresSingleHead();
 			bool noCoveredRootsConstraint = planarConfig.requiresNoCoveredRoots();
@@ -135,7 +135,7 @@ namespace NMaltParser.Parser.Algorithm.Planar
 					return false;
 				}
 				//avoid two links being created from and to the same node
-				if (stackPeek.hasHead() && dg.getTokenNode(stackPeek.Index).Head.Index == inputPeek.Index)
+				if (stackPeek.hasHead() && dg.GetTokenNode(stackPeek.Index).Head.Index == inputPeek.Index)
 				{
 					return false;
 				}
@@ -153,7 +153,7 @@ namespace NMaltParser.Parser.Algorithm.Planar
 					return false;
 				}
 				//avoid two links being created from and to the same node
-				if (inputPeek.hasHead() && dg.getTokenNode(inputPeek.Index).Head.Index == stackPeek.Index)
+				if (inputPeek.hasHead() && dg.GetTokenNode(inputPeek.Index).Head.Index == stackPeek.Index)
 				{
 					return false;
 				}
@@ -200,7 +200,7 @@ namespace NMaltParser.Parser.Algorithm.Planar
 			{
 				if (connectednessConstraintOnShift && planarConfig.Input.Count == 1) //last word
 				{
-					bool path = (planarConfig.DependencyGraph.getTokenNode(1).findComponent().Index == inputPeek.findComponent().Index); //require connection to 1st
+					bool path = (planarConfig.DependencyGraph.GetTokenNode(1).findComponent().Index == inputPeek.findComponent().Index); //require connection to 1st
 					return path;
 				}
 			}

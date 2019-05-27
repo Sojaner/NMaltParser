@@ -29,7 +29,7 @@ namespace NMaltParser.Transform.Pseudo
 
 		private PseudoProjectivity pproj;
 		private bool pprojActive = false;
-		private TokenStructure cachedGraph = null;
+		private ITokenStructure cachedGraph = null;
 
 		public PseudoProjChartItem()
 		{
@@ -124,26 +124,26 @@ namespace NMaltParser.Transform.Pseudo
 				covered_root = OptionManager.instance().getOptionValue(OptionContainerIndex, "pproj", "covered_root").ToString().Trim();
 				lifting_order = OptionManager.instance().getOptionValue(OptionContainerIndex, "pproj", "lifting_order").ToString().Trim();
 
-				cachedGraph = (TokenStructure)flowChartinstance.getFlowChartRegistry(typeof(TokenStructure), sourceName);
+				cachedGraph = (ITokenStructure)flowChartinstance.getFlowChartRegistry(typeof(ITokenStructure), sourceName);
 				if (!marking_strategy.Equals("none", StringComparison.OrdinalIgnoreCase) || !covered_root.Equals("none", StringComparison.OrdinalIgnoreCase))
 				{
 					pprojActive = true;
 				}
 			}
 
-			if (pprojActive && cachedGraph is DependencyStructure)
+			if (pprojActive && cachedGraph is IDependencyStructure)
 			{
 				if (taskName.Equals("proj"))
 				{
-						pproj.projectivize((DependencyStructure)cachedGraph);
+						pproj.projectivize((IDependencyStructure)cachedGraph);
 				}
 				else if (taskName.Equals("merge"))
 				{
-						pproj.mergeArclabels((DependencyStructure)cachedGraph);
+						pproj.mergeArclabels((IDependencyStructure)cachedGraph);
 				}
 				else if (taskName.Equals("deproj"))
 				{
-						pproj.deprojectivize((DependencyStructure)cachedGraph);
+						pproj.deprojectivize((IDependencyStructure)cachedGraph);
 	//				marking_strategy = OptionManager.instance().getOptionValue(getOptionContainerIndex(), "pproj", "marking_strategy").toString().trim();
 	//				covered_root = OptionManager.instance().getOptionValue(getOptionContainerIndex(), "pproj", "covered_root").toString().trim();
 	//				ConfigurationDir configDir = (ConfigurationDir)flowChartinstance.getFlowChartRegistry(org.maltparser.core.config.ConfigurationDir.class, idName);
@@ -152,7 +152,7 @@ namespace NMaltParser.Transform.Pseudo
 				}
 				else if (taskName.Equals("split"))
 				{
-						pproj.splitArclabels((DependencyStructure)cachedGraph);
+						pproj.splitArclabels((IDependencyStructure)cachedGraph);
 				}
 			}
 			return signal;

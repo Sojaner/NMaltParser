@@ -42,11 +42,11 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 			switch (actionCode)
 			{
 			case LEFTARC:
-				e = planarConfig.DependencyStructure.addDependencyEdge(input.Peek().Index, activeStack.Peek().Index);
+				e = planarConfig.DependencyStructure.AddDependencyEdge(input.Peek().Index, activeStack.Peek().Index);
 				addEdgeLabels(e);
 				break;
 			case RIGHTARC:
-				e = planarConfig.DependencyStructure.addDependencyEdge(activeStack.Peek().Index, input.Peek().Index);
+				e = planarConfig.DependencyStructure.AddDependencyEdge(activeStack.Peek().Index, input.Peek().Index);
 				addEdgeLabels(e);
 				break;
 			case SWITCH:
@@ -132,7 +132,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 			DependencyNode activeStackPeek = planarConfig.ActiveStack.Peek();
 			DependencyNode inactiveStackPeek = planarConfig.InactiveStack.Peek();
 			DependencyNode inputPeek = planarConfig.Input.Peek();
-			DependencyStructure dg = planarConfig.DependencyGraph;
+			IDependencyStructure dg = planarConfig.DependencyGraph;
 			//int rootHandling = planarConfig.getRootHandling();
 			bool singleHeadConstraint = planarConfig.requiresSingleHead();
 			bool noCoveredRootsConstraint = planarConfig.requiresNoCoveredRoots();
@@ -159,7 +159,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 					return false;
 				}
 				//avoid two links being created from and to the same node
-				if (activeStackPeek.hasHead() && dg.getTokenNode(activeStackPeek.Index).Head.Index == inputPeek.Index)
+				if (activeStackPeek.hasHead() && dg.GetTokenNode(activeStackPeek.Index).Head.Index == inputPeek.Index)
 				{
 					return false;
 				}
@@ -177,7 +177,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 					return false;
 				}
 				//avoid two links being created from and to the same node
-				if (inputPeek.hasHead() && dg.getTokenNode(inputPeek.Index).Head.Index == activeStackPeek.Index)
+				if (inputPeek.hasHead() && dg.GetTokenNode(inputPeek.Index).Head.Index == activeStackPeek.Index)
 				{
 					return false;
 				}

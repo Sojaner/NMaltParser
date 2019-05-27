@@ -13,9 +13,9 @@ namespace NMaltParser.Parser.Algorithm.Covington
 	{
 		public abstract OracleGuide makeOracleGuide(GuideUserHistory history);
 		public abstract TransitionSystem makeTransitionSystem();
-		protected internal readonly DependencyParserConfig manager;
+		protected internal readonly IDependencyParserConfig manager;
 
-		public CovingtonFactory(DependencyParserConfig _manager)
+		public CovingtonFactory(IDependencyParserConfig _manager)
 		{
 			manager = _manager;
 		}

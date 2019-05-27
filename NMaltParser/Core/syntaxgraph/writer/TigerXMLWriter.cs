@@ -109,13 +109,13 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void writeSentence(org.maltparser.core.syntaxgraph.TokenStructure syntaxGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void writeSentence(TokenStructure syntaxGraph)
+		public virtual void writeSentence(ITokenStructure syntaxGraph)
 		{
 			if (syntaxGraph == null || dataFormatInstance == null)
 			{
 				return;
 			}
-			if (syntaxGraph.hasTokens())
+			if (syntaxGraph.HasTokens())
 			{
 				sentenceCount++;
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
@@ -146,7 +146,7 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 					writer.Write("\">\n");
 
 					writeTerminals(phraseStructure);
-					if (phraseStructure.nTokenNode() != 1 || rootHandling.Equals(RootHandling.TALBANKEN))
+					if (phraseStructure.NTokenNode() != 1 || rootHandling.Equals(RootHandling.TALBANKEN))
 					{
 						writeNonTerminals(phraseStructure);
 					}
@@ -190,7 +190,7 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 					rootID.Append('_');
 					rootID.Append(VROOT_SYMBOL);
 				}
-				else if (value.nTokenNode() == 1 && value.nNonTerminals() == 0 && !root.Labeled)
+				else if (value.NTokenNode() == 1 && value.nNonTerminals() == 0 && !root.Labeled)
 				{
 					rootID.Length = 0;
 					rootID.Append(sentenceID);
@@ -284,7 +284,7 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 				{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.syntaxgraph.node.PhraseStructureNode t = phraseStructure.getTokenNode(index);
-					PhraseStructureNode t = phraseStructure.getTokenNode(index);
+					PhraseStructureNode t = phraseStructure.GetTokenNode(index);
 					writer.Write("          <t ");
 					if (!labeledTerminalID)
 					{

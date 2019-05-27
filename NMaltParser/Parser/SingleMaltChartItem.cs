@@ -22,8 +22,8 @@ namespace NMaltParser.Parser
 		private string sourceName;
 		private string modeName;
 		private string taskName;
-		private DependencyStructure cachedSourceGraph = null;
-		private DependencyStructure cachedTargetGraph = null;
+		private IDependencyStructure cachedSourceGraph = null;
+		private IDependencyStructure cachedTargetGraph = null;
 
 
 
@@ -163,19 +163,19 @@ namespace NMaltParser.Parser
 			{
 				if (cachedSourceGraph == null)
 				{
-					cachedSourceGraph = (DependencyStructure)flowChartinstance.getFlowChartRegistry(typeof(DependencyStructure), sourceName);
+					cachedSourceGraph = (IDependencyStructure)flowChartinstance.getFlowChartRegistry(typeof(IDependencyStructure), sourceName);
 				}
 				if (cachedTargetGraph == null)
 				{
-					cachedTargetGraph = (DependencyStructure)flowChartinstance.getFlowChartRegistry(typeof(DependencyStructure), targetName);
+					cachedTargetGraph = (IDependencyStructure)flowChartinstance.getFlowChartRegistry(typeof(IDependencyStructure), targetName);
 				}
 				if (modeName.Equals("learn"))
 				{
-					singleMalt.oracleParse(cachedSourceGraph, cachedTargetGraph);
+					singleMalt.OracleParse(cachedSourceGraph, cachedTargetGraph);
 				}
 				else if (modeName.Equals("parse"))
 				{
-					singleMalt.parse(cachedSourceGraph);
+					singleMalt.Parse(cachedSourceGraph);
 	//				if (cachedSourceGraph instanceof MappablePhraseStructureGraph) {
 	//					System.out.println("MappablePhraseStructureGraph");
 	//					((MappablePhraseStructureGraph)cachedSourceGraph).getMapping().connectUnattachedSpines((MappablePhraseStructureGraph)cachedSourceGraph);

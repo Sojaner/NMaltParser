@@ -124,7 +124,7 @@ namespace NMaltParser.Parser
 					}
 					else
 					{
-						e.addLabel((SymbolTable)arcLabelActionContainers[i].Table, ((DependencyStructure)e.BelongsToGraph).getDefaultRootEdgeLabelCode((SymbolTable)arcLabelActionContainers[i].Table));
+						e.addLabel((SymbolTable)arcLabelActionContainers[i].Table, ((IDependencyStructure)e.BelongsToGraph).GetDefaultRootEdgeLabelCode((SymbolTable)arcLabelActionContainers[i].Table));
 					}
 				}
 				if (propagationManager != null)

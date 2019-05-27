@@ -22,8 +22,8 @@ namespace NMaltParser.Core.SyntaxGraph
 		private string taskName;
 		private bool usePartialTree;
 
-		private TokenStructure cachedSource = null;
-		private TokenStructure cachedTarget = null;
+		private ITokenStructure cachedSource = null;
+		private ITokenStructure cachedTarget = null;
 
 		public CopyChartItem()
 		{
@@ -87,17 +87,17 @@ namespace NMaltParser.Core.SyntaxGraph
 			{
 				if (cachedSource == null)
 				{
-					cachedSource = (TokenStructure)flowChartinstance.getFlowChartRegistry(typeof(TokenStructure), sourceName);
+					cachedSource = (ITokenStructure)flowChartinstance.getFlowChartRegistry(typeof(ITokenStructure), sourceName);
 				}
 				if (cachedTarget == null)
 				{
-					cachedTarget = (TokenStructure)flowChartinstance.getFlowChartRegistry(typeof(TokenStructure), targetName);
+					cachedTarget = (ITokenStructure)flowChartinstance.getFlowChartRegistry(typeof(ITokenStructure), targetName);
 				}
 				copyTerminalStructure(cachedSource, cachedTarget);
 	//			SystemLogger.logger().info("usePartialTree:" + usePartialTree);
-				if (usePartialTree && cachedSource is DependencyStructure && cachedTarget is DependencyStructure)
+				if (usePartialTree && cachedSource is IDependencyStructure && cachedTarget is IDependencyStructure)
 				{
-					copyPartialDependencyStructure((DependencyStructure)cachedSource, (DependencyStructure)cachedTarget);
+					copyPartialDependencyStructure((IDependencyStructure)cachedSource, (IDependencyStructure)cachedTarget);
 				}
 			}
 			return signal;
@@ -121,28 +121,28 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void copyTerminalStructure(TokenStructure sourceGraph, TokenStructure targetGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void copyTerminalStructure(TokenStructure sourceGraph, TokenStructure targetGraph)
+		public virtual void copyTerminalStructure(ITokenStructure sourceGraph, ITokenStructure targetGraph)
 		{
-			targetGraph.clear();
+			targetGraph.Clear();
 			foreach (int index in sourceGraph.TokenIndices)
 			{
-				DependencyNode gnode = sourceGraph.getTokenNode(index);
-				DependencyNode pnode = targetGraph.addTokenNode(gnode.Index);
+				DependencyNode gnode = sourceGraph.GetTokenNode(index);
+				DependencyNode pnode = targetGraph.AddTokenNode(gnode.Index);
 				foreach (SymbolTable table in gnode.LabelTypes)
 				{
 					pnode.addLabel(table, gnode.getLabelSymbol(table));
 				}
 			}
-			if (sourceGraph.hasComments())
+			if (sourceGraph.HasComments())
 			{
-				for (int i = 1; i <= sourceGraph.nTokenNode() + 1; i++)
+				for (int i = 1; i <= sourceGraph.NTokenNode() + 1; i++)
 				{
-					List<string> commentList = sourceGraph.getComment(i);
+					List<string> commentList = sourceGraph.GetComment(i);
 					if (commentList != null)
 					{
 						for (int j = 0; j < commentList.Count;j++)
 						{
-							targetGraph.addComment(commentList[j], i);
+							targetGraph.AddComment(commentList[j], i);
 						}
 					}
 				}
@@ -151,7 +151,7 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void copyPartialDependencyStructure(DependencyStructure sourceGraph, DependencyStructure targetGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void copyPartialDependencyStructure(DependencyStructure sourceGraph, DependencyStructure targetGraph)
+		public virtual void copyPartialDependencyStructure(IDependencyStructure sourceGraph, IDependencyStructure targetGraph)
 		{
 			SymbolTable partHead = cachedSource.SymbolTables.getSymbolTable("PARTHEAD");
 			SymbolTable partDeprel = cachedSource.SymbolTables.getSymbolTable("PARTDEPREL");
@@ -162,15 +162,15 @@ namespace NMaltParser.Core.SyntaxGraph
 			SymbolTable deprel = cachedTarget.SymbolTables.getSymbolTable("DEPREL");
 			foreach (int index in sourceGraph.TokenIndices)
 			{
-				DependencyNode snode = sourceGraph.getTokenNode(index);
-				DependencyNode tnode = targetGraph.getTokenNode(index);
+				DependencyNode snode = sourceGraph.GetTokenNode(index);
+				DependencyNode tnode = targetGraph.GetTokenNode(index);
 				if (snode != null && tnode != null)
 				{
 					int spartheadindex = int.Parse(snode.getLabelSymbol(partHead));
 					string spartdeprel = snode.getLabelSymbol(partDeprel);
 					if (spartheadindex > 0)
 					{
-						Edge.Edge tedge = targetGraph.addDependencyEdge(spartheadindex, snode.Index);
+						Edge.Edge tedge = targetGraph.AddDependencyEdge(spartheadindex, snode.Index);
 						tedge.addLabel(deprel, spartdeprel);
 					}
 				}

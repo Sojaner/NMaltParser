@@ -83,7 +83,7 @@ namespace NMaltParser.Core.LW.Graph
 	//		}
 	//	}
 
-		protected internal DependencyStructure Graph
+		protected internal IDependencyStructure Graph
 		{
 			get
 			{
@@ -1364,7 +1364,7 @@ namespace NMaltParser.Core.LW.Graph
 		/// Returns the graph (structure) in which the graph element belongs to. 
 		/// </summary>
 		/// <returns> the graph (structure) in which the graph element belongs to.  </returns>
-		public LabeledStructure BelongsToGraph
+		public ILabeledStructure BelongsToGraph
 		{
 			get
 			{

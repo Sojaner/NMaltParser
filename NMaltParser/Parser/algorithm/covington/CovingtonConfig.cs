@@ -16,7 +16,7 @@ namespace NMaltParser.Parser.Algorithm.Covington
 		private int left;
 		private int leftstop;
 		private int rightstop;
-		private DependencyStructure dependencyGraph;
+		private IDependencyStructure dependencyGraph;
 		private readonly bool allowRoot;
 		private readonly bool allowShift;
 
@@ -30,7 +30,7 @@ namespace NMaltParser.Parser.Algorithm.Covington
 			allowShift = cs;
 		}
 
-		public virtual DependencyStructure DependencyStructure
+		public virtual IDependencyStructure DependencyStructure
 		{
 			get
 			{
@@ -221,7 +221,7 @@ namespace NMaltParser.Parser.Algorithm.Covington
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void setDependencyGraph(org.maltparser.core.syntaxgraph.DependencyStructure source) throws org.maltparser.core.exception.MaltChainedException
-		public override DependencyStructure DependencyGraph
+		public override IDependencyStructure DependencyGraph
 		{
 			set
 			{
@@ -265,7 +265,7 @@ namespace NMaltParser.Parser.Algorithm.Covington
 				DependencyGraph = covingtonConfig.DependencyGraph;
 				for (int i = 0, n = sourceInput.Count; i < n; i++)
 				{
-					input.Add(dependencyGraph.getDependencyNode(sourceInput[i].Index));
+					input.Add(dependencyGraph.GetDependencyNode(sourceInput[i].Index));
 				}
 				left = covingtonConfig.Left;
 				right = covingtonConfig.Right;
@@ -276,7 +276,7 @@ namespace NMaltParser.Parser.Algorithm.Covington
 			{
 				for (int i = 0, n = dependencyGraph.HighestTokenIndex; i <= n; i++)
 				{
-					DependencyNode node = dependencyGraph.getDependencyNode(i);
+					DependencyNode node = dependencyGraph.GetDependencyNode(i);
 					if (node != null)
 					{
 						input.Add(node);
@@ -302,7 +302,7 @@ namespace NMaltParser.Parser.Algorithm.Covington
 		{
 			for (int i = 0, n = dependencyGraph.HighestTokenIndex; i <= n; i++)
 			{
-				DependencyNode node = dependencyGraph.getDependencyNode(i);
+				DependencyNode node = dependencyGraph.GetDependencyNode(i);
 				if (node != null)
 				{
 					input.Add(node);
@@ -350,7 +350,7 @@ namespace NMaltParser.Parser.Algorithm.Covington
 			{
 				return false;
 			}
-			if (dependencyGraph.nEdges() != that.DependencyGraph.nEdges())
+			if (dependencyGraph.NEdges() != that.DependencyGraph.NEdges())
 			{
 				return false;
 			}
@@ -370,7 +370,7 @@ namespace NMaltParser.Parser.Algorithm.Covington
 			StringBuilder sb = new StringBuilder();
 			sb.Append(input.Count);
 			sb.Append(", ");
-			sb.Append(dependencyGraph.nEdges());
+			sb.Append(dependencyGraph.NEdges());
 			return sb.ToString();
 		}
 

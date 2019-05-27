@@ -82,9 +82,9 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void writeComments(org.maltparser.core.syntaxgraph.TokenStructure syntaxGraph, int at_index) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void writeComments(TokenStructure syntaxGraph, int at_index)
+		public virtual void writeComments(ITokenStructure syntaxGraph, int at_index)
 		{
-			List<string> commentList = syntaxGraph.getComment(at_index);
+			List<string> commentList = syntaxGraph.GetComment(at_index);
 			if (commentList != null)
 			{
 				try
@@ -105,9 +105,9 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void writeSentence(org.maltparser.core.syntaxgraph.TokenStructure syntaxGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void writeSentence(TokenStructure syntaxGraph)
+		public virtual void writeSentence(ITokenStructure syntaxGraph)
 		{
-			if (syntaxGraph == null || dataFormatInstance == null || !syntaxGraph.hasTokens())
+			if (syntaxGraph == null || dataFormatInstance == null || !syntaxGraph.HasTokens())
 			{
 				return;
 			}
@@ -128,7 +128,7 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 
 						if (column.Category == ColumnDescription.INPUT)
 						{ // && column.getType() != ColumnDescription.IGNORE) {
-							TokenNode node = syntaxGraph.getTokenNode(i);
+							TokenNode node = syntaxGraph.GetTokenNode(i);
 							if (!column.Name.Equals("ID"))
 							{
 								if (node.hasLabel(symbolTables.getSymbolTable(column.Name)))
@@ -153,11 +153,11 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 								writer.Write(Convert.ToString(i));
 							}
 						}
-						else if (column.Category == ColumnDescription.HEAD && syntaxGraph is DependencyStructure)
+						else if (column.Category == ColumnDescription.HEAD && syntaxGraph is IDependencyStructure)
 						{
-							if (((DependencyStructure)syntaxGraph).getDependencyNode(i).hasHead())
+							if (((IDependencyStructure)syntaxGraph).GetDependencyNode(i).hasHead())
 							{
-								writer.Write(Convert.ToString(((DependencyStructure)syntaxGraph).getDependencyNode(i).Head.Index));
+								writer.Write(Convert.ToString(((IDependencyStructure)syntaxGraph).GetDependencyNode(i).Head.Index));
 							}
 							else
 							{
@@ -165,15 +165,15 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 							}
 
 						}
-						else if (column.Category == ColumnDescription.DEPENDENCY_EDGE_LABEL && syntaxGraph is DependencyStructure)
+						else if (column.Category == ColumnDescription.DEPENDENCY_EDGE_LABEL && syntaxGraph is IDependencyStructure)
 						{
-							if (((DependencyStructure)syntaxGraph).getDependencyNode(i).hasHead() && ((DependencyStructure)syntaxGraph).getDependencyNode(i).hasHeadEdgeLabel(symbolTables.getSymbolTable(column.Name)))
+							if (((IDependencyStructure)syntaxGraph).GetDependencyNode(i).hasHead() && ((IDependencyStructure)syntaxGraph).GetDependencyNode(i).hasHeadEdgeLabel(symbolTables.getSymbolTable(column.Name)))
 							{
-								output.Append(((DependencyStructure)syntaxGraph).getDependencyNode(i).getHeadEdgeLabelSymbol(symbolTables.getSymbolTable(column.Name)));
+								output.Append(((IDependencyStructure)syntaxGraph).GetDependencyNode(i).getHeadEdgeLabelSymbol(symbolTables.getSymbolTable(column.Name)));
 							}
 							else
 							{
-								output.Append(((DependencyStructure)syntaxGraph).getDefaultRootEdgeLabelSymbol(symbolTables.getSymbolTable(column.Name)));
+								output.Append(((IDependencyStructure)syntaxGraph).GetDefaultRootEdgeLabelSymbol(symbolTables.getSymbolTable(column.Name)));
 							}
 
 							if (output.Length != 0)
@@ -201,7 +201,7 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 					throw new DataFormatException("Could not write to the output file. ", e);
 				}
 			}
-			writeComments(syntaxGraph, syntaxGraph.nTokenNode() + 1);
+			writeComments(syntaxGraph, syntaxGraph.NTokenNode() + 1);
 			try
 			{
 				writer.BaseStream.WriteByte('\n');

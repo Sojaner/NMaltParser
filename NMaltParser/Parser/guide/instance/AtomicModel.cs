@@ -139,7 +139,7 @@ namespace NMaltParser.Parser.Guide.Instance
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void finalizeSentence(org.maltparser.core.syntaxgraph.DependencyStructure dependencyGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void finalizeSentence(DependencyStructure dependencyGraph)
+		public virtual void finalizeSentence(IDependencyStructure dependencyGraph)
 		{
 			try
 			{

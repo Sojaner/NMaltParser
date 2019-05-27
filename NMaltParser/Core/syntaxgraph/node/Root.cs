@@ -954,9 +954,9 @@ namespace NMaltParser.Core.SyntaxGraph.Node
 				{
 					candidate = null;
 					DependencyNode dep = null;
-					foreach (int index in ((TokenStructure)BelongsToGraph).TokenIndices)
+					foreach (int index in ((ITokenStructure)BelongsToGraph).TokenIndices)
 					{
-						dep = ((TokenStructure)BelongsToGraph).getTokenNode(index);
+						dep = ((ITokenStructure)BelongsToGraph).GetTokenNode(index);
 						while (dep != null)
 						{
 							if (dep == this)
@@ -992,9 +992,9 @@ namespace NMaltParser.Core.SyntaxGraph.Node
 				{
 					candidate = null;
 					DependencyNode dep = null;
-					for (int i = ((TokenStructure)BelongsToGraph).HighestTokenIndex; i > 0; i--)
+					for (int i = ((ITokenStructure)BelongsToGraph).HighestTokenIndex; i > 0; i--)
 					{
-						dep = ((TokenStructure)BelongsToGraph).getTokenNode(i);
+						dep = ((ITokenStructure)BelongsToGraph).GetTokenNode(i);
 						while (dep != null)
 						{
 							if (dep == this)

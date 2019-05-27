@@ -21,7 +21,7 @@ namespace NMaltParser.Core.SyntaxGraph
 		private string idName;
 		private string structureName;
 		private string taskName;
-		private TokenStructure graph;
+		private ITokenStructure graph;
 
 		public SyntaxGraphChartItem() : base()
 		{
@@ -106,7 +106,7 @@ namespace NMaltParser.Core.SyntaxGraph
 				if (dependency == true && phrase == false)
 				{
 					graph = new DependencyGraph(symbolTables);
-					flowChartinstance.addFlowChartRegistry(typeof(DependencyStructure), structureName, graph);
+					flowChartinstance.addFlowChartRegistry(typeof(IDependencyStructure), structureName, graph);
 				}
 				else if (dependency == true && phrase == true)
 				{
@@ -139,7 +139,7 @@ namespace NMaltParser.Core.SyntaxGraph
 					{
 						throw new FlowException("Couldn't determine the input and output data format. ");
 					}
-					flowChartinstance.addFlowChartRegistry(typeof(DependencyStructure), structureName, graph);
+					flowChartinstance.addFlowChartRegistry(typeof(IDependencyStructure), structureName, graph);
 					flowChartinstance.addFlowChartRegistry(typeof(PhraseStructure), structureName, graph);
 				}
 				else if (dependency == false && phrase == true)
@@ -154,9 +154,9 @@ namespace NMaltParser.Core.SyntaxGraph
 
 				if (dataFormatInstance != null)
 				{
-					((DependencyStructure)graph).setDefaultRootEdgeLabels(OptionManager.instance().getOptionValue(OptionContainerIndex, "graph", "root_label").ToString(), dataFormatInstance.getDependencyEdgeLabelSymbolTables(symbolTables));
+					((IDependencyStructure)graph).SetDefaultRootEdgeLabels(OptionManager.instance().getOptionValue(OptionContainerIndex, "graph", "root_label").ToString(), dataFormatInstance.getDependencyEdgeLabelSymbolTables(symbolTables));
 				}
-				flowChartinstance.addFlowChartRegistry(typeof(TokenStructure), structureName, graph);
+				flowChartinstance.addFlowChartRegistry(typeof(ITokenStructure), structureName, graph);
 			}
 			return signal;
 		}
@@ -181,7 +181,7 @@ namespace NMaltParser.Core.SyntaxGraph
 		{
 			if (graph != null)
 			{
-				graph.clear();
+				graph.Clear();
 				graph = null;
 			}
 		}

@@ -18,7 +18,7 @@ namespace NMaltParser.Parser
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public Trainer(DependencyParserConfig manager, org.maltparser.core.symbol.SymbolTableHandler symbolTableHandler) throws org.maltparser.core.exception.MaltChainedException
-		public Trainer(DependencyParserConfig manager, SymbolTableHandler symbolTableHandler) : base(manager, symbolTableHandler)
+		public Trainer(IDependencyParserConfig manager, SymbolTableHandler symbolTableHandler) : base(manager, symbolTableHandler)
 		{
 		}
 
@@ -31,7 +31,7 @@ namespace NMaltParser.Parser
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public abstract org.maltparser.core.syntaxgraph.DependencyStructure parse(org.maltparser.core.syntaxgraph.DependencyStructure goldDependencyGraph, org.maltparser.core.syntaxgraph.DependencyStructure parseDependencyGraph) throws org.maltparser.core.exception.MaltChainedException;
-		public abstract DependencyStructure parse(DependencyStructure goldDependencyGraph, DependencyStructure parseDependencyGraph);
+		public abstract IDependencyStructure parse(IDependencyStructure goldDependencyGraph, IDependencyStructure parseDependencyGraph);
 		/// <summary>
 		/// Returns the oracle guide.
 		/// </summary>

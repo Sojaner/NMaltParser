@@ -28,7 +28,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 		private string targetName;
 		private string optiongroupName;
 		private DataFormatInstance inputDataFormatInstance;
-		private TokenStructure cachedGraph = null;
+		private ITokenStructure cachedGraph = null;
 
 		public ReadChartItem() : base()
 		{
@@ -102,7 +102,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 		{
 			if (cachedGraph == null)
 			{
-				cachedGraph = (TokenStructure)flowChartinstance.getFlowChartRegistry(typeof(TokenStructure), targetName);
+				cachedGraph = (ITokenStructure)flowChartinstance.getFlowChartRegistry(typeof(ITokenStructure), targetName);
 			}
 			int prevIterationCounter = reader.IterationCounter;
 			bool moreInput = reader.readSentence(cachedGraph);

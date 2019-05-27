@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using NMaltParser.Core.Helper;
@@ -47,32 +48,37 @@ namespace NMaltParser.Concurrent.Graph.DataFormat
         public virtual ColumnDescription GetColumnDescription(string columnName)
         {
             ColumnDescription columnDescription = columnMap[columnName];
+
             if (columnDescription != null)
             {
                 return columnDescription;
             }
 
-            for (int i = 0; i < columns.Length; i++)
+            foreach (ColumnDescription description in columns)
             {
-                if (columns[i].Name.Equals(columnName.ToUpper()))
+                if (description.Name.Equals(columnName.ToUpper()))
                 {
-                    columnMap[columnName] = columns[i];
-                    return columns[i];
+                    columnMap[columnName] = description;
+
+                    return description;
                 }
             }
+
             return null;
         }
 
-        public virtual SortedSet<ColumnDescription> GetSelectedColumnDescriptions(ISet<int> positionSet)
+        public virtual ISet<ColumnDescription> GetSelectedColumnDescriptions(ISet<int> positionSet)
         {
-            SortedSet<ColumnDescription> selectedColumns = Collections.synchronizedSortedSet(new SortedSet<ColumnDescription>());
-            for (int i = 0; i < columns.Length; i++)
+            ISet<ColumnDescription> selectedColumns = Collections.SynchronizedSortedSet(new SortedSet<ColumnDescription>());
+
+            foreach (ColumnDescription description in columns)
             {
-                if (positionSet.Contains(columns[i].Position))
+                if (positionSet.Contains(description.Position))
                 {
-                    selectedColumns.Add(columns[i]);
+                    selectedColumns.Add(description);
                 }
             }
+
             return selectedColumns;
         }
 
@@ -80,11 +86,13 @@ namespace NMaltParser.Concurrent.Graph.DataFormat
         {
             get
             {
-                ISet<string> labelNames = Collections.synchronizedSet(new System.Collections.Generic.HashSet<string>());
-                for (int i = 0; i < columns.Length; i++)
+                ISet<string> labelNames = Collections.SynchronizedSet(new System.Collections.Generic.HashSet<string>());
+
+                foreach (ColumnDescription description in columns)
                 {
-                    labelNames.Add(columns[i].Name);
+                    labelNames.Add(description.Name);
                 }
+
                 return labelNames;
             }
         }
@@ -97,9 +105,13 @@ namespace NMaltParser.Concurrent.Graph.DataFormat
         public override int GetHashCode()
         {
             const int prime = 31;
+
             int result = 1;
-            result = prime * result + Arrays.GetHashCode(columns);
-            result = prime * result + ((ReferenceEquals(Name, null)) ? 0 : Name.GetHashCode());
+
+            result = prime * result + Arrays.HashCode(columns);
+
+            result = prime * result + (Name?.HashCode() ?? 0);
+
             return result;
         }
 
@@ -200,7 +212,7 @@ namespace NMaltParser.Concurrent.Graph.DataFormat
                 columns.Add(new ColumnDescription(i++, "PPLIFTED", ColumnDescription.DependencyEdgeLabel, ColumnDescription.String, "_", true));
                 columns.Add(new ColumnDescription(i++, "PPCOVERED", ColumnDescription.DependencyEdgeLabel, ColumnDescription.String, "_", true));
             }
-            catch (java.io.IOException e)
+            catch (IOException e)
             {
                 throw new ConcurrentGraphException("Cannot find the file " + url.ToString() + ". ", e);
             }

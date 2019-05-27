@@ -140,13 +140,13 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public boolean readSentence(org.maltparser.core.syntaxgraph.TokenStructure syntaxGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual bool readSentence(TokenStructure syntaxGraph)
+		public virtual bool readSentence(ITokenStructure syntaxGraph)
 		{
 			if (syntaxGraph == null || !(syntaxGraph is PhraseStructure))
 			{
 				return false;
 			}
-			syntaxGraph.clear();
+			syntaxGraph.Clear();
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.syntaxgraph.PhraseStructure phraseStructure = (org.maltparser.core.syntaxgraph.PhraseStructure)syntaxGraph;
 			PhraseStructure phraseStructure = (PhraseStructure)syntaxGraph;
@@ -197,7 +197,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 
 								if (childid < START_ID_OF_NONTERMINALS)
 								{
-									child = phraseStructure.getTokenNode(childid);
+									child = phraseStructure.GetTokenNode(childid);
 								}
 								else
 								{
@@ -255,7 +255,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 							if (reader.LocalName.length() == 1)
 							{ // t
 								SortedDictionary<string, SymbolTable> inputTables = dataFormatInstance.getInputSymbolTables(phraseStructure.SymbolTables);
-								child = syntaxGraph.addTokenNode();
+								child = syntaxGraph.AddTokenNode();
 								foreach (string name in inputTables.Keys)
 								{
 									child.addLabel(inputTables[name], reader.getAttributeValue(null, name.ToLower()));
@@ -383,9 +383,9 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 							}
 							else if (reader.LocalName.Equals("nonterminals"))
 							{
-								if (phraseStructure.nTokenNode() == 1 && phraseStructure.nNonTerminals() == 0 && ((NonTerminalNode)phraseStructure.PhraseStructureRoot).nChildren() == 0)
+								if (phraseStructure.NTokenNode() == 1 && phraseStructure.nNonTerminals() == 0 && ((NonTerminalNode)phraseStructure.PhraseStructureRoot).nChildren() == 0)
 								{
-									Edge.Edge e = phraseStructure.addPhraseStructureEdge(phraseStructure.PhraseStructureRoot, phraseStructure.getTokenNode(1));
+									Edge.Edge e = phraseStructure.addPhraseStructureEdge(phraseStructure.PhraseStructureRoot, phraseStructure.GetTokenNode(1));
 									SortedDictionary<string, SymbolTable> inputTables = dataFormatInstance.getPhraseStructureEdgeLabelSymbolTables(phraseStructure.SymbolTables);
 									foreach (string name in inputTables.Keys)
 									{
@@ -409,7 +409,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 							// s -> subcorpus, secedge, s, secedgelabel
 							if (reader.LocalName.Equals("s"))
 							{
-								if (syntaxGraph.hasTokens())
+								if (syntaxGraph.HasTokens())
 								{
 									sentenceCount++;
 								}
@@ -498,7 +498,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 					}
 					else if (@event == XMLStreamConstants.END_DOCUMENT)
 					{
-						if (syntaxGraph.hasTokens())
+						if (syntaxGraph.HasTokens())
 						{
 							sentenceCount++;
 						}

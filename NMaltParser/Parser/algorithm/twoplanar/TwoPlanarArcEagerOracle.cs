@@ -17,7 +17,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public TwoPlanarArcEagerOracle(org.maltparser.parser.DependencyParserConfig manager, org.maltparser.parser.history.GuideUserHistory history) throws org.maltparser.core.exception.MaltChainedException
-		public TwoPlanarArcEagerOracle(DependencyParserConfig manager, GuideUserHistory history) : base(manager, history)
+		public TwoPlanarArcEagerOracle(IDependencyParserConfig manager, GuideUserHistory history) : base(manager, history)
 		{
 			GuideName = "Two-Planar";
 		}
@@ -34,10 +34,10 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.parser.history.action.GuideUserAction predict(org.maltparser.core.syntaxgraph.DependencyStructure gold, org.maltparser.parser.ParserConfiguration config) throws org.maltparser.core.exception.MaltChainedException
-		public override GuideUserAction predict(DependencyStructure gold, ParserConfiguration config)
+		public override GuideUserAction predict(IDependencyStructure gold, ParserConfiguration config)
 		{
 			TwoPlanarConfig planarConfig = (TwoPlanarConfig)config;
-			DependencyStructure dg = planarConfig.DependencyGraph;
+			IDependencyStructure dg = planarConfig.DependencyGraph;
 			DependencyNode activeStackPeek = planarConfig.ActiveStack.Peek();
 			DependencyNode inactiveStackPeek = planarConfig.InactiveStack.Peek();
 			int activeStackPeekIndex = activeStackPeek.Index;
@@ -53,35 +53,35 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 
 			//System.out.println("Crossings initted");
 
-			if (!activeStackPeek.Root && gold.getTokenNode(activeStackPeekIndex).Head.Index == inputPeekIndex && !checkIfArcExists(dg, inputPeekIndex, activeStackPeekIndex))
+			if (!activeStackPeek.Root && gold.GetTokenNode(activeStackPeekIndex).Head.Index == inputPeekIndex && !checkIfArcExists(dg, inputPeekIndex, activeStackPeekIndex))
 			{
 				if (planarConfig.StackActivityState == TwoPlanarConfig.FIRST_STACK)
 				{
-					propagatePlaneConstraint(gold.getTokenNode(activeStackPeekIndex).HeadEdge, FIRST_PLANE);
+					propagatePlaneConstraint(gold.GetTokenNode(activeStackPeekIndex).HeadEdge, FIRST_PLANE);
 				}
 				else
 				{
-					propagatePlaneConstraint(gold.getTokenNode(activeStackPeekIndex).HeadEdge, SECOND_PLANE);
+					propagatePlaneConstraint(gold.GetTokenNode(activeStackPeekIndex).HeadEdge, SECOND_PLANE);
 				}
 				//System.out.println("From " + inputPeekIndex + " to " + activeStackPeekIndex);
-				return updateActionContainers(TwoPlanar.LEFTARC, gold.getTokenNode(activeStackPeekIndex).HeadEdge.LabelSet);
+				return updateActionContainers(TwoPlanar.LEFTARC, gold.GetTokenNode(activeStackPeekIndex).HeadEdge.LabelSet);
 			}
 
-			else if (gold.getTokenNode(inputPeekIndex).Head.Index == activeStackPeekIndex && !checkIfArcExists(dg, activeStackPeekIndex, inputPeekIndex))
+			else if (gold.GetTokenNode(inputPeekIndex).Head.Index == activeStackPeekIndex && !checkIfArcExists(dg, activeStackPeekIndex, inputPeekIndex))
 			{
 				if (planarConfig.StackActivityState == TwoPlanarConfig.FIRST_STACK)
 				{
-					propagatePlaneConstraint(gold.getTokenNode(inputPeekIndex).HeadEdge, FIRST_PLANE);
+					propagatePlaneConstraint(gold.GetTokenNode(inputPeekIndex).HeadEdge, FIRST_PLANE);
 				}
 				else
 				{
-					propagatePlaneConstraint(gold.getTokenNode(inputPeekIndex).HeadEdge, SECOND_PLANE);
+					propagatePlaneConstraint(gold.GetTokenNode(inputPeekIndex).HeadEdge, SECOND_PLANE);
 				}
 				//System.out.println("From " + activeStackPeekIndex + " to " + inputPeekIndex);
-				return updateActionContainers(TwoPlanar.RIGHTARC, gold.getTokenNode(inputPeekIndex).HeadEdge.LabelSet);
+				return updateActionContainers(TwoPlanar.RIGHTARC, gold.GetTokenNode(inputPeekIndex).HeadEdge.LabelSet);
 			}
 
-			else if (!inactiveStackPeek.Root && gold.getTokenNode(inactiveStackPeekIndex).Head.Index == inputPeekIndex && !checkIfArcExists(dg, inputPeekIndex, inactiveStackPeekIndex))
+			else if (!inactiveStackPeek.Root && gold.GetTokenNode(inactiveStackPeekIndex).Head.Index == inputPeekIndex && !checkIfArcExists(dg, inputPeekIndex, inactiveStackPeekIndex))
 			{
 				//need to create link, but on the other plane!!
 				//TODO is this if branch really necessary? i.e. will this happen? (later branches already switch)
@@ -89,7 +89,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 				return updateActionContainers(TwoPlanar.SWITCH, null);
 			}
 
-			else if (gold.getTokenNode(inputPeekIndex).Head.Index == inactiveStackPeekIndex && !checkIfArcExists(dg, inactiveStackPeekIndex, inputPeekIndex))
+			else if (gold.GetTokenNode(inputPeekIndex).Head.Index == inactiveStackPeekIndex && !checkIfArcExists(dg, inactiveStackPeekIndex, inputPeekIndex))
 			{
 				//need to create link, but on the other plane!!
 				//TODO is this if branch really necessary? i.e. will this happen? (later branches already switch)
@@ -121,14 +121,14 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private boolean checkIfArcExists(org.maltparser.core.syntaxgraph.DependencyStructure dg, int index1, int index2) throws org.maltparser.core.exception.MaltChainedException
-		private bool checkIfArcExists(DependencyStructure dg, int index1, int index2)
+		private bool checkIfArcExists(IDependencyStructure dg, int index1, int index2)
 		{
-			return dg.getTokenNode(index2).hasHead() && dg.getTokenNode(index2).Head.Index == index1;
+			return dg.GetTokenNode(index2).hasHead() && dg.GetTokenNode(index2).Head.Index == index1;
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void finalizeSentence(org.maltparser.core.syntaxgraph.DependencyStructure dependencyGraph) throws org.maltparser.core.exception.MaltChainedException
-		public override void finalizeSentence(DependencyStructure dependencyGraph)
+		public override void finalizeSentence(IDependencyStructure dependencyGraph)
 		{
 			crossingsGraph = null;
 			linksToPlanes.Clear();
@@ -158,7 +158,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 
 		private IDictionary<Edge, IList<Edge>> crossingsGraph = null;
 
-		private void initCrossingsGraph(DependencyStructure dg)
+		private void initCrossingsGraph(IDependencyStructure dg)
 		{
 			crossingsGraph = new IdentityHashMap<Edge, IList<Edge>>();
 			SortedSet<Edge> edges = dg.Edges;
@@ -294,7 +294,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 		/// </summary>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private org.maltparser.core.syntaxgraph.edge.Edge getFirstPendingLinkOnActivePlane(TwoPlanarConfig config, org.maltparser.core.syntaxgraph.DependencyStructure gold) throws org.maltparser.core.exception.MaltChainedException
-		private Edge getFirstPendingLinkOnActivePlane(TwoPlanarConfig config, DependencyStructure gold)
+		private Edge getFirstPendingLinkOnActivePlane(TwoPlanarConfig config, IDependencyStructure gold)
 		{
 			return getFirstPendingLinkOnPlane(config, gold, config.StackActivityState == TwoPlanarConfig.FIRST_STACK ? FIRST_PLANE : SECOND_PLANE, config.ActiveStack.Peek().Index);
 		}
@@ -305,14 +305,14 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 		/// </summary>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private org.maltparser.core.syntaxgraph.edge.Edge getFirstPendingLinkOnInactivePlane(TwoPlanarConfig config, org.maltparser.core.syntaxgraph.DependencyStructure gold) throws org.maltparser.core.exception.MaltChainedException
-		private Edge getFirstPendingLinkOnInactivePlane(TwoPlanarConfig config, DependencyStructure gold)
+		private Edge getFirstPendingLinkOnInactivePlane(TwoPlanarConfig config, IDependencyStructure gold)
 		{
 			return getFirstPendingLinkOnPlane(config, gold, config.StackActivityState == TwoPlanarConfig.FIRST_STACK ? SECOND_PLANE : FIRST_PLANE, config.InactiveStack.Peek().Index);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private org.maltparser.core.syntaxgraph.edge.Edge getFirstPendingLinkOnAnyPlane(TwoPlanarConfig config, org.maltparser.core.syntaxgraph.DependencyStructure gold) throws org.maltparser.core.exception.MaltChainedException
-		private Edge getFirstPendingLinkOnAnyPlane(TwoPlanarConfig config, DependencyStructure gold)
+		private Edge getFirstPendingLinkOnAnyPlane(TwoPlanarConfig config, IDependencyStructure gold)
 		{
 			Edge e1 = getFirstPendingLinkOnActivePlane(config, gold);
 			Edge e2 = getFirstPendingLinkOnInactivePlane(config, gold);
@@ -334,7 +334,7 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 		/// </summary>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private org.maltparser.core.syntaxgraph.edge.Edge getFirstPendingLinkOnPlane(TwoPlanarConfig config, org.maltparser.core.syntaxgraph.DependencyStructure gold, int plane, int rightmostLimit) throws org.maltparser.core.exception.MaltChainedException
-		private Edge getFirstPendingLinkOnPlane(TwoPlanarConfig config, DependencyStructure gold, int plane, int rightmostLimit)
+		private Edge getFirstPendingLinkOnPlane(TwoPlanarConfig config, IDependencyStructure gold, int plane, int rightmostLimit)
 		{
 			TwoPlanarConfig planarConfig = (TwoPlanarConfig)config;
 			//DependencyStructure dg = planarConfig.getDependencyGraph(); -> no need, if rightmostLimit is well chosen, due to algorithm invariants
@@ -351,9 +351,9 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 				maxIndex = 0; //do not count links from dummy root
 			}
 
-			if (gold.getTokenNode(inputPeekIndex).hasLeftDependent() && gold.getTokenNode(inputPeekIndex).LeftmostDependent.Index < rightmostLimit)
+			if (gold.GetTokenNode(inputPeekIndex).hasLeftDependent() && gold.GetTokenNode(inputPeekIndex).LeftmostDependent.Index < rightmostLimit)
 			{
-				SortedSet<DependencyNode> dependents = gold.getTokenNode(inputPeekIndex).LeftDependents;
+				SortedSet<DependencyNode> dependents = gold.GetTokenNode(inputPeekIndex).LeftDependents;
 				for (IEnumerator<DependencyNode> iterator = dependents.GetEnumerator(); iterator.MoveNext();)
 				{
 					DependencyNode dependent = (DependencyNode) iterator.Current;
@@ -368,13 +368,13 @@ namespace NMaltParser.Parser.Algorithm.TwoPlanar
 			//at this point, current is the first left-pointing link, but we have to check right-pointing link as well
 
 			//System.out.println("in" + inputPeekIndex + " rl" + rightmostLimit);
-			if (gold.getTokenNode(inputPeekIndex).Head.Index < rightmostLimit)
+			if (gold.GetTokenNode(inputPeekIndex).Head.Index < rightmostLimit)
 			{
 				//System.out.println(":");
-				if (gold.getTokenNode(inputPeekIndex).Head.Index > maxIndex && getLinkDecision(gold.getTokenNode(inputPeekIndex).HeadEdge,config) == plane)
+				if (gold.GetTokenNode(inputPeekIndex).Head.Index > maxIndex && getLinkDecision(gold.GetTokenNode(inputPeekIndex).HeadEdge,config) == plane)
 				{
 					//System.out.println("::");
-					current = gold.getTokenNode(inputPeekIndex).HeadEdge;
+					current = gold.GetTokenNode(inputPeekIndex).HeadEdge;
 				}
 			}
 

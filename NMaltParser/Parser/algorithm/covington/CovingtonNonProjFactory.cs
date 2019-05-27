@@ -9,7 +9,7 @@ namespace NMaltParser.Parser.Algorithm.Covington
 	/// </summary>
 	public class CovingtonNonProjFactory : CovingtonFactory
 	{
-		public CovingtonNonProjFactory(DependencyParserConfig _manager) : base(_manager)
+		public CovingtonNonProjFactory(IDependencyParserConfig _manager) : base(_manager)
 		{
 		}
 

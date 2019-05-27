@@ -13,7 +13,7 @@ namespace NMaltParser.Core.SyntaxGraph
 	/// </summary>
 	public abstract class GraphElement : Observable, Element
 	{
-		private LabeledStructure belongsToGraph;
+		private ILabeledStructure belongsToGraph;
 		private LabelSet labelSet;
 
 		public GraphElement()
@@ -54,7 +54,7 @@ namespace NMaltParser.Core.SyntaxGraph
 					{
 						throw new SyntaxGraphException("The graph element doesn't belong to any graph. ");
 					}
-					labelSet = belongsToGraph.checkOutNewLabelSet();
+					labelSet = belongsToGraph.CheckOutNewLabelSet();
 				}
 				labelSet.put(table, code);
 				setChanged();
@@ -211,7 +211,7 @@ namespace NMaltParser.Core.SyntaxGraph
 		{
 			if (labelSet != null && belongsToGraph != null)
 			{
-				belongsToGraph.checkInLabelSet(labelSet);
+				belongsToGraph.CheckInLabelSet(labelSet);
 			}
 			labelSet = null;
 		}
@@ -220,7 +220,7 @@ namespace NMaltParser.Core.SyntaxGraph
 		/// Returns the graph (structure) in which the graph element belongs to. 
 		/// </summary>
 		/// <returns> the graph (structure) in which the graph element belongs to.  </returns>
-		public virtual LabeledStructure BelongsToGraph
+		public virtual ILabeledStructure BelongsToGraph
 		{
 			get
 			{
@@ -245,7 +245,7 @@ namespace NMaltParser.Core.SyntaxGraph
 		{
 			if (labelSet != null && belongsToGraph != null)
 			{
-				belongsToGraph.checkInLabelSet(labelSet);
+				belongsToGraph.CheckInLabelSet(labelSet);
 			}
 			labelSet = null;
 			deleteObserver((SyntaxGraph)belongsToGraph);

@@ -37,13 +37,13 @@ namespace NMaltParser.Parser.Algorithm.Covington
 			switch (transActionContainer.ActionCode)
 			{
 			case LEFTARC:
-				e = covingtonConfig.DependencyGraph.addDependencyEdge(covingtonConfig.RightTarget.Index, covingtonConfig.LeftTarget.Index);
+				e = covingtonConfig.DependencyGraph.AddDependencyEdge(covingtonConfig.RightTarget.Index, covingtonConfig.LeftTarget.Index);
 				addEdgeLabels(e);
 	//			config.setArcParent(covingtonConfig.getRightTarget());
 	//			config.setArcChild(covingtonConfig.getLeftTarget());
 				break;
 			case RIGHTARC:
-				e = covingtonConfig.DependencyGraph.addDependencyEdge(covingtonConfig.LeftTarget.Index, covingtonConfig.RightTarget.Index);
+				e = covingtonConfig.DependencyGraph.AddDependencyEdge(covingtonConfig.LeftTarget.Index, covingtonConfig.RightTarget.Index);
 				addEdgeLabels(e);
 	//			config.setArcParent(covingtonConfig.getLeftTarget());
 	//			config.setArcChild(covingtonConfig.getRightTarget());
@@ -71,11 +71,11 @@ namespace NMaltParser.Parser.Algorithm.Covington
 				int left = covingtonConfig.Left;
 				if (trans == NOARC)
 				{
-					DependencyStructure dg = covingtonConfig.DependencyStructure;
+					IDependencyStructure dg = covingtonConfig.DependencyStructure;
 					DependencyNode leftNode = covingtonConfig.Input[covingtonConfig.Left];
-					if (dg.getTokenNode(leftNode.Index) != null && dg.getTokenNode(leftNode.Index).hasHead())
+					if (dg.GetTokenNode(leftNode.Index) != null && dg.GetTokenNode(leftNode.Index).hasHead())
 					{
-						left = dg.getTokenNode(leftNode.Index).Head.Index;
+						left = dg.GetTokenNode(leftNode.Index).Head.Index;
 					}
 					else
 					{
@@ -164,7 +164,7 @@ namespace NMaltParser.Parser.Algorithm.Covington
 			CovingtonConfig covingtonConfig = (CovingtonConfig)config;
 			DependencyNode leftTarget = covingtonConfig.LeftTarget;
 			DependencyNode rightTarget = covingtonConfig.RightTarget;
-			DependencyStructure dg = covingtonConfig.DependencyGraph;
+			IDependencyStructure dg = covingtonConfig.DependencyGraph;
 			currentAction.getAction(actionContainers);
 			int trans = transActionContainer.ActionCode;
 
@@ -180,11 +180,11 @@ namespace NMaltParser.Parser.Algorithm.Covington
 			{
 				return false;
 			}
-			if (trans == LEFTARC && dg.hasLabeledDependency(leftTarget.Index))
+			if (trans == LEFTARC && dg.HasLabeledDependency(leftTarget.Index))
 			{
 				return false;
 			}
-			if (trans == RIGHTARC && dg.hasLabeledDependency(rightTarget.Index))
+			if (trans == RIGHTARC && dg.HasLabeledDependency(rightTarget.Index))
 			{
 				return false;
 			}

@@ -47,13 +47,13 @@ namespace NMaltParser.Parser.Algorithm.Stack
 			case LEFTARC:
 				head = stack.Pop();
 				dep = stack.Pop();
-				e = config.DependencyStructure.addDependencyEdge(head.Index, dep.Index);
+				e = config.DependencyStructure.AddDependencyEdge(head.Index, dep.Index);
 				addEdgeLabels(e);
 				stack.Push(head);
 				break;
 			case RIGHTARC:
 				dep = stack.Pop();
-				e = config.DependencyStructure.addDependencyEdge(stack.Peek().Index, dep.Index);
+				e = config.DependencyStructure.AddDependencyEdge(stack.Peek().Index, dep.Index);
 				addEdgeLabels(e);
 				break;
 			case SWAP:

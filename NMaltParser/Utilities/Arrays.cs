@@ -23,5 +23,7 @@ namespace NMaltParser.Utilities
                 return span.ToArray();
             }
         }
+
+        public static int HashCode<T>(IEnumerable<T> array) where T:class => array?.Aggregate(1, (current, element) => 31 * current + (element?.GetHashCode() ?? 0)) ?? 0;
     }
 }

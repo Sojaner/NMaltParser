@@ -14,14 +14,14 @@ namespace NMaltParser.Parser.Algorithm.Nivre
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public ArcEagerOracle(org.maltparser.parser.DependencyParserConfig manager, org.maltparser.parser.history.GuideUserHistory history) throws org.maltparser.core.exception.MaltChainedException
-		public ArcEagerOracle(DependencyParserConfig manager, GuideUserHistory history) : base(manager, history)
+		public ArcEagerOracle(IDependencyParserConfig manager, GuideUserHistory history) : base(manager, history)
 		{
 			GuideName = "ArcEager";
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.parser.history.action.GuideUserAction predict(org.maltparser.core.syntaxgraph.DependencyStructure gold, org.maltparser.parser.ParserConfiguration config) throws org.maltparser.core.exception.MaltChainedException
-		public override GuideUserAction predict(DependencyStructure gold, ParserConfiguration config)
+		public override GuideUserAction predict(IDependencyStructure gold, ParserConfiguration config)
 		{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final NivreConfig nivreConfig = (NivreConfig)config;
@@ -36,23 +36,23 @@ namespace NMaltParser.Parser.Algorithm.Nivre
 //ORIGINAL LINE: final int inputPeekIndex = nivreConfig.getInput().peek().getIndex();
 			int inputPeekIndex = nivreConfig.Input.Peek().Index;
 
-			if (!stackPeek.Root && gold.getTokenNode(stackPeekIndex).Head.Index == inputPeekIndex)
+			if (!stackPeek.Root && gold.GetTokenNode(stackPeekIndex).Head.Index == inputPeekIndex)
 			{
-				return updateActionContainers(ArcEager.LEFTARC, gold.getTokenNode(stackPeekIndex).HeadEdge.LabelSet);
+				return updateActionContainers(ArcEager.LEFTARC, gold.GetTokenNode(stackPeekIndex).HeadEdge.LabelSet);
 			}
-			else if (gold.getTokenNode(inputPeekIndex).Head.Index == stackPeekIndex)
+			else if (gold.GetTokenNode(inputPeekIndex).Head.Index == stackPeekIndex)
 			{
-				return updateActionContainers(ArcEager.RIGHTARC, gold.getTokenNode(inputPeekIndex).HeadEdge.LabelSet);
+				return updateActionContainers(ArcEager.RIGHTARC, gold.GetTokenNode(inputPeekIndex).HeadEdge.LabelSet);
 			}
 			else if (!nivreConfig.AllowReduce && !stackPeek.hasHead())
 			{
 				return updateActionContainers(ArcEager.SHIFT, null);
 			}
-			else if (gold.getTokenNode(inputPeekIndex).hasLeftDependent() && gold.getTokenNode(inputPeekIndex).LeftmostDependent.Index < stackPeekIndex)
+			else if (gold.GetTokenNode(inputPeekIndex).hasLeftDependent() && gold.GetTokenNode(inputPeekIndex).LeftmostDependent.Index < stackPeekIndex)
 			{
 				return updateActionContainers(ArcEager.REDUCE, null);
 			}
-			else if (gold.getTokenNode(inputPeekIndex).Head.Index < stackPeekIndex && (!gold.getTokenNode(inputPeekIndex).Head.Root || nivreConfig.AllowRoot))
+			else if (gold.GetTokenNode(inputPeekIndex).Head.Index < stackPeekIndex && (!gold.GetTokenNode(inputPeekIndex).Head.Root || nivreConfig.AllowRoot))
 			{
 				return updateActionContainers(ArcEager.REDUCE, null);
 			}
@@ -64,7 +64,7 @@ namespace NMaltParser.Parser.Algorithm.Nivre
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void finalizeSentence(org.maltparser.core.syntaxgraph.DependencyStructure dependencyGraph) throws org.maltparser.core.exception.MaltChainedException
-		public override void finalizeSentence(DependencyStructure dependencyGraph)
+		public override void finalizeSentence(IDependencyStructure dependencyGraph)
 		{
 		}
 

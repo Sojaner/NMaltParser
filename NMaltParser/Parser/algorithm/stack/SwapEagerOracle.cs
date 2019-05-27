@@ -17,7 +17,7 @@ namespace NMaltParser.Parser.Algorithm.Stack
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public SwapEagerOracle(org.maltparser.parser.DependencyParserConfig manager, org.maltparser.parser.history.GuideUserHistory history) throws org.maltparser.core.exception.MaltChainedException
-		public SwapEagerOracle(DependencyParserConfig manager, GuideUserHistory history) : base(manager, history)
+		public SwapEagerOracle(IDependencyParserConfig manager, GuideUserHistory history) : base(manager, history)
 		{
 			GuideName = "swapeager";
 			swapArray = new List<int>();
@@ -25,7 +25,7 @@ namespace NMaltParser.Parser.Algorithm.Stack
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.parser.history.action.GuideUserAction predict(org.maltparser.core.syntaxgraph.DependencyStructure gold, org.maltparser.parser.ParserConfiguration configuration) throws org.maltparser.core.exception.MaltChainedException
-		public override GuideUserAction predict(DependencyStructure gold, ParserConfiguration configuration)
+		public override GuideUserAction predict(IDependencyStructure gold, ParserConfiguration configuration)
 		{
 			StackConfig config = (StackConfig)configuration;
 			Stack<DependencyNode> stack = config.Stack;
@@ -51,13 +51,13 @@ namespace NMaltParser.Parser.Algorithm.Stack
 				{
 					action = updateActionContainers(NonProjective.SWAP, null);
 				}
-				else if (!left.Root && gold.getTokenNode(leftIndex).Head.Index == rightIndex && nodeComplete(gold, config.DependencyGraph, leftIndex))
+				else if (!left.Root && gold.GetTokenNode(leftIndex).Head.Index == rightIndex && nodeComplete(gold, config.DependencyGraph, leftIndex))
 				{
-					action = updateActionContainers(NonProjective.LEFTARC, gold.getTokenNode(leftIndex).HeadEdge.LabelSet);
+					action = updateActionContainers(NonProjective.LEFTARC, gold.GetTokenNode(leftIndex).HeadEdge.LabelSet);
 				}
-				else if (gold.getTokenNode(rightIndex).Head.Index == leftIndex && nodeComplete(gold, config.DependencyGraph, rightIndex))
+				else if (gold.GetTokenNode(rightIndex).Head.Index == leftIndex && nodeComplete(gold, config.DependencyGraph, rightIndex))
 				{
-					action = updateActionContainers(NonProjective.RIGHTARC, gold.getTokenNode(rightIndex).HeadEdge.LabelSet);
+					action = updateActionContainers(NonProjective.RIGHTARC, gold.GetTokenNode(rightIndex).HeadEdge.LabelSet);
 				}
 				else
 				{
@@ -67,26 +67,26 @@ namespace NMaltParser.Parser.Algorithm.Stack
 			return action;
 		}
 
-		private bool nodeComplete(DependencyStructure gold, DependencyStructure parseDependencyGraph, int nodeIndex)
+		private bool nodeComplete(IDependencyStructure gold, IDependencyStructure parseDependencyGraph, int nodeIndex)
 		{
-			if (gold.getTokenNode(nodeIndex).hasLeftDependent())
+			if (gold.GetTokenNode(nodeIndex).hasLeftDependent())
 			{
-				if (!parseDependencyGraph.getTokenNode(nodeIndex).hasLeftDependent())
+				if (!parseDependencyGraph.GetTokenNode(nodeIndex).hasLeftDependent())
 				{
 					return false;
 				}
-				else if (gold.getTokenNode(nodeIndex).LeftmostDependent.Index != parseDependencyGraph.getTokenNode(nodeIndex).LeftmostDependent.Index)
+				else if (gold.GetTokenNode(nodeIndex).LeftmostDependent.Index != parseDependencyGraph.GetTokenNode(nodeIndex).LeftmostDependent.Index)
 				{
 					return false;
 				}
 			}
-			if (gold.getTokenNode(nodeIndex).hasRightDependent())
+			if (gold.GetTokenNode(nodeIndex).hasRightDependent())
 			{
-				if (!parseDependencyGraph.getTokenNode(nodeIndex).hasRightDependent())
+				if (!parseDependencyGraph.GetTokenNode(nodeIndex).hasRightDependent())
 				{
 					return false;
 				}
-				else if (gold.getTokenNode(nodeIndex).RightmostDependent.Index != parseDependencyGraph.getTokenNode(nodeIndex).RightmostDependent.Index)
+				else if (gold.GetTokenNode(nodeIndex).RightmostDependent.Index != parseDependencyGraph.GetTokenNode(nodeIndex).RightmostDependent.Index)
 				{
 					return false;
 				}
@@ -107,7 +107,7 @@ namespace NMaltParser.Parser.Algorithm.Stack
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void finalizeSentence(org.maltparser.core.syntaxgraph.DependencyStructure dependencyGraph) throws org.maltparser.core.exception.MaltChainedException
-		public override void finalizeSentence(DependencyStructure dependencyGraph)
+		public override void finalizeSentence(IDependencyStructure dependencyGraph)
 		{
 			swapArrayActive = false;
 		}
@@ -120,7 +120,7 @@ namespace NMaltParser.Parser.Algorithm.Stack
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: private void createSwapArray(org.maltparser.core.syntaxgraph.DependencyStructure goldDependencyGraph) throws org.maltparser.core.exception.MaltChainedException
-		private void createSwapArray(DependencyStructure goldDependencyGraph)
+		private void createSwapArray(IDependencyStructure goldDependencyGraph)
 		{
 			swapArray.Clear();
 			for (int i = 0; i <= goldDependencyGraph.HighestDependencyNodeIndex; i++)

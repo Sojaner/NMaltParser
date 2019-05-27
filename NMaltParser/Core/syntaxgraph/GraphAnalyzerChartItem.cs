@@ -17,7 +17,7 @@ namespace NMaltParser.Core.SyntaxGraph
 		private string sourceName;
 		private string task;
 		private ConfigurationDir configDir;
-		private DependencyStructure cachedSource = null;
+		private IDependencyStructure cachedSource = null;
 		private StreamWriter writer;
 		private bool closeStream = true;
 		private int graphCounter = 1;
@@ -66,7 +66,7 @@ namespace NMaltParser.Core.SyntaxGraph
 			{
 				if (cachedSource == null)
 				{
-					cachedSource = (DependencyStructure)flowChartinstance.getFlowChartRegistry(typeof(DependencyStructure), sourceName);
+					cachedSource = (IDependencyStructure)flowChartinstance.getFlowChartRegistry(typeof(IDependencyStructure), sourceName);
 				}
 				try
 				{
@@ -75,7 +75,7 @@ namespace NMaltParser.Core.SyntaxGraph
 					writer.append('\n');
 					foreach (int index in cachedSource.TokenIndices)
 					{
-						DependencyNode node = cachedSource.getDependencyNode(index);
+						DependencyNode node = cachedSource.GetDependencyNode(index);
 
 						writer.append(Convert.ToString(node.Index));
 						writer.append('\t');

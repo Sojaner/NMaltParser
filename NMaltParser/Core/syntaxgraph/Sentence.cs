@@ -12,7 +12,7 @@ namespace NMaltParser.Core.SyntaxGraph
 	/// <summary>
 	/// @author Johan Hall
 	/// </summary>
-	public class Sentence : SyntaxGraph, TokenStructure
+	public class Sentence : SyntaxGraph, ITokenStructure
 	{
 		protected internal readonly ObjectPoolList<Token> terminalPool;
 		protected internal readonly SortedDictionary<int, Token> terminalNodes;
@@ -53,7 +53,7 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.node.TokenNode addTokenNode(int index) throws org.maltparser.core.exception.MaltChainedException
-		public virtual TokenNode addTokenNode(int index)
+		public virtual TokenNode AddTokenNode(int index)
 		{
 			if (index > 0)
 			{
@@ -64,7 +64,7 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.node.TokenNode addTokenNode() throws org.maltparser.core.exception.MaltChainedException
-		public virtual TokenNode addTokenNode()
+		public virtual TokenNode AddTokenNode()
 		{
 			int index = HighestTokenIndex;
 			if (index > 0)
@@ -74,7 +74,7 @@ namespace NMaltParser.Core.SyntaxGraph
 			return getOrAddTerminalNode(1);
 		}
 
-		public virtual void addComment(string comment, int at_index)
+		public virtual void AddComment(string comment, int at_index)
 		{
 			List<string> commentList = comments[at_index];
 			if (commentList == null)
@@ -85,22 +85,22 @@ namespace NMaltParser.Core.SyntaxGraph
 			commentList.Add(comment);
 		}
 
-		public virtual List<string> getComment(int at_index)
+		public virtual List<string> GetComment(int at_index)
 		{
 			return comments[at_index];
 		}
 
-		public virtual bool hasComments()
+		public virtual bool HasComments()
 		{
 			return comments.Count > 0;
 		}
 
-		public virtual int nTokenNode()
+		public virtual int NTokenNode()
 		{
 			return terminalNodes.Count;
 		}
 
-		public virtual bool hasTokens()
+		public virtual bool HasTokens()
 		{
 			return terminalNodes.Count > 0;
 		}
@@ -194,7 +194,7 @@ namespace NMaltParser.Core.SyntaxGraph
 			}
 		}
 
-		public virtual TokenNode getTokenNode(int index)
+		public virtual TokenNode GetTokenNode(int index)
 		{
 			if (index > 0)
 			{
@@ -219,13 +219,13 @@ namespace NMaltParser.Core.SyntaxGraph
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void clear() throws org.maltparser.core.exception.MaltChainedException
-		public override void clear()
+		public override void Clear()
 		{
 			terminalPool.checkInAll();
 			terminalNodes.Clear();
 			comments.Clear();
 			sentenceID = 0;
-			base.clear();
+			base.Clear();
 		}
 
 		public virtual void update(Observable o, object str)

@@ -30,7 +30,7 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 		private string sourceName;
 		private string optiongroupName;
 		private DataFormatInstance outputDataFormatInstance;
-		private TokenStructure cachedGraph = null;
+		private ITokenStructure cachedGraph = null;
 
 		public WriteChartItem() : base()
 		{
@@ -96,7 +96,7 @@ namespace NMaltParser.Core.SyntaxGraph.Writer
 		{
 			if (cachedGraph == null)
 			{
-				cachedGraph = (TokenStructure)flowChartinstance.getFlowChartRegistry(typeof(TokenStructure), sourceName);
+				cachedGraph = (ITokenStructure)flowChartinstance.getFlowChartRegistry(typeof(ITokenStructure), sourceName);
 				writer.writeProlog();
 			}
 			writer.writeSentence(cachedGraph);

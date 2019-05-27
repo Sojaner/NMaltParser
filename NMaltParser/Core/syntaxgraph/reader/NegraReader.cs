@@ -143,13 +143,13 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public boolean readSentence(org.maltparser.core.syntaxgraph.TokenStructure syntaxGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual bool readSentence(TokenStructure syntaxGraph)
+		public virtual bool readSentence(ITokenStructure syntaxGraph)
 		{
 			if (syntaxGraph == null || !(syntaxGraph is PhraseStructure))
 			{
 				return false;
 			}
-			syntaxGraph.clear();
+			syntaxGraph.Clear();
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.syntaxgraph.PhraseStructure phraseStructure = (org.maltparser.core.syntaxgraph.PhraseStructure)syntaxGraph;
 			PhraseStructure phraseStructure = (PhraseStructure)syntaxGraph;
@@ -160,7 +160,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 			PhraseStructureNode child = null;
 			currentHeaderTable = NegraTables.UNDEF;
 			string line = null;
-			syntaxGraph.clear();
+			syntaxGraph.Clear();
 			nonterminals.Clear();
 			try
 			{
@@ -169,7 +169,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 					line = reader.ReadLine();
 					if (ReferenceEquals(line, null))
 					{
-						if (syntaxGraph.hasTokens())
+						if (syntaxGraph.HasTokens())
 						{
 							sentenceCount++;
 							if (syntaxGraph is MappablePhraseStructureGraph)
@@ -257,7 +257,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 									}
 									else if (column.Position == 2 && child != null)
 									{
-										syntaxGraph.addLabel(child, "CAT", (i == n - 1)?line.Substring(start):line.Substring(start, i - start));
+										syntaxGraph.AddLabel(child, "CAT", (i == n - 1)?line.Substring(start):line.Substring(start, i - start));
 									}
 									else if (column.Category == ColumnDescription.PHRASE_STRUCTURE_EDGE_LABEL)
 									{
@@ -283,7 +283,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 											nonterminals[index] = parent;
 										}
 										Edge.Edge e = phraseStructure.addPhraseStructureEdge(parent, child);
-										syntaxGraph.addLabel(e, edgelabelTableName.ToString(), edgelabelSymbol.ToString());
+										syntaxGraph.AddLabel(e, edgelabelTableName.ToString(), edgelabelSymbol.ToString());
 									}
 									else if (column.Category == ColumnDescription.SECONDARY_EDGE_LABEL && child != null)
 									{
@@ -302,7 +302,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 											}
 											else if (index < START_ID_OF_NONTERMINALS)
 											{
-												parent = phraseStructure.getTokenNode(index);
+												parent = phraseStructure.GetTokenNode(index);
 											}
 											else
 											{
@@ -328,7 +328,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 							ColumnDescription column = null;
 
 							currentTerminalSize++;
-							child = syntaxGraph.addTokenNode(currentTerminalSize);
+							child = syntaxGraph.AddTokenNode(currentTerminalSize);
 							char[] lineChars = line.ToCharArray();
 							int start = 0;
 							int secedgecounter = 0;
@@ -348,7 +348,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 									}
 									if (column.Category == ColumnDescription.INPUT && child != null)
 									{
-										syntaxGraph.addLabel(child, column.Name, (i == n - 1)?line.Substring(start):line.Substring(start, i - start));
+										syntaxGraph.AddLabel(child, column.Name, (i == n - 1)?line.Substring(start):line.Substring(start, i - start));
 									}
 									else if (column.Category == ColumnDescription.PHRASE_STRUCTURE_EDGE_LABEL && child != null)
 									{ // && column.getName().equals("EDGELABEL")) {
@@ -375,7 +375,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 										}
 
 										Edge.Edge e = phraseStructure.addPhraseStructureEdge(parent, child);
-										syntaxGraph.addLabel(e, edgelabelTableName.ToString(), edgelabelSymbol.ToString());
+										syntaxGraph.AddLabel(e, edgelabelTableName.ToString(), edgelabelSymbol.ToString());
 									}
 									else if (column.Category == ColumnDescription.SECONDARY_EDGE_LABEL && child != null)
 									{
@@ -394,7 +394,7 @@ namespace NMaltParser.Core.SyntaxGraph.Reader
 											}
 											else if (index < START_ID_OF_NONTERMINALS)
 											{
-												parent = phraseStructure.getTokenNode(index);
+												parent = phraseStructure.GetTokenNode(index);
 											}
 											else
 											{

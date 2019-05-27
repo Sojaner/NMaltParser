@@ -161,7 +161,7 @@ namespace NMaltParser.ML.LibSvm
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void finalizeSentence(org.maltparser.core.syntaxgraph.DependencyStructure dependencyGraph) throws org.maltparser.core.exception.MaltChainedException
-		public virtual void finalizeSentence(DependencyStructure dependencyGraph)
+		public virtual void finalizeSentence(IDependencyStructure dependencyGraph)
 		{
 		}
 
@@ -662,7 +662,7 @@ namespace NMaltParser.ML.LibSvm
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.parser.DependencyParserConfig getConfiguration() throws org.maltparser.core.exception.MaltChainedException
-		public virtual DependencyParserConfig Configuration
+		public virtual IDependencyParserConfig Configuration
 		{
 			get
 			{

@@ -98,7 +98,7 @@ namespace NMaltParser.Core.SyntaxGraph
 		/// Returns the graph (structure) in which the graph element belongs to. 
 		/// </summary>
 		/// <returns> the graph (structure) in which the graph element belongs to.  </returns>
-		LabeledStructure BelongsToGraph {get;set;}
+		ILabeledStructure BelongsToGraph {get;set;}
 		/// <summary>
 		/// Resets the graph element.
 		/// </summary>

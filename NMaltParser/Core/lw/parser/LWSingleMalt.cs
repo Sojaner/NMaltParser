@@ -22,9 +22,9 @@ namespace NMaltParser.Core.LW.Parser
 	/// @author Johan Hall
 	/// 
 	/// </summary>
-	public sealed class LWSingleMalt : DependencyParserConfig
+	public sealed class LWSingleMalt : IDependencyParserConfig
 	{
-		public static readonly Type[] paramTypes = new Type[] {typeof(DependencyParserConfig)};
+		public static readonly Type[] paramTypes = new Type[] {typeof(IDependencyParserConfig)};
 		private readonly McoModel mcoModel;
 		private readonly int optionContainerIndex;
 		private readonly DataFormatInstance dataFormatInstance;
@@ -109,9 +109,9 @@ namespace NMaltParser.Core.LW.Parser
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void parse(org.maltparser.core.syntaxgraph.DependencyStructure graph) throws org.maltparser.core.exception.MaltChainedException
-		public void parse(DependencyStructure graph)
+		public void Parse(IDependencyStructure graph)
 		{
-			if (graph.hasTokens())
+			if (graph.HasTokens())
 			{
 				LWDeterministicParser parser = new LWDeterministicParser(this, graph.SymbolTables);
 				parser.parse(graph);
@@ -140,7 +140,7 @@ namespace NMaltParser.Core.LW.Parser
 				string[] outputTokens = new string[tokens.Length];
 				for (int j = 0; j < outputTokens.Length; j++)
 				{
-					outputTokens[j] = parseGraph.getDependencyNode(j + 1).ToString();
+					outputTokens[j] = parseGraph.GetDependencyNode(j + 1).ToString();
 				}
 				outputSentences.Add(outputTokens);
 			}
@@ -149,7 +149,7 @@ namespace NMaltParser.Core.LW.Parser
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void oracleParse(org.maltparser.core.syntaxgraph.DependencyStructure goldGraph, org.maltparser.core.syntaxgraph.DependencyStructure oracleGraph) throws org.maltparser.core.exception.MaltChainedException
-		public void oracleParse(DependencyStructure goldGraph, DependencyStructure oracleGraph)
+		public void OracleParse(IDependencyStructure goldGraph, IDependencyStructure oracleGraph)
 		{
 		}
 

@@ -14,7 +14,7 @@ namespace NMaltParser.ML
 		void addInstance(SingleDecision decision, FeatureVector featureVector);
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void finalizeSentence(org.maltparser.core.syntaxgraph.DependencyStructure dependencyGraph) throws org.maltparser.core.exception.MaltChainedException;
-		void finalizeSentence(DependencyStructure dependencyGraph);
+		void finalizeSentence(IDependencyStructure dependencyGraph);
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void noMoreInstances() throws org.maltparser.core.exception.MaltChainedException;
 		void noMoreInstances();

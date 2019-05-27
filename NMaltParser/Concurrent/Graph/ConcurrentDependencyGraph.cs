@@ -79,10 +79,10 @@ namespace NMaltParser.Concurrent.Graph
 		/// <exception cref="MaltChainedException"> </exception>
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public ConcurrentDependencyGraph(org.maltparser.concurrent.graph.dataformat.DataFormat dataFormat, org.maltparser.core.syntaxgraph.DependencyStructure sourceGraph, String defaultRootLabel) throws org.maltparser.core.exception.MaltChainedException
-		public ConcurrentDependencyGraph(DataFormat dataFormat, DependencyStructure sourceGraph, string defaultRootLabel)
+		public ConcurrentDependencyGraph(DataFormat dataFormat, IDependencyStructure sourceGraph, string defaultRootLabel)
 		{
 			this.dataFormat = dataFormat;
-			nodes = new ConcurrentDependencyNode[sourceGraph.nDependencyNode()];
+			nodes = new ConcurrentDependencyNode[sourceGraph.NDependencyNode()];
 
 			// Add nodes
 			nodes[0] = new ConcurrentDependencyNode(this, 0, null); // ROOT
@@ -91,7 +91,7 @@ namespace NMaltParser.Concurrent.Graph
 			{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.syntaxgraph.node.DependencyNode gnode = sourceGraph.getDependencyNode(index);
-				DependencyNode gnode = sourceGraph.getDependencyNode(index);
+				DependencyNode gnode = sourceGraph.GetDependencyNode(index);
 				string[] columns = new string[dataFormat.numberOfColumns()];
 				for (int i = 0; i < dataFormat.numberOfColumns(); i++)
 				{
@@ -306,7 +306,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				SortedSet<ConcurrentDependencyEdge> edges = Collections.synchronizedSortedSet(new SortedSet<ConcurrentDependencyEdge>());
+				SortedSet<ConcurrentDependencyEdge> edges = Collections.SynchronizedSortedSet(new SortedSet<ConcurrentDependencyEdge>());
 				for (int i = 1; i < nodes.Length; i++)
 				{
 					ConcurrentDependencyEdge edge = nodes[i].HeadEdge;
@@ -329,7 +329,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				SortedSet<int> indices = Collections.synchronizedSortedSet(new SortedSet<int>());
+				SortedSet<int> indices = Collections.SynchronizedSortedSet(new SortedSet<int>());
 				for (int i = 0; i < nodes.Length; i++)
 				{
 					indices.Add(i);
@@ -347,7 +347,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				SortedSet<int> indices = Collections.synchronizedSortedSet(new SortedSet<int>());
+				SortedSet<int> indices = Collections.SynchronizedSortedSet(new SortedSet<int>());
 				for (int i = 1; i < nodes.Length; i++)
 				{
 					indices.Add(i);
@@ -508,7 +508,7 @@ namespace NMaltParser.Concurrent.Graph
 
 		protected internal SortedSet<ConcurrentDependencyNode> getSortedSetOfLeftDependents(int nodeIndex)
 		{
-			SortedSet<ConcurrentDependencyNode> leftDependents = Collections.synchronizedSortedSet(new SortedSet<ConcurrentDependencyNode>());
+			SortedSet<ConcurrentDependencyNode> leftDependents = Collections.SynchronizedSortedSet(new SortedSet<ConcurrentDependencyNode>());
 			for (int i = 1; i < nodeIndex; i++)
 			{
 				if (nodeIndex == nodes[i].HeadIndex)
@@ -534,7 +534,7 @@ namespace NMaltParser.Concurrent.Graph
 
 		protected internal SortedSet<ConcurrentDependencyNode> getSortedSetOfRightDependents(int nodeIndex)
 		{
-			SortedSet<ConcurrentDependencyNode> rightDependents = Collections.synchronizedSortedSet(new SortedSet<ConcurrentDependencyNode>());
+			SortedSet<ConcurrentDependencyNode> rightDependents = Collections.SynchronizedSortedSet(new SortedSet<ConcurrentDependencyNode>());
 			for (int i = nodeIndex + 1; i < nodes.Length; i++)
 			{
 				if (nodeIndex == nodes[i].HeadIndex)
@@ -560,7 +560,7 @@ namespace NMaltParser.Concurrent.Graph
 
 		protected internal SortedSet<ConcurrentDependencyNode> getSortedSetOfDependents(int nodeIndex)
 		{
-			SortedSet<ConcurrentDependencyNode> dependents = Collections.synchronizedSortedSet(new SortedSet<ConcurrentDependencyNode>());
+			SortedSet<ConcurrentDependencyNode> dependents = Collections.SynchronizedSortedSet(new SortedSet<ConcurrentDependencyNode>());
 			for (int i = 1; i < nodes.Length; i++)
 			{
 				if (nodeIndex == nodes[i].HeadIndex)
@@ -676,7 +676,7 @@ namespace NMaltParser.Concurrent.Graph
 			const int prime = 31;
 			int result = 1;
 			result = prime * result + ((dataFormat == null) ? 0 : dataFormat.GetHashCode());
-			result = prime * result + Arrays.GetHashCode(nodes);
+			result = prime * result + Arrays.HashCode(nodes);
 			return result;
 		}
 

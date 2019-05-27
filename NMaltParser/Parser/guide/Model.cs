@@ -12,7 +12,7 @@ namespace NMaltParser.Parser.Guide
 	{
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void finalizeSentence(org.maltparser.core.syntaxgraph.DependencyStructure dependencyGraph) throws org.maltparser.core.exception.MaltChainedException;
-		void finalizeSentence(DependencyStructure dependencyGraph);
+		void finalizeSentence(IDependencyStructure dependencyGraph);
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public void noMoreInstances(org.maltparser.core.feature.FeatureModel featureModel) throws org.maltparser.core.exception.MaltChainedException;
 		void noMoreInstances(FeatureModel featureModel);

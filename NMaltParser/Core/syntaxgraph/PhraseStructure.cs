@@ -8,7 +8,7 @@ namespace NMaltParser.Core.SyntaxGraph
 	/// <summary>
 	/// @author Johan Hall
 	/// </summary>
-	public interface PhraseStructure : TokenStructure, SecEdgeStructure
+	public interface PhraseStructure : ITokenStructure, SecEdgeStructure
 	{
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public org.maltparser.core.syntaxgraph.node.PhraseStructureNode addTerminalNode() throws org.maltparser.core.exception.MaltChainedException;
