@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using NMaltParser.Core.Helper;
-using NMaltParser.Core.SyntaxGraph;
+using System.Xml;
 using NMaltParser.Utilities;
 
 namespace NMaltParser.Concurrent.Graph.DataFormat
@@ -67,33 +66,54 @@ namespace NMaltParser.Concurrent.Graph.DataFormat
             return null;
         }
 
+        private Lazy<ISet<ColumnDescription>> selectedColumns;
+
         public virtual ISet<ColumnDescription> GetSelectedColumnDescriptions(ISet<int> positionSet)
         {
-            ISet<ColumnDescription> selectedColumns = Collections.SynchronizedSortedSet(new SortedSet<ColumnDescription>());
-
-            foreach (ColumnDescription description in columns)
+            if (selectedColumns == null)
             {
-                if (positionSet.Contains(description.Position))
+                selectedColumns = new Lazy<ISet<ColumnDescription>>(() =>
                 {
-                    selectedColumns.Add(description);
-                }
+                    SortedSet<ColumnDescription> sortedSet = new SortedSet<ColumnDescription>();
+
+                    foreach (ColumnDescription description in columns)
+                    {
+                        if (positionSet.Contains(description.Position))
+                        {
+                            sortedSet.Add(description);
+                        }
+                    }
+
+                    return sortedSet;
+
+                }, true);
             }
 
-            return selectedColumns;
+            return selectedColumns.Value;
         }
+
+        private Lazy<ISet<string>> labelNames;
 
         public virtual ISet<string> LabelNames
         {
             get
             {
-                ISet<string> labelNames = Collections.SynchronizedSet(new System.Collections.Generic.HashSet<string>());
-
-                foreach (ColumnDescription description in columns)
+                if (labelNames == null)
                 {
-                    labelNames.Add(description.Name);
+                    labelNames = new Lazy<ISet<string>>(() =>
+                    {
+                        HashSet<string> hashSet = new HashSet<string>();
+
+                        foreach (ColumnDescription description in columns)
+                        {
+                            hashSet.Add(description.Name);
+                        }
+
+                        return hashSet;
+                    });
                 }
 
-                return labelNames;
+                return labelNames.Value;
             }
         }
 
@@ -168,62 +188,56 @@ namespace NMaltParser.Concurrent.Graph.DataFormat
             return sb.ToString();
         }
 
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        //ORIGINAL LINE: public static DataFormat parseDataFormatXMLfile(String fileName) throws org.maltparser.core.exception.MaltChainedException
         public static DataFormat ParseDataFormatXmLFile(string fileName)
         {
-            return ParseDataFormatXmLFile(new UrlFinder().FindUrl(fileName));
+            return ParseDataFormatXmLFile(new FileInfo(fileName));
         }
 
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        //ORIGINAL LINE: public static DataFormat parseDataFormatXMLfile(java.net.URL url) throws org.maltparser.concurrent.graph.ConcurrentGraphException
-        public static DataFormat ParseDataFormatXmLFile(Uri url)
+        public static DataFormat ParseDataFormatXmLFile(FileInfo fileInfo)
         {
-            if (url == null)
+            if (fileInfo == null || !fileInfo.Exists)
             {
-                throw new ConcurrentGraphException("The data format specification file cannot be found. ");
+                throw new ConcurrentGraphException("The data format specification file cannot be found.");
             }
-            string dataFormatName;
-            List<ColumnDescription> columns = new List<ColumnDescription>();
-            try
-            {
-                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-                DocumentBuilder db = dbf.newDocumentBuilder();
 
-                Element root = db.parse(url.openStream()).DocumentElement;
-                if (root.NodeName.Equals("dataformat"))
-                {
-                    dataFormatName = root.getAttribute("name");
-                }
-                else
-                {
-                    throw new ConcurrentGraphException("Data format specification file must contain one 'dataformat' element. ");
-                }
-                NodeList cols = root.getElementsByTagName("column");
-                Element col = null;
-                int i = 0;
-                for (; i < cols.Length; i++)
-                {
-                    col = (Element)cols.item(i);
-                    ColumnDescription column = new ColumnDescription(i, col.getAttribute("name"), ColumnDescription.GetCategory(col.getAttribute("category")), ColumnDescription.GetType(col.getAttribute("type")), col.getAttribute("default"), false);
-                    columns.Add(column);
-                }
-                columns.Add(new ColumnDescription(i++, "PPPATH", ColumnDescription.DependencyEdgeLabel, ColumnDescription.String, "_", true));
-                columns.Add(new ColumnDescription(i++, "PPLIFTED", ColumnDescription.DependencyEdgeLabel, ColumnDescription.String, "_", true));
-                columns.Add(new ColumnDescription(i++, "PPCOVERED", ColumnDescription.DependencyEdgeLabel, ColumnDescription.String, "_", true));
-            }
-            catch (IOException e)
+            string dataFormatName;
+
+            List<ColumnDescription> columns = new List<ColumnDescription>();
+
+            XmlDocument document = new XmlDocument();
+
+            document.Load(fileInfo.FullName);
+
+            XmlElement root = document.DocumentElement;
+
+            if (root.Name.Equals("dataformat"))
             {
-                throw new ConcurrentGraphException("Cannot find the file " + url.ToString() + ". ", e);
+                dataFormatName = root.GetAttribute("name");
             }
-            catch (ParserConfigurationException e)
+            else
             {
-                throw new ConcurrentGraphException("Problem parsing the file " + url.ToString() + ". ", e);
+                throw new ConcurrentGraphException("Data format specification file must contain one 'dataformat' element. ");
             }
-            catch (SAXException e)
+
+            XmlNodeList cols = root.GetElementsByTagName("column");
+
+            int i = 0;
+
+            for (; i < cols.Count; i++)
             {
-                throw new ConcurrentGraphException("Problem parsing the file " + url.ToString() + ". ", e);
+                XmlElement col = (XmlElement)cols[i];
+
+                ColumnDescription column = new ColumnDescription(i, col.GetAttribute("name"), ColumnDescription.GetCategory(col.GetAttribute("category")), ColumnDescription.GetType(col.GetAttribute("type")), col.GetAttribute("default"), false);
+
+                columns.Add(column);
             }
+
+            columns.Add(new ColumnDescription(i++, "PPPATH", ColumnDescription.DependencyEdgeLabel, ColumnDescription.String, "_", true));
+
+            columns.Add(new ColumnDescription(i++, "PPLIFTED", ColumnDescription.DependencyEdgeLabel, ColumnDescription.String, "_", true));
+
+            columns.Add(new ColumnDescription(i, "PPCOVERED", ColumnDescription.DependencyEdgeLabel, ColumnDescription.String, "_", true));
+
             return new DataFormat(dataFormatName, columns);
         }
     }

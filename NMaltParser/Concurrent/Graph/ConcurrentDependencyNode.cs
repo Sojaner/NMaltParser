@@ -302,7 +302,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				return index > 1 ? graph.getDependencyNode(index - 1) : null;
+				return index > 1 ? graph.GetDependencyNode(index - 1) : null;
 			}
 		}
 
@@ -314,7 +314,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				return graph.getDependencyNode(index + 1);
+				return graph.GetDependencyNode(index + 1);
 			}
 		}
 
@@ -356,7 +356,7 @@ namespace NMaltParser.Concurrent.Graph
 		/// <returns> <i>true</i> if the node has one or more dependents, otherwise <i>false</i>. </returns>
 		public bool hasDependent()
 		{
-			return graph.hasDependent(index);
+			return graph.HasDependent(index);
 		}
 
 		/// <summary>
@@ -365,7 +365,7 @@ namespace NMaltParser.Concurrent.Graph
 		/// <returns> <i>true</i> if the node has one or more left dependents, otherwise <i>false</i>. </returns>
 		public bool hasLeftDependent()
 		{
-			return graph.hasLeftDependent(index);
+			return graph.HasLeftDependent(index);
 		}
 
 		/// <summary>
@@ -374,7 +374,7 @@ namespace NMaltParser.Concurrent.Graph
 		/// <returns> <i>true</i> if the node has one or more right dependents, otherwise <i>false</i>. </returns>
 		public bool hasRightDependent()
 		{
-			return graph.hasRightDependent(index);
+			return graph.HasRightDependent(index);
 		}
 
 
@@ -406,7 +406,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				return graph.getDependencyNode(headIndex);
+				return graph.GetDependencyNode(headIndex);
 			}
 		}
 
@@ -417,7 +417,7 @@ namespace NMaltParser.Concurrent.Graph
 		/// <returns> the left dependent at the position <i>leftDependentIndex</i>, where <i>leftDependentIndex==0</i> equals the left most dependent </returns>
 		public ConcurrentDependencyNode getLeftDependent(int leftDependentIndex)
 		{
-			IList<ConcurrentDependencyNode> leftDependents = graph.getListOfLeftDependents(index);
+			IList<ConcurrentDependencyNode> leftDependents = graph.GetListOfLeftDependents(index);
 			if (leftDependentIndex >= 0 && leftDependentIndex < leftDependents.Count)
 			{
 				return leftDependents[leftDependentIndex];
@@ -433,7 +433,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				return graph.getListOfLeftDependents(index).Count;
+				return graph.GetListOfLeftDependents(index).Count;
 			}
 		}
 
@@ -445,7 +445,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				return graph.getSortedSetOfLeftDependents(index);
+				return graph.GetSortedSetOfLeftDependents(index);
 			}
 		}
 
@@ -457,7 +457,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				return graph.getListOfLeftDependents(index);
+				return graph.GetListOfLeftDependents(index);
 			}
 		}
 
@@ -532,7 +532,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				IList<ConcurrentDependencyNode> leftDependents = graph.getListOfLeftDependents(index);
+				IList<ConcurrentDependencyNode> leftDependents = graph.GetListOfLeftDependents(index);
 				return (leftDependents.Count > 0) ? leftDependents[leftDependents.Count - 1] : null;
 			}
 		}
@@ -545,7 +545,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				IList<ConcurrentDependencyNode> leftDependents = graph.getListOfLeftDependents(index);
+				IList<ConcurrentDependencyNode> leftDependents = graph.GetListOfLeftDependents(index);
 				return (leftDependents.Count > 0) ? leftDependents[0] : null;
 			}
 		}
@@ -557,7 +557,7 @@ namespace NMaltParser.Concurrent.Graph
 		/// <returns> the right dependent at the position <i>rightDependentIndex</i>, where <i>rightDependentIndex==0</i> equals the right most dependent </returns>
 		public ConcurrentDependencyNode getRightDependent(int rightDependentIndex)
 		{
-			IList<ConcurrentDependencyNode> rightDependents = graph.getListOfRightDependents(index);
+			IList<ConcurrentDependencyNode> rightDependents = graph.GetListOfRightDependents(index);
 			if (rightDependentIndex >= 0 && rightDependentIndex < rightDependents.Count)
 			{
 				return rightDependents[rightDependents.Count - 1 - rightDependentIndex];
@@ -573,7 +573,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				return graph.getListOfRightDependents(index).Count;
+				return graph.GetListOfRightDependents(index).Count;
 			}
 		}
 
@@ -585,7 +585,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				return graph.getSortedSetOfRightDependents(index);
+				return graph.GetSortedSetOfRightDependents(index);
 			}
 		}
 
@@ -597,7 +597,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				return graph.getListOfRightDependents(index);
+				return graph.GetListOfRightDependents(index);
 			}
 		}
 
@@ -673,7 +673,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				IList<ConcurrentDependencyNode> rightDependents = graph.getListOfRightDependents(index);
+				IList<ConcurrentDependencyNode> rightDependents = graph.GetListOfRightDependents(index);
 				return (rightDependents.Count > 0) ? rightDependents[0] : null;
 			}
 		}
@@ -686,7 +686,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				IList<ConcurrentDependencyNode> rightDependents = graph.getListOfRightDependents(index);
+				IList<ConcurrentDependencyNode> rightDependents = graph.GetListOfRightDependents(index);
 				return (rightDependents.Count > 0) ? rightDependents[rightDependents.Count - 1] : null;
 			}
 		}
@@ -699,7 +699,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				return graph.getSortedSetOfDependents(index);
+				return graph.GetSortedSetOfDependents(index);
 			}
 		}
 
@@ -711,7 +711,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				return graph.getListOfDependents(index);
+				return graph.GetListOfDependents(index);
 			}
 		}
 
@@ -739,7 +739,7 @@ namespace NMaltParser.Concurrent.Graph
 		{
 			get
 			{
-				return graph.getListOfDependents(index).Count;
+				return graph.GetListOfDependents(index).Count;
 			}
 		}
 
@@ -892,7 +892,7 @@ namespace NMaltParser.Concurrent.Graph
 			get
 			{
 				ConcurrentDependencyNode candidate = null;
-				IList<ConcurrentDependencyNode> dependents = graph.getListOfDependents(index);
+				IList<ConcurrentDependencyNode> dependents = graph.GetListOfDependents(index);
 				for (int i = 0; i < dependents.Count; i++)
 				{
 	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
@@ -931,7 +931,7 @@ namespace NMaltParser.Concurrent.Graph
 			get
 			{
 				ConcurrentDependencyNode candidate = null;
-				IList<ConcurrentDependencyNode> dependents = graph.getListOfDependents(index);
+				IList<ConcurrentDependencyNode> dependents = graph.GetListOfDependents(index);
 				for (int i = 0; i < dependents.Count; i++)
 				{
 	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
@@ -992,7 +992,7 @@ namespace NMaltParser.Concurrent.Graph
 			get
 			{
 				ConcurrentDependencyNode candidate = this;
-				IList<ConcurrentDependencyNode> dependents = graph.getListOfDependents(index);
+				IList<ConcurrentDependencyNode> dependents = graph.GetListOfDependents(index);
 				for (int i = 0; i < dependents.Count; i++)
 				{
 	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
@@ -1031,7 +1031,7 @@ namespace NMaltParser.Concurrent.Graph
 			get
 			{
 				ConcurrentDependencyNode candidate = this;
-				IList<ConcurrentDependencyNode> dependents = graph.getListOfDependents(index);
+				IList<ConcurrentDependencyNode> dependents = graph.GetListOfDependents(index);
 				for (int i = 0; i < dependents.Count; i++)
 				{
 	//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
@@ -1085,14 +1085,14 @@ namespace NMaltParser.Concurrent.Graph
 
 		public ConcurrentDependencyNode findComponent()
 		{
-			return graph.findComponent(index);
+			return graph.FindComponent(index);
 		}
 
 		public int Rank
 		{
 			get
 			{
-				return graph.getRank(index);
+				return graph.GetRank(index);
 			}
 		}
 

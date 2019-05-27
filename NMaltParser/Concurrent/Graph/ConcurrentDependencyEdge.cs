@@ -4,272 +4,260 @@ using NMaltParser.Concurrent.Graph.DataFormat;
 
 namespace NMaltParser.Concurrent.Graph
 {
+    /// <inheritdoc />
     /// <summary>
-	/// Immutable and tread-safe dependency edge implementation.
-	/// 
-	/// @author Johan Hall
-	/// </summary>
+    /// Immutable and tread-safe dependency edge implementation.
+    /// @author Johan Hall
+    /// </summary>
 	public sealed class ConcurrentDependencyEdge : IComparable<ConcurrentDependencyEdge>
-	{
-		private readonly ConcurrentDependencyNode source;
-		private readonly ConcurrentDependencyNode target;
-		private readonly SortedDictionary<int, string> labels;
+    {
+        private readonly SortedDictionary<int, string> labels;
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: protected ConcurrentDependencyEdge(ConcurrentDependencyEdge edge) throws ConcurrentGraphException
-		protected internal ConcurrentDependencyEdge(ConcurrentDependencyEdge edge)
-		{
-			source = edge.source;
-			target = edge.target;
-			labels = new SortedDictionary<int, string>(edge.labels);
-		}
+        internal ConcurrentDependencyEdge(ConcurrentDependencyEdge edge)
+        {
+            Source = edge.Source;
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: protected ConcurrentDependencyEdge(org.maltparser.concurrent.graph.dataformat.DataFormat dataFormat, ConcurrentDependencyNode _source, ConcurrentDependencyNode _target, java.util.SortedMap<int, String> _labels) throws ConcurrentGraphException
-		protected internal ConcurrentDependencyEdge(DataFormat dataFormat, ConcurrentDependencyNode _source, ConcurrentDependencyNode _target, SortedDictionary<int, string> _labels)
-		{
-			if (_source == null)
-			{
-				throw new ConcurrentGraphException("Not allowed to have an edge without a source node");
-			}
-			if (_target == null)
-			{
-				throw new ConcurrentGraphException("Not allowed to have an edge without a target node");
-			}
-			source = _source;
-			target = _target;
-			if (target.Index == 0)
-			{
-				throw new ConcurrentGraphException("Not allowed to have an edge target as root node");
-			}
-			labels = new SortedDictionary<int, string>();
-			if (_labels != null)
-			{
-				foreach (int? i in _labels.Keys)
-				{
-					if (dataFormat.getColumnDescription(i).Category == ColumnDescription.DependencyEdgeLabel)
-					{
-						labels[i] = _labels[i];
-					}
-				}
-			}
-		}
+            Target = edge.Target;
 
-		/// <summary>
-		/// Returns the source node of the edge.
-		/// </summary>
-		/// <returns> the source node of the edge. </returns>
-		public ConcurrentDependencyNode Source
-		{
-			get
-			{
-				return source;
-			}
-		}
+            labels = new SortedDictionary<int, string>(edge.labels);
+        }
 
-		/// <summary>
+        internal ConcurrentDependencyEdge(DataFormat.DataFormat dataFormat, ConcurrentDependencyNode source, ConcurrentDependencyNode target, SortedDictionary<int, string> labels)
+        {
+            Source = source ?? throw new ConcurrentGraphException("Not allowed to have an edge without a source node");
+
+            Target = target ?? throw new ConcurrentGraphException("Not allowed to have an edge without a target node");
+
+            if (Target.Index == 0)
+            {
+                throw new ConcurrentGraphException("Not allowed to have an edge target as root node");
+            }
+
+            this.labels = new SortedDictionary<int, string>();
+
+            if (labels != null)
+            {
+                foreach (int i in labels.Keys)
+                {
+                    if (dataFormat.GetColumnDescription(i).Category == ColumnDescription.DependencyEdgeLabel)
+                    {
+                        this.labels[i] = labels[i];
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns the source node of the edge.
+        /// </summary>
+        /// <returns> the source node of the edge. </returns>
+        public ConcurrentDependencyNode Source { get; }
+
+        /// <summary>
 		/// Returns the target node of the edge.
 		/// </summary>
 		/// <returns> the target node of the edge. </returns>
-		public ConcurrentDependencyNode Target
-		{
-			get
-			{
-				return target;
-			}
-		}
+		public ConcurrentDependencyNode Target { get; }
 
-		/// <summary>
+        /// <summary>
 		/// Returns an edge label
 		/// </summary>
 		/// <param name="column"> a column description that describes the label </param>
 		/// <returns> an edge label described by the column description. An empty string is returned if the label is not found.  </returns>
-		public string getLabel(ColumnDescription column)
-		{
-			if (labels.ContainsKey(column.Position))
-			{
-				return labels[column.Position];
-			}
-			else if (column.Category == ColumnDescription.Ignore)
-			{
-				return column.DefaultOutput;
-			}
-			return "";
-		}
+		public string GetLabel(ColumnDescription column)
+        {
+            if (labels.ContainsKey(column.Position))
+            {
+                return labels[column.Position];
+            }
+            else if (column.Category == ColumnDescription.Ignore)
+            {
+                return column.DefaultOutput;
+            }
+            return "";
+        }
 
-		/// <summary>
-		/// Returns an edge label
-		/// </summary>
-		/// <param name="columnName"> the name of the column that describes the label. </param>
-		/// <returns> an edge label. An empty string is returned if the label is not found. </returns>
-		public string getLabel(string columnName)
-		{
-			ColumnDescription column = source.DataFormat.getColumnDescription(columnName);
-			if (column != null)
-			{
-				if (labels.ContainsKey(column.Position))
-				{
-					return labels[column.Position];
-				}
-				else if (column.Category == ColumnDescription.Ignore)
-				{
-					return column.DefaultOutput;
-				}
-			}
-			return "";
-		}
+        /// <summary>
+        /// Returns an edge label
+        /// </summary>
+        /// <param name="columnName"> the name of the column that describes the label. </param>
+        /// <returns> an edge label. An empty string is returned if the label is not found. </returns>
+        public string GetLabel(string columnName)
+        {
+            ColumnDescription column = Source.DataFormat.getColumnDescription(columnName);
 
-		/// <summary>
-		/// Returns the number of labels of the edge.
-		/// </summary>
-		/// <returns> the number of labels of the edge. </returns>
-		public int nLabels()
-		{
-			return labels.Count;
-		}
+            if (column != null)
+            {
+                if (labels.ContainsKey(column.Position))
+                {
+                    return labels[column.Position];
+                }
+                else if (column.Category == ColumnDescription.Ignore)
+                {
+                    return column.DefaultOutput;
+                }
+            }
 
-		/// <summary>
-		/// Returns <i>true</i> if the edge has one or more labels, otherwise <i>false</i>.
-		/// </summary>
-		/// <returns> <i>true</i> if the edge has one or more labels, otherwise <i>false</i>. </returns>
-		public bool Labeled
-		{
-			get
-			{
-				return labels.Count > 0;
-			}
-		}
+            return "";
+        }
 
-		public int CompareTo(ConcurrentDependencyEdge that)
-		{
-			const int BEFORE = -1;
-			const int EQUAL = 0;
-			const int AFTER = 1;
+        /// <summary>
+        /// Returns the number of labels of the edge.
+        /// </summary>
+        /// <returns> the number of labels of the edge. </returns>
+        public int NLabels()
+        {
+            return labels.Count;
+        }
 
-			if (this == that)
-			{
-				return EQUAL;
-			}
+        /// <summary>
+        /// Returns <i>true</i> if the edge has one or more labels, otherwise <i>false</i>.
+        /// </summary>
+        /// <returns> <i>true</i> if the edge has one or more labels, otherwise <i>false</i>. </returns>
+        public bool Labeled => labels.Count > 0;
 
-			if (target.Index < that.target.Index)
-			{
-				return BEFORE;
-			}
-			if (target.Index > that.target.Index)
-			{
-				return AFTER;
-			}
+        public int CompareTo(ConcurrentDependencyEdge that)
+        {
+            const int before = -1;
 
-			if (source.Index < that.source.Index)
-			{
-				return BEFORE;
-			}
-			if (source.Index > that.source.Index)
-			{
-				return AFTER;
-			}
+            const int equal = 0;
 
+            const int after = 1;
 
-			if (labels.Equals(that.labels))
-			{
-				return EQUAL;
-			}
+            if (Equals(this, that))
+            {
+                return equal;
+            }
 
-			IEnumerator<int> itthis = labels.Keys.GetEnumerator();
-			IEnumerator<int> itthat = that.labels.Keys.GetEnumerator();
-			while (itthis.MoveNext() && itthat.MoveNext())
-			{
-				int keythis = itthis.Current;
-//JAVA TO C# CONVERTER TODO TASK: Java iterators are only converted within the context of 'while' and 'for' loops:
-				int keythat = itthat.next();
-				if (keythis < keythat)
-				{
-					return BEFORE;
-				}
-				if (keythis > keythat)
-				{
-					return AFTER;
-				}
-				if (labels[keythis].compareTo(that.labels[keythat]) != EQUAL)
-				{
-					return labels[keythis].compareTo(that.labels[keythat]);
-				}
-			}
-//JAVA TO C# CONVERTER TODO TASK: Java iterators are only converted within the context of 'while' and 'for' loops:
-			if (itthis.hasNext() == false && itthat.hasNext() == true)
-			{
-				return BEFORE;
-			}
-//JAVA TO C# CONVERTER TODO TASK: Java iterators are only converted within the context of 'while' and 'for' loops:
-			if (itthis.hasNext() == true && itthat.hasNext() == false)
-			{
-				return AFTER;
-			}
+            if (Target.Index < that.Target.Index)
+            {
+                return before;
+            }
+
+            if (Target.Index > that.Target.Index)
+            {
+                return after;
+            }
+
+            if (Source.Index < that.Source.Index)
+            {
+                return before;
+            }
+
+            if (Source.Index > that.Source.Index)
+            {
+                return after;
+            }
 
 
-			return EQUAL;
-		}
+            if (labels.Equals(that.labels))
+            {
+                return equal;
+            }
 
-		public override int GetHashCode()
-		{
-			const int prime = 31;
-			int result = 1;
-			result = prime * result + ((source == null) ? 0 : source.GetHashCode());
-			result = prime * result + ((target == null) ? 0 : target.GetHashCode());
-			result = prime * result + ((labels == null) ? 0 : labels.GetHashCode());
-			return result;
-		}
+            using (IEnumerator<int> thisEnumerator = labels.Keys.GetEnumerator())
+            using (IEnumerator<int> thatEnumerator = that.labels.Keys.GetEnumerator())
+            {
+                while (thisEnumerator.MoveNext() && thatEnumerator.MoveNext())
+                {
+                    int keyThis = thisEnumerator.Current;
 
-		public override bool Equals(object obj)
-		{
-			if (this == obj)
-			{
-				return true;
-			}
-			if (obj == null)
-			{
-				return false;
-			}
-			if (GetType() != obj.GetType())
-			{
-				return false;
-			}
-			ConcurrentDependencyEdge other = (ConcurrentDependencyEdge) obj;
-			if (source == null)
-			{
-				if (other.source != null)
-				{
-					return false;
-				}
-			}
-			else if (!source.Equals(other.source))
-			{
-				return false;
-			}
-			if (target == null)
-			{
-				if (other.target != null)
-				{
-					return false;
-				}
-			}
-			else if (!target.Equals(other.target))
-			{
-				return false;
-			}
-			if (labels == null)
-			{
-				if (other.labels != null)
-				{
-					return false;
-				}
-			}
-			else if (!labels.Equals(other.labels))
-			{
-				return false;
-			}
-			return true;
-		}
-	}
+                    int keyThat = thatEnumerator.Current;
+
+                    if (keyThis < keyThat)
+                    {
+                        return before;
+                    }
+
+                    if (keyThis > keyThat)
+                    {
+                        return after;
+                    }
+
+                    int compare = string.Compare(labels[keyThis], that.labels[keyThat], StringComparison.Ordinal);
+
+                    if (compare != equal)
+                    {
+                        return compare;
+                    }
+                }
+            }
+
+            return labels.Keys.Count < that.labels.Keys.Count ? before : (labels.Keys.Count > that.labels.Keys.Count ? after : equal);
+        }
+
+        public override int GetHashCode()
+        {
+            const int prime = 31;
+
+            int result = 1;
+
+            result = prime * result + ((Source == null) ? 0 : Source.GetHashCode());
+
+            result = prime * result + ((Target == null) ? 0 : Target.GetHashCode());
+
+            result = prime * result + ((labels == null) ? 0 : labels.GetHashCode());
+
+            return result;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (this == obj)
+            {
+                return true;
+            }
+
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            ConcurrentDependencyEdge other = (ConcurrentDependencyEdge)obj;
+
+            if (Source == null)
+            {
+                if (other.Source != null)
+                {
+                    return false;
+                }
+            }
+            else if (!Source.Equals(other.Source))
+            {
+                return false;
+            }
+
+            if (Target == null)
+            {
+                if (other.Target != null)
+                {
+                    return false;
+                }
+            }
+            else if (!Target.Equals(other.Target))
+            {
+                return false;
+            }
+
+            if (labels == null)
+            {
+                if (other.labels != null)
+                {
+                    return false;
+                }
+            }
+            else if (!labels.Equals(other.labels))
+            {
+                return false;
+            }
+
+            return true;
+        }
+    }
 
 }
