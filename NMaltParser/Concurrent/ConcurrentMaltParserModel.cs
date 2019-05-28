@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using NMaltParser.Concurrent.Graph;
 using NMaltParser.Concurrent.Graph.DataFormat;
 using NMaltParser.Core.Exception;
@@ -13,6 +14,7 @@ using NMaltParser.Core.Plugin;
 using NMaltParser.Core.Symbol;
 using NMaltParser.Core.Symbol.Hash;
 using NMaltParser.Core.Symbol.Parse;
+using NMaltParser.Utilities;
 
 namespace NMaltParser.Concurrent
 {
@@ -25,13 +27,10 @@ namespace NMaltParser.Concurrent
 	/// </summary>
 	public sealed class ConcurrentMaltParserModel
 	{
-		private readonly DataFormatInstance dataFormatInstance;
-		private readonly DataFormat concurrentDataFormat;
+        private readonly DataFormat concurrentDataFormat;
 		private readonly SymbolTableHandler parentSymbolTableHandler;
 		private readonly LWSingleMalt singleMalt;
-		private readonly int optionContainer;
-		private readonly McoModel mcoModel;
-		private readonly int markingStrategy;
+        private readonly int markingStrategy;
 		private readonly bool coveredRoot;
 		private readonly string defaultRootLabel;
 
@@ -41,17 +40,15 @@ namespace NMaltParser.Concurrent
 		/// <param name="_optionContainer"> a option container index </param>
 		/// <param name="_mcoURL"> a URL to a valid MaltParser model file. </param>
 		/// <exception cref="MaltChainedException"> </exception>
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: protected ConcurrentMaltParserModel(int _optionContainer, java.net.URL _mcoURL) throws org.maltparser.core.exception.MaltChainedException
-		protected internal ConcurrentMaltParserModel(int _optionContainer, URL _mcoURL)
+		internal ConcurrentMaltParserModel(int _optionContainer, Url _mcoURL)
 		{
-			optionContainer = _optionContainer;
-			mcoModel = new McoModel(_mcoURL);
+            var optionContainer = _optionContainer;
+			McoModel mcoModel = new McoModel(_mcoURL);
 			string inputFormatName = OptionManager.instance().getOptionValue(optionContainer, "input", "format").ToString().Trim();
-			URL inputFormatURL = null;
+			Url inputFormatURL = null;
 			try
 			{
-				inputFormatURL = mcoModel.getMcoEntryURL(inputFormatName);
+				inputFormatURL = mcoModel.GetMcoEntryUrl(inputFormatName);
 			}
 			catch (IOException e)
 			{
@@ -59,10 +56,10 @@ namespace NMaltParser.Concurrent
 			}
 			DataFormatManager dataFormatManager = new DataFormatManager(inputFormatURL, inputFormatURL);
 			parentSymbolTableHandler = new HashSymbolTableHandler();
-			dataFormatInstance = dataFormatManager.InputDataFormatSpec.createDataFormatInstance(parentSymbolTableHandler, OptionManager.instance().getOptionValueString(optionContainer, "singlemalt", "null_value"));
+			DataFormatInstance dataFormatInstance = dataFormatManager.InputDataFormatSpec.createDataFormatInstance(parentSymbolTableHandler, OptionManager.instance().getOptionValueString(optionContainer, "singlemalt", "null_value"));
 			try
 			{
-				parentSymbolTableHandler.load(mcoModel.getInputStreamReader("symboltables.sym", "UTF-8"));
+				parentSymbolTableHandler.load(mcoModel.GetInputStreamReader("symboltables.sym", "UTF-8"));
 			}
 			catch (IOException e)
 			{
@@ -71,9 +68,7 @@ namespace NMaltParser.Concurrent
 			defaultRootLabel = OptionManager.instance().getOptionValue(optionContainer, "graph", "root_label").ToString().Trim();
 			markingStrategy = LWDeprojectivizer.getMarkingStrategyInt(OptionManager.instance().getOptionValue(optionContainer, "pproj", "marking_strategy").ToString().Trim());
 			coveredRoot = !OptionManager.instance().getOptionValue(optionContainer, "pproj", "covered_root").ToString().Trim().Equals("none", StringComparison.OrdinalIgnoreCase);
-	//		final PropagationManager propagationManager = loadPropagationManager(this.optionContainer, mcoModel);
-//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-//ORIGINAL LINE: final org.maltparser.core.feature.FeatureModelManager featureModelManager = loadFeatureModelManager(this.optionContainer, mcoModel);
+
 			FeatureModelManager featureModelManager = loadFeatureModelManager(optionContainer, mcoModel);
 			singleMalt = new LWSingleMalt(optionContainer, dataFormatInstance, mcoModel, null, featureModelManager);
 			concurrentDataFormat = DataFormat.ParseDataFormatXmLfile(inputFormatURL);
@@ -186,11 +181,11 @@ namespace NMaltParser.Concurrent
 				{
 					string markingStrategy = OptionManager.instance().getOptionValue(optionContainer, "pproj", "marking_strategy").ToString().Trim();
 					string coveredRoot = OptionManager.instance().getOptionValue(optionContainer, "pproj", "covered_root").ToString().Trim();
-					featureModelManager.loadParSpecification(mcoModel.getMcoEntryURL(featureModelFileName), markingStrategy, coveredRoot);
+					featureModelManager.loadParSpecification(mcoModel.GetMcoEntryUrl(featureModelFileName), markingStrategy, coveredRoot);
 				}
 				else
 				{
-					featureModelManager.loadSpecification(mcoModel.getMcoEntryURL(featureModelFileName));
+					featureModelManager.loadSpecification(mcoModel.GetMcoEntryUrl(featureModelFileName));
 				}
 			}
 			catch (IOException e)

@@ -190,12 +190,15 @@ namespace NMaltParser.Concurrent.Graph.DataFormat
 
         public static DataFormat ParseDataFormatXmLFile(string fileName)
         {
-            return ParseDataFormatXmLFile(new FileInfo(fileName));
+            using (Url url = Url.ToUrl(fileName))
+            {
+                return ParseDataFormatXmLFile(url);
+            }
         }
 
-        public static DataFormat ParseDataFormatXmLFile(FileInfo fileInfo)
+        public static DataFormat ParseDataFormatXmLFile(Url url)
         {
-            if (fileInfo == null || !fileInfo.Exists)
+            if (url == null)
             {
                 throw new ConcurrentGraphException("The data format specification file cannot be found.");
             }
@@ -206,7 +209,7 @@ namespace NMaltParser.Concurrent.Graph.DataFormat
 
             XmlDocument document = new XmlDocument();
 
-            document.Load(fileInfo.FullName);
+            document.Load(url.OpenStream());
 
             XmlElement root = document.DocumentElement;
 

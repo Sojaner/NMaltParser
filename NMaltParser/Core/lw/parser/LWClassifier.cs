@@ -19,8 +19,8 @@ namespace NMaltParser.Core.LW.Parser
 
 		public LWClassifier(McoModel mcoModel, string prefixFileName, bool _excludeNullValues)
 		{
-			model = (MaltLibModel)mcoModel.getMcoEntryObject(prefixFileName + ".moo");
-			featureMap = (FeatureMap)mcoModel.getMcoEntryObject(prefixFileName + ".map");
+			model = (MaltLibModel)mcoModel.GetMcoEntryObject(prefixFileName + ".moo");
+			featureMap = (FeatureMap)mcoModel.GetMcoEntryObject(prefixFileName + ".map");
 			excludeNullValues = _excludeNullValues;
 		}
 

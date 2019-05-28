@@ -211,7 +211,7 @@ namespace NMaltParser.Core.LW.Parser
 		{
 			try
 			{
-				return mcoModel.getInputStreamReader(fileName, "UTF-8");
+				return mcoModel.GetInputStreamReader(fileName, "UTF-8");
 			}
 			catch (IOException e)
 			{
@@ -225,7 +225,7 @@ namespace NMaltParser.Core.LW.Parser
 		{
 			try
 			{
-				return mcoModel.getInputStream(fileName);
+				return mcoModel.GetInputStream(fileName);
 			}
 			catch (IOException e)
 			{
@@ -239,7 +239,7 @@ namespace NMaltParser.Core.LW.Parser
 		{
 			try
 			{
-				return mcoModel.getMcoEntryURL(fileName);
+				return mcoModel.GetMcoEntryUrl(fileName);
 			}
 			catch (IOException e)
 			{
@@ -251,14 +251,14 @@ namespace NMaltParser.Core.LW.Parser
 //ORIGINAL LINE: public Object getConfigFileEntryObject(String fileName) throws org.maltparser.core.exception.MaltChainedException
 		public object getConfigFileEntryObject(string fileName)
 		{
-			return mcoModel.getMcoEntryObject(fileName);
+			return mcoModel.GetMcoEntryObject(fileName);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public String getConfigFileEntryString(String fileName) throws org.maltparser.core.exception.MaltChainedException
 		public string getConfigFileEntryString(string fileName)
 		{
-			return mcoModel.getMcoEntryString(fileName);
+			return mcoModel.GetMcoEntryString(fileName);
 		}
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:

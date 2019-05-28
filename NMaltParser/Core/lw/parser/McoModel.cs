@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using NMaltParser.Core.Helper;
+using NMaltParser.Utilities;
 
 namespace NMaltParser.Core.LW.Parser
 {
@@ -11,192 +14,200 @@ namespace NMaltParser.Core.LW.Parser
 	/// 
 	/// </summary>
 	public sealed class McoModel
-	{
-		private readonly URL mcoUrl;
-		private readonly IDictionary<string, URL> nameUrlMap;
-		private readonly IDictionary<string, object> preLoadedObjects;
-		private readonly IDictionary<string, string> preLoadedStrings;
-		private readonly URL infoURL;
-		private readonly string internalMcoName;
+    {
+        private readonly IDictionary<string, Url> nameUrlMap;
 
+        private readonly IDictionary<string, object> preLoadedObjects;
 
-		public McoModel(URL _mcoUrl)
-		{
-			mcoUrl = _mcoUrl;
-			nameUrlMap = Collections.synchronizedMap(new HashMap<string, URL>());
-			preLoadedObjects = Collections.synchronizedMap(new HashMap<string, object>());
-			preLoadedStrings = Collections.synchronizedMap(new HashMap<string, string>());
-			URL tmpInfoURL = null;
-			string tmpInternalMcoName = null;
-			try
-			{
-				JarEntry je;
-				JarInputStream jis = new JarInputStream(mcoUrl.openConnection().InputStream);
+        private readonly IDictionary<string, string> preLoadedStrings;
 
-				while ((je = jis.NextJarEntry) != null)
-				{
-					string fileName = je.Name;
-					URL entryURL = new URL("jar:" + mcoUrl + "!/" + fileName + "\n");
-					int index = fileName.IndexOf('/');
-					if (index == -1)
-					{
-						index = fileName.IndexOf('\\');
-					}
-					nameUrlMap[fileName.Substring(index + 1)] = entryURL;
-					if (fileName.EndsWith(".info", StringComparison.Ordinal) && tmpInfoURL == null)
-					{
-						tmpInfoURL = entryURL;
-					}
-					else if (fileName.EndsWith(".moo", StringComparison.Ordinal) || fileName.EndsWith(".map", StringComparison.Ordinal))
-					{
-						preLoadedObjects[fileName.Substring(index + 1)] = preLoadObject(entryURL.openStream());
-					}
-					else if (fileName.EndsWith(".dsm", StringComparison.Ordinal))
-					{
-						preLoadedStrings[fileName.Substring(index + 1)] = preLoadString(entryURL.openStream());
-					}
-					if (ReferenceEquals(tmpInternalMcoName, null))
-					{
-						tmpInternalMcoName = fileName.Substring(0, index);
-					}
-					jis.closeEntry();
-				}
-				jis.close();
-			}
-			catch (IOException e)
-			{
-				Console.WriteLine(e.ToString());
-				Console.Write(e.StackTrace);
-			}
-			catch (ClassNotFoundException e)
-			{
-				Console.WriteLine(e.ToString());
-				Console.Write(e.StackTrace);
-			}
-			internalMcoName = tmpInternalMcoName;
-			infoURL = tmpInfoURL;
-		}
+        private readonly Url infoUrl;
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: private Object preLoadObject(java.io.InputStream is) throws java.io.IOException, ClassNotFoundException
-		private object preLoadObject(Stream @is)
-		{
-			object @object = null;
+        public McoModel(Url mcoUrl)
+        {
+            McoUrl = mcoUrl;
 
-			ObjectInputStream input = new ObjectInputStream(@is);
-			try
-			{
-				@object = input.readObject();
-			}
-			finally
-			{
-				input.close();
-			}
-			return @object;
-		}
+            nameUrlMap = new ConcurrentDictionary<string, Url>();
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: private String preLoadString(java.io.InputStream is) throws java.io.IOException, ClassNotFoundException
-		private string preLoadString(Stream @is)
-		{
-//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-//ORIGINAL LINE: final java.io.BufferedReader in = new java.io.BufferedReader(new java.io.InputStreamReader(is, "UTF-8"));
-			StreamReader @in = new StreamReader(@is, Encoding.UTF8);
-			string line;
-			StringBuilder sb = new StringBuilder();
+            preLoadedObjects = new ConcurrentDictionary<string, object>();
 
-			while (!ReferenceEquals((line = @in.ReadLine()), null))
-			{
-				 sb.Append(line);
-				 sb.Append('\n');
-			}
-			return sb.ToString();
-		}
+            preLoadedStrings = new ConcurrentDictionary<string, string>();
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: public java.io.InputStream getInputStream(String fileName) throws java.io.IOException
-		public Stream getInputStream(string fileName)
-		{
-			return nameUrlMap[fileName].openStream();
-		}
+            Url tmpInfoUrl = null;
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: public java.io.InputStreamReader getInputStreamReader(String fileName, String charSet) throws java.io.IOException, java.io.UnsupportedEncodingException
-		public StreamReader getInputStreamReader(string fileName, string charSet)
-		{
-			return new StreamReader(getInputStream(fileName), charSet);
-		}
+            string tmpInternalMcoName = null;
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: public java.net.URL getMcoEntryURL(String fileName) throws java.net.MalformedURLException
-		public URL getMcoEntryURL(string fileName)
-		{
-			return new URL(nameUrlMap[fileName].ToString());
-		}
+            try
+            {
+                ZipArchive zipArchive = new ZipArchive(McoUrl.OpenStream());
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: public java.net.URL getMcoURL() throws java.net.MalformedURLException
-		public URL McoURL
-		{
-			get
-			{
-				return new URL(mcoUrl.ToString());
-			}
-		}
+                foreach (ZipArchiveEntry zipArchiveEntry in zipArchive.Entries)
+                {
+                    string fileName = zipArchiveEntry.FullName;
 
-		public object getMcoEntryObject(string fileName)
-		{
-			return preLoadedObjects[fileName];
-		}
+                    Url entryUrl = new Url($"nmco:{McoUrl}!/{fileName}\n");
 
-		public ISet<string> McoEntryObjectKeys
-		{
-			get
-			{
-				return Collections.synchronizedSet(new Core.Helper.HashSet<string>(preLoadedObjects.Keys));
-			}
-		}
+                    int index = fileName.IndexOf('/');
 
-		public string getMcoEntryString(string fileName)
-		{
-			return preLoadedStrings[fileName];
-		}
+                    if (index == -1)
+                    {
+                        index = fileName.IndexOf('\\');
+                    }
 
-		public string InternalName
-		{
-			get
-			{
-				return internalMcoName;
-			}
-		}
+                    nameUrlMap[fileName.Substring(index + 1)] = entryUrl;
 
-		public string McoURLString
-		{
-			get
-			{
-				return mcoUrl.ToString();
-			}
-		}
+                    if (fileName.EndsWith(".info", StringComparison.OrdinalIgnoreCase) && tmpInfoUrl == null)
+                    {
+                        tmpInfoUrl = entryUrl;
+                    }
+                    else if (fileName.EndsWith(".moo", StringComparison.OrdinalIgnoreCase) || fileName.EndsWith(".map", StringComparison.OrdinalIgnoreCase))
+                    {
+                        preLoadedObjects[fileName.Substring(index + 1)] = PreLoadObject(entryUrl.OpenStream());
+                    }
+                    else if (fileName.EndsWith(".dsm", StringComparison.OrdinalIgnoreCase))
+                    {
+                        preLoadedStrings[fileName.Substring(index + 1)] = PreLoadString(entryUrl.OpenStream());
+                    }
+                    if (tmpInternalMcoName is null)
+                    {
+                        tmpInternalMcoName = fileName.Substring(0, index);
+                    }
+                }
 
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: public String getMcoInfo() throws java.io.IOException
-		public string McoInfo
-		{
-			get
-			{
-				StringBuilder sb = new StringBuilder();
-    
-				StreamReader reader = new StreamReader(infoURL.openStream(), Encoding.UTF8);
-				string line;
-				while (!ReferenceEquals((line = reader.ReadLine()), null))
-				{
-					sb.Append(line);
-					sb.Append('\n');
-				}
-    
-				return sb.ToString();
-			}
-		}
-	}
+                zipArchive.Dispose();
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine(e.Message);
 
+                Console.Write(e.StackTrace);
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+                Console.Write(e.StackTrace);
+            }
+
+            InternalName = tmpInternalMcoName;
+
+            infoUrl = tmpInfoUrl;
+        }
+
+        private static object PreLoadObject(Stream stream)
+        {
+            object obj;
+
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            try
+            {
+                obj = formatter.Deserialize(stream);
+            }
+            finally
+            {
+                stream.Close();
+            }
+
+            return obj;
+        }
+
+        private static string PreLoadString(Stream stream)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            using (StreamReader streamReader = new StreamReader(stream, Encoding.UTF8))
+            {
+                string line;
+
+                while ((line = streamReader.ReadLine()) != null)
+                {
+                    stringBuilder.Append(line);
+
+                    stringBuilder.Append('\n');
+                }
+            }
+
+            return stringBuilder.ToString();
+        }
+
+        public Stream GetInputStream(string fileName)
+        {
+            return nameUrlMap[fileName].OpenStream();
+        }
+
+        public StreamReader GetInputStreamReader(string fileName, string charSet)
+        {
+            return new StreamReader(GetInputStream(fileName), Encoding.GetEncoding(charSet));
+        }
+
+        public Url GetMcoEntryUrl(string fileName)
+        {
+            return nameUrlMap[fileName];
+        }
+
+        public Url McoUrl { get; }
+
+        public object GetMcoEntryObject(string fileName)
+        {
+            return preLoadedObjects[fileName];
+        }
+
+        private Lazy<HashSet<string>> mcoEntryObjectKeys;
+
+        public ISet<string> McoEntryObjectKeys
+        {
+            get
+            {
+                if (mcoEntryObjectKeys == null)
+                {
+                    mcoEntryObjectKeys = new Lazy<HashSet<string>>(() => new HashSet<string>(preLoadedObjects.Keys), true);
+                }
+
+                return mcoEntryObjectKeys.Value;
+            }
+        }
+
+        public string GetMcoEntryString(string fileName)
+        {
+            return preLoadedStrings[fileName];
+        }
+
+        public string InternalName { get; }
+
+        public string McoUrlString => McoUrl.ToString();
+
+        private Lazy<string> mcoInfo;
+
+        public string McoInfo
+        {
+            get
+            {
+                if (mcoInfo == null)
+                {
+                    mcoInfo = new Lazy<string>(() =>
+                    {
+                        StringBuilder stringBuilder = new StringBuilder();
+
+                        using (StreamReader reader = new StreamReader(infoUrl.OpenStream(), Encoding.UTF8))
+                        {
+                            string line;
+
+                            while ((line = reader.ReadLine()) != null)
+                            {
+                                stringBuilder.Append(line);
+
+                                stringBuilder.Append('\n');
+                            }
+                        }
+
+                        return stringBuilder.ToString();
+
+                    }, true);
+                }
+
+                return mcoInfo.Value;
+            }
+        }
+    }
 }
