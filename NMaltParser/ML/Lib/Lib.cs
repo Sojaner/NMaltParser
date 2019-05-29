@@ -102,7 +102,7 @@ namespace NMaltParser.ML.Lib
 				int n = featureVector.Count;
 				for (int i = 0; i < n; i++)
 				{
-					FeatureValue featureValue = featureVector.getFeatureValue(i);
+					FeatureValue featureValue = featureVector.GetFeatureValue(i);
 					if (featureValue == null || (excludeNullValues == true && featureValue.NullValue))
 					{
 						sb.Append("-1");
@@ -276,7 +276,7 @@ namespace NMaltParser.ML.Lib
 			{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.feature.value.FeatureValue featureValue = featureVector.getFeatureValue(i-1);
-				FeatureValue featureValue = featureVector.getFeatureValue(i - 1);
+				FeatureValue featureValue = featureVector.GetFeatureValue(i - 1);
 				if (featureValue != null && !(excludeNullValues == true && featureValue.NullValue))
 				{
 					if (!featureValue.Multiple)

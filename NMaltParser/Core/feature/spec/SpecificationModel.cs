@@ -86,7 +86,7 @@ namespace NMaltParser.Core.Feature.Spec
 
 			foreach (SpecificationSubModel subModel in this)
 			{
-				if (subModel.size() > 0)
+				if (subModel.Size() > 0)
 				{
 					if (subModelMap.size() != 1 || subModel.SubModelName.Equals("MAIN", StringComparison.OrdinalIgnoreCase))
 					{

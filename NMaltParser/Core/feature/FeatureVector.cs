@@ -1,89 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using NMaltParser.Core.Exception;
 using NMaltParser.Core.Feature.Function;
 using NMaltParser.Core.Feature.Spec;
 using NMaltParser.Core.Feature.Value;
 
 namespace NMaltParser.Core.Feature
 {
-    /// 
-	/// 
-	/// <summary>
-	/// @author Johan Hall
-	/// </summary>
-	[Serializable]
+    [Serializable]
 	public class FeatureVector : List<FeatureFunction>
 	{
-		public const long serialVersionUID = 3256444702936019250L;
 		private readonly SpecificationSubModel specSubModel;
+
 		private readonly FeatureModel featureModel;
 
-		/// <summary>
-		/// Constructs a feature vector
-		/// </summary>
-		/// <param name="_featureModel">	the parent feature model </param>
-		/// <param name="_specSubModel">	the subspecifiction-model </param>
-		/// <exception cref="MaltChainedException"> </exception>
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: public FeatureVector(FeatureModel _featureModel, org.maltparser.core.feature.spec.SpecificationSubModel _specSubModel) throws org.maltparser.core.exception.MaltChainedException
-		public FeatureVector(FeatureModel _featureModel, SpecificationSubModel _specSubModel)
+		public FeatureVector(FeatureModel featureModel, SpecificationSubModel specSubModel)
 		{
-			specSubModel = _specSubModel;
-			featureModel = _featureModel;
-			foreach (string spec in specSubModel)
+			this.specSubModel = specSubModel;
+
+			this.featureModel = featureModel;
+
+			foreach (string spec in this.specSubModel)
 			{
-				Add(featureModel.identifyFeature(spec));
+				Add(this.featureModel.identifyFeature(spec));
 			}
 		}
 
-		/// <summary>
-		/// Returns the subspecifiction-model.
-		/// </summary>
-		/// <returns> the subspecifiction-model </returns>
-		public virtual SpecificationSubModel SpecSubModel
-		{
-			get
-			{
-				return specSubModel;
-			}
-		}
+		public virtual SpecificationSubModel SpecSubModel => specSubModel;
 
-		/// <summary>
-		/// Returns the feature model that the feature vector belongs to.
-		/// </summary>
-		/// <returns> the feature model that the feature vector belongs to </returns>
-		public virtual FeatureModel FeatureModel
-		{
-			get
-			{
-				return featureModel;
-			}
-		}
+        public virtual FeatureModel FeatureModel => featureModel;
 
-		public virtual FeatureValue getFeatureValue(int index)
+        public virtual FeatureValue GetFeatureValue(int index)
 		{
 			return this[index].FeatureValue;
 		}
 
-		/* (non-Javadoc)
-		 * @see java.util.AbstractCollection#toString()
-		 */
 		public override string ToString()
 		{
-//JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-//ORIGINAL LINE: final StringBuilder sb = new StringBuilder();
-			StringBuilder sb = new StringBuilder();
+			StringBuilder stringBuilder = new StringBuilder();
+
 			foreach (FeatureFunction function in this)
 			{
 				if (function != null)
 				{
-					sb.Append(function.FeatureValue.ToString());
-					sb.Append('\n');
+					stringBuilder.Append(function.FeatureValue);
+
+					stringBuilder.Append('\n');
 				}
 			}
-			return sb.ToString();
+
+			return stringBuilder.ToString();
 		}
 	}
 

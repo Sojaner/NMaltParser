@@ -45,7 +45,7 @@ namespace NMaltParser.Core.LW.Parser
                 {
                     string fileName = zipArchiveEntry.FullName;
 
-                    Url entryUrl = new Url($"nmco:{McoUrl}!/{fileName}\n");
+                    Url entryUrl = new Url($"jar:{McoUrl}!/{fileName}\n");
 
                     int index = fileName.IndexOf('/');
 

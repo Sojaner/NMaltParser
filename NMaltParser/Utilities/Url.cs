@@ -22,7 +22,7 @@ namespace NMaltParser.Utilities
 
         public Url(string url)
         {
-            if (url.StartsWith("nmco:", StringComparison.OrdinalIgnoreCase))
+            if (url.StartsWith("zip:", StringComparison.OrdinalIgnoreCase) || url.StartsWith("jar:", StringComparison.OrdinalIgnoreCase))
             {
                 isBundle = true;
 

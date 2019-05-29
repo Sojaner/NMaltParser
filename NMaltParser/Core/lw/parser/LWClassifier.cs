@@ -38,7 +38,7 @@ namespace NMaltParser.Core.LW.Parser
 			{
 //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
 //ORIGINAL LINE: final org.maltparser.core.feature.value.FeatureValue featureValue = featureVector.getFeatureValue(i-1);
-				FeatureValue featureValue = featureVector.getFeatureValue(i - 1);
+				FeatureValue featureValue = featureVector.GetFeatureValue(i - 1);
 				if (featureValue != null && !(excludeNullValues == true && featureValue.NullValue))
 				{
 					if (!featureValue.Multiple)
